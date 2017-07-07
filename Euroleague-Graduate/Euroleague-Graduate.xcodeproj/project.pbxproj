@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5FF78BE1F0FA74E00F6E9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */; };
+		A5FF78C31F0FA74E00F6E9A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5FF78C11F0FA74E00F6E9A2 /* Main.storyboard */; };
+		A5FF78C51F0FA74E00F6E9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5FF78C41F0FA74E00F6E9A2 /* Assets.xcassets */; };
+		A5FF78C81F0FA74E00F6E9A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5FF78C61F0FA74E00F6E9A2 /* LaunchScreen.storyboard */; };
+		A5FF78D31F0FA74F00F6E9A2 /* Euroleague_GraduateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78D21F0FA74F00F6E9A2 /* Euroleague_GraduateTests.swift */; };
+		A5FF78DE1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78DD1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift */; };
+		A5FF78EF1F0FA95F00F6E9A2 /* AbstractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */; };
+		A5FF78F11F0FA9BB00F6E9A2 /* AbstractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5FF78CF1F0FA74F00F6E9A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5FF78B21F0FA74E00F6E9A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5FF78B91F0FA74E00F6E9A2;
+			remoteInfo = "Euroleague-Graduate";
+		};
+		A5FF78DA1F0FA74F00F6E9A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5FF78B21F0FA74E00F6E9A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5FF78B91F0FA74E00F6E9A2;
+			remoteInfo = "Euroleague-Graduate";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A5FF78BA1F0FA74E00F6E9A2 /* Euroleague-Graduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Euroleague-Graduate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A5FF78C21F0FA74E00F6E9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5FF78C41F0FA74E00F6E9A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5FF78C71F0FA74E00F6E9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A5FF78C91F0FA74E00F6E9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5FF78CE1F0FA74F00F6E9A2 /* Euroleague-GraduateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Euroleague-GraduateTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5FF78D21F0FA74F00F6E9A2 /* Euroleague_GraduateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Euroleague_GraduateTests.swift; sourceTree = "<group>"; };
+		A5FF78D41F0FA74F00F6E9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5FF78D91F0FA74F00F6E9A2 /* Euroleague-GraduateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Euroleague-GraduateUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5FF78DD1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Euroleague_GraduateUITests.swift; sourceTree = "<group>"; };
+		A5FF78DF1F0FA74F00F6E9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewController.swift; sourceTree = "<group>"; };
+		A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5FF78B71F0FA74E00F6E9A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5FF78CB1F0FA74F00F6E9A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5FF78D61F0FA74F00F6E9A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5FF78B11F0FA74E00F6E9A2 = {
+			isa = PBXGroup;
+			children = (
+				A5FF78BC1F0FA74E00F6E9A2 /* Euroleague-Graduate */,
+				A5FF78D11F0FA74F00F6E9A2 /* Euroleague-GraduateTests */,
+				A5FF78DC1F0FA74F00F6E9A2 /* Euroleague-GraduateUITests */,
+				A5FF78BB1F0FA74E00F6E9A2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5FF78BB1F0FA74E00F6E9A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5FF78BA1F0FA74E00F6E9A2 /* Euroleague-Graduate.app */,
+				A5FF78CE1F0FA74F00F6E9A2 /* Euroleague-GraduateTests.xctest */,
+				A5FF78D91F0FA74F00F6E9A2 /* Euroleague-GraduateUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5FF78BC1F0FA74E00F6E9A2 /* Euroleague-Graduate */ = {
+			isa = PBXGroup;
+			children = (
+				A5FF78ED1F0FA95F00F6E9A2 /* View */,
+				A5FF78EC1F0FA95F00F6E9A2 /* ModelView */,
+				A5FF78EB1F0FA95F00F6E9A2 /* Model */,
+				A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */,
+				A5FF78C11F0FA74E00F6E9A2 /* Main.storyboard */,
+				A5FF78C41F0FA74E00F6E9A2 /* Assets.xcassets */,
+				A5FF78C61F0FA74E00F6E9A2 /* LaunchScreen.storyboard */,
+				A5FF78C91F0FA74E00F6E9A2 /* Info.plist */,
+			);
+			path = "Euroleague-Graduate";
+			sourceTree = "<group>";
+		};
+		A5FF78D11F0FA74F00F6E9A2 /* Euroleague-GraduateTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5FF78D21F0FA74F00F6E9A2 /* Euroleague_GraduateTests.swift */,
+				A5FF78D41F0FA74F00F6E9A2 /* Info.plist */,
+			);
+			path = "Euroleague-GraduateTests";
+			sourceTree = "<group>";
+		};
+		A5FF78DC1F0FA74F00F6E9A2 /* Euroleague-GraduateUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A5FF78DD1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift */,
+				A5FF78DF1F0FA74F00F6E9A2 /* Info.plist */,
+			);
+			path = "Euroleague-GraduateUITests";
+			sourceTree = "<group>";
+		};
+		A5FF78EB1F0FA95F00F6E9A2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A5FF78EC1F0FA95F00F6E9A2 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */,
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
+		A5FF78ED1F0FA95F00F6E9A2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5FF78B91F0FA74E00F6E9A2 /* Euroleague-Graduate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5FF78E21F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-Graduate" */;
+			buildPhases = (
+				A5FF78B61F0FA74E00F6E9A2 /* Sources */,
+				A5FF78B71F0FA74E00F6E9A2 /* Frameworks */,
+				A5FF78B81F0FA74E00F6E9A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Euroleague-Graduate";
+			productName = "Euroleague-Graduate";
+			productReference = A5FF78BA1F0FA74E00F6E9A2 /* Euroleague-Graduate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5FF78CD1F0FA74F00F6E9A2 /* Euroleague-GraduateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5FF78E51F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-GraduateTests" */;
+			buildPhases = (
+				A5FF78CA1F0FA74F00F6E9A2 /* Sources */,
+				A5FF78CB1F0FA74F00F6E9A2 /* Frameworks */,
+				A5FF78CC1F0FA74F00F6E9A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5FF78D01F0FA74F00F6E9A2 /* PBXTargetDependency */,
+			);
+			name = "Euroleague-GraduateTests";
+			productName = "Euroleague-GraduateTests";
+			productReference = A5FF78CE1F0FA74F00F6E9A2 /* Euroleague-GraduateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A5FF78D81F0FA74F00F6E9A2 /* Euroleague-GraduateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5FF78E81F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-GraduateUITests" */;
+			buildPhases = (
+				A5FF78D51F0FA74F00F6E9A2 /* Sources */,
+				A5FF78D61F0FA74F00F6E9A2 /* Frameworks */,
+				A5FF78D71F0FA74F00F6E9A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5FF78DB1F0FA74F00F6E9A2 /* PBXTargetDependency */,
+			);
+			name = "Euroleague-GraduateUITests";
+			productName = "Euroleague-GraduateUITests";
+			productReference = A5FF78D91F0FA74F00F6E9A2 /* Euroleague-GraduateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5FF78B21F0FA74E00F6E9A2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Modeso;
+				TargetAttributes = {
+					A5FF78B91F0FA74E00F6E9A2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = XP9UK5V4RA;
+						ProvisioningStyle = Automatic;
+					};
+					A5FF78CD1F0FA74F00F6E9A2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = XP9UK5V4RA;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A5FF78B91F0FA74E00F6E9A2;
+					};
+					A5FF78D81F0FA74F00F6E9A2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = XP9UK5V4RA;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A5FF78B91F0FA74E00F6E9A2;
+					};
+				};
+			};
+			buildConfigurationList = A5FF78B51F0FA74E00F6E9A2 /* Build configuration list for PBXProject "Euroleague-Graduate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5FF78B11F0FA74E00F6E9A2;
+			productRefGroup = A5FF78BB1F0FA74E00F6E9A2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5FF78B91F0FA74E00F6E9A2 /* Euroleague-Graduate */,
+				A5FF78CD1F0FA74F00F6E9A2 /* Euroleague-GraduateTests */,
+				A5FF78D81F0FA74F00F6E9A2 /* Euroleague-GraduateUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5FF78B81F0FA74E00F6E9A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5FF78C81F0FA74E00F6E9A2 /* LaunchScreen.storyboard in Resources */,
+				A5FF78C51F0FA74E00F6E9A2 /* Assets.xcassets in Resources */,
+				A5FF78C31F0FA74E00F6E9A2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5FF78CC1F0FA74F00F6E9A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5FF78D71F0FA74F00F6E9A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5FF78B61F0FA74E00F6E9A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5FF78EF1F0FA95F00F6E9A2 /* AbstractViewController.swift in Sources */,
+				A5FF78F11F0FA9BB00F6E9A2 /* AbstractViewModel.swift in Sources */,
+				A5FF78BE1F0FA74E00F6E9A2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5FF78CA1F0FA74F00F6E9A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5FF78D31F0FA74F00F6E9A2 /* Euroleague_GraduateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5FF78D51F0FA74F00F6E9A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5FF78DE1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5FF78D01F0FA74F00F6E9A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5FF78B91F0FA74E00F6E9A2 /* Euroleague-Graduate */;
+			targetProxy = A5FF78CF1F0FA74F00F6E9A2 /* PBXContainerItemProxy */;
+		};
+		A5FF78DB1F0FA74F00F6E9A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5FF78B91F0FA74E00F6E9A2 /* Euroleague-Graduate */;
+			targetProxy = A5FF78DA1F0FA74F00F6E9A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5FF78C11F0FA74E00F6E9A2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5FF78C21F0FA74E00F6E9A2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A5FF78C61F0FA74E00F6E9A2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5FF78C71F0FA74E00F6E9A2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5FF78E01F0FA74F00F6E9A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A5FF78E11F0FA74F00F6E9A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5FF78E31F0FA74F00F6E9A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XP9UK5V4RA;
+				INFOPLIST_FILE = "Euroleague-Graduate/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Modeso.Euroleague-Graduate";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A5FF78E41F0FA74F00F6E9A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XP9UK5V4RA;
+				INFOPLIST_FILE = "Euroleague-Graduate/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Modeso.Euroleague-Graduate";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		A5FF78E61F0FA74F00F6E9A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = XP9UK5V4RA;
+				INFOPLIST_FILE = "Euroleague-GraduateTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Modeso.Euroleague-GraduateTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Euroleague-Graduate.app/Euroleague-Graduate";
+			};
+			name = Debug;
+		};
+		A5FF78E71F0FA74F00F6E9A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = XP9UK5V4RA;
+				INFOPLIST_FILE = "Euroleague-GraduateTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Modeso.Euroleague-GraduateTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Euroleague-Graduate.app/Euroleague-Graduate";
+			};
+			name = Release;
+		};
+		A5FF78E91F0FA74F00F6E9A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = XP9UK5V4RA;
+				INFOPLIST_FILE = "Euroleague-GraduateUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Modeso.Euroleague-GraduateUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Euroleague-Graduate";
+			};
+			name = Debug;
+		};
+		A5FF78EA1F0FA74F00F6E9A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = XP9UK5V4RA;
+				INFOPLIST_FILE = "Euroleague-GraduateUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Modeso.Euroleague-GraduateUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Euroleague-Graduate";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5FF78B51F0FA74E00F6E9A2 /* Build configuration list for PBXProject "Euroleague-Graduate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5FF78E01F0FA74F00F6E9A2 /* Debug */,
+				A5FF78E11F0FA74F00F6E9A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5FF78E21F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-Graduate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5FF78E31F0FA74F00F6E9A2 /* Debug */,
+				A5FF78E41F0FA74F00F6E9A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A5FF78E51F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-GraduateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5FF78E61F0FA74F00F6E9A2 /* Debug */,
+				A5FF78E71F0FA74F00F6E9A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A5FF78E81F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-GraduateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5FF78E91F0FA74F00F6E9A2 /* Debug */,
+				A5FF78EA1F0FA74F00F6E9A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5FF78B21F0FA74E00F6E9A2 /* Project object */;
+}
