@@ -99,9 +99,9 @@
 		A5FF78BC1F0FA74E00F6E9A2 /* Euroleague-Graduate */ = {
 			isa = PBXGroup;
 			children = (
-				A5FF78ED1F0FA95F00F6E9A2 /* View */,
-				A5FF78EC1F0FA95F00F6E9A2 /* ModelView */,
-				A5FF78EB1F0FA95F00F6E9A2 /* Model */,
+				A5FF78ED1F0FA95F00F6E9A2 /* ViewControllers */,
+				A5FF78EC1F0FA95F00F6E9A2 /* ViewModels */,
+				A5FF78EB1F0FA95F00F6E9A2 /* Models */,
 				A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */,
 				A5FF78C11F0FA74E00F6E9A2 /* Main.storyboard */,
 				A5FF78C41F0FA74E00F6E9A2 /* Assets.xcassets */,
@@ -129,26 +129,29 @@
 			path = "Euroleague-GraduateUITests";
 			sourceTree = "<group>";
 		};
-		A5FF78EB1F0FA95F00F6E9A2 /* Model */ = {
+		A5FF78EB1F0FA95F00F6E9A2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = Models;
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A5FF78EC1F0FA95F00F6E9A2 /* ModelView */ = {
+		A5FF78EC1F0FA95F00F6E9A2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */,
 			);
+			name = ViewModels;
 			path = ModelView;
 			sourceTree = "<group>";
 		};
-		A5FF78ED1F0FA95F00F6E9A2 /* View */ = {
+		A5FF78ED1F0FA95F00F6E9A2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */,
 			);
+			name = ViewControllers;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -540,6 +543,7 @@
 				A5FF78E41F0FA74F00F6E9A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5FF78E51F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-GraduateTests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +552,7 @@
 				A5FF78E71F0FA74F00F6E9A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5FF78E81F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-GraduateUITests" */ = {
 			isa = XCConfigurationList;
@@ -556,6 +561,7 @@
 				A5FF78EA1F0FA74F00F6E9A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
