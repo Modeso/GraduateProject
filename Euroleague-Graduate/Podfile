@@ -10,5 +10,6 @@ target 'Euroleague-Graduate' do
     pod 'Alamofire', '~> 4.4'
     pod 'RealmSwift'
     pod 'SDWebImage', '~>3.8'
+    pod 'SWXMLHash', '~> 4.0.0'
 
 end

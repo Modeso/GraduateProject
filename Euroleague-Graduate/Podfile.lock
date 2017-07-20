@@ -8,18 +8,21 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SWXMLHash (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - RealmSwift
   - SDWebImage (~> 3.8)
+  - SWXMLHash (~> 4.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SWXMLHash: 6bbc0bf72975a18ceda469fb7d6a886a26d81694
 
-PODFILE CHECKSUM: f4ec2ead094014c806b2103e1490353a41ddf2be
+PODFILE CHECKSUM: a676c75640f978a061aab5cb804c110459d812c9
 
 COCOAPODS: 1.2.1

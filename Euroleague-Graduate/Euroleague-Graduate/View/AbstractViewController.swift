@@ -14,6 +14,8 @@ class AbstractViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let te = TurkishAirLinesHelper()
+        te.getGamesTable(round: "RO")
     }
 
     override func didReceiveMemoryWarning() {
