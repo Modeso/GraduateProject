@@ -15,6 +15,10 @@
 		A5FF78DE1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78DD1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift */; };
 		A5FF78EF1F0FA95F00F6E9A2 /* AbstractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */; };
 		A5FF78F11F0FA9BB00F6E9A2 /* AbstractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */; };
+		E49A004AC4F45BE0AEFD1C45 /* Pods_Euroleague_Graduate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35C4F623F55A7C474F985E8 /* Pods_Euroleague_Graduate.framework */; };
+		FE540CCC1F20BAD3000A75A0 /* TurkishAirlinesApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCB1F20BAD3000A75A0 /* TurkishAirlinesApiClient.swift */; };
+		FE540CCE1F20BB53000A75A0 /* TurkishAirLinesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCD1F20BB53000A75A0 /* TurkishAirLinesHelper.swift */; };
+		FE540CD01F20BB9F000A75A0 /* ApiResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84DD3988E1A3253923452F18 /* Pods-Euroleague-Graduate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-Graduate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate.debug.xcconfig"; sourceTree = "<group>"; };
 		A5FF78BA1F0FA74E00F6E9A2 /* Euroleague-Graduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Euroleague-Graduate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5FF78C21F0FA74E00F6E9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +54,11 @@
 		A5FF78DF1F0FA74F00F6E9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewController.swift; sourceTree = "<group>"; };
 		A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewModel.swift; sourceTree = "<group>"; };
+		B35C4F623F55A7C474F985E8 /* Pods_Euroleague_Graduate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Euroleague_Graduate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5B4642116FFE1367BFA93F5 /* Pods-Euroleague-Graduate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-Graduate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate.release.xcconfig"; sourceTree = "<group>"; };
+		FE540CCB1F20BAD3000A75A0 /* TurkishAirlinesApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirlinesApiClient.swift; sourceTree = "<group>"; };
+		FE540CCD1F20BB53000A75A0 /* TurkishAirLinesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesHelper.swift; sourceTree = "<group>"; };
+		FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49A004AC4F45BE0AEFD1C45 /* Pods_Euroleague_Graduate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F7585AAF8E93D9DFE965A50 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B35C4F623F55A7C474F985E8 /* Pods_Euroleague_Graduate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A5FF78B11F0FA74E00F6E9A2 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +102,8 @@
 				A5FF78D11F0FA74F00F6E9A2 /* Euroleague-GraduateTests */,
 				A5FF78DC1F0FA74F00F6E9A2 /* Euroleague-GraduateUITests */,
 				A5FF78BB1F0FA74E00F6E9A2 /* Products */,
+				B0044547603B0E65E16F43EC /* Pods */,
+				1F7585AAF8E93D9DFE965A50 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +120,7 @@
 		A5FF78BC1F0FA74E00F6E9A2 /* Euroleague-Graduate */ = {
 			isa = PBXGroup;
 			children = (
+				FE540CCA1F20BA95000A75A0 /* Service */,
 				A5FF78ED1F0FA95F00F6E9A2 /* ViewControllers */,
 				A5FF78EC1F0FA95F00F6E9A2 /* ViewModels */,
 				A5FF78EB1F0FA95F00F6E9A2 /* Models */,
@@ -114,6 +136,7 @@
 		A5FF78D11F0FA74F00F6E9A2 /* Euroleague-GraduateTests */ = {
 			isa = PBXGroup;
 			children = (
+				FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */,
 				A5FF78D21F0FA74F00F6E9A2 /* Euroleague_GraduateTests.swift */,
 				A5FF78D41F0FA74F00F6E9A2 /* Info.plist */,
 			);
@@ -155,6 +178,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B0044547603B0E65E16F43EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				84DD3988E1A3253923452F18 /* Pods-Euroleague-Graduate.debug.xcconfig */,
+				F5B4642116FFE1367BFA93F5 /* Pods-Euroleague-Graduate.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FE540CCA1F20BA95000A75A0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FE540CCB1F20BAD3000A75A0 /* TurkishAirlinesApiClient.swift */,
+				FE540CCD1F20BB53000A75A0 /* TurkishAirLinesHelper.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -162,9 +203,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5FF78E21F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-Graduate" */;
 			buildPhases = (
+				7288BFD380BBD698D163872B /* [CP] Check Pods Manifest.lock */,
 				A5FF78B61F0FA74E00F6E9A2 /* Sources */,
 				A5FF78B71F0FA74E00F6E9A2 /* Frameworks */,
 				A5FF78B81F0FA74E00F6E9A2 /* Resources */,
+				8E8817FA5ADF949E3C2C264B /* [CP] Embed Pods Frameworks */,
+				0AF6EFE00122B782882ED4BF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,6 +331,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0AF6EFE00122B782882ED4BF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7288BFD380BBD698D163872B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8E8817FA5ADF949E3C2C264B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A5FF78B61F0FA74E00F6E9A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -295,6 +387,8 @@
 				A5FF78EF1F0FA95F00F6E9A2 /* AbstractViewController.swift in Sources */,
 				A5FF78F11F0FA9BB00F6E9A2 /* AbstractViewModel.swift in Sources */,
 				A5FF78BE1F0FA74E00F6E9A2 /* AppDelegate.swift in Sources */,
+				FE540CCC1F20BAD3000A75A0 /* TurkishAirlinesApiClient.swift in Sources */,
+				FE540CCE1F20BB53000A75A0 /* TurkishAirLinesHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5FF78D31F0FA74F00F6E9A2 /* Euroleague_GraduateTests.swift in Sources */,
+				FE540CD01F20BB9F000A75A0 /* ApiResponseTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +537,7 @@
 		};
 		A5FF78E31F0FA74F00F6E9A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84DD3988E1A3253923452F18 /* Pods-Euroleague-Graduate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XP9UK5V4RA;
@@ -455,6 +551,7 @@
 		};
 		A5FF78E41F0FA74F00F6E9A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5B4642116FFE1367BFA93F5 /* Pods-Euroleague-Graduate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XP9UK5V4RA;
