@@ -20,6 +20,7 @@
 		FE540CCE1F20BB53000A75A0 /* TurkishAirLinesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCD1F20BB53000A75A0 /* TurkishAirLinesHelper.swift */; };
 		FE540CD01F20BB9F000A75A0 /* ApiResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */; };
 		FE540CD41F20CDE1000A75A0 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CD31F20CDE1000A75A0 /* GameData.swift */; };
+		FE8C60A91F22126700D4EF83 /* RealmDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		FE540CCD1F20BB53000A75A0 /* TurkishAirLinesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesHelper.swift; sourceTree = "<group>"; };
 		FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseTest.swift; sourceTree = "<group>"; };
 		FE540CD31F20CDE1000A75A0 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = SOURCE_ROOT; };
+		FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		A5FF78BC1F0FA74E00F6E9A2 /* Euroleague-Graduate */ = {
 			isa = PBXGroup;
 			children = (
+				FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */,
 				FE540CD61F20EC37000A75A0 /* Services */,
 				A5FF78ED1F0FA95F00F6E9A2 /* ViewControllers */,
 				A5FF78EC1F0FA95F00F6E9A2 /* ViewModels */,
@@ -392,6 +395,7 @@
 				A5FF78F11F0FA9BB00F6E9A2 /* AbstractViewModel.swift in Sources */,
 				A5FF78BE1F0FA74E00F6E9A2 /* AppDelegate.swift in Sources */,
 				FE540CCC1F20BAD3000A75A0 /* TurkishAirlinesApiClient.swift in Sources */,
+				FE8C60A91F22126700D4EF83 /* RealmDBManager.swift in Sources */,
 				FE540CCE1F20BB53000A75A0 /* TurkishAirLinesHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

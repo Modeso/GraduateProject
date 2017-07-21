@@ -8,13 +8,15 @@
 
 
 import UIKit
+import RealmSwift
 
 class AbstractViewController: UIViewController {
 
+    let te = TurkishAirLinesHelper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let te = TurkishAirLinesHelper()
         te.getGamesTable(round: "RO")
     }
 

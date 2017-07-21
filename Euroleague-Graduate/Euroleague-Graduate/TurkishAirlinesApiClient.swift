@@ -21,8 +21,8 @@ class TurkishAirlinesApiClient {
                           headers: headers)
             .response { response in
                 if let data = response.data {
-                    let utf8Text = String(data: data, encoding: .utf8)
-                    print("Data: \(utf8Text)")
+//                    let utf8Text = String(data: data, encoding: .utf8)
+//                    print("Data: \(utf8Text)")
                     completion(data, nil)
                 }
                 else if let error = response.error {

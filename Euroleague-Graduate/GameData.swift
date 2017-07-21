@@ -7,17 +7,22 @@
 //
 
 import Foundation
+import RealmSwift
 
-class GameData{
+class GameData: Object{
     
-    var round: String = ""
-    var date: Date = Date()
-    var time: String = ""
-    var gameNumber: Int = 0
-    var homeTv: String = ""
-    var homeScore: Int = 0
-    var awayTv: String = ""
-    var awayScore: Int = 0
-    var played: Bool = false
+    dynamic var round: String = ""
+    dynamic var date: Date = Date()
+    dynamic var time: String = ""
+    dynamic var gameNumber: Int = 0
+    dynamic var homeTv: String = ""
+    dynamic var homeScore: Int = 0
+    dynamic var awayTv: String = ""
+    dynamic var awayScore: Int = 0
+    dynamic var played: Bool = false
+    
+    override static func primaryKey() -> String? {
+        return "gameNumber"
+    }
     
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import SWXMLHash
+import RealmSwift
 
 class TurkishAirLinesHelper {
     
@@ -15,12 +16,17 @@ class TurkishAirLinesHelper {
         case schedule
         case results
     }
-    //In viewModel
+    
+    //In viewModel has array of games according to target round
     var table: Dictionary<String, [Array<GameData>]> = [:]
     
-    private var games: Dictionary<Int, GameData> = [:]
+    private var games: Dictionary<Int, GameData> = [:] {
+        didSet{
+            //Notify the view Model
+        }
+    }
     
-    //In viewModel
+    //In viewModel has target round
     private var round: String = ""
     
     let urls: Dictionary<GameDataStatus, String> = [
@@ -28,15 +34,34 @@ class TurkishAirLinesHelper {
         .results : "http://www.euroleague.net/euroleague/api/results?seasoncode=E2016"
     ]
     
+    //Should have no parameters and return table of dataBase
     func getGamesTable(round: String) {
-        self.round = round
-        if games.count == 0 {
-            getSchedule()
+        games.removeAll()
+        let table = RealmDBManager.sharedInstance.getDataFromRealm()
+        print("Data is here")
+        print("table count: \(table.count)")
+        for game in table {
+            let gameData = GameData()
+            gameData.awayScore = game.awayScore
+            gameData.awayTv = game.awayTv
+            gameData.date = game.date
+            gameData.gameNumber = game.gameNumber
+            gameData.homeScore = game.homeScore
+            gameData.homeTv = game.homeTv
+            gameData.played = game.played
+            gameData.round = game.round
+            gameData.time = game.time
+            games[game.gameNumber] = gameData
         }
+        print("Games count: \(games.count)")
+        self.round = round
+        getSchedule()
     }
     
+    //Api Client calling functions
+    
     private func getSchedule() {
-        print("gettng Schedule")
+        print("getting Schedule")
         TurkishAirlinesApiClient
             .getRequestFrom(
                 url: urls[.schedule]!,
@@ -46,13 +71,14 @@ class TurkishAirLinesHelper {
                         self?.parseSchedule(xmlData)
                         self?.getResults()
                     }
-                    else{
+                    else {
                         print("error in schedule data")
                     }
         }
     }
     
     private func getResults() {
+        print("getting Results")
         TurkishAirlinesApiClient
             .getRequestFrom(
                 url: urls[.results]!,
@@ -60,7 +86,27 @@ class TurkishAirLinesHelper {
                 headers: [:]){ [weak self] data ,error in
                     if let xmlData = data, error == nil {
                         self?.setResults(xmlData)
-                        //self?.makingTableData()
+                        let table = RealmDBManager.sharedInstance.getDataFromRealm()
+                        self?.games.removeAll()
+                        print("Data is here")
+                        print("table count: \(table.count)")
+                        ///
+                        print("Data is here")
+                        print("table count: \(table.count)")
+                        for game in table {
+                            let gameData = GameData()
+                            gameData.awayScore = game.awayScore
+                            gameData.awayTv = game.awayTv
+                            gameData.date = game.date
+                            gameData.gameNumber = game.gameNumber
+                            gameData.homeScore = game.homeScore
+                            gameData.homeTv = game.homeTv
+                            gameData.played = game.played
+                            gameData.round = game.round
+                            gameData.time = game.time
+                            self?.games[game.gameNumber] = gameData
+                        }
+                        print("Games count: \(self?.games.count)")
                     }
                     else{
                         print("error in results data")
@@ -100,10 +146,31 @@ class TurkishAirLinesHelper {
                 game.homeTv = try elem["hometv"].value()
                 game.awayTv = try elem["awaytv"].value()
                 game.played = try elem["played"].value()
+                RealmDBManager.sharedInstance.addDataToRealm(game: game)
                 games[game.gameNumber] = game
             }
             catch {
                 print("error in parsing the schedule!!")
+                print(error)
+            }
+        }
+    }
+    
+    private func setResults(_ xmlData: Data){
+        print("Setting Results")
+        let xml = SWXMLHash.parse(xmlData)
+        for elem in xml["results"]["game"].all{
+            do{
+                let gameNumber: Int = try elem["gamenumber"].value()
+                if (games[gameNumber]?.played)! {
+                    RealmDBManager
+                        .sharedInstance
+                        .updateScoreFor(games[gameNumber]!,
+                                        homeScore: try elem["homescore"].value(),
+                                        awayScore: try elem["awayscore"].value())
+                }
+            } catch {
+                print("error in setting the results!!")
                 print(error)
             }
         }
@@ -115,22 +182,6 @@ class TurkishAirLinesHelper {
         return dateFormatter.date(from: date)!
     }
     
-    private func setResults(_ xmlData: Data){
-        print("Setting Results")
-        let xml = SWXMLHash.parse(xmlData)
-        for elem in xml["results"]["game"].all{
-            do{
-                let gameNumber: Int = try elem["gamenumber"].value()
-                if (games[gameNumber]?.played)! {
-                    games[gameNumber]?.homeScore = try elem["homescore"].value()
-                    games[gameNumber]?.awayScore = try elem["awayscore"].value()
-                }
-            } catch {
-                print("error in parsing the schedule!!")
-                print(error)
-            }
-        }
-    }
     
 }
 
