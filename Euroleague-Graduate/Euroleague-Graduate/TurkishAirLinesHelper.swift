@@ -17,9 +17,6 @@ class TurkishAirLinesHelper {
         case results
     }
     
-    //In viewModel has array of games according to target round
-    var table: Dictionary<String, [Array<GameData>]> = [:]
-    
     private var games: Dictionary<Int, GameData> = [:] {
         didSet{
             //Notify the view Model
@@ -112,25 +109,6 @@ class TurkishAirLinesHelper {
                         print("error in results data")
                     }
         }
-    }
-    
-    private func makingTableData() {
-        var gamesTable = [Array<GameData>]()
-        var gameSection = Array<GameData>()
-        var prevSectionDate: Date? = nil
-        for game in games {
-            if game.value.round == round {
-                if prevSectionDate == nil {
-                    prevSectionDate = game.value.date
-                } else if prevSectionDate != game.value.date {
-                    gamesTable.append(gameSection)
-                    gameSection.removeAll()
-                    prevSectionDate = game.value.date
-                }
-                gameSection.insert(game.value, at: 0)
-            }
-        }
-        table[round] = gamesTable
     }
     
     private func parseSchedule(_ xmlData: Data){
