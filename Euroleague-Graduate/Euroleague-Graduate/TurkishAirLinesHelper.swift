@@ -35,7 +35,7 @@ class TurkishAirLinesHelper {
     ]
     
     //Should have no parameters and return table of dataBase
-    func getGamesTable(round: String) {
+    func getGamesTable() -> Results<GameData> {
         games.removeAll()
         let table = RealmDBManager.sharedInstance.getDataFromRealm()
         print("Data is here")
@@ -54,8 +54,8 @@ class TurkishAirLinesHelper {
             games[game.gameNumber] = gameData
         }
         print("Games count: \(games.count)")
-        self.round = round
         getSchedule()
+        return table
     }
     
     //Api Client calling functions

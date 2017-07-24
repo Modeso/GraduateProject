@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IwF-yb-H4w">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Abstract View Controller-->
+        <!--Turkish Airlines EuroLeague-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="AbstractViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,11 +20,62 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kW8-IQ-sZ3" customClass="ButtonBarView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="450-u9-aBh"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wsc-3n-fgE">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dch-82-Z5h">
+                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dch-82-Z5h" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Njx-sc-n3y"/>
+                            <constraint firstItem="Dch-82-Z5h" firstAttribute="leading" secondItem="kW8-IQ-sZ3" secondAttribute="leading" id="TfX-ge-ayV"/>
+                            <constraint firstItem="Dch-82-Z5h" firstAttribute="trailing" secondItem="kW8-IQ-sZ3" secondAttribute="trailing" id="egK-jp-nXK"/>
+                            <constraint firstItem="kW8-IQ-sZ3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kc4-1d-Eo3"/>
+                            <constraint firstAttribute="trailing" secondItem="Dch-82-Z5h" secondAttribute="trailing" id="t5a-Uq-0SJ"/>
+                            <constraint firstItem="Dch-82-Z5h" firstAttribute="top" secondItem="kW8-IQ-sZ3" secondAttribute="bottom" id="wAc-oe-q5H"/>
+                            <constraint firstItem="Dch-82-Z5h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xZ2-nB-3fR"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Turkish Airlines EuroLeague" id="x5a-gj-heQ"/>
+                    <connections>
+                        <outlet property="containerView" destination="Dch-82-Z5h" id="apl-xq-COW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1056.8" y="122.78860569715144"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Efg-Sj-kQM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IwF-yb-H4w" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LtH-zY-Uvz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Svh-gc-uMR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zaZ-u8-uqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="271" y="123"/>
         </scene>
     </scenes>
 </document>

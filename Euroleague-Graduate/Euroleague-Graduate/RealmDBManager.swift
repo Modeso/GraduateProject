@@ -30,9 +30,9 @@ class RealmDBManager {
 //        table.forEach { (gamedata) in
 //            print("dddddd")
 //        }
-        let item = table.first
-        print("\(item?.gameNumber)")
-        print("\(item?.awayTv)")
+//        let item = table.first
+//        print("\(item?.gameNumber)")
+//        print("\(item?.awayTv)")
 
         return table
     }

@@ -20,6 +20,10 @@
 		FE540CCE1F20BB53000A75A0 /* TurkishAirLinesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCD1F20BB53000A75A0 /* TurkishAirLinesHelper.swift */; };
 		FE540CD01F20BB9F000A75A0 /* ApiResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */; };
 		FE540CD41F20CDE1000A75A0 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CD31F20CDE1000A75A0 /* GameData.swift */; };
+		FE6DDF881F26114400BA9FCB /* TurkishLeagueRegularSeosonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6DDF871F26114400BA9FCB /* TurkishLeagueRegularSeosonTableViewController.swift */; };
+		FE6DDF8A1F2611A800BA9FCB /* TurkishLeaguePOTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6DDF891F2611A800BA9FCB /* TurkishLeaguePOTableViewController.swift */; };
+		FE6DDF8C1F2611C800BA9FCB /* TurkishLeagueF4TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6DDF8B1F2611C800BA9FCB /* TurkishLeagueF4TableViewController.swift */; };
+		FE6DDF8F1F26148D00BA9FCB /* TurkishLeagueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6DDF8E1F26148D00BA9FCB /* TurkishLeagueViewModel.swift */; };
 		FE8C60A91F22126700D4EF83 /* RealmDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +58,7 @@
 		A5FF78D91F0FA74F00F6E9A2 /* Euroleague-GraduateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Euroleague-GraduateUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FF78DD1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Euroleague_GraduateUITests.swift; sourceTree = "<group>"; };
 		A5FF78DF1F0FA74F00F6E9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewController.swift; sourceTree = "<group>"; };
+		A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractViewController.swift; path = View/AbstractViewController.swift; sourceTree = "<group>"; };
 		A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewModel.swift; sourceTree = "<group>"; };
 		B35C4F623F55A7C474F985E8 /* Pods_Euroleague_Graduate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Euroleague_Graduate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B4642116FFE1367BFA93F5 /* Pods-Euroleague-Graduate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-Graduate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate.release.xcconfig"; sourceTree = "<group>"; };
@@ -62,6 +66,10 @@
 		FE540CCD1F20BB53000A75A0 /* TurkishAirLinesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesHelper.swift; sourceTree = "<group>"; };
 		FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseTest.swift; sourceTree = "<group>"; };
 		FE540CD31F20CDE1000A75A0 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = SOURCE_ROOT; };
+		FE6DDF871F26114400BA9FCB /* TurkishLeagueRegularSeosonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TurkishLeagueRegularSeosonTableViewController.swift; path = "Euroleague-Graduate/TurkishLeagueRegularSeosonTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		FE6DDF891F2611A800BA9FCB /* TurkishLeaguePOTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TurkishLeaguePOTableViewController.swift; path = View/TurkishLeaguePOTableViewController.swift; sourceTree = "<group>"; };
+		FE6DDF8B1F2611C800BA9FCB /* TurkishLeagueF4TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TurkishLeagueF4TableViewController.swift; path = View/TurkishLeagueF4TableViewController.swift; sourceTree = "<group>"; };
+		FE6DDF8E1F26148D00BA9FCB /* TurkishLeagueViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueViewModel.swift; sourceTree = "<group>"; };
 		FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +134,7 @@
 			children = (
 				FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */,
 				FE540CD61F20EC37000A75A0 /* Services */,
-				A5FF78ED1F0FA95F00F6E9A2 /* ViewControllers */,
+				FE6DDF8D1F2611DA00BA9FCB /* ViewControllers */,
 				A5FF78EC1F0FA95F00F6E9A2 /* ViewModels */,
 				A5FF78EB1F0FA95F00F6E9A2 /* Models */,
 				A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */,
@@ -170,18 +178,10 @@
 			isa = PBXGroup;
 			children = (
 				A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */,
+				FE6DDF8E1F26148D00BA9FCB /* TurkishLeagueViewModel.swift */,
 			);
 			name = ViewModels;
 			path = ModelView;
-			sourceTree = "<group>";
-		};
-		A5FF78ED1F0FA95F00F6E9A2 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */,
-			);
-			name = ViewControllers;
-			path = View;
 			sourceTree = "<group>";
 		};
 		B0044547603B0E65E16F43EC /* Pods */ = {
@@ -200,6 +200,17 @@
 				FE540CCD1F20BB53000A75A0 /* TurkishAirLinesHelper.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		FE6DDF8D1F2611DA00BA9FCB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A5FF78EE1F0FA95F00F6E9A2 /* AbstractViewController.swift */,
+				FE6DDF871F26114400BA9FCB /* TurkishLeagueRegularSeosonTableViewController.swift */,
+				FE6DDF891F2611A800BA9FCB /* TurkishLeaguePOTableViewController.swift */,
+				FE6DDF8B1F2611C800BA9FCB /* TurkishLeagueF4TableViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,10 +404,14 @@
 				A5FF78EF1F0FA95F00F6E9A2 /* AbstractViewController.swift in Sources */,
 				FE540CD41F20CDE1000A75A0 /* GameData.swift in Sources */,
 				A5FF78F11F0FA9BB00F6E9A2 /* AbstractViewModel.swift in Sources */,
+				FE6DDF881F26114400BA9FCB /* TurkishLeagueRegularSeosonTableViewController.swift in Sources */,
 				A5FF78BE1F0FA74E00F6E9A2 /* AppDelegate.swift in Sources */,
 				FE540CCC1F20BAD3000A75A0 /* TurkishAirlinesApiClient.swift in Sources */,
+				FE6DDF8A1F2611A800BA9FCB /* TurkishLeaguePOTableViewController.swift in Sources */,
+				FE6DDF8F1F26148D00BA9FCB /* TurkishLeagueViewModel.swift in Sources */,
 				FE8C60A91F22126700D4EF83 /* RealmDBManager.swift in Sources */,
 				FE540CCE1F20BB53000A75A0 /* TurkishAirLinesHelper.swift in Sources */,
+				FE6DDF8C1F2611C800BA9FCB /* TurkishLeagueF4TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
