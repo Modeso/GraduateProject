@@ -11,10 +11,21 @@ import XLPagerTabStrip
 
 class TurkishLeagueRegularSeosonTableViewController: UITableViewController, IndicatorInfoProvider {
 
-    var schedule: [Array<GameData>]?
-    let round = "RS"
+    private var schedule: [Array<GameData>]?
+    private let round = "RS"
     
-    var turkishViewModel: TurkishLeagueViewModel? = nil
+    private var turkishViewModel: TurkishLeagueViewModel? = nil
+    
+    private var parentController: AbstractViewController
+    
+    init(style: UITableViewStyle, parentController: AbstractViewController) {
+        self.parentController = parentController
+        super.init(style: style)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +82,7 @@ class TurkishLeagueRegularSeosonTableViewController: UITableViewController, Indi
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      //   performSegue(withIdentifier: "showDetailSegue", sender: self)
+        parentController.cellWasPressed(game: (schedule?[indexPath.section][indexPath.row])!)
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

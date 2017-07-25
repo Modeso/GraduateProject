@@ -53,6 +53,7 @@
                     <navigationItem key="navigationItem" title="Turkish Airlines EuroLeague" id="x5a-gj-heQ"/>
                     <connections>
                         <outlet property="containerView" destination="Dch-82-Z5h" id="apl-xq-COW"/>
+                        <segue destination="dDx-UY-Tv9" kind="showDetail" identifier="showDetailSegue" id="fRO-RY-9AR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -83,8 +84,8 @@
             <objects>
                 <splitViewController id="6Ph-DM-d21" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="UwT-jz-eYm" kind="relationship" relationship="detailViewController" id="WTS-7n-2xg"/>
                         <segue destination="9kl-U1-8rQ" kind="relationship" relationship="masterViewController" id="mVc-dW-E39"/>
+                        <segue destination="dDx-UY-Tv9" kind="relationship" relationship="detailViewController" id="LNd-tt-fno"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1Z-VA-TfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,22 +111,25 @@
             <point key="canvasLocation" x="409" y="123"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="7kW-R1-Z7o">
+        <scene sceneID="xSW-GE-mtE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UwT-jz-eYm" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dDx-UY-Tv9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Vh-UU-y5r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dmX-WT-e1S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="DnU-ys-IEY" kind="relationship" relationship="rootViewController" id="6OS-69-7yG"/>
+                        <segue destination="DnU-ys-IEY" kind="relationship" relationship="rootViewController" id="83U-r1-Dk1"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PUu-pK-4vy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAo-ot-cR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="409" y="909"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fRO-RY-9AR"/>
+    </inferredMetricsTieBreakers>
 </document>

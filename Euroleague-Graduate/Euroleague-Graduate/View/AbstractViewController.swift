@@ -44,10 +44,20 @@ class AbstractViewController: ButtonBarPagerTabStripViewController, UISplitViewC
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        return [TurkishLeagueRegularSeosonTableViewController(),
+        return [TurkishLeagueRegularSeosonTableViewController(style: .plain, parentController: self),
                 TurkishLeaguePOTableViewController(),
                 TurkishLeagueFFTableViewController()
                 ]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailSegue" {
+            print(segue.identifier)
+        }
+    }
+    
+    func cellWasPressed(game: GameData){
+        performSegue(withIdentifier: "showDetailSegue", sender: self)
     }
 
 }
