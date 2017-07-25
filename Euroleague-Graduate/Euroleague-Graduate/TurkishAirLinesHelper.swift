@@ -38,22 +38,6 @@ class TurkishAirLinesHelper {
     func getGamesTable() -> Results<GameData> {
         games.removeAll()
         let table = RealmDBManager.sharedInstance.getDataFromRealm()
-        print("Data is here")
-        print("table count: \(table.count)")
-        for game in table {
-            let gameData = GameData()
-            gameData.awayScore = game.awayScore
-            gameData.awayTv = game.awayTv
-            gameData.date = game.date
-            gameData.gameNumber = game.gameNumber
-            gameData.homeScore = game.homeScore
-            gameData.homeTv = game.homeTv
-            gameData.played = game.played
-            gameData.round = game.round
-            gameData.time = game.time
-            games[game.gameNumber] = gameData
-        }
-        print("Games count: \(games.count)")
         getSchedule()
         return table
     }

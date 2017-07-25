@@ -60,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="1170" y="123"/>
         </scene>
-        <!--Turkish League Game Detail View Controller-->
+        <!--Game Detail Screen-->
         <scene sceneID="DWL-nY-EP0">
             <objects>
-                <viewController id="DnU-ys-IEY" customClass="TurkishLeagueGameDetailViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameDetailScreen" id="DnU-ys-IEY" customClass="TurkishLeagueGameDetailViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DXa-0W-dFe"/>
                         <viewControllerLayoutGuide type="bottom" id="mUY-TR-bmn"/>
@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7o1-rf-leO"/>
+                    <navigationItem key="navigationItem" title="Game Detail Screen" id="7o1-rf-leO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2O-ap-sSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -130,6 +130,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fRO-RY-9AR"/>
+        <segue reference="LNd-tt-fno"/>
     </inferredMetricsTieBreakers>
 </document>

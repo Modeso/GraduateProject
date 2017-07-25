@@ -13,6 +13,10 @@ import XLPagerTabStrip
 
 class AbstractViewController: ButtonBarPagerTabStripViewController, UISplitViewControllerDelegate {
     
+    private var myViewControllers: Array<UITableViewController> = []
+    
+    private let viewModel = TurkishLeagueViewModel()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         splitViewController?.delegate = self
@@ -29,6 +33,13 @@ class AbstractViewController: ButtonBarPagerTabStripViewController, UISplitViewC
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         self.edgesForExtendedLayout = []
+        
+    }
+    
+    func createControllers() {
+        myViewControllers.append(TurkishLeagueRegularSeosonTableViewController(style: .plain, viewModel: viewModel))
+        myViewControllers.append(TurkishLeaguePOTableViewController(style: .plain, viewModel: viewModel))
+        myViewControllers.append(TurkishLeagueFFTableViewController(style: .plain, viewModel: viewModel))
     }
     
     func splitViewController(_ splitViewController: UISplitViewController,
@@ -44,21 +55,8 @@ class AbstractViewController: ButtonBarPagerTabStripViewController, UISplitViewC
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        return [TurkishLeagueRegularSeosonTableViewController(style: .plain, parentController: self),
-                TurkishLeaguePOTableViewController(style: .plain, parentController: self),
-                TurkishLeagueFFTableViewController(style: .plain, parentController: self)
-                ]
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetailSegue" {
-            print(segue.identifier)
-        }
-    }
-    
-    func cellWasPressed(game: GameData){
-        print(game)
-        performSegue(withIdentifier: "showDetailSegue", sender: self)
+        createControllers()
+        return myViewControllers
     }
 
 }

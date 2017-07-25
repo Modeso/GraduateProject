@@ -9,9 +9,16 @@
 import Foundation
 import RealmSwift
 
+protocol <#name#> {
+    <#requirements#>
+}
+
 class TurkishLeagueViewModel: TurkishAirlinesHelperDelegate {
     
     private let helper: TurkishAirLinesHelper
+    
+    private var registeredControllers:Array<UITableViewController> = []
+    
     private var schedule: Results<GameData> {
         didSet {
             // notify the controllers that data is ready

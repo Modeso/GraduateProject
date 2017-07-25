@@ -16,10 +16,8 @@ class TurkishLeagueRegularSeosonTableViewController: UITableViewController, Indi
     
     private var turkishViewModel: TurkishLeagueViewModel? = nil
     
-    private var parentController: AbstractViewController
-    
-    init(style: UITableViewStyle, parentController: AbstractViewController) {
-        self.parentController = parentController
+    init(style: UITableViewStyle, viewModel: TurkishLeagueViewModel) {
+        turkishViewModel = viewModel
         super.init(style: style)
     }
     
@@ -29,7 +27,7 @@ class TurkishLeagueRegularSeosonTableViewController: UITableViewController, Indi
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        turkishViewModel = TurkishLeagueViewModel()
+ //       turkishViewModel = TurkishLeagueViewModel()
         schedule = turkishViewModel?.getDataOfRound(round)
         tableView.register(UINib(nibName: "TurkishLeagueTableCell", bundle: Bundle.main), forCellReuseIdentifier: "TurkishLeagueCell")
 //        tableView.register(TurkishLeagueTableViewCell.self, forCellReuseIdentifier: "TurkishLeagueCell")
@@ -81,8 +79,13 @@ class TurkishLeagueRegularSeosonTableViewController: UITableViewController, Indi
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     //   performSegue(withIdentifier: "showDetailSegue", sender: self)
-        parentController.cellWasPressed(game: (schedule?[indexPath.section][indexPath.row])!)
+        if let viewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "GameDetailScreen") as? TurkishLeagueGameDetailViewController {
+            if let navigator = navigationController {
+//                navigator.pushViewController(viewController, animated: true)
+                navigator.showDetailViewController(viewController, sender: self)
+            }
+        }
     }
 
 }
