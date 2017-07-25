@@ -11,7 +11,12 @@ import UIKit
 import RealmSwift
 import XLPagerTabStrip
 
-class AbstractViewController: ButtonBarPagerTabStripViewController {
+class AbstractViewController: ButtonBarPagerTabStripViewController, UISplitViewControllerDelegate {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        splitViewController?.delegate = self
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +30,34 @@ class AbstractViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         self.edgesForExtendedLayout = []
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        if primaryViewController.contents == self {
+            if let detailVC = secondaryViewController.contents
+                as? TurkishLeagueGameDetailViewController {
+                return true
+            }
+        }
+        return false
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         return [TurkishLeagueRegularSeosonTableViewController(),
                 TurkishLeaguePOTableViewController(),
-                TurkishLeagueF4TableViewController()
+                TurkishLeagueFFTableViewController()
                 ]
     }
 
 }
 
+extension UIViewController {
+    var contents: UIViewController {
+        if let navcon = self as? UINavigationController {
+            return navcon.visibleViewController ?? self
+        } else {
+            return self
+        }
+    }
+}

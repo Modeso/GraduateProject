@@ -12,17 +12,24 @@ import XLPagerTabStrip
 class TurkishLeagueRegularSeosonTableViewController: UITableViewController, IndicatorInfoProvider {
 
     var schedule: [Array<GameData>]?
-    let round = "RO"
+    let round = "RS"
     
     var turkishViewModel: TurkishLeagueViewModel? = nil
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         turkishViewModel = TurkishLeagueViewModel()
         schedule = turkishViewModel?.getDataOfRound(round)
-        tableView.register(TurkishLeagueTableViewCell.self, forCellReuseIdentifier: "TurkishLeagueCell")
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.register(UINib(nibName: "TurkishLeagueTableCell", bundle: Bundle.main), forCellReuseIdentifier: "TurkishLeagueCell")
+//        tableView.register(TurkishLeagueTableViewCell.self, forCellReuseIdentifier: "TurkishLeagueCell")
+        tableView.backgroundColor = UIColor.lightGray
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = 150
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -48,51 +55,30 @@ class TurkishLeagueRegularSeosonTableViewController: UITableViewController, Indi
         }
         return cell
     }
+    
+    func convertDateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        return dateFormatter.string(from: date)
+    }
  
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if let headerView = view as? UITableViewHeaderFooterView {
+//            headerView.textLabel?.textColor = UIColor.red
+//        }
+        return convertDateToString((schedule?[section][0].date)!)
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     //   performSegue(withIdentifier: "showDetailSegue", sender: self)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
+
+

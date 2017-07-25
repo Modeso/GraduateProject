@@ -10,6 +10,10 @@ import Foundation
 import SWXMLHash
 import RealmSwift
 
+protocol TurkishAirlinesHelperDelegate {
+    func updateData(_ table: Results<GameData>) -> Void
+}
+
 class TurkishAirLinesHelper {
     
     enum GameDataStatus {
@@ -17,19 +21,18 @@ class TurkishAirLinesHelper {
         case results
     }
     
-    private var games: Dictionary<Int, GameData> = [:] {
-        didSet{
-            //Notify the view Model
-        }
-    }
+    private var turkishViewModelDelegate: TurkishLeagueViewModel? = nil
     
-    //In viewModel has target round
-    private var round: String = ""
+    private var games: Dictionary<Int, GameData> = [:]
     
     let urls: Dictionary<GameDataStatus, String> = [
         .schedule : "http://www.euroleague.net/euroleague/api/schedules?seasoncode=E2016",
         .results : "http://www.euroleague.net/euroleague/api/results?seasoncode=E2016"
     ]
+    
+    func setMyDelegate(turkishViewModel: TurkishLeagueViewModel){
+        turkishViewModelDelegate = turkishViewModel
+    }
     
     //Should have no parameters and return table of dataBase
     func getGamesTable() -> Results<GameData> {
@@ -103,6 +106,7 @@ class TurkishAirLinesHelper {
                             gameData.time = game.time
                             self?.games[game.gameNumber] = gameData
                         }
+                        self?.turkishViewModelDelegate?.updateData(RealmDBManager.sharedInstance.getDataFromRealm())
                         print("Games count: \(self?.games.count)")
                     }
                     else{
