@@ -21,7 +21,7 @@ protocol PagerUpdateDelegate {
     func getUpdatedData()
 }
 
-class AbstractViewController: ButtonBarPagerTabStripViewController,
+class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController,
 UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
     
     private var myViewControllers: Array<UITableViewController> = []

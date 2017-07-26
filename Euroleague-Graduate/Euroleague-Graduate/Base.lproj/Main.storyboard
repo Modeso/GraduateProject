@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Ph-DM-d21">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9kl-U1-8rQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Turkish Airlines EuroLeague-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AbstractViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TurkishLeaguePagerViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -82,12 +82,7 @@
         <!--Split View Controller-->
         <scene sceneID="gBi-Zf-Sch">
             <objects>
-                <splitViewController id="6Ph-DM-d21" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="9kl-U1-8rQ" kind="relationship" relationship="masterViewController" id="mVc-dW-E39"/>
-                        <segue destination="dDx-UY-Tv9" kind="relationship" relationship="detailViewController" id="LNd-tt-fno"/>
-                    </connections>
-                </splitViewController>
+                <splitViewController id="6Ph-DM-d21" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1Z-VA-TfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-370" y="496"/>
@@ -129,7 +124,4 @@
             <point key="canvasLocation" x="409" y="909"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="LNd-tt-fno"/>
-    </inferredMetricsTieBreakers>
 </document>

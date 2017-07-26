@@ -22,14 +22,9 @@ class ApiResponseTest: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
     func testGetScheduleFromApi(){
         let expectation = self.expectation(description: "getting schedule")
-        TurkishAirlinesApiClient
+        ApiClient
             .getRequestFrom(url: "http://www.euroleague.net/euroleague/api/schedules?seasoncode=E2016",
                             parameters: [:],
                             headers: [:]) { data, error in
@@ -45,7 +40,7 @@ class ApiResponseTest: XCTestCase {
     
     func testGetResultsFromApi(){
         let expectation = self.expectation(description: "getting schedule")
-        TurkishAirlinesApiClient
+        ApiClient
             .getRequestFrom(url: "http://www.euroleague.net/euroleague/api/results?seasoncode=E2016",
                             parameters: [:],
                             headers: [:]) { data, error in
@@ -56,13 +51,6 @@ class ApiResponseTest: XCTestCase {
         }
         self.waitForExpectations(timeout: 5) { error in
             XCTAssertNil(error)
-        }
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
         }
     }
     

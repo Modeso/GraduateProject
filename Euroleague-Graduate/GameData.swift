@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import SWXMLHash
 
 class GameData: Object{
     
@@ -25,4 +26,15 @@ class GameData: Object{
         return "gameNumber"
     }
     
+    func parseGameData(_ node: XMLIndexer) throws -> GameData {
+        let game = GameData()
+        game.round = try node["round"].value()
+        game.date = CommonFunctions().convertDate(date: try node["date"].value())
+        game.time = try node["startime"].value()
+        game.gameNumber = try node["game"].value()
+        game.homeTv = try node["hometv"].value()
+        game.awayTv = try node["awaytv"].value()
+        game.played = try node["played"].value()
+        return game
+    }
 }

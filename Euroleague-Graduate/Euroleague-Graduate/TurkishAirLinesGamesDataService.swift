@@ -23,7 +23,7 @@ class TurkishAirLinesGamesDataService {
     
     var delegate: TurkishAirLinesGamesDataServiceDelegate?
     
-    private var games: Dictionary<Int, GameData> = [:]
+    fileprivate var games: Dictionary<Int, GameData> = [:]
     
     
     let urls: Dictionary<GameDataType, String> = [
@@ -42,9 +42,11 @@ class TurkishAirLinesGamesDataService {
         getSchedule()
     }
     
-    //Api Client calling functions
+}
+
+fileprivate extension TurkishAirLinesGamesDataService {
     
-    private func getSchedule() {
+    func getSchedule() {
         print("getting Schedule")
         ApiClient
             .getRequestFrom(
@@ -61,7 +63,7 @@ class TurkishAirLinesGamesDataService {
         }
     }
     
-    private func getResults() {
+    func getResults() {
         print("getting Results")
         ApiClient
             .getRequestFrom(
@@ -77,17 +79,9 @@ class TurkishAirLinesGamesDataService {
                         ///
                         print("Data is here")
                         print("table count: \(table.count)")
+                        let methods = CommonFunctions()
                         for game in table {
-                            let gameData = GameData()
-                            gameData.awayScore = game.awayScore
-                            gameData.awayTv = game.awayTv
-                            gameData.date = game.date
-                            gameData.gameNumber = game.gameNumber
-                            gameData.homeScore = game.homeScore
-                            gameData.homeTv = game.homeTv
-                            gameData.played = game.played
-                            gameData.round = game.round
-                            gameData.time = game.time
+                            let gameData = methods.getGameDataSet(game)
                             self?.games[game.gameNumber] = gameData
                         }
                         self?.delegate?.updateData(RealmDBManager.sharedInstance.getDataFromRealm())
@@ -99,19 +93,13 @@ class TurkishAirLinesGamesDataService {
         }
     }
     
-    private func parseSchedule(_ xmlData: Data){
+    func parseSchedule(_ xmlData: Data){
         print("Parsing schedule")
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["schedule"]["item"].all {
-            let game = GameData()
             do{
-                game.round = try elem["round"].value()
-                game.date = convertDate(date: try elem["date"].value())
-                game.time = try elem["startime"].value()
-                game.gameNumber = try elem["game"].value()
-                game.homeTv = try elem["hometv"].value()
-                game.awayTv = try elem["awaytv"].value()
-                game.played = try elem["played"].value()
+                var game = GameData()
+                game = try game.parseGameData(elem)
                 RealmDBManager.sharedInstance.addDataToRealm(game: game)
                 games[game.gameNumber] = game
             }
@@ -122,7 +110,7 @@ class TurkishAirLinesGamesDataService {
         }
     }
     
-    private func setResults(_ xmlData: Data){
+    func setResults(_ xmlData: Data){
         print("Setting Results")
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["results"]["game"].all{
@@ -141,13 +129,6 @@ class TurkishAirLinesGamesDataService {
             }
         }
     }
-    
-    private func convertDate(date: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, yyyy"
-        return dateFormatter.date(from: date)!
-    }
-    
     
 }
 

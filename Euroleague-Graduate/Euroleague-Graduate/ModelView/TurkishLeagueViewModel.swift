@@ -25,7 +25,7 @@ class TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
     
     var delegate: GameDataViewModelDelegate?
     
-    private var schedule: Results<GameData>? {
+    fileprivate var schedule: Results<GameData>? {
         didSet {
             if schedule != nil {
                 for round in rounds {
@@ -36,7 +36,7 @@ class TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
         }
     }
     
-    private var table: Dictionary<String, [Array<GameData>]> = [:]
+    fileprivate var table: Dictionary<String, [Array<GameData>]> = [:]
     
     init() {
         helper = TurkishAirLinesGamesDataService()
@@ -48,12 +48,20 @@ class TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
         helper.updateData()
     }
     
-    private func makingTableDataOf(_ round: String) {
+    func updateData(_ table: Results<GameData>){
+        schedule = table
+    }
+}
+
+fileprivate extension TurkishLeagueViewModel {
+    
+    func makingTableDataOf(_ round: String) {
         var gamesTable = [Array<GameData>]()
         var gameSection = Array<GameData>()
         var prevSectionDate: Date? = nil
+        let methods = CommonFunctions()
         for game in schedule! {
-            let newGame = getGameDataSet(game)
+            let newGame = methods.getGameDataSet(game)
             if newGame.round == round {
                 if prevSectionDate == nil {
                     prevSectionDate = newGame.date
@@ -62,7 +70,7 @@ class TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
                     gameSection.removeAll()
                     prevSectionDate = newGame.date
                 }
-                gameSection.append(getGameDataSet(newGame))
+                gameSection.append(methods.getGameDataSet(newGame))
             }
         }
         if gameSection.count > 0 {
@@ -71,21 +79,4 @@ class TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
         table[round] = gamesTable
     }
     
-    private func getGameDataSet(_ game: GameData) -> GameData {
-        let newGame = GameData()
-        newGame.awayScore = game.awayScore
-        newGame.awayTv = game.awayTv
-        newGame.date = game.date
-        newGame.gameNumber = game.gameNumber
-        newGame.homeScore = game.homeScore
-        newGame.homeTv = game.homeTv
-        newGame.played = game.played
-        newGame.round = game.round
-        newGame.time = game.time
-        return newGame
-    }
-    
-    func updateData(_ table: Results<GameData>){
-        schedule = table
-    }
 }

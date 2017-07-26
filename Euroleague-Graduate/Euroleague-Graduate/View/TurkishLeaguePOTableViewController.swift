@@ -92,8 +92,8 @@ IndicatorInfoProvider, PagerUpdateChildData {
         if let viewController = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "GameDetailScreen") as? TurkishLeagueGameDetailViewController {
             if let navigator = navigationController {
-                //                navigator.pushViewController(viewController, animated: true)
-                navigator.showDetailViewController(viewController, sender: self)
+                navigator.pushViewController(viewController, animated: true)
+//                navigator.showDetailViewController(viewController, sender: self)
             }
         }
     }
