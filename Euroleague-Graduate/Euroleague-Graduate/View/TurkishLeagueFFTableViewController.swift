@@ -19,6 +19,12 @@ IndicatorInfoProvider, PagerUpdateChildData{
     }
     
     private let round = "FF"
+    
+    private var pagerDelegate: PagerUpdateDelegate?
+    
+    func setDelegate(_ delegate: PagerUpdateDelegate) {
+        pagerDelegate = delegate
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()

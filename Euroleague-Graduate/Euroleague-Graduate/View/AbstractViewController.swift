@@ -11,13 +11,18 @@ import UIKit
 import RealmSwift
 import XLPagerTabStrip
 
-protocol PagerUpdateChildData{
+protocol PagerUpdateChildData {
+    func setDelegate(_ delegate: PagerUpdateDelegate)
     func updateUIWithData(_ table: [Array<GameData>])
     func getRound() -> String
 }
 
+protocol PagerUpdateDelegate {
+    func getUpdatedData()
+}
+
 class AbstractViewController: ButtonBarPagerTabStripViewController,
-UISplitViewControllerDelegate, GameDataViewModelDelegate {
+UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
     
     private var myViewControllers: Array<UITableViewController> = []
     
@@ -72,6 +77,10 @@ UISplitViewControllerDelegate, GameDataViewModelDelegate {
             let newController = controller as? PagerUpdateChildData
             newController?.updateUIWithData(table[(newController?.getRound())!]!)
         }
+    }
+    
+    func getUpdatedData() {
+        viewModel.getData()
     }
     
 }
