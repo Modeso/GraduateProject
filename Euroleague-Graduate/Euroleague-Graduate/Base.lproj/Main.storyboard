@@ -53,7 +53,7 @@
                     <navigationItem key="navigationItem" title="Turkish Airlines EuroLeague" id="x5a-gj-heQ"/>
                     <connections>
                         <outlet property="containerView" destination="Dch-82-Z5h" id="apl-xq-COW"/>
-                        <segue destination="dDx-UY-Tv9" kind="showDetail" identifier="showDetailSegue" id="fRO-RY-9AR"/>
+                        <segue destination="DnU-ys-IEY" kind="show" identifier="showDetailSegue" id="GYZ-GB-O6z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -77,15 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2O-ap-sSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1169" y="909"/>
-        </scene>
-        <!--Split View Controller-->
-        <scene sceneID="gBi-Zf-Sch">
-            <objects>
-                <splitViewController id="6Ph-DM-d21" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C1Z-VA-TfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-370" y="496"/>
+            <point key="canvasLocation" x="1978" y="123"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qoj-cs-Taf">
@@ -104,24 +96,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUt-Xt-sjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="409" y="123"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xSW-GE-mtE">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dDx-UY-Tv9" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dmX-WT-e1S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="DnU-ys-IEY" kind="relationship" relationship="rootViewController" id="83U-r1-Dk1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oAo-ot-cR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="409" y="909"/>
         </scene>
     </scenes>
 </document>

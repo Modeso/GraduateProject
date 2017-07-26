@@ -31,7 +31,6 @@ class TurkishAirLinesGamesDataService {
         .results : "results?seasoncode=E2016"
     ]
     
-    //Should have no parameters and return table of dataBase
     func getGamesTable() -> Results<GameData> {
         games.removeAll()
         let table = RealmDBManager.sharedInstance.getGames()
@@ -47,7 +46,6 @@ class TurkishAirLinesGamesDataService {
 fileprivate extension TurkishAirLinesGamesDataService {
     
     func getSchedule() {
-        print("getting Schedule")
         ApiClient
             .getRequestFrom(
                 url: urls[.schedule]!,
@@ -64,7 +62,6 @@ fileprivate extension TurkishAirLinesGamesDataService {
     }
     
     func getResults() {
-        print("getting Results")
         ApiClient
             .getRequestFrom(
                 url: urls[.results]!,
@@ -74,27 +71,17 @@ fileprivate extension TurkishAirLinesGamesDataService {
                         self?.setResults(xmlData)
                         let table = RealmDBManager.sharedInstance.getGames()
                         self?.games.removeAll()
-                        print("Data is here")
-                        print("table count: \(table.count)")
-                        ///
-                        print("Data is here")
-                        print("table count: \(table.count)")
                         let methods = CommonFunctions()
                         for game in table {
                             let gameData = methods.getGameDataSet(game)
                             self?.games[game.gameNumber] = gameData
                         }
                         self?.delegate?.updateData(RealmDBManager.sharedInstance.getGames())
-                        print("Games count: \(self?.games.count)")
-                    }
-                    else{
-                        print("error in results data")
                     }
         }
     }
     
     func parseSchedule(_ xmlData: Data){
-        print("Parsing schedule")
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["schedule"]["item"].all {
             do{
@@ -111,7 +98,6 @@ fileprivate extension TurkishAirLinesGamesDataService {
     }
     
     func setResults(_ xmlData: Data){
-        print("Setting Results")
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["results"]["game"].all{
             do{

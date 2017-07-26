@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="landscape">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="569" height="249"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jxg-xF-xhm" id="15C-1E-ZeC">
-                <rect key="frame" x="0.0" y="0.0" width="569" height="248.66666666666666"/>
+                <rect key="frame" x="0.0" y="0.0" width="569" height="249"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2AH-N6-J2H">
@@ -37,23 +37,27 @@
                         </subviews>
                     </stackView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8gf-d3-KhM">
-                        <rect key="frame" x="18" y="89" width="70" height="70"/>
+                        <rect key="frame" x="18" y="74" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="140" id="EJc-Hd-kGc">
-                                <variation key="heightClass=compact" constant="70"/>
                                 <variation key="widthClass=compact" constant="100"/>
                             </constraint>
-                            <constraint firstAttribute="height" constant="140" id="j8c-sL-vfF"/>
-                            <constraint firstAttribute="width" constant="140" id="vAx-KX-hzs"/>
+                            <constraint firstAttribute="height" constant="140" id="j8c-sL-vfF">
+                                <variation key="heightClass=compact-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstAttribute="width" constant="140" id="vAx-KX-hzs">
+                                <variation key="heightClass=compact-widthClass=regular" constant="100"/>
+                            </constraint>
                             <constraint firstAttribute="width" constant="140" id="vLl-Xn-zDC">
-                                <variation key="heightClass=compact" constant="70"/>
                                 <variation key="widthClass=compact" constant="100"/>
                             </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="EJc-Hd-kGc"/>
                                 <exclude reference="j8c-sL-vfF"/>
                                 <exclude reference="vAx-KX-hzs"/>
+                                <exclude reference="vLl-Xn-zDC"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -64,27 +68,24 @@
                         </variation>
                         <variation key="widthClass=regular">
                             <mask key="constraints">
-                                <exclude reference="j8c-sL-vfF"/>
-                                <exclude reference="vAx-KX-hzs"/>
+                                <include reference="j8c-sL-vfF"/>
+                                <include reference="vAx-KX-hzs"/>
                             </mask>
                         </variation>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ddm-Ub-WWk">
-                        <rect key="frame" x="481" y="89" width="70" height="70"/>
+                        <rect key="frame" x="451" y="74" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="140" id="6ZO-Ho-c1z">
-                                <variation key="heightClass=compact" constant="70"/>
-                                <variation key="heightClass=regular-widthClass=compact" constant="140"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstAttribute="height" constant="140" id="8fk-C7-dnM">
-                                <variation key="heightClass=compact-widthClass=regular" constant="70"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstAttribute="width" constant="156" id="BLD-wG-ZKo">
-                                <variation key="heightClass=compact" constant="70"/>
+                            <constraint firstAttribute="width" constant="140" id="BLD-wG-ZKo">
                                 <variation key="widthClass=compact" constant="100"/>
                             </constraint>
-                            <constraint firstAttribute="height" constant="128" id="X11-Di-Spk">
-                                <variation key="heightClass=compact" constant="70"/>
+                            <constraint firstAttribute="height" constant="140" id="X11-Di-Spk">
                                 <variation key="widthClass=compact" constant="100"/>
                             </constraint>
                         </constraints>
