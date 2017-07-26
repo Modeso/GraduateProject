@@ -31,27 +31,61 @@ class Euroleague_GraduateUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAllTabsAreThere() {
+        XCUIDevice.shared().orientation = .portrait
+        let cellsQuery = app.collectionViews.cells
+        let poElement = cellsQuery.otherElements.containing(.staticText, identifier:"PO").element
+        let f4Element = cellsQuery.otherElements.containing(.staticText, identifier:"F4").element
+        let rsElement = cellsQuery.otherElements.containing(.staticText, identifier:"RS").element
         
-        let collectionView = app.otherElements.containing(.navigationBar, identifier:"Turkish Airlines EuroLeague").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .collectionView).element(boundBy: 0)
-        collectionView.tap()
-        app.collectionViews.staticTexts["F4"].tap()
-        collectionView.tap()
-        app.tables.staticTexts["99 : 97"].swipeUp()
-        
-        app.tables.staticTexts["UNK        FCB"].swipeDown()
+        if poElement.exists {
+            poElement.tap()
+            if f4Element.exists {
+                f4Element.tap()
+                if rsElement.exists {
+                    rsElement.tap()
+                    XCTAssertTrue(true)
+                }
+                else{
+                    XCTAssertTrue(false)
+                }
+            }
+            else{
+                XCTAssertTrue(false)
+            }
+        }
+        else{
+            XCTAssertTrue(false)
+        }
+    }
+    
+    func testStartSectionDate(){
+        XCUIDevice.shared().orientation = .portrait
         
         let tablesQuery = app.tables
-        tablesQuery.staticTexts["13.10.2016"].swipeDown()
-        tablesQuery.staticTexts["12.10.2016"].tap()
-        tablesQuery.cells.containing(.staticText, identifier:"RMB        OLY").staticTexts["83 : 65"].press(forDuration: 1.4);
-        app.tables.staticTexts["99 : 97"].swipeUp()
-        tablesQuery.cells.containing(.staticText, identifier:"CSK        PAO").children(matching: .staticText).matching(identifier: "81 : 77").element(boundBy: 0).swipeUp()
-        tablesQuery.cells.containing(.staticText, identifier:"91 : 81").children(matching: .staticText).matching(identifier: "OLY        EA7").element(boundBy: 0).swipeUp()
-        
-        
+        let cellsQuery = app.collectionViews.cells
+        let poElement = cellsQuery.otherElements.containing(.staticText, identifier:"PO").element
+        let f4Element = cellsQuery.otherElements.containing(.staticText, identifier:"F4").element
+        let rsElement = cellsQuery.otherElements.containing(.staticText, identifier:"RS").element
+        rsElement.tap()
+        if tablesQuery.staticTexts["12.10.2016"].exists {
+            poElement.tap()
+            if tablesQuery.staticTexts["18.04.2017"].exists {
+                f4Element.tap()
+                if tablesQuery.staticTexts["19.05.2017"].exists {
+                    XCTAssertTrue(true)
+                }
+                else{
+                    XCTAssertTrue(false)
+                }
+            }
+            else{
+                XCTAssertTrue(false)
+            }
+        }
+        else{
+            XCTAssertTrue(false)
+        }
     }
     
 }
