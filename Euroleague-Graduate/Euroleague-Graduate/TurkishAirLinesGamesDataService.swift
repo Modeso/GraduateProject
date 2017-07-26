@@ -10,43 +10,43 @@ import Foundation
 import SWXMLHash
 import RealmSwift
 
-protocol TurkishAirlinesHelperDelegate {
+protocol TurkishAirLinesGamesDataServiceDelegate {
     func updateData(_ table: Results<GameData>) -> Void
 }
 
-class TurkishAirLinesHelper {
+class TurkishAirLinesGamesDataService {
     
-    enum GameDataStatus {
+    enum GameDataType {
         case schedule
         case results
     }
     
-    private var turkishViewModelDelegate: TurkishLeagueViewModel? = nil
+    var delegate: TurkishAirLinesGamesDataServiceDelegate?
     
     private var games: Dictionary<Int, GameData> = [:]
     
-    let urls: Dictionary<GameDataStatus, String> = [
-        .schedule : "http://www.euroleague.net/euroleague/api/schedules?seasoncode=E2016",
-        .results : "http://www.euroleague.net/euroleague/api/results?seasoncode=E2016"
-    ]
     
-    func setMyDelegate(turkishViewModel: TurkishLeagueViewModel){
-        turkishViewModelDelegate = turkishViewModel
-    }
+    let urls: Dictionary<GameDataType, String> = [
+        .schedule : "schedules?seasoncode=E2016",
+        .results : "results?seasoncode=E2016"
+    ]
     
     //Should have no parameters and return table of dataBase
     func getGamesTable() -> Results<GameData> {
         games.removeAll()
         let table = RealmDBManager.sharedInstance.getDataFromRealm()
-        getSchedule()
         return table
+    }
+    
+    func updateData(){
+        getSchedule()
     }
     
     //Api Client calling functions
     
     private func getSchedule() {
         print("getting Schedule")
-        TurkishAirlinesApiClient
+        ApiClient
             .getRequestFrom(
                 url: urls[.schedule]!,
                 parameters: [:],
@@ -63,7 +63,7 @@ class TurkishAirLinesHelper {
     
     private func getResults() {
         print("getting Results")
-        TurkishAirlinesApiClient
+        ApiClient
             .getRequestFrom(
                 url: urls[.results]!,
                 parameters: [:],
@@ -90,7 +90,7 @@ class TurkishAirLinesHelper {
                             gameData.time = game.time
                             self?.games[game.gameNumber] = gameData
                         }
-                        self?.turkishViewModelDelegate?.updateData(RealmDBManager.sharedInstance.getDataFromRealm())
+                        self?.delegate?.updateData(RealmDBManager.sharedInstance.getDataFromRealm())
                         print("Games count: \(self?.games.count)")
                     }
                     else{

@@ -9,29 +9,22 @@
 import UIKit
 import XLPagerTabStrip
 
-class TurkishLeaguePOTableViewController: UITableViewController, IndicatorInfoProvider {
+class TurkishLeaguePOTableViewController: UITableViewController,
+IndicatorInfoProvider, PagerUpdateChildData {
 
-    private var schedule: [Array<GameData>]?
+    private var schedule: [Array<GameData>]? {
+        didSet {
+            tableView?.reloadData()
+        }
+    }
     private let round = "PO"
-    
-    private var turkishViewModel: TurkishLeagueViewModel? = nil
-    
-    init(style: UITableViewStyle, viewModel: TurkishLeagueViewModel) {
-        turkishViewModel = viewModel
-        super.init(style: style)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-    //    turkishViewModel = TurkishLeagueViewModel()
-        schedule = turkishViewModel?.getDataOfRound(round)
+
         tableView.register(UINib(nibName: "TurkishLeagueTableCell", bundle: Bundle.main), forCellReuseIdentifier: "TurkishLeagueCell")
         //        tableView.register(TurkishLeagueTableViewCell.self, forCellReuseIdentifier: "TurkishLeagueCell")
-        tableView.backgroundColor = UIColor.darkGray
+        tableView.backgroundColor = UIColor.lightGray
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = 150
     }
@@ -45,15 +38,23 @@ class TurkishLeaguePOTableViewController: UITableViewController, IndicatorInfoPr
         return IndicatorInfo(title: round)
     }
     
+    func updateUIWithData(_ table: [Array<GameData>]) {
+        schedule = table
+    }
+    
+    func getRound() -> String {
+        return round
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return schedule?.count ?? 1
+        return schedule?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return schedule?[section].count ?? 1
+        return schedule?[section].count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,6 +76,9 @@ class TurkishLeaguePOTableViewController: UITableViewController, IndicatorInfoPr
         //        if let headerView = view as? UITableViewHeaderFooterView {
         //            headerView.textLabel?.textColor = UIColor.red
         //        }
+        if schedule == nil {
+            return ""
+        }
         return convertDateToString((schedule?[section][0].date)!)
     }
     

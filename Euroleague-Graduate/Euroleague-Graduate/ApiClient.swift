@@ -9,13 +9,15 @@
 import Foundation
 import Alamofire
 
-class TurkishAirlinesApiClient {
+class ApiClient {
+    
+    private static let baseUrl = "http://www.euroleague.net/euroleague/api/"
     
     static func getRequestFrom(url: String,
                                parameters: Parameters,
                                headers: HTTPHeaders,
                                completion: @escaping (Data?, Error?)->Void){
-        Alamofire.request(url,
+        Alamofire.request(baseUrl + url,
                           method: .get,
                           parameters: parameters,
                           headers: headers)
@@ -35,7 +37,7 @@ class TurkishAirlinesApiClient {
                               parameters: Parameters,
                               headers: HTTPHeaders,
                               completion: @escaping (Data?, Error?)->Void){
-        Alamofire.request(url,
+        Alamofire.request(baseUrl + url,
                           method: .post,
                           parameters: parameters,
                           headers: headers)

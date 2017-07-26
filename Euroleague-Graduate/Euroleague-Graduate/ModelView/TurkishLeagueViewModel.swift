@@ -9,40 +9,50 @@
 import Foundation
 import RealmSwift
 
-protocol <#name#> {
-    <#requirements#>
+protocol GameDataViewModelDelegate {
+    func updateControllersData(_ table: Dictionary<String, [Array<GameData>]>)
 }
 
-class TurkishLeagueViewModel: TurkishAirlinesHelperDelegate {
+class TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
     
-    private let helper: TurkishAirLinesHelper
+    private let rounds: Array<String> = [
+        "RS", "PO", "FF"
+    ]
+    
+    private let helper: TurkishAirLinesGamesDataService
     
     private var registeredControllers:Array<UITableViewController> = []
     
-    private var schedule: Results<GameData> {
+    var delegate: GameDataViewModelDelegate?
+    
+    private var schedule: Results<GameData>? {
         didSet {
-            // notify the controllers that data is ready
+            if schedule != nil {
+                for round in rounds {
+                    makingTableDataOf(round)
+                }
+                delegate?.updateControllersData(table)
+            }
         }
     }
     
     private var table: Dictionary<String, [Array<GameData>]> = [:]
     
     init() {
-        helper = TurkishAirLinesHelper()
-        schedule = helper.getGamesTable()
+        helper = TurkishAirLinesGamesDataService()
     }
     
-    func getDataOfRound(_ round: String) -> [Array<GameData>]? {
-        helper.setMyDelegate(turkishViewModel: self)
-        makingTableDataOf(round)
-        return table[round]
+    func getData(){
+        helper.delegate = self
+        schedule = helper.getGamesTable()
+        helper.updateData()
     }
     
     private func makingTableDataOf(_ round: String) {
         var gamesTable = [Array<GameData>]()
         var gameSection = Array<GameData>()
         var prevSectionDate: Date? = nil
-        for game in schedule {
+        for game in schedule! {
             let newGame = getGameDataSet(game)
             if newGame.round == round {
                 if prevSectionDate == nil {

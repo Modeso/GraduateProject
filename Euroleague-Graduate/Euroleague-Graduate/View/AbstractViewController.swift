@@ -11,7 +11,13 @@ import UIKit
 import RealmSwift
 import XLPagerTabStrip
 
-class AbstractViewController: ButtonBarPagerTabStripViewController, UISplitViewControllerDelegate {
+protocol PagerUpdateChildData{
+    func updateUIWithData(_ table: [Array<GameData>])
+    func getRound() -> String
+}
+
+class AbstractViewController: ButtonBarPagerTabStripViewController,
+UISplitViewControllerDelegate, GameDataViewModelDelegate {
     
     private var myViewControllers: Array<UITableViewController> = []
     
@@ -36,18 +42,18 @@ class AbstractViewController: ButtonBarPagerTabStripViewController, UISplitViewC
         
     }
     
-    func createControllers() {
-        myViewControllers.append(TurkishLeagueRegularSeosonTableViewController(style: .plain, viewModel: viewModel))
-        myViewControllers.append(TurkishLeaguePOTableViewController(style: .plain, viewModel: viewModel))
-        myViewControllers.append(TurkishLeagueFFTableViewController(style: .plain, viewModel: viewModel))
+    private func createControllers() {
+        myViewControllers.append(TurkishLeagueRegularSeosonTableViewController())
+        myViewControllers.append(TurkishLeaguePOTableViewController())
+        myViewControllers.append(TurkishLeagueFFTableViewController())
     }
     
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController: UIViewController,
                              onto primaryViewController: UIViewController) -> Bool {
         if primaryViewController.contents == self {
-            if let detailVC = secondaryViewController.contents
-                as? TurkishLeagueGameDetailViewController {
+            if secondaryViewController.contents
+                is TurkishLeagueGameDetailViewController {
                 return true
             }
         }
@@ -56,9 +62,18 @@ class AbstractViewController: ButtonBarPagerTabStripViewController, UISplitViewC
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         createControllers()
+        viewModel.delegate = self
+        viewModel.getData()
         return myViewControllers
     }
-
+    
+    func updateControllersData(_ table: Dictionary<String, [Array<GameData>]>) {
+        for controller in myViewControllers {
+            let newController = controller as? PagerUpdateChildData
+            newController?.updateUIWithData(table[(newController?.getRound())!]!)
+        }
+    }
+    
 }
 
 extension UIViewController {
