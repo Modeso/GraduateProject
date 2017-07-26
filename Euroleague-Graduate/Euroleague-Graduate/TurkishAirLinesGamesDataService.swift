@@ -34,7 +34,7 @@ class TurkishAirLinesGamesDataService {
     //Should have no parameters and return table of dataBase
     func getGamesTable() -> Results<GameData> {
         games.removeAll()
-        let table = RealmDBManager.sharedInstance.getDataFromRealm()
+        let table = RealmDBManager.sharedInstance.getGames()
         return table
     }
     
@@ -72,7 +72,7 @@ fileprivate extension TurkishAirLinesGamesDataService {
                 headers: [:]){ [weak self] data ,error in
                     if let xmlData = data, error == nil {
                         self?.setResults(xmlData)
-                        let table = RealmDBManager.sharedInstance.getDataFromRealm()
+                        let table = RealmDBManager.sharedInstance.getGames()
                         self?.games.removeAll()
                         print("Data is here")
                         print("table count: \(table.count)")
@@ -84,7 +84,7 @@ fileprivate extension TurkishAirLinesGamesDataService {
                             let gameData = methods.getGameDataSet(game)
                             self?.games[game.gameNumber] = gameData
                         }
-                        self?.delegate?.updateData(RealmDBManager.sharedInstance.getDataFromRealm())
+                        self?.delegate?.updateData(RealmDBManager.sharedInstance.getGames())
                         print("Games count: \(self?.games.count)")
                     }
                     else{

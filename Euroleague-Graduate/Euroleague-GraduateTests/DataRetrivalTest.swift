@@ -27,87 +27,105 @@ class DataRetrivalTest: XCTestCase, GameDataViewModelDelegate {
         super.tearDown()
     }
     
-    func allGamesAreRetrieved() {
-        XCTAssertEqual(schedule?.count, 259, "the schedule count was \(schedule?.count) not 259")
+    func testAllGamesAreRetrieved() {
+        XCTAssertEqual(schedule?.count, 3, "the schedule count was \(schedule?.count) not 3")
     }
     
-    func allGamesInRoundsRetrieved(){
-        XCTAssertEqual(schedule?["RS"]?.count, 240, "the schedule count was \(schedule?["RS"]?.count) not 240")
-        XCTAssertEqual(schedule?["PO"]?.count, 15, "the schedule count was \(schedule?["PO"]?.count) not 15")
-        XCTAssertEqual(schedule?["FF"]?.count, 4, "the schedule count was \(schedule?["FF"]?.count) not 4")
-    }
-    
-    func startAndEndGamesOfRSAreSortedAndCorrect() {
-
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayScore, 65)
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayTv, "OLY")
-        XCTAssertEqual(schedule?["RS"]?[0][0].date, convertDate(date: "Oct 12, 2016"))
-        XCTAssertEqual(schedule?["RS"]?[0][0].gameNumber, 4)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeScore, 83)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeTv, "RMB")
-        XCTAssertEqual(schedule?["RS"]?[0][0].played, true)
-        XCTAssertEqual(schedule?["RS"]?[0][0].time, "21:00")
-        
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayScore, 80)
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayTv, "EFS")
-        XCTAssertEqual(schedule?["RS"]?[0][0].date, convertDate(date: "Apr 07, 2017"))
-        XCTAssertEqual(schedule?["RS"]?[0][0].gameNumber, 240)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeScore, 97)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeTv, "RMB")
-        XCTAssertEqual(schedule?["RS"]?[0][0].played, true)
-        XCTAssertEqual(schedule?["RS"]?[0][0].time, "21:00")
-        
-    }
-    
-    func startAndEndGamesOfPOAreSortedAndCorrect() {
-        
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayScore, 90)
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayTv, "BKN")
-        XCTAssertEqual(schedule?["RS"]?[0][0].date, convertDate(date: "Apr 18, 2016"))
-        XCTAssertEqual(schedule?["RS"]?[0][0].gameNumber, 4)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeScore, 98)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeTv, "CSK")
-        XCTAssertEqual(schedule?["RS"]?[0][0].played, true)
-        XCTAssertEqual(schedule?["RS"]?[0][0].time, "19:00")
-        
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayScore, 78)
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayTv, "EFS")
-        XCTAssertEqual(schedule?["RS"]?[0][0].date, convertDate(date: "May 02, 2017"))
-        XCTAssertEqual(schedule?["RS"]?[0][0].gameNumber, 259)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeScore, 87)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeTv, "OLY")
-        XCTAssertEqual(schedule?["RS"]?[0][0].played, true)
-        XCTAssertEqual(schedule?["RS"]?[0][0].time, "20:00")
-        
-    }
-    
-    func startAndEndGamesOfF4AreSortedAndCorrect() {
-        
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayScore, 82)
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayTv, "OLY")
-        XCTAssertEqual(schedule?["RS"]?[0][0].date, convertDate(date: "May 19, 2016"))
-        XCTAssertEqual(schedule?["RS"]?[0][0].gameNumber, 261)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeScore, 78)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeTv, "CSK")
-        XCTAssertEqual(schedule?["RS"]?[0][0].played, true)
-        XCTAssertEqual(schedule?["RS"]?[0][0].time, "17:30")
-        
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayScore, 80)
-        XCTAssertEqual(schedule?["RS"]?[0][0].awayTv, "FNB")
-        XCTAssertEqual(schedule?["RS"]?[0][0].date, convertDate(date: "May 21, 2017"))
-        XCTAssertEqual(schedule?["RS"]?[0][0].gameNumber, 263)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeScore, 64)
-        XCTAssertEqual(schedule?["RS"]?[0][0].homeTv, "OLY")
-        XCTAssertEqual(schedule?["RS"]?[0][0].played, true)
-        XCTAssertEqual(schedule?["RS"]?[0][0].time, "20:00")
-        
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testAllGamesInRoundsRetrieved(){
+        var rsCount = 0
+        var poCount = 0
+        var ffCount = 0
+        for games in (schedule?["RS"])! {
+            rsCount += games.count
         }
+        XCTAssertEqual(rsCount, 240)
+        
+        for games in (schedule?["PO"])! {
+                poCount += games.count
+        }
+        XCTAssertEqual(poCount, 15)
+        
+        for games in (schedule?["FF"])! {
+                ffCount += games.count
+        }
+        XCTAssertEqual(ffCount, 4)
+    }
+    
+    func testStartAndEndGamesOfRSAreSortedAndCorrect() {
+        let startGame = schedule?["RS"]?[0][0]
+        XCTAssertEqual(startGame?.awayScore, 65)
+        XCTAssertEqual(startGame?.awayTv, "OLY")
+        XCTAssertEqual(startGame?.date, convertDate(date: "Oct 12, 2016"))
+        XCTAssertEqual(startGame?.gameNumber, 4)
+        XCTAssertEqual(startGame?.homeScore, 83)
+        XCTAssertEqual(startGame?.homeTv, "RMB")
+        XCTAssertEqual(startGame?.played, true)
+        XCTAssertEqual(startGame?.time, "21:00")
+        
+        let section = (schedule?["RS"]?.count)! - 1
+        let row = (schedule?["RS"]?[section].count)! - 1
+        let endGame = schedule?["RS"]?[section][row]
+        XCTAssertEqual(endGame?.awayScore, 80)
+        XCTAssertEqual(endGame?.awayTv, "EFS")
+        XCTAssertEqual(endGame?.date, convertDate(date: "Apr 07, 2017"))
+        XCTAssertEqual(endGame?.gameNumber, 240)
+        XCTAssertEqual(endGame?.homeScore, 97)
+        XCTAssertEqual(endGame?.homeTv, "RMB")
+        XCTAssertEqual(endGame?.played, true)
+        XCTAssertEqual(endGame?.time, "21:00")
+        
+    }
+    
+    func testStartAndEndGamesOfPOAreSortedAndCorrect() {
+        
+        let startGame = schedule?["PO"]?[0][0]
+        XCTAssertEqual(startGame?.awayScore, 90)
+        XCTAssertEqual(startGame?.awayTv, "BKN")
+        XCTAssertEqual(startGame?.date, convertDate(date: "Apr 18, 2017"))
+        XCTAssertEqual(startGame?.gameNumber, 244)
+        XCTAssertEqual(startGame?.homeScore, 98)
+        XCTAssertEqual(startGame?.homeTv, "CSK")
+        XCTAssertEqual(startGame?.played, true)
+        XCTAssertEqual(startGame?.time, "19:00")
+        
+        let section = (schedule?["PO"]?.count)! - 1
+        let row = (schedule?["PO"]?[section].count)! - 1
+        let endGame = schedule?["PO"]?[section][row]
+        XCTAssertEqual(endGame?.awayScore, 78)
+        XCTAssertEqual(endGame?.awayTv, "EFS")
+        XCTAssertEqual(endGame?.date, convertDate(date: "May 02, 2017"))
+        XCTAssertEqual(endGame?.gameNumber, 259)
+        XCTAssertEqual(endGame?.homeScore, 87)
+        XCTAssertEqual(endGame?.homeTv, "OLY")
+        XCTAssertEqual(endGame?.played, true)
+        XCTAssertEqual(endGame?.time, "20:00")
+        
+    }
+    
+    func testStartAndEndGamesOfF4AreSortedAndCorrect() {
+        
+        let startGame = schedule?["FF"]?[0][0]
+        XCTAssertEqual(startGame?.awayScore, 82)
+        XCTAssertEqual(startGame?.awayTv, "OLY")
+        XCTAssertEqual(startGame?.date, convertDate(date: "May 19, 2017"))
+        XCTAssertEqual(startGame?.gameNumber, 261)
+        XCTAssertEqual(startGame?.homeScore, 78)
+        XCTAssertEqual(startGame?.homeTv, "CSK")
+        XCTAssertEqual(startGame?.played, true)
+        XCTAssertEqual(startGame?.time, "17:30")
+        
+        let section = (schedule?["FF"]?.count)! - 1
+        let row = (schedule?["FF"]?[section].count)! - 1
+        let endGame = schedule?["FF"]?[section][row]
+        XCTAssertEqual(endGame?.awayScore, 64)
+        XCTAssertEqual(endGame?.awayTv, "OLY")
+        XCTAssertEqual(endGame?.date, convertDate(date: "May 21, 2017"))
+        XCTAssertEqual(endGame?.gameNumber, 263)
+        XCTAssertEqual(endGame?.homeScore, 80)
+        XCTAssertEqual(endGame?.homeTv, "FNB")
+        XCTAssertEqual(endGame?.played, true)
+        XCTAssertEqual(endGame?.time, "20:00")
+        
     }
     
     func updateControllersData(_ table: Dictionary<String, [Array<GameData>]>) {

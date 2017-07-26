@@ -34,7 +34,7 @@ class RealmDBManager {
         }
     }
     
-    func getDataFromRealm() -> Results<GameData> {
+    func getGames() -> Results<GameData> {
         print("Going to get Data")
         let sortProperties = [SortDescriptor(keyPath: "date", ascending: true), SortDescriptor(keyPath: "time", ascending: true)]
         let table = realm.objects(GameData.self).sorted(by: sortProperties)

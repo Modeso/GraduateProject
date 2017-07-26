@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21B65997F6810985B3D10E68 /* Pods_Euroleague_GraduateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2133CAC12D79C13C3D42C93D /* Pods_Euroleague_GraduateTests.framework */; };
 		A5FF78BE1F0FA74E00F6E9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */; };
 		A5FF78C31F0FA74E00F6E9A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5FF78C11F0FA74E00F6E9A2 /* Main.storyboard */; };
 		A5FF78C51F0FA74E00F6E9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5FF78C41F0FA74E00F6E9A2 /* Assets.xcassets */; };
@@ -50,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01ADB76913D80F4F437C791F /* Pods-Euroleague-GraduateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-GraduateTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-GraduateTests/Pods-Euroleague-GraduateTests.release.xcconfig"; sourceTree = "<group>"; };
+		2133CAC12D79C13C3D42C93D /* Pods_Euroleague_GraduateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Euroleague_GraduateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DD3988E1A3253923452F18 /* Pods-Euroleague-Graduate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-Graduate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate.debug.xcconfig"; sourceTree = "<group>"; };
 		A5FF78BA1F0FA74E00F6E9A2 /* Euroleague-Graduate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Euroleague-Graduate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 		A5FF78EE1F0FA95F00F6E9A2 /* TurkishLeaguePagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TurkishLeaguePagerViewController.swift; path = View/TurkishLeaguePagerViewController.swift; sourceTree = "<group>"; };
 		A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewModel.swift; sourceTree = "<group>"; };
 		B35C4F623F55A7C474F985E8 /* Pods_Euroleague_Graduate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Euroleague_Graduate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B37D69230445B1A7B7CFD2B6 /* Pods-Euroleague-GraduateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-GraduateTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-GraduateTests/Pods-Euroleague-GraduateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5B4642116FFE1367BFA93F5 /* Pods-Euroleague-Graduate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-Graduate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate.release.xcconfig"; sourceTree = "<group>"; };
 		FE528DCC1F289AC700597D0A /* DataRetrivalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRetrivalTest.swift; sourceTree = "<group>"; };
 		FE528DD01F28ADBD00597D0A /* CommonFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21B65997F6810985B3D10E68 /* Pods_Euroleague_GraduateTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				B35C4F623F55A7C474F985E8 /* Pods_Euroleague_Graduate.framework */,
+				2133CAC12D79C13C3D42C93D /* Pods_Euroleague_GraduateTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,6 +208,8 @@
 			children = (
 				84DD3988E1A3253923452F18 /* Pods-Euroleague-Graduate.debug.xcconfig */,
 				F5B4642116FFE1367BFA93F5 /* Pods-Euroleague-Graduate.release.xcconfig */,
+				B37D69230445B1A7B7CFD2B6 /* Pods-Euroleague-GraduateTests.debug.xcconfig */,
+				01ADB76913D80F4F437C791F /* Pods-Euroleague-GraduateTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -279,9 +287,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5FF78E51F0FA74F00F6E9A2 /* Build configuration list for PBXNativeTarget "Euroleague-GraduateTests" */;
 			buildPhases = (
+				6E2A2D3C2CA748BF1B5D4B62 /* [CP] Check Pods Manifest.lock */,
 				A5FF78CA1F0FA74F00F6E9A2 /* Sources */,
 				A5FF78CB1F0FA74F00F6E9A2 /* Frameworks */,
 				A5FF78CC1F0FA74F00F6E9A2 /* Resources */,
+				61694293426D91A1C4B12D78 /* [CP] Embed Pods Frameworks */,
+				096E9EC19FBE3F57A488AF2D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,6 +400,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		096E9EC19FBE3F57A488AF2D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Euroleague-GraduateTests/Pods-Euroleague-GraduateTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0AF6EFE00122B782882ED4BF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,6 +428,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61694293426D91A1C4B12D78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Euroleague-GraduateTests/Pods-Euroleague-GraduateTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E2A2D3C2CA748BF1B5D4B62 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7288BFD380BBD698D163872B /* [CP] Check Pods Manifest.lock */ = {
@@ -632,6 +688,7 @@
 		};
 		A5FF78E61F0FA74F00F6E9A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B37D69230445B1A7B7CFD2B6 /* Pods-Euroleague-GraduateTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -647,6 +704,7 @@
 		};
 		A5FF78E71F0FA74F00F6E9A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01ADB76913D80F4F437C791F /* Pods-Euroleague-GraduateTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

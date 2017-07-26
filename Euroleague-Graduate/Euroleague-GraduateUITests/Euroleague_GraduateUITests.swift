@@ -9,7 +9,9 @@
 import XCTest
 
 class Euroleague_GraduateUITests: XCTestCase {
-        
+    
+    var app: XCUIApplication! = nil
+    
     override func setUp() {
         super.setUp()
         
@@ -18,7 +20,8 @@ class Euroleague_GraduateUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        app = XCUIApplication()
+        app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -31,6 +34,24 @@ class Euroleague_GraduateUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let collectionView = app.otherElements.containing(.navigationBar, identifier:"Turkish Airlines EuroLeague").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .collectionView).element(boundBy: 0)
+        collectionView.tap()
+        app.collectionViews.staticTexts["F4"].tap()
+        collectionView.tap()
+        app.tables.staticTexts["99 : 97"].swipeUp()
+        
+        app.tables.staticTexts["UNK        FCB"].swipeDown()
+        
+        let tablesQuery = app.tables
+        tablesQuery.staticTexts["13.10.2016"].swipeDown()
+        tablesQuery.staticTexts["12.10.2016"].tap()
+        tablesQuery.cells.containing(.staticText, identifier:"RMB        OLY").staticTexts["83 : 65"].press(forDuration: 1.4);
+        app.tables.staticTexts["99 : 97"].swipeUp()
+        tablesQuery.cells.containing(.staticText, identifier:"CSK        PAO").children(matching: .staticText).matching(identifier: "81 : 77").element(boundBy: 0).swipeUp()
+        tablesQuery.cells.containing(.staticText, identifier:"91 : 81").children(matching: .staticText).matching(identifier: "OLY        EA7").element(boundBy: 0).swipeUp()
+        
+        
     }
     
 }

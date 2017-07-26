@@ -2,15 +2,23 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, ’10.0’
 
-target 'Euroleague-Graduate' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
 
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+use_frameworks!
+
+def app_pods
   # Pods for Euroleague-Graduate
     pod 'Alamofire', '~> 4.4'
     pod 'RealmSwift'
     pod 'SDWebImage', '~>3.8'
     pod 'SWXMLHash', '~> 4.0.0'
     pod 'XLPagerTabStrip', '~> 7.0'
+end
 
+target 'Euroleague-Graduate' do
+    app_pods
+end
+
+target 'Euroleague-GraduateTests' do
+    app_pods
 end
