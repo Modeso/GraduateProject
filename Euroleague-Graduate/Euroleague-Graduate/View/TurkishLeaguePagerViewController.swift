@@ -12,7 +12,6 @@ import RealmSwift
 import XLPagerTabStrip
 
 protocol PagerUpdateChildData {
-    func setDelegate(_ delegate: PagerUpdateDelegate)
     func updateUIWithData(_ table: [Array<GameData>])
     func getRound() -> String
 }
@@ -55,8 +54,8 @@ UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
         myViewControllers.append(TurkishLeaguePOTableViewController())
         myViewControllers.append(TurkishLeagueFFTableViewController())
         for controller in myViewControllers {
-            let newController = controller as? PagerUpdateChildData
-            newController?.setDelegate(self)
+            let newController = controller as? TurkishLeagueMasterTableViewController
+            newController?.pagerDelegate = self
         }
     }
     

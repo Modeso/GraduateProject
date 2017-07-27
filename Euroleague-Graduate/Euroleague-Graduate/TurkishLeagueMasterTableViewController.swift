@@ -19,11 +19,7 @@ IndicatorInfoProvider, PagerUpdateChildData {
         }
     }
         
-    private var pagerDelegate: PagerUpdateDelegate?
-    
-    func setDelegate(_ delegate: PagerUpdateDelegate) {
-        pagerDelegate = delegate
-    }
+    var pagerDelegate: PagerUpdateDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,12 +80,6 @@ IndicatorInfoProvider, PagerUpdateChildData {
         return cell
     }
     
-    func convertDateToString(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         //        if let headerView = view as? UITableViewHeaderFooterView {
         //            headerView.textLabel?.textColor = UIColor.red
@@ -97,7 +87,7 @@ IndicatorInfoProvider, PagerUpdateChildData {
         if schedule == nil {
             return ""
         }
-        return convertDateToString((schedule?[section][0].date)!)
+        return CommonFunctions().convertDateToString((schedule?[section][0].date)!)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

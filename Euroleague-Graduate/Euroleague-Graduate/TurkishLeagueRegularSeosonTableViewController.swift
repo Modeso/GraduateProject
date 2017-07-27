@@ -11,7 +11,7 @@ import XLPagerTabStrip
 
 class TurkishLeagueRegularSeosonTableViewController: TurkishLeagueMasterTableViewController{
     
-    let round = "RS"
+    private let round = "RS"
     
     override func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: round)
@@ -21,5 +21,3 @@ class TurkishLeagueRegularSeosonTableViewController: TurkishLeagueMasterTableVie
         return round
     }
 }
-
-

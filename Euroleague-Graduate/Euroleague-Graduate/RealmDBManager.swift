@@ -13,25 +13,11 @@ class RealmDBManager {
     
     static let sharedInstance = RealmDBManager()
     
-    private var realm: Realm {
-        didSet {
-            if queue == 0 {
-                changeRealm()
-            }
-        }
-    }
-    
+    private var realm: Realm
     private var queue = 0
     
     private init() {
         realm = try! Realm()
-    }
-    
-    private func changeRealm() {
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.realm = try! Realm()
-            self?.queue += 1
-        }
     }
     
     func getGames() -> Results<GameData> {
