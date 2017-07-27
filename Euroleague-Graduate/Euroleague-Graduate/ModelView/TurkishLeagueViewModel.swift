@@ -59,9 +59,8 @@ fileprivate extension TurkishLeagueViewModel {
         var gamesTable = [Array<GameData>]()
         var gameSection = Array<GameData>()
         var prevSectionDate: Date? = nil
-        let methods = CommonFunctions()
         for game in schedule! {
-            let newGame = methods.getGameDataSet(game)
+            let newGame = game.cloneGame()
             if newGame.round == round {
                 if prevSectionDate == nil {
                     prevSectionDate = newGame.date
@@ -70,7 +69,7 @@ fileprivate extension TurkishLeagueViewModel {
                     gameSection.removeAll()
                     prevSectionDate = newGame.date
                 }
-                gameSection.append(methods.getGameDataSet(newGame))
+                gameSection.append(game.cloneGame())
             }
         }
         if gameSection.count > 0 {

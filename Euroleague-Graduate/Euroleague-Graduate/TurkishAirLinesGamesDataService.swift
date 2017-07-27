@@ -77,9 +77,8 @@ fileprivate extension TurkishAirLinesGamesDataService {
                         self?.setResults(xmlData)
                         let table = RealmDBManager.sharedInstance.getGames()
                         self?.games.removeAll()
-                        let methods = CommonFunctions()
                         for game in table {
-                            let gameData = methods.getGameDataSet(game)
+                            let gameData = game.cloneGame()
                             self?.games[game.gameNumber] = gameData
                         }
                         self?.delegate?.updateData(RealmDBManager.sharedInstance.getGames())

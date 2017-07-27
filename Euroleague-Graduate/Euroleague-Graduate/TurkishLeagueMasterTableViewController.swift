@@ -87,7 +87,7 @@ IndicatorInfoProvider, PagerUpdateChildData {
         if schedule == nil {
             return ""
         }
-        return CommonFunctions().convertDateToString((schedule?[section][0].date)!)
+        return Date().convertDateToString((schedule?[section][0].date)!)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

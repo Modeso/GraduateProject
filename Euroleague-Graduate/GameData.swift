@@ -25,11 +25,15 @@ class GameData: Object{
     override static func primaryKey() -> String? {
         return "gameNumber"
     }
+
+}
+
+extension GameData {
     
     func parseGameData(_ node: XMLIndexer) throws -> GameData {
         let game = GameData()
         game.round = try node["round"].value()
-        game.date = CommonFunctions().convertStringToDate(date: try node["date"].value())
+        game.date = Date().convertStringToDate(date: try node["date"].value())
         game.time = try node["startime"].value()
         game.gameNumber = try node["game"].value()
         game.homeTv = try node["hometv"].value()
@@ -37,4 +41,19 @@ class GameData: Object{
         game.played = try node["played"].value()
         return game
     }
+    
+    func cloneGame() -> GameData {
+        let newGame = GameData()
+        newGame.awayScore = self.awayScore
+        newGame.awayTv = self.awayTv
+        newGame.date = self.date
+        newGame.gameNumber = self.gameNumber
+        newGame.homeScore = self.homeScore
+        newGame.homeTv = self.homeTv
+        newGame.played = self.played
+        newGame.round = self.round
+        newGame.time = self.time
+        return newGame
+    }
+    
 }

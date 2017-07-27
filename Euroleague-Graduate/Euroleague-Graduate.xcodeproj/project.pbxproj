@@ -18,7 +18,6 @@
 		A5FF78F11F0FA9BB00F6E9A2 /* AbstractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78F01F0FA9BB00F6E9A2 /* AbstractViewModel.swift */; };
 		E49A004AC4F45BE0AEFD1C45 /* Pods_Euroleague_Graduate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35C4F623F55A7C474F985E8 /* Pods_Euroleague_Graduate.framework */; };
 		FE528DCD1F289AC700597D0A /* DataRetrivalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE528DCC1F289AC700597D0A /* DataRetrivalTest.swift */; };
-		FE528DD11F28ADBD00597D0A /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE528DD01F28ADBD00597D0A /* CommonFunctions.swift */; };
 		FE540CCC1F20BAD3000A75A0 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCB1F20BAD3000A75A0 /* ApiClient.swift */; };
 		FE540CCE1F20BB53000A75A0 /* TurkishAirLinesGamesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCD1F20BB53000A75A0 /* TurkishAirLinesGamesDataService.swift */; };
 		FE540CD01F20BB9F000A75A0 /* ApiResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */; };
@@ -73,7 +72,6 @@
 		B37D69230445B1A7B7CFD2B6 /* Pods-Euroleague-GraduateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-GraduateTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-GraduateTests/Pods-Euroleague-GraduateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5B4642116FFE1367BFA93F5 /* Pods-Euroleague-Graduate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-Graduate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate.release.xcconfig"; sourceTree = "<group>"; };
 		FE528DCC1F289AC700597D0A /* DataRetrivalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRetrivalTest.swift; sourceTree = "<group>"; };
-		FE528DD01F28ADBD00597D0A /* CommonFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		FE540CCB1F20BAD3000A75A0 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		FE540CCD1F20BB53000A75A0 /* TurkishAirLinesGamesDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesGamesDataService.swift; sourceTree = "<group>"; };
 		FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseTest.swift; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 				A5FF78EC1F0FA95F00F6E9A2 /* ViewModels */,
 				FE528DCE1F28AD7B00597D0A /* View */,
 				A5FF78EB1F0FA95F00F6E9A2 /* Models */,
-				FE528DCF1F28AD8E00597D0A /* Utils */,
 				A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */,
 				A5FF78C11F0FA74E00F6E9A2 /* Main.storyboard */,
 				A5FF78C41F0FA74E00F6E9A2 /* Assets.xcassets */,
@@ -223,14 +220,6 @@
 				FE6DDF951F26252700BA9FCB /* TurkishLeagueTableCell.xib */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		FE528DCF1F28AD8E00597D0A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				FE528DD01F28ADBD00597D0A /* CommonFunctions.swift */,
-			);
-			name = Utils;
 			sourceTree = "<group>";
 		};
 		FE540CD61F20EC37000A75A0 /* Services */ = {
@@ -500,7 +489,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE528DD11F28ADBD00597D0A /* CommonFunctions.swift in Sources */,
 				A5FF78EF1F0FA95F00F6E9A2 /* TurkishLeaguePagerViewController.swift in Sources */,
 				FEA065511F276CE600DBE637 /* TurkishLeagueGameDetailViewController.swift in Sources */,
 				FE540CD41F20CDE1000A75A0 /* GameData.swift in Sources */,
