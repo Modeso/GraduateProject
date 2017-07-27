@@ -18,16 +18,29 @@ IndicatorInfoProvider, PagerUpdateChildData {
             tableView.refreshControl?.endRefreshing()
         }
     }
+    
+    private let color = UIColor(red: 60.0/255.0, green: 60.0/255.0, blue: 60.0/255.0, alpha: 1)
         
     var pagerDelegate: PagerUpdateDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "TurkishLeagueTableCell", bundle: Bundle.main), forCellReuseIdentifier: "TurkishLeagueCell")
-        tableView.backgroundColor = UIColor.lightGray
+        tableView.register(
+            UINib(nibName: "TurkishLeagueTableCell", bundle: Bundle.main),
+            forCellReuseIdentifier: "TurkishLeagueCell")
+        tableView.register(
+            UINib(nibName: "TurkishLeagueTableHeaderCell",bundle: Bundle.main),
+            forHeaderFooterViewReuseIdentifier: "TurkishLeagueHeaderCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = color
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = 150
-        
+        tableView.separatorColor = UIColor(red: 60.0/255.0, green: 60.0/255.0, blue: 60.0/255.0, alpha: 1)
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.layoutMargins = UIEdgeInsets.zero
+        tableView.separatorInset = UIEdgeInsets.zero
+   
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.isEnabled = true
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading")
@@ -77,17 +90,23 @@ IndicatorInfoProvider, PagerUpdateChildData {
         if let leagueCell = cell as? TurkishLeagueTableViewCell {
             leagueCell.game = game
         }
+        cell.layoutMargins = UIEdgeInsets.zero
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //        if let headerView = view as? UITableViewHeaderFooterView {
-        //            headerView.textLabel?.textColor = UIColor.red
-        //        }
-        if schedule == nil {
-            return ""
-        }
-        return Date().convertDateToString((schedule?[section][0].date)!)
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 60.0/255, green: 60.0/255, blue: 60.0/255, alpha: 1)
+        let label = UILabel()
+        label.text = Date().convertDateToString((schedule?[section][0].date)!)
+        label.textColor = UIColor.white
+        label.frame = CGRect(x: 10, y: 5, width: 100, height: 22)
+        view.addSubview(label)
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 27
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

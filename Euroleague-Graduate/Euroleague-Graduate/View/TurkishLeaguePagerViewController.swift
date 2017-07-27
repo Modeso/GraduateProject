@@ -22,7 +22,7 @@ protocol PagerUpdateDelegate {
 }
 
 class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController,
-UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
+GameDataViewModelDelegate, PagerUpdateDelegate {
     
     private var myViewControllers: Array<UITableViewController> = []
     
@@ -30,18 +30,20 @@ UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        splitViewController?.delegate = self
+        
     }
     
     private var isRefreshing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settings.style.buttonBarBackgroundColor = UIColor.orange
-        settings.style.buttonBarItemBackgroundColor = UIColor.orange
-        settings.style.selectedBarBackgroundColor = UIColor.orange
-        settings.style.buttonBarItemFont = UIFont(name: "HelveticaNeue-Light", size:14) ?? UIFont.systemFont(ofSize: 14)
+        settings.style.buttonBarBackgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
+        settings.style.buttonBarItemBackgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
+        settings.style.selectedBarBackgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
+        settings.style.buttonBarItemFont = UIFont.systemFont(ofSize: 14)
         settings.style.selectedBarHeight = 3.0
+        self.buttonBarView.collectionViewLayout
+            .collectionView?.backgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
@@ -57,18 +59,6 @@ UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
             let newController = controller as? TurkishLeagueMasterTableViewController
             newController?.pagerDelegate = self
         }
-    }
-    
-    func splitViewController(_ splitViewController: UISplitViewController,
-                             collapseSecondary secondaryViewController: UIViewController,
-                             onto primaryViewController: UIViewController) -> Bool {
-        if primaryViewController.contents == self {
-            if secondaryViewController.contents
-                is TurkishLeagueGameDetailViewController {
-                return true
-            }
-        }
-        return false
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
@@ -88,7 +78,7 @@ UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
     
     func getUpdatedData() {
         isRefreshing = true
-        viewModel.getData()
+        viewModel.updateData()
     }
     
     func isResreshing() -> Bool {

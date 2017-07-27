@@ -48,6 +48,10 @@ class TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
         helper.updateData()
     }
     
+    func updateData() {
+        helper.updateData()
+    }
+    
     func updateData(_ table: Results<GameData>){
         schedule = table
     }
