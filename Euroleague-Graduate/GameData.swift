@@ -29,7 +29,7 @@ class GameData: Object{
     func parseGameData(_ node: XMLIndexer) throws -> GameData {
         let game = GameData()
         game.round = try node["round"].value()
-        game.date = CommonFunctions().convertDate(date: try node["date"].value())
+        game.date = CommonFunctions().convertStringToDate(date: try node["date"].value())
         game.time = try node["startime"].value()
         game.gameNumber = try node["game"].value()
         game.homeTv = try node["hometv"].value()

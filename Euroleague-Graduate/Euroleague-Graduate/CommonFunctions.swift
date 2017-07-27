@@ -10,10 +10,16 @@ import Foundation
 
 class CommonFunctions {
     
-    func convertDate(date: String) -> Date {
+    func convertStringToDate(date: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, yyyy"
         return dateFormatter.date(from: date)!
+    }
+    
+    func convertDateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        return dateFormatter.string(from: date)
     }
     
     func getGameDataSet(_ game: GameData) -> GameData {
