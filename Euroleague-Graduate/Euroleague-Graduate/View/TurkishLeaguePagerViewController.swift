@@ -19,6 +19,7 @@ protocol PagerUpdateChildData {
 
 protocol PagerUpdateDelegate {
     func getUpdatedData()
+    func isResreshing() -> Bool
 }
 
 class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController,
@@ -32,6 +33,8 @@ UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
         super.awakeFromNib()
         splitViewController?.delegate = self
     }
+    
+    private var isRefreshing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +54,10 @@ UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
         myViewControllers.append(TurkishLeagueRegularSeosonTableViewController())
         myViewControllers.append(TurkishLeaguePOTableViewController())
         myViewControllers.append(TurkishLeagueFFTableViewController())
+        for controller in myViewControllers {
+            let newController = controller as? PagerUpdateChildData
+            newController?.setDelegate(self)
+        }
     }
     
     func splitViewController(_ splitViewController: UISplitViewController,
@@ -77,10 +84,16 @@ UISplitViewControllerDelegate, GameDataViewModelDelegate, PagerUpdateDelegate {
             let newController = controller as? PagerUpdateChildData
             newController?.updateUIWithData(table[(newController?.getRound())!]!)
         }
+        isRefreshing = false
     }
     
     func getUpdatedData() {
+        isRefreshing = true
         viewModel.getData()
+    }
+    
+    func isResreshing() -> Bool {
+        return isRefreshing
     }
     
 }

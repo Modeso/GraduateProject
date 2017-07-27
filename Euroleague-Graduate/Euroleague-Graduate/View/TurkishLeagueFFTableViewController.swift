@@ -15,6 +15,7 @@ IndicatorInfoProvider, PagerUpdateChildData{
     private var schedule: [Array<GameData>]? {
         didSet {
             tableView?.reloadData()
+            tableView.refreshControl?.endRefreshing()
         }
     }
     
@@ -29,10 +30,21 @@ IndicatorInfoProvider, PagerUpdateChildData{
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "TurkishLeagueTableCell", bundle: Bundle.main), forCellReuseIdentifier: "TurkishLeagueCell")
-        //        tableView.register(TurkishLeagueTableViewCell.self, forCellReuseIdentifier: "TurkishLeagueCell")
         tableView.backgroundColor = UIColor.lightGray
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = 150
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.isEnabled = true
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading")
+        tableView.refreshControl?.backgroundColor = UIColor.white
+        tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+    }
+    
+    func refresh() {
+        if !pagerDelegate!.isResreshing() {
+            tableView.refreshControl?.beginRefreshing()
+            pagerDelegate?.getUpdatedData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +105,6 @@ IndicatorInfoProvider, PagerUpdateChildData{
             .instantiateViewController(withIdentifier: "GameDetailScreen") as? TurkishLeagueGameDetailViewController {
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
-//                navigator.showDetailViewController(viewController, sender: self)
             }
         }
     }

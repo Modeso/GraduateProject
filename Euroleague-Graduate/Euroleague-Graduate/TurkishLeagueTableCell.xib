@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,16 +20,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2AH-N6-J2H">
-                        <rect key="frame" x="240.66666666666663" y="91" width="88.333333333333371" height="67.333333333333343"/>
+                        <rect key="frame" x="240.5" y="91" width="88.5" height="67"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbG-IM-GNh">
-                                <rect key="frame" x="0.0" y="0.0" width="88.333333333333343" height="33.666666666666671"/>
+                                <rect key="frame" x="0.0" y="0.0" width="88.5" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ct-4I-Ohj">
-                                <rect key="frame" x="0.0" y="33.666666666666671" width="88.333333333333343" height="33.666666666666671"/>
+                                <rect key="frame" x="0.0" y="33.5" width="88.5" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,7 +37,7 @@
                         </subviews>
                     </stackView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8gf-d3-KhM">
-                        <rect key="frame" x="18" y="74" width="100" height="100"/>
+                        <rect key="frame" x="18" y="54" width="140" height="140"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="140" id="EJc-Hd-kGc">
                                 <variation key="widthClass=compact" constant="100"/>
@@ -74,7 +74,7 @@
                         </variation>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ddm-Ub-WWk">
-                        <rect key="frame" x="451" y="74" width="100" height="100"/>
+                        <rect key="frame" x="411" y="54" width="140" height="140"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="140" id="6ZO-Ho-c1z">
                                 <variation key="heightClass=compact-widthClass=regular" constant="100"/>
