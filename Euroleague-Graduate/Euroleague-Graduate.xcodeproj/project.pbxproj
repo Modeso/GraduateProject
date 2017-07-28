@@ -31,9 +31,9 @@
 		FEC2D28C1F2B540E006BB8AC /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D28B1F2B540E006BB8AC /* GameData.swift */; };
 		FEC2D2921F2B544D006BB8AC /* AbstractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2901F2B544D006BB8AC /* AbstractViewModel.swift */; };
 		FEC2D2931F2B544D006BB8AC /* TurkishLeagueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2911F2B544D006BB8AC /* TurkishLeagueViewModel.swift */; };
-		FEC2D2971F2B555B006BB8AC /* CoText_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D2941F2B555B006BB8AC /* CoText_Bold.ttf */; };
-		FEC2D2981F2B555B006BB8AC /* CoText_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D2951F2B555B006BB8AC /* CoText_Light.ttf */; };
-		FEC2D2991F2B555B006BB8AC /* CoText_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D2961F2B555B006BB8AC /* CoText_Regular.ttf */; };
+		FEC2D29F1F2B69A8006BB8AC /* CoText_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */; };
+		FEC2D2A01F2B69A8006BB8AC /* CoText_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */; };
+		FEC2D2A11F2B69A8006BB8AC /* CoText_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,9 +88,9 @@
 		FEC2D28B1F2B540E006BB8AC /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		FEC2D2901F2B544D006BB8AC /* AbstractViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewModel.swift; sourceTree = "<group>"; };
 		FEC2D2911F2B544D006BB8AC /* TurkishLeagueViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueViewModel.swift; sourceTree = "<group>"; };
-		FEC2D2941F2B555B006BB8AC /* CoText_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CoText_Bold.ttf; path = ../../../../../Fonts/EuroLeague/CoText_Bold.ttf; sourceTree = "<group>"; };
-		FEC2D2951F2B555B006BB8AC /* CoText_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CoText_Light.ttf; path = ../../../../../Fonts/EuroLeague/CoText_Light.ttf; sourceTree = "<group>"; };
-		FEC2D2961F2B555B006BB8AC /* CoText_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = CoText_Regular.ttf; path = ../../../../../Fonts/EuroLeague/CoText_Regular.ttf; sourceTree = "<group>"; };
+		FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Bold.ttf; sourceTree = "<group>"; };
+		FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Light.ttf; sourceTree = "<group>"; };
+		FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Regular.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +160,7 @@
 				FEC2D2851F2B5400006BB8AC /* Services */,
 				FEC2D28A1F2B540E006BB8AC /* Model */,
 				FE6DDF921F2624B100BA9FCB /* Helpers */,
-				FEC2D28D1F2B541F006BB8AC /* Resourses */,
+				FEC2D29A1F2B69A8006BB8AC /* Resourses */,
 				A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */,
 				A5FF78C11F0FA74E00F6E9A2 /* Main.storyboard */,
 				A5FF78C41F0FA74E00F6E9A2 /* Assets.xcassets */,
@@ -248,24 +248,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		FEC2D28D1F2B541F006BB8AC /* Resourses */ = {
-			isa = PBXGroup;
-			children = (
-				FEC2D28E1F2B541F006BB8AC /* Fonts */,
-			);
-			path = Resourses;
-			sourceTree = "<group>";
-		};
-		FEC2D28E1F2B541F006BB8AC /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				FEC2D2941F2B555B006BB8AC /* CoText_Bold.ttf */,
-				FEC2D2951F2B555B006BB8AC /* CoText_Light.ttf */,
-				FEC2D2961F2B555B006BB8AC /* CoText_Regular.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		FEC2D28F1F2B544D006BB8AC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +255,24 @@
 				FEC2D2911F2B544D006BB8AC /* TurkishLeagueViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FEC2D29A1F2B69A8006BB8AC /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				FEC2D29B1F2B69A8006BB8AC /* Fonts */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		FEC2D29B1F2B69A8006BB8AC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */,
+				FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */,
+				FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,12 +391,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC2D2A01F2B69A8006BB8AC /* CoText_Light.ttf in Resources */,
 				FEC2D2761F2B53E5006BB8AC /* TurkishLeagueTableCell.xib in Resources */,
 				A5FF78C81F0FA74E00F6E9A2 /* LaunchScreen.storyboard in Resources */,
 				A5FF78C51F0FA74E00F6E9A2 /* Assets.xcassets in Resources */,
-				FEC2D2981F2B555B006BB8AC /* CoText_Light.ttf in Resources */,
-				FEC2D2971F2B555B006BB8AC /* CoText_Bold.ttf in Resources */,
-				FEC2D2991F2B555B006BB8AC /* CoText_Regular.ttf in Resources */,
+				FEC2D29F1F2B69A8006BB8AC /* CoText_Bold.ttf in Resources */,
+				FEC2D2A11F2B69A8006BB8AC /* CoText_Regular.ttf in Resources */,
 				A5FF78C31F0FA74E00F6E9A2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
