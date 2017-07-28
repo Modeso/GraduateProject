@@ -121,13 +121,57 @@ IndicatorInfoProvider {
 extension TurkishLeagueMasterTableViewController: PagerUpdateChildData {
     
     func updateUIWithData(_ table: [Array<GameData>], lastGameIndex: (section: Int, row: Int)) {
+        func getPositionOfGame(index: (section: Int, row: Int)) -> CGFloat{
+            var curSection = 0
+            var height = 0
+            for games in schedule! {
+                if curSection < index.section {
+                    curSection += 1
+                    height += (137 * games.count)
+                    height += (7 * games.count)
+                    height += 25
+                }
+                else if curSection == index.section {
+                    height += 25
+                    var curRow = 0
+                    for _ in games {
+                        if curRow < index.row {
+                            curRow += 1
+                            height += 7
+                            height += 137
+                        }
+                        else {
+                            height += 137
+                            break
+                        }
+                    }
+                    break
+                }
+            }
+            return CGFloat(height)
+        }
         schedule = table
-        let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
-        tableView.reloadRows(at: [indexPath], with: .none)
-        tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
+            if let cell = self.tableView.cellForRow(at: indexPath) {
+                print("**** \(cell.frame)")
+                self.tableView.scrollRectToVisible(
+                    CGRect(x: 0, y:(cell.frame.origin.y), width: self.tableView.bounds.width, height: 137),
+                    animated: true)
+            }
+        }
+        
+      
+     //   tableView.reloadRows(at: [indexPath], with: .none)
+//        tableView.scrollRectToVisible(
+//            CGRect(x: 0, y: getPositionOfGame(index: lastGameIndex), width: tableView.bounds.width, height: 137),
+//            animated: true)
+//        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
     func getRound() -> String {
         return ""
     }
+    
 }
