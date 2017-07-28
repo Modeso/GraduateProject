@@ -37,6 +37,7 @@ GameDataViewModelDelegate, PagerUpdateDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         settings.style.buttonBarBackgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
         settings.style.buttonBarItemBackgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
         settings.style.selectedBarBackgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
