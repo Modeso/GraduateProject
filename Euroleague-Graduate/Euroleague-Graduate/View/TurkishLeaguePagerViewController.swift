@@ -12,7 +12,7 @@ import RealmSwift
 import XLPagerTabStrip
 
 protocol PagerUpdateChildData {
-    func updateUIWithData(_ table: [Array<GameData>])
+    func updateUIWithData(_ table: [Array<GameData>], lastGameIndex: (section: Int, row: Int))
     func getRound() -> String
 }
 
@@ -21,30 +21,33 @@ protocol PagerUpdateDelegate {
     func isResreshing() -> Bool
 }
 
-class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController,
-GameDataViewModelDelegate, PagerUpdateDelegate {
+class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
     
-    private var myViewControllers: Array<UITableViewController> = []
+    fileprivate var myViewControllers: Array<UITableViewController> = []
     
-    private let viewModel = TurkishLeagueViewModel()
+    fileprivate let viewModel = TurkishLeagueViewModel()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
+    private let barColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
     
-    private var isRefreshing = false
+    fileprivate var isRefreshing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = barColor
+        navigationController?.navigationBar.backgroundColor = barColor
+        navigationController?.navigationBar.isTranslucent = false
+        let navImage = UIImage(named: "navbar-turkishairlines")
+        let navImageView = UIImageView(image: navImage)
+        navImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = navImageView
         
-        settings.style.buttonBarBackgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
-        settings.style.buttonBarItemBackgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
-        settings.style.selectedBarBackgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
+        settings.style.buttonBarBackgroundColor = barColor
+        settings.style.buttonBarItemBackgroundColor = barColor
+        settings.style.selectedBarBackgroundColor = barColor
         settings.style.buttonBarItemFont = UIFont.systemFont(ofSize: 14)
         settings.style.selectedBarHeight = 3.0
         self.buttonBarView.collectionViewLayout
-            .collectionView?.backgroundColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
+            .collectionView?.backgroundColor = barColor
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
@@ -69,23 +72,6 @@ GameDataViewModelDelegate, PagerUpdateDelegate {
         return myViewControllers
     }
     
-    func updateControllersData(_ table: Dictionary<String, [Array<GameData>]>) {
-        for controller in myViewControllers {
-            let newController = controller as? PagerUpdateChildData
-            newController?.updateUIWithData(table[(newController?.getRound())!]!)
-        }
-        isRefreshing = false
-    }
-    
-    func getUpdatedData() {
-        isRefreshing = true
-        viewModel.updateData()
-    }
-    
-    func isResreshing() -> Bool {
-        return isRefreshing
-    }
-    
 }
 
 extension UIViewController {
@@ -95,6 +81,33 @@ extension UIViewController {
         } else {
             return self
         }
+    }
+}
+
+extension TurkishLeaguePagerViewController: GameDataViewModelDelegate {
+    
+    func updateControllersData(_ table: Dictionary<String, [Array<GameData>]>,
+                               lastPlayedGames: Dictionary<String, (section: Int, row: Int)>) {
+        for controller in myViewControllers {
+            let newController = controller as? PagerUpdateChildData
+            newController?.updateUIWithData(
+                table[newController!.getRound()]!,
+                lastGameIndex: lastPlayedGames[newController!.getRound()]!)
+        }
+        isRefreshing = false
+    }
+    
+}
+
+extension TurkishLeaguePagerViewController: PagerUpdateDelegate {
+    
+    func getUpdatedData() {
+        isRefreshing = true
+        viewModel.updateData()
+    }
+    
+    func isResreshing() -> Bool {
+        return isRefreshing
     }
 }
 

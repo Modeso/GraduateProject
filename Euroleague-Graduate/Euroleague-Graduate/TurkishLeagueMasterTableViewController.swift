@@ -10,16 +10,16 @@ import UIKit
 import XLPagerTabStrip
 
 class TurkishLeagueMasterTableViewController: UITableViewController,
-IndicatorInfoProvider, PagerUpdateChildData {
+IndicatorInfoProvider {
     
-    private var schedule: [Array<GameData>]? {
+    fileprivate var schedule: [Array<GameData>]? {
         didSet {
             tableView?.reloadData()
             tableView.refreshControl?.endRefreshing()
         }
     }
     
-    private let color = UIColor(red: 60.0/255.0, green: 60.0/255.0, blue: 60.0/255.0, alpha: 1)
+    private let headerCellColor = UIColor(red: 60.0/255.0, green: 60.0/255.0, blue: 60.0/255.0, alpha: 1)
         
     var pagerDelegate: PagerUpdateDelegate?
     
@@ -33,10 +33,10 @@ IndicatorInfoProvider, PagerUpdateChildData {
             forHeaderFooterViewReuseIdentifier: "TurkishLeagueHeaderCell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = color
+        tableView.backgroundColor = headerCellColor
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = 150
-        tableView.separatorColor = UIColor(red: 60.0/255.0, green: 60.0/255.0, blue: 60.0/255.0, alpha: 1)
+        tableView.separatorColor = headerCellColor
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
@@ -61,16 +61,9 @@ IndicatorInfoProvider, PagerUpdateChildData {
         tableView.reloadData()
     }
     
+    // IndicatorProvider method
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "")
-    }
-    
-    func updateUIWithData(_ table: [Array<GameData>]) {
-        schedule = table
-    }
-    
-    func getRound() -> String {
-        return ""
     }
     
     // MARK: - Table view data source
@@ -96,7 +89,7 @@ IndicatorInfoProvider, PagerUpdateChildData {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 60.0/255, green: 60.0/255, blue: 60.0/255, alpha: 1)
+        view.backgroundColor = headerCellColor
         let label = UILabel()
         label.text = Date().convertDateToString((schedule?[section][0].date)!)
         label.textColor = UIColor.white
@@ -117,5 +110,23 @@ IndicatorInfoProvider, PagerUpdateChildData {
             }
         }
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        tableView.reloadData()
+    }
 
+}
+
+extension TurkishLeagueMasterTableViewController: PagerUpdateChildData {
+    
+    func updateUIWithData(_ table: [Array<GameData>], lastGameIndex: (section: Int, row: Int)) {
+        schedule = table
+        let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
+        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: false)
+    }
+    
+    func getRound() -> String {
+        return ""
+    }
 }

@@ -50,7 +50,6 @@ class TurkishAirLinesGamesDataService {
 fileprivate extension TurkishAirLinesGamesDataService {
     
     func getSchedule() {
-        print("Getting Schedule")
         games.removeAll()
         ApiClient
             .getRequestFrom(
@@ -58,7 +57,6 @@ fileprivate extension TurkishAirLinesGamesDataService {
                 parameters: [:],
                 headers: [:]){ [weak self] data ,error in
                     if let xmlData = data, error == nil {
-                        print("Done Getting Schedule")
                         self?.parseSchedule(xmlData)
                         self?.getResults()
                     }
@@ -69,7 +67,6 @@ fileprivate extension TurkishAirLinesGamesDataService {
     }
     
     func getResults() {
-        print("Getting Results")
         ApiClient
             .getRequestFrom(
                 url: urls[.results]!,
@@ -77,7 +74,6 @@ fileprivate extension TurkishAirLinesGamesDataService {
                 headers: [:]){ [weak self] data ,error in
                     if let xmlData = data, error == nil {
                         self?.setResults(xmlData)
-                        print("Done Setting Results")
                         let table = RealmDBManager.sharedInstance.getGames()
                         self?.games.removeAll()
                         for game in table {
@@ -86,7 +82,6 @@ fileprivate extension TurkishAirLinesGamesDataService {
                         }
                         self?.delegate?.updateData(RealmDBManager.sharedInstance.getGames())
                         self?.isUpdating = false
-                        print("Done Getting Results")
                     }
         }
     }
@@ -108,7 +103,6 @@ fileprivate extension TurkishAirLinesGamesDataService {
     }
     
     func setResults(_ xmlData: Data){
-        print("Setting Results")
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["results"]["game"].all{
             do{
