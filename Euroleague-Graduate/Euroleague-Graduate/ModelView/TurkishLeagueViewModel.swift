@@ -14,7 +14,7 @@ protocol GameDataViewModelDelegate {
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>)
 }
 
-class TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
+class TurkishLeagueViewModel {
     
     private let rounds: Array<String> = [
         "RS", "PO", "FF"
@@ -55,9 +55,14 @@ class TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
         helper.updateData()
     }
     
+}
+
+extension TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
+    
     func updateData(_ table: Results<GameData>){
         schedule = table
     }
+    
 }
 
 fileprivate extension TurkishLeagueViewModel {

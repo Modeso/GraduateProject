@@ -19,7 +19,7 @@ IndicatorInfoProvider {
         }
     }
     
-    private let headerCellColor = UIColor(red: 60.0/255.0, green: 60.0/255.0, blue: 60.0/255.0, alpha: 1)
+    private let headerCellColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
         
     var pagerDelegate: PagerUpdateDelegate?
     
@@ -123,7 +123,7 @@ extension TurkishLeagueMasterTableViewController: PagerUpdateChildData {
         schedule = table
         let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
         tableView.reloadRows(at: [indexPath], with: .none)
-        tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: false)
+        tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
     }
     
     func getRound() -> String {

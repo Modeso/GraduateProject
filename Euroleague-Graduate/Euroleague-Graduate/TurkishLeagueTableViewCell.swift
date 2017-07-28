@@ -57,7 +57,7 @@ extension UITableViewCell {
     func addSeparatorLineToTop(){
         let lineFrame = CGRect(x: 0, y: 0, width: bounds.size.width, height: 5)
         let line = UIView(frame: lineFrame)
-        line.backgroundColor = UIColor(red: 60.0/255, green: 60.0/255, blue: 60.0/255, alpha: 1)
+        line.backgroundColor = UIColor(red: 77.0/255, green: 77.0/255, blue: 77.0/255, alpha: 1)
         addSubview(line)
     }
 }

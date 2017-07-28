@@ -27,14 +27,13 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
     
     fileprivate let viewModel = TurkishLeagueViewModel()
     
-    private let barColor = UIColor(red: 238.0/255, green: 62.0/255, blue: 8.0/255, alpha: 1)
+    private let barColor = UIColor(red: 255.0/255, green: 88.0/255, blue: 4.0/255, alpha: 1)
     
     fileprivate var isRefreshing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = barColor
-        navigationController?.navigationBar.backgroundColor = barColor
         navigationController?.navigationBar.isTranslucent = false
         let navImage = UIImage(named: "navbar-turkishairlines")
         let navImageView = UIImageView(image: navImage)
