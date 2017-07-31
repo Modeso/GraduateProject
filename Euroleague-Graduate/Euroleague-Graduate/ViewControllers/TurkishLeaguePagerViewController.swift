@@ -18,7 +18,7 @@ protocol PagerUpdateChildData {
 
 protocol PagerUpdateDelegate {
     func getUpdatedData()
-    func isResreshing() -> Bool
+    func isRefreshing() -> Bool
 }
 
 class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
@@ -29,7 +29,7 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
     
     private let barColor = UIColor(red: 255.0/255, green: 88.0/255, blue: 4.0/255, alpha: 1)
     
-    fileprivate var isRefreshing = false
+    fileprivate var refreshing = true
     
     override func viewDidLoad() {
         navigationController?.navigationBar.barTintColor = barColor
@@ -67,6 +67,7 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
         createControllers()
         viewModel.delegate = self
         viewModel.getData()
+        refreshing = true
         return myViewControllers
     }
     
@@ -87,12 +88,16 @@ extension TurkishLeaguePagerViewController: GameDataViewModelDelegate {
     func updateControllersData(_ table: Dictionary<String, [Array<GameData>]>,
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>) {
         for controller in myViewControllers {
-            let newController = controller as? PagerUpdateChildData
-            newController?.updateUIWithData(
-                table[newController!.getRound()]!,
-                lastGameIndex: lastPlayedGames[newController!.getRound()]!)
+            if let newController = controller as? PagerUpdateChildData,
+                let lastGameIndex =  lastPlayedGames[newController.getRound()],
+                let schedule = table[newController.getRound()] {
+                newController.updateUIWithData(
+                    schedule,
+                    lastGameIndex: lastGameIndex)
+            }
+            
         }
-        isRefreshing = false
+        refreshing = false
     }
     
 }
@@ -100,12 +105,12 @@ extension TurkishLeaguePagerViewController: GameDataViewModelDelegate {
 extension TurkishLeaguePagerViewController: PagerUpdateDelegate {
     
     func getUpdatedData() {
-        isRefreshing = true
+        refreshing = true
         viewModel.updateData()
     }
     
-    func isResreshing() -> Bool {
-        return isRefreshing
+    func isRefreshing() -> Bool {
+        return refreshing
     }
 }
 

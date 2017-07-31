@@ -19,9 +19,13 @@ IndicatorInfoProvider {
         }
     }
     
+    fileprivate var indexPath: IndexPath = []
+    
     private let headerCellColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
         
     var pagerDelegate: PagerUpdateDelegate?
+    
+    fileprivate var firstLoad = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +53,7 @@ IndicatorInfoProvider {
     }
     
     func refresh() {
-        if !pagerDelegate!.isResreshing() {
+        if !pagerDelegate!.isRefreshing() {
             tableView.refreshControl?.beginRefreshing()
             pagerDelegate?.getUpdatedData()
         }
@@ -58,7 +62,14 @@ IndicatorInfoProvider {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        if firstLoad {
+            tableView.reloadData()
+//            moveToLastPlayed()
+            firstLoad = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
+                self?.moveToLastPlayed()
+            })
+        }
     }
     
     // IndicatorProvider method
@@ -82,6 +93,9 @@ IndicatorInfoProvider {
         let game = schedule?[indexPath.section][indexPath.row]
         if let leagueCell = cell as? TurkishLeagueTableViewCell {
             leagueCell.game = game
+            if (leagueCell.homeImageView.image?.size.width)! == CGFloat(140.0) {
+                tableView.rowHeight = 150
+            }
         }
         cell.layoutMargins = UIEdgeInsets.zero
         return cell
@@ -118,56 +132,24 @@ IndicatorInfoProvider {
 
 }
 
+extension TurkishLeagueMasterTableViewController {
+    
+    func moveToLastPlayed() {
+        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    
+}
+
 extension TurkishLeagueMasterTableViewController: PagerUpdateChildData {
     
     func updateUIWithData(_ table: [Array<GameData>], lastGameIndex: (section: Int, row: Int)) {
-        func getPositionOfGame(index: (section: Int, row: Int)) -> CGFloat{
-            var curSection = 0
-            var height = 0
-            for games in schedule! {
-                if curSection < index.section {
-                    curSection += 1
-                    height += (137 * games.count)
-                    height += (7 * games.count)
-                    height += 25
-                }
-                else if curSection == index.section {
-                    height += 25
-                    var curRow = 0
-                    for _ in games {
-                        if curRow < index.row {
-                            curRow += 1
-                            height += 7
-                            height += 137
-                        }
-                        else {
-                            height += 137
-                            break
-                        }
-                    }
-                    break
-                }
-            }
-            return CGFloat(height)
-        }
         schedule = table
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
-            if let cell = self.tableView.cellForRow(at: indexPath) {
-                print("**** \(cell.frame)")
-                self.tableView.scrollRectToVisible(
-                    CGRect(x: 0, y:(cell.frame.origin.y), width: self.tableView.bounds.width, height: 137),
-                    animated: true)
-            }
+        let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
+        self.indexPath = indexPath
+        if !firstLoad {
+            moveToLastPlayed()
         }
-        
-      
-     //   tableView.reloadRows(at: [indexPath], with: .none)
-//        tableView.scrollRectToVisible(
-//            CGRect(x: 0, y: getPositionOfGame(index: lastGameIndex), width: tableView.bounds.width, height: 137),
-//            animated: true)
-//        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
     func getRound() -> String {
