@@ -21,7 +21,7 @@ class TurkishLeagueViewModel {
     ]
     
     private let helper: TurkishAirLinesGamesDataService
-        
+    
     var delegate: GameDataViewModelDelegate?
     
     fileprivate var schedule: Results<GameData>? {
