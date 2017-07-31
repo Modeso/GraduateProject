@@ -50,7 +50,7 @@ class TurkishLeagueViewModel {
     func getData(){
         teamDataService.delegate = self
         gameDataService.delegate = self
-        teamDataService.getTeamsTable()
+        makeTeamsOf(teamDataService.getTeamsTable())
     }
     
     func updateData() {
@@ -70,7 +70,7 @@ extension TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
 extension TurkishLeagueViewModel: TurkishAirLinesTeamsDataServiceDelegate {
     
     func updateData(_ table: Results<Team>){
-        makeTeams(table)
+        makeTeamsOf(table)
         schedule = gameDataService.getGamesTable()
         gameDataService.updateData()
     }
@@ -116,7 +116,7 @@ fileprivate extension TurkishLeagueViewModel {
     }
     
     //For Teams
-    func makeTeams(_ table: Results<Team>) {
+    func makeTeamsOf(_ table: Results<Team>) {
         for team in table {
             let club = team.cloneTeam()
             teams[club.code] = club

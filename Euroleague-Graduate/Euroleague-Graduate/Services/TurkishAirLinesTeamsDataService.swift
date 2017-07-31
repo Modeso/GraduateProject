@@ -21,8 +21,9 @@ class TurkishAirLinesTeamsDataService {
     var delegate: TurkishAirLinesTeamsDataServiceDelegate?
     
     ///Will return the teams data from DataBase
-    func getTeamsTable() {
+    func getTeamsTable() -> Results<Team>{
         getTeams()
+        return RealmDBManager.sharedInstance.getTeams()
     }
 }
 

@@ -48,7 +48,7 @@ class RealmDBManager {
     
     func addTeamDataToRealm(_ team: Team){
         try! realm.write {
-            realm.add(team)
+            realm.add(team, update: true)
         }
     }
     
