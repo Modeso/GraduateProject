@@ -40,7 +40,7 @@ class RealmDBManager {
     }
     
     ///Remove optional Calling after making sure data is parsed correctly
-    func getTeams() -> Results<Team>?{
+    func getTeams() -> Results<Team> {
         let sortProperties = [SortDescriptor(keyPath: "name", ascending: true)]
         let table = realm.objects(Team.self).sorted(by: sortProperties)
         return table

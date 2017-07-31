@@ -11,7 +11,7 @@ import RealmSwift
 import SWXMLHash
 
 protocol TurkishAirLinesTeamsDataServiceDelegate {
-    func updateData(_ table: Results<Team>?)
+    func updateData(_ table: Results<Team>)
 }
 
 class TurkishAirLinesTeamsDataService {
@@ -37,21 +37,18 @@ fileprivate extension TurkishAirLinesTeamsDataService {
                                         self?.delegate?.updateData(RealmDBManager.sharedInstance.getTeams())
                                     }
                                     else {
+                                        ///Tell that there was an error
                                         print("error in Teams data")
                                     }
         }
     }
     
     func parseTeamData(_ xmlData: Data) {
-        var teams = Array<Team>()
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["clubs"]["club"].all {
             let team = Team()
             team.parseTeamData(elem)
-            teams.append(team)
-            ///Add it to database
-
+            RealmDBManager.sharedInstance.addTeamDataToRealm(team)
         }
-        print(teams)
     }
 }

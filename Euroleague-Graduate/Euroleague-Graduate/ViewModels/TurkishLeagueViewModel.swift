@@ -20,8 +20,8 @@ class TurkishLeagueViewModel {
         "RS", "PO", "FF"
     ]
     
-    private let gameDataService: TurkishAirLinesGamesDataService
-    private let teamDataService: TurkishAirLinesTeamsDataService
+    fileprivate let gameDataService: TurkishAirLinesGamesDataService
+    fileprivate let teamDataService: TurkishAirLinesTeamsDataService
     
     var delegate: GameDataViewModelDelegate?
     
@@ -36,6 +36,8 @@ class TurkishLeagueViewModel {
         }
     }
     
+    fileprivate var teams: Dictionary<String, Team> = [:]
+    
     fileprivate var lastPlayedGame: Dictionary<String, (section: Int, row: Int)> = [:]
     
     fileprivate var table: Dictionary<String, [Array<Game>]> = [:]
@@ -49,8 +51,6 @@ class TurkishLeagueViewModel {
         teamDataService.delegate = self
         gameDataService.delegate = self
         teamDataService.getTeamsTable()
-        schedule = gameDataService.getGamesTable()
-        gameDataService.updateData()
     }
     
     func updateData() {
@@ -68,9 +68,13 @@ extension TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
 }
 
 extension TurkishLeagueViewModel: TurkishAirLinesTeamsDataServiceDelegate {
-    func updateData(_ table: Results<Team>?){
-        
+    
+    func updateData(_ table: Results<Team>){
+        makeTeams(table)
+        schedule = gameDataService.getGamesTable()
+        gameDataService.updateData()
     }
+    
 }
 
 fileprivate extension TurkishLeagueViewModel {
@@ -85,10 +89,13 @@ fileprivate extension TurkishLeagueViewModel {
         for game in schedule! {
             let newGame = game.cloneGame()
             if newGame.round == round {
+                ///newGame.awayUrl = teams[newGame.awayCode]
+                ///newGame.homeUrl = teams[newGame.homeCode]
                 if prevSectionDate == nil {
                     prevSectionDate = newGame.date
                     lastPlayedGame[round] = (section, row)
-                } else if prevSectionDate != newGame.date {
+                }
+                else if prevSectionDate != newGame.date {
                     gamesTable.append(gameSection)
                     gameSection.removeAll()
                     section += 1
@@ -109,4 +116,11 @@ fileprivate extension TurkishLeagueViewModel {
     }
     
     //For Teams
+    func makeTeams(_ table: Results<Team>) {
+        for team in table {
+            let club = team.cloneTeam()
+            teams[club.code] = club
+        }
+    }
+    
 }
