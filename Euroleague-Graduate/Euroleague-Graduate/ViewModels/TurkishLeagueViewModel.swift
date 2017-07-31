@@ -21,9 +21,7 @@ class TurkishLeagueViewModel {
     ]
     
     private let helper: TurkishAirLinesGamesDataService
-    
-    private var registeredControllers:Array<UITableViewController> = []
-    
+        
     var delegate: GameDataViewModelDelegate?
     
     fileprivate var schedule: Results<GameData>? {
