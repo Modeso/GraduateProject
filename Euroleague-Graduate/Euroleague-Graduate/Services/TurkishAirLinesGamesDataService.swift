@@ -11,7 +11,7 @@ import SWXMLHash
 import RealmSwift
 
 protocol TurkishAirLinesGamesDataServiceDelegate {
-    func updateData(_ table: Results<GameData>)
+    func updateData(_ table: Results<Game>)
 }
 
 class TurkishAirLinesGamesDataService {
@@ -23,7 +23,7 @@ class TurkishAirLinesGamesDataService {
     
     var delegate: TurkishAirLinesGamesDataServiceDelegate?
     
-    fileprivate var games: Dictionary<Int, GameData> = [:]
+    fileprivate var games: Dictionary<Int, Game> = [:]
     
     fileprivate var isUpdating = false
     
@@ -32,7 +32,7 @@ class TurkishAirLinesGamesDataService {
         .results : "results?seasoncode=E2016"
     ]
     
-    func getGamesTable() -> Results<GameData> {
+    func getGamesTable() -> Results<Game> {
         let table = RealmDBManager.sharedInstance.getGames()
         return table
     }
@@ -89,7 +89,7 @@ fileprivate extension TurkishAirLinesGamesDataService {
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["schedule"]["item"].all {
             do{
-                var game = GameData()
+                var game = Game()
                 game = try game.parseGameData(elem)
                 RealmDBManager.sharedInstance.addGameDataToRealm(game: game)
                 games[game.gameNumber] = game

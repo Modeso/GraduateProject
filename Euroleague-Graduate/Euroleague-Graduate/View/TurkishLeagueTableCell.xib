@@ -28,16 +28,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2AH-N6-J2H">
-                        <rect key="frame" x="220.66666666666663" y="26.666666666666671" width="129.33333333333337" height="93"/>
+                        <rect key="frame" x="220.33333333333331" y="27.333333333333329" width="129.33333333333331" height="93"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbG-IM-GNh">
-                                <rect key="frame" x="0.0" y="0.0" width="129.33333333333334" height="61.333333333333329"/>
+                                <rect key="frame" x="0.0" y="0.0" width="129.33333333333334" height="61.333333333333343"/>
                                 <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="35"/>
                                 <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ct-4I-Ohj">
-                                <rect key="frame" x="0.0" y="61.333333333333321" width="129.33333333333334" height="31.666666666666679"/>
+                                <rect key="frame" x="0.0" y="61.333333333333343" width="129.33333333333334" height="31.666666666666657"/>
                                 <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="18"/>
                                 <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

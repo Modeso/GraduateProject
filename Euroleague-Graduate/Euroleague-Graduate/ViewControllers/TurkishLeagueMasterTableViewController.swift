@@ -12,14 +12,14 @@ import XLPagerTabStrip
 class TurkishLeagueMasterTableViewController: UITableViewController,
 IndicatorInfoProvider {
     
-    fileprivate var schedule: [Array<GameData>]? {
+    fileprivate var schedule: [Array<Game>]? {
         didSet {
             tableView?.reloadData()
             tableView.refreshControl?.endRefreshing()
         }
     }
     
-    fileprivate var indexPath: IndexPath = []
+    fileprivate var indexPath: IndexPath?
     
     private let headerCellColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
         
@@ -64,7 +64,6 @@ IndicatorInfoProvider {
         super.viewWillAppear(animated)
         if firstLoad {
             tableView.reloadData()
-//            moveToLastPlayed()
             firstLoad = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
                 self?.moveToLastPlayed()
@@ -135,15 +134,17 @@ IndicatorInfoProvider {
 extension TurkishLeagueMasterTableViewController {
     
     func moveToLastPlayed() {
-        tableView.reloadRows(at: [indexPath], with: .none)
-        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        guard let index = indexPath
+            else { return }
+        tableView.reloadRows(at: [index], with: .none)
+        tableView.scrollToRow(at: index, at: .top, animated: true)
     }
     
 }
 
 extension TurkishLeagueMasterTableViewController: PagerUpdateChildData {
     
-    func updateUIWithData(_ table: [Array<GameData>], lastGameIndex: (section: Int, row: Int)) {
+    func updateUIWithData(_ table: [Array<Game>], lastGameIndex: (section: Int, row: Int)) {
         schedule = table
         let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
         self.indexPath = indexPath

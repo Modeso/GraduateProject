@@ -19,7 +19,7 @@ class TurkishLeagueTableViewCell: UITableViewCell {
     
     @IBOutlet weak var detailLabel: UILabel!
     
-    var game: GameData? {
+    var game: Game? {
         didSet{
             updateUI()
         }

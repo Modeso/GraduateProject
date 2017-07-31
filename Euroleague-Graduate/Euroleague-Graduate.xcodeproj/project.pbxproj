@@ -30,7 +30,7 @@
 		FEC2D2841F2B53F7006BB8AC /* TurkishLeagueRegularSeosonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27E1F2B53F7006BB8AC /* TurkishLeagueRegularSeosonTableViewController.swift */; };
 		FEC2D2881F2B5400006BB8AC /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2861F2B5400006BB8AC /* ApiClient.swift */; };
 		FEC2D2891F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2871F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift */; };
-		FEC2D28C1F2B540E006BB8AC /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D28B1F2B540E006BB8AC /* GameData.swift */; };
+		FEC2D28C1F2B540E006BB8AC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D28B1F2B540E006BB8AC /* Game.swift */; };
 		FEC2D2921F2B544D006BB8AC /* AbstractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2901F2B544D006BB8AC /* AbstractViewModel.swift */; };
 		FEC2D2931F2B544D006BB8AC /* TurkishLeagueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2911F2B544D006BB8AC /* TurkishLeagueViewModel.swift */; };
 		FEC2D29F1F2B69A8006BB8AC /* CoText_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */; };
@@ -89,7 +89,7 @@
 		FEC2D27E1F2B53F7006BB8AC /* TurkishLeagueRegularSeosonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueRegularSeosonTableViewController.swift; sourceTree = "<group>"; };
 		FEC2D2861F2B5400006BB8AC /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		FEC2D2871F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesGamesDataService.swift; sourceTree = "<group>"; };
-		FEC2D28B1F2B540E006BB8AC /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		FEC2D28B1F2B540E006BB8AC /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		FEC2D2901F2B544D006BB8AC /* AbstractViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewModel.swift; sourceTree = "<group>"; };
 		FEC2D2911F2B544D006BB8AC /* TurkishLeagueViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueViewModel.swift; sourceTree = "<group>"; };
 		FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Bold.ttf; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 		FEC2D28A1F2B540E006BB8AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FEC2D28B1F2B540E006BB8AC /* GameData.swift */,
+				FEC2D28B1F2B540E006BB8AC /* Game.swift */,
 				FE5C21681F2F2F6900522D65 /* Team.swift */,
 			);
 			path = Model;
@@ -534,7 +534,7 @@
 				FEC2D2801F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift in Sources */,
 				FE8C60A91F22126700D4EF83 /* RealmDBManager.swift in Sources */,
 				FE5C21691F2F2F6900522D65 /* Team.swift in Sources */,
-				FEC2D28C1F2B540E006BB8AC /* GameData.swift in Sources */,
+				FEC2D28C1F2B540E006BB8AC /* Game.swift in Sources */,
 				FEC2D2811F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift in Sources */,
 				FEC2D2881F2B5400006BB8AC /* ApiClient.swift in Sources */,
 			);

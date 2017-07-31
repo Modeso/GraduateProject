@@ -25,6 +25,7 @@ class TurkishAirLinesTeamsDataService {
         getTeams()
     }
 }
+
 fileprivate extension TurkishAirLinesTeamsDataService {
     
     func getTeams() {
@@ -42,9 +43,15 @@ fileprivate extension TurkishAirLinesTeamsDataService {
     }
     
     func parseTeamData(_ xmlData: Data) {
+        var teams = Array<Team>()
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["clubs"]["club"].all {
-        
+            let team = Team()
+            team.parseTeamData(elem)
+            teams.append(team)
+            ///Add it to database
+
         }
+        print(teams)
     }
 }

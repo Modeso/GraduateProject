@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 protocol GameDataViewModelDelegate {
-    func updateControllersData(_ table: Dictionary<String, [Array<GameData>]>,
+    func updateControllersData(_ table: Dictionary<String, [Array<Game>]>,
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>)
 }
 
@@ -25,9 +25,9 @@ class TurkishLeagueViewModel {
     
     var delegate: GameDataViewModelDelegate?
     
-    fileprivate var schedule: Results<GameData>? {
+    fileprivate var schedule: Results<Game>? {
         didSet {
-            if schedule != nil {
+            if schedule != nil , (schedule?.count)! > 0 {
                 for round in rounds {
                     makingTableDataOf(round)
                 }
@@ -38,7 +38,7 @@ class TurkishLeagueViewModel {
     
     fileprivate var lastPlayedGame: Dictionary<String, (section: Int, row: Int)> = [:]
     
-    fileprivate var table: Dictionary<String, [Array<GameData>]> = [:]
+    fileprivate var table: Dictionary<String, [Array<Game>]> = [:]
     
     init() {
         gameDataService = TurkishAirLinesGamesDataService()
@@ -61,7 +61,7 @@ class TurkishLeagueViewModel {
 
 extension TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
     
-    func updateData(_ table: Results<GameData>){
+    func updateData(_ table: Results<Game>){
         schedule = table
     }
     
@@ -79,8 +79,8 @@ fileprivate extension TurkishLeagueViewModel {
     func makingTableDataOf(_ round: String) {
         var section = 0
         var row = 0
-        var gamesTable = [Array<GameData>]()
-        var gameSection = Array<GameData>()
+        var gamesTable = [Array<Game>]()
+        var gameSection = Array<Game>()
         var prevSectionDate: Date? = nil
         for game in schedule! {
             let newGame = game.cloneGame()

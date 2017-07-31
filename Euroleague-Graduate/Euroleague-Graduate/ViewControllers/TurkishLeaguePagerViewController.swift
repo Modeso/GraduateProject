@@ -12,7 +12,7 @@ import RealmSwift
 import XLPagerTabStrip
 
 protocol PagerUpdateChildData {
-    func updateUIWithData(_ table: [Array<GameData>], lastGameIndex: (section: Int, row: Int))
+    func updateUIWithData(_ table: [Array<Game>], lastGameIndex: (section: Int, row: Int))
     func getRound() -> String
 }
 
@@ -85,7 +85,7 @@ extension UIViewController {
 
 extension TurkishLeaguePagerViewController: GameDataViewModelDelegate {
     
-    func updateControllersData(_ table: Dictionary<String, [Array<GameData>]>,
+    func updateControllersData(_ table: Dictionary<String, [Array<Game>]>,
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>) {
         for controller in myViewControllers {
             if let newController = controller as? PagerUpdateChildData,

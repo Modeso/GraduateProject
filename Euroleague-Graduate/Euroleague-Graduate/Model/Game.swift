@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import SWXMLHash
 
-class GameData: Object{
+class Game: Object{
     
     dynamic var round: String = ""
     dynamic var date: Date = Date()
@@ -28,10 +28,10 @@ class GameData: Object{
 
 }
 
-extension GameData {
+extension Game {
     
-    func parseGameData(_ node: XMLIndexer) throws -> GameData {
-        let game = GameData()
+    func parseGameData(_ node: XMLIndexer) throws -> Game {
+        let game = Game()
         game.round = try node["round"].value()
         game.date = Date().convertStringToDate(date: try node["date"].value())
         game.time = try node["startime"].value()
@@ -42,8 +42,8 @@ extension GameData {
         return game
     }
     
-    func cloneGame() -> GameData {
-        let newGame = GameData()
+    func cloneGame() -> Game {
+        let newGame = Game()
         newGame.awayScore = self.awayScore
         newGame.awayTv = self.awayTv
         newGame.date = self.date
