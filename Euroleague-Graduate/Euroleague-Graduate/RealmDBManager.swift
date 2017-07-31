@@ -26,7 +26,7 @@ class RealmDBManager {
         return table
     }
     
-    func addDataToRealm(game: GameData){
+    func addGameDataToRealm(game: GameData){
             try! realm.write {
                 realm.add(game, update: true)
             }
@@ -38,5 +38,17 @@ class RealmDBManager {
                 game.awayScore = awayScore
             }
     }
+    
+    ///Remove optional Calling after making sure data is parsed correctly
+    func getTeams() -> Results<Team>?{
+        return nil
+    }
+    
+    func addTeamDataToRealm(){
+        try! realm.write {
+            
+        }
+    }
+    
     
 }

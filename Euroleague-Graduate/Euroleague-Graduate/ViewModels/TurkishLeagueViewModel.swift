@@ -20,7 +20,8 @@ class TurkishLeagueViewModel {
         "RS", "PO", "FF"
     ]
     
-    private let helper: TurkishAirLinesGamesDataService
+    private let gameDataService: TurkishAirLinesGamesDataService
+    private let teamDataService: TurkishAirLinesTeamsDataService
     
     var delegate: GameDataViewModelDelegate?
     
@@ -40,17 +41,20 @@ class TurkishLeagueViewModel {
     fileprivate var table: Dictionary<String, [Array<GameData>]> = [:]
     
     init() {
-        helper = TurkishAirLinesGamesDataService()
+        gameDataService = TurkishAirLinesGamesDataService()
+        teamDataService = TurkishAirLinesTeamsDataService()
     }
     
     func getData(){
-        helper.delegate = self
-        schedule = helper.getGamesTable()
-        helper.updateData()
+        teamDataService.delegate = self
+        gameDataService.delegate = self
+        teamDataService.getTeamsTable()
+        schedule = gameDataService.getGamesTable()
+        gameDataService.updateData()
     }
     
     func updateData() {
-        helper.updateData()
+        gameDataService.updateData()
     }
     
 }
@@ -63,8 +67,15 @@ extension TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
     
 }
 
+extension TurkishLeagueViewModel: TurkishAirLinesTeamsDataServiceDelegate {
+    func updateData(_ table: Results<Team>?){
+        
+    }
+}
+
 fileprivate extension TurkishLeagueViewModel {
     
+    //For games
     func makingTableDataOf(_ round: String) {
         var section = 0
         var row = 0
@@ -97,4 +108,5 @@ fileprivate extension TurkishLeagueViewModel {
         table[round] = gamesTable
     }
     
+    //For Teams
 }

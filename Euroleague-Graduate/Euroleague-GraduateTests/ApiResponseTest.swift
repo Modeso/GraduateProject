@@ -25,7 +25,7 @@ class ApiResponseTest: XCTestCase {
     func testGetScheduleFromApi(){
         let expectation = self.expectation(description: "getting schedule")
         ApiClient
-            .getRequestFrom(url: "http://www.euroleague.net/euroleague/api/schedules?seasoncode=E2016",
+            .getRequestFrom(url: "schedules?seasoncode=E2016",
                             parameters: [:],
                             headers: [:]) { data, error in
                                 XCTAssertNotNil(data)
@@ -39,9 +39,25 @@ class ApiResponseTest: XCTestCase {
     }
     
     func testGetResultsFromApi(){
-        let expectation = self.expectation(description: "getting schedule")
+        let expectation = self.expectation(description: "getting results")
         ApiClient
-            .getRequestFrom(url: "http://www.euroleague.net/euroleague/api/results?seasoncode=E2016",
+            .getRequestFrom(url: "results?seasoncode=E2016",
+                            parameters: [:],
+                            headers: [:]) { data, error in
+                                XCTAssertNotNil(data)
+                                XCTAssertNil(error)
+                                expectation.fulfill()
+                                
+        }
+        self.waitForExpectations(timeout: 5) { error in
+            XCTAssertNil(error)
+        }
+    }
+    
+    func testGetTeamsFromApi(){
+        let expectation = self.expectation(description: "getting teams")
+        ApiClient
+            .getRequestFrom(url: "teams?seasoncode=E2016",
                             parameters: [:],
                             headers: [:]) { data, error in
                                 XCTAssertNotNil(data)
