@@ -20,14 +20,12 @@
 		FE5C21671F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5C21661F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift */; };
 		FE5C21691F2F2F6900522D65 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5C21681F2F2F6900522D65 /* Team.swift */; };
 		FE8C60A91F22126700D4EF83 /* RealmDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */; };
+		FE93A6D91F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE93A6D81F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift */; };
 		FEC2D2761F2B53E5006BB8AC /* TurkishLeagueTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D2741F2B53E5006BB8AC /* TurkishLeagueTableCell.xib */; };
 		FEC2D2771F2B53E5006BB8AC /* TurkishLeagueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2751F2B53E5006BB8AC /* TurkishLeagueTableViewCell.swift */; };
-		FEC2D27F1F2B53F7006BB8AC /* TurkishLeagueFFTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2791F2B53F7006BB8AC /* TurkishLeagueFFTableViewController.swift */; };
 		FEC2D2801F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27A1F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift */; };
 		FEC2D2811F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27B1F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift */; };
 		FEC2D2821F2B53F7006BB8AC /* TurkishLeaguePagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27C1F2B53F7006BB8AC /* TurkishLeaguePagerViewController.swift */; };
-		FEC2D2831F2B53F7006BB8AC /* TurkishLeaguePOTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27D1F2B53F7006BB8AC /* TurkishLeaguePOTableViewController.swift */; };
-		FEC2D2841F2B53F7006BB8AC /* TurkishLeagueRegularSeosonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27E1F2B53F7006BB8AC /* TurkishLeagueRegularSeosonTableViewController.swift */; };
 		FEC2D2881F2B5400006BB8AC /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2861F2B5400006BB8AC /* ApiClient.swift */; };
 		FEC2D2891F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2871F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift */; };
 		FEC2D28C1F2B540E006BB8AC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D28B1F2B540E006BB8AC /* Game.swift */; };
@@ -79,14 +77,12 @@
 		FE5C21661F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesTeamsDataService.swift; sourceTree = "<group>"; };
 		FE5C21681F2F2F6900522D65 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDBManager.swift; sourceTree = "<group>"; };
+		FE93A6D81F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueGamesRouter.swift; sourceTree = "<group>"; };
 		FEC2D2741F2B53E5006BB8AC /* TurkishLeagueTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TurkishLeagueTableCell.xib; sourceTree = "<group>"; };
 		FEC2D2751F2B53E5006BB8AC /* TurkishLeagueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueTableViewCell.swift; sourceTree = "<group>"; };
-		FEC2D2791F2B53F7006BB8AC /* TurkishLeagueFFTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueFFTableViewController.swift; sourceTree = "<group>"; };
 		FEC2D27A1F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueGameDetailViewController.swift; sourceTree = "<group>"; };
 		FEC2D27B1F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueMasterTableViewController.swift; sourceTree = "<group>"; };
 		FEC2D27C1F2B53F7006BB8AC /* TurkishLeaguePagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeaguePagerViewController.swift; sourceTree = "<group>"; };
-		FEC2D27D1F2B53F7006BB8AC /* TurkishLeaguePOTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeaguePOTableViewController.swift; sourceTree = "<group>"; };
-		FEC2D27E1F2B53F7006BB8AC /* TurkishLeagueRegularSeosonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueRegularSeosonTableViewController.swift; sourceTree = "<group>"; };
 		FEC2D2861F2B5400006BB8AC /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		FEC2D2871F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesGamesDataService.swift; sourceTree = "<group>"; };
 		FEC2D28B1F2B540E006BB8AC /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -209,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */,
+				FE93A6D81F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -227,9 +224,6 @@
 			children = (
 				FEC2D27C1F2B53F7006BB8AC /* TurkishLeaguePagerViewController.swift */,
 				FEC2D27B1F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift */,
-				FEC2D27E1F2B53F7006BB8AC /* TurkishLeagueRegularSeosonTableViewController.swift */,
-				FEC2D27D1F2B53F7006BB8AC /* TurkishLeaguePOTableViewController.swift */,
-				FEC2D2791F2B53F7006BB8AC /* TurkishLeagueFFTableViewController.swift */,
 				FEC2D27A1F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift */,
 			);
 			path = ViewControllers;
@@ -524,13 +518,11 @@
 				FEC2D2931F2B544D006BB8AC /* TurkishLeagueViewModel.swift in Sources */,
 				FE5C21671F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift in Sources */,
 				A5FF78BE1F0FA74E00F6E9A2 /* AppDelegate.swift in Sources */,
-				FEC2D2841F2B53F7006BB8AC /* TurkishLeagueRegularSeosonTableViewController.swift in Sources */,
 				FEC2D2771F2B53E5006BB8AC /* TurkishLeagueTableViewCell.swift in Sources */,
 				FEC2D2921F2B544D006BB8AC /* AbstractViewModel.swift in Sources */,
 				FEC2D2891F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift in Sources */,
+				FE93A6D91F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift in Sources */,
 				FEC2D2821F2B53F7006BB8AC /* TurkishLeaguePagerViewController.swift in Sources */,
-				FEC2D2831F2B53F7006BB8AC /* TurkishLeaguePOTableViewController.swift in Sources */,
-				FEC2D27F1F2B53F7006BB8AC /* TurkishLeagueFFTableViewController.swift in Sources */,
 				FEC2D2801F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift in Sources */,
 				FE8C60A91F22126700D4EF83 /* RealmDBManager.swift in Sources */,
 				FE5C21691F2F2F6900522D65 /* Team.swift in Sources */,

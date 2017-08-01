@@ -22,30 +22,31 @@ IndicatorInfoProvider {
     fileprivate var indexPath: IndexPath?
     
     private let headerCellColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
-        
-    var pagerDelegate: PagerUpdateDelegate?
+    
     
     fileprivate var firstLoad = true
     
+    var pagerDelegate: PagerUpdateDelegate?
+    
+    var round: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.register(
-//            UINib(nibName: "TurkishLeagueTableCell", bundle: Bundle.main),
-//            forCellReuseIdentifier: "TurkishLeagueCell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = headerCellColor
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = 137
         tableView.separatorColor = headerCellColor
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
+        tableView.backgroundColor = UIColor.clear
    
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.isEnabled = true
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading")
-        tableView.refreshControl?.backgroundColor = UIColor.white
+        tableView.refreshControl?.backgroundColor = headerCellColor
+        tableView.refreshControl?.tintColor = UIColor.white
         tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
     }
     
@@ -70,7 +71,7 @@ IndicatorInfoProvider {
     
     // IndicatorProvider method
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "")
+        return IndicatorInfo(title: round == "FF" ? "F4" : round)
     }
     
     // MARK: - Table view data source
@@ -157,7 +158,7 @@ extension TurkishLeagueMasterTableViewController: PagerUpdateChildData {
     }
     
     func getRound() -> String {
-        return ""
+        return round
     }
     
 }

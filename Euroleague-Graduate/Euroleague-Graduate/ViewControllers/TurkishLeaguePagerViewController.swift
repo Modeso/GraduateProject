@@ -52,33 +52,29 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
         
         self.buttonBarView.collectionViewLayout
             .collectionView?.backgroundColor = barColor
+        
+        self.containerView.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
+        
         self.edgesForExtendedLayout = []
+        
     }
     
     private func createControllers() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if storyboard.instantiateViewController(
-            withIdentifier: "TurkishLeagueMasterTable") is TurkishLeagueMasterTableViewController {
-            if let regularSeasonController = storyboard.instantiateViewController(
-                    withIdentifier: "TurkishLeagueRSController") as? TurkishLeagueRegularSeosonTableViewController,
-                let playOffSeasonController = storyboard.instantiateViewController(
-                    withIdentifier: "TurkishLeaguePOController") as? TurkishLeaguePOTableViewController,
-                let finalFourSeasonController = storyboard.instantiateViewController(
-                    withIdentifier: "TurkishLeagueFFController") as? TurkishLeagueFFTableViewController {
-    
-                myViewControllers.append(regularSeasonController)
-                myViewControllers.append(playOffSeasonController)
-                myViewControllers.append(finalFourSeasonController)
-           }
-    
-        }
-//        myViewControllers.append(TurkishLeagueRegularSeosonTableViewController())
-//        myViewControllers.append(TurkishLeagueFFTableViewController())
-//        myViewControllers.append(TurkishLeaguePOTableViewController())
+        let router = TurkishLeagueGamesRouter()
+        let regularSeasonController = router.createTurkishLeagueTableController(indentifier: "TurkishLeagueMasterTable")
+        let playOffSeasonController = router.createTurkishLeagueTableController(indentifier: "TurkishLeagueMasterTable")
+        let finalFourSeasonController = router.createTurkishLeagueTableController(indentifier: "TurkishLeagueMasterTable")
+        regularSeasonController.round = "RS"
+        playOffSeasonController.round = "PO"
+        finalFourSeasonController.round = "FF"
+        myViewControllers.append(regularSeasonController)
+        myViewControllers.append(playOffSeasonController)
+        myViewControllers.append(finalFourSeasonController)
+        
         for controller in myViewControllers {
             controller.pagerDelegate = self
         }
-
+        
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
