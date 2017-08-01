@@ -22,8 +22,11 @@ class TurkishAirLinesTeamsDataService {
     
     ///Will return the teams data from DataBase
     func getTeamsTable() -> Results<Team>{
-        getTeams()
         return RealmDBManager.sharedInstance.getTeams()
+    }
+    
+    func updateTeams() {
+        getTeams()
     }
 }
 

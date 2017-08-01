@@ -12,8 +12,6 @@ import SWXMLHash
 
 class Team: Object {
     
-    dynamic var seasonCode: String = ""             //why do we need this isn't the data already get using a seasonCode
-    
     dynamic var code: String = ""
     
     dynamic var tvCode: String = ""
@@ -27,8 +25,6 @@ class Team: Object {
     dynamic var logoUrl: String = ""
     
     dynamic var rosterImageUrl: String = ""
-    
-    dynamic var nameSortValue: String = ""          //what is this??????
     
     dynamic var twitterAccount: String = ""
     
@@ -61,9 +57,7 @@ extension Team {
         newTeam.countryName = self.countryName
         newTeam.logoUrl = self.logoUrl
         newTeam.name = self.name
-        newTeam.nameSortValue = self.nameSortValue
         newTeam.rosterImageUrl = self.rosterImageUrl
-        newTeam.seasonCode = self.seasonCode
         newTeam.tvCode = self.tvCode
         newTeam.twitterAccount = self.twitterAccount
         return newTeam

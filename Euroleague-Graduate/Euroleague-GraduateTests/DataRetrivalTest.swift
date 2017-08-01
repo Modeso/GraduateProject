@@ -7,19 +7,23 @@
 //
 
 import XCTest
+import RealmSwift
 @testable import Euroleague_Graduate
 
-class DataRetrivalTest: XCTestCase, GameDataViewModelDelegate {
+class DataRetrivalTest: XCTestCase, GameDataViewModelDelegate, TeamsDataViewModelDelegate {
     
     private var viewModel: TurkishLeagueViewModel?
     
-    private var schedule: Dictionary<String, [Array<GameData>]>?
+    private var schedule: Dictionary<String, [Array<Game>]>?
+    private var teams: Array<Team>?
     
     override func setUp() {
         super.setUp()
         viewModel = TurkishLeagueViewModel()
-        viewModel?.delegate = self
+        viewModel?.gamesDelegate = self
+        viewModel?.teamsDelegate = self
         viewModel?.getData()
+        viewModel?.updateData()
     }
     
     override func tearDown() {
@@ -128,9 +132,35 @@ class DataRetrivalTest: XCTestCase, GameDataViewModelDelegate {
         
     }
     
-    func updateControllersData(_ table: Dictionary<String, [Array<GameData>]>,
+    func testNumberOfTeams() {
+        XCTAssertEqual(teams?.count, 16)
+    }
+    
+    func testFirstAndLastTeams(){
+        XCTAssertEqual(teams?[0].code, "IST")
+        XCTAssertEqual(teams?[(teams?.count)!-1].code, "ZAL")
+        
+    }
+    
+    func testSorted() {
+        var prevName = teams![0].name
+        let last = teams!.count-1
+        for index in 1...last {
+            let curName = teams![index].name
+            if prevName.lowercased() > curName.lowercased() {
+                XCTAssertFalse(true)
+            }
+            prevName = teams![index].name
+        }
+    }
+    
+    func updateControllersData(_ table: Dictionary<String, [Array<Game>]>,
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>) {
         schedule = table
     }
     
+    func updateTeamsData(_ table: Array<Team>) {
+        teams = table
+        viewModel?.updateData()
+    }
 }

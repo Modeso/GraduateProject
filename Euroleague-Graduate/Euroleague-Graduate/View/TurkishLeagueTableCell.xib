@@ -20,7 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TurkishLeagueCell" rowHeight="137" id="Jxg-xF-xhm" customClass="TurkishLeagueTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TurkishLeagueCell" rowHeight="137" id="Jxg-xF-xhm">
             <rect key="frame" x="0.0" y="0.0" width="569" height="146"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jxg-xF-xhm" id="15C-1E-ZeC">
@@ -28,16 +28,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2AH-N6-J2H">
-                        <rect key="frame" x="220.33333333333331" y="27.333333333333329" width="129.33333333333331" height="93"/>
+                        <rect key="frame" x="219.99999999999997" y="27" width="129.33333333333329" height="93"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbG-IM-GNh">
-                                <rect key="frame" x="0.0" y="0.0" width="129.33333333333334" height="61.333333333333343"/>
+                                <rect key="frame" x="0.0" y="0.0" width="129.33333333333331" height="61.333333333333329"/>
                                 <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="35"/>
                                 <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ct-4I-Ohj">
-                                <rect key="frame" x="0.0" y="61.333333333333343" width="129.33333333333334" height="31.666666666666657"/>
+                                <rect key="frame" x="0.0" y="61.333333333333321" width="129.33333333333331" height="31.666666666666679"/>
                                 <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="18"/>
                                 <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -130,12 +130,6 @@
                     <constraint firstItem="2AH-N6-J2H" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8gf-d3-KhM" secondAttribute="trailing" constant="10" id="yxf-NN-ZrW"/>
                 </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="awayImageView" destination="ddm-Ub-WWk" id="NUj-9f-u9t"/>
-                <outlet property="detailLabel" destination="6Ct-4I-Ohj" id="QyA-IG-l5X"/>
-                <outlet property="homeImageView" destination="8gf-d3-KhM" id="yfc-rO-Q5s"/>
-                <outlet property="resultsLabel" destination="GbG-IM-GNh" id="gqW-5o-cMk"/>
-            </connections>
             <point key="canvasLocation" x="-41.5" y="59"/>
         </tableViewCell>
     </objects>

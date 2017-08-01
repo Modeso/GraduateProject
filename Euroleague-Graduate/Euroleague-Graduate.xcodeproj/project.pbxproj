@@ -158,8 +158,8 @@
 		A5FF78BC1F0FA74E00F6E9A2 /* Euroleague-Graduate */ = {
 			isa = PBXGroup;
 			children = (
-				FEC2D2781F2B53F7006BB8AC /* ViewControllers */,
 				FEC2D2731F2B53E5006BB8AC /* View */,
+				FEC2D2781F2B53F7006BB8AC /* ViewControllers */,
 				FEC2D28F1F2B544D006BB8AC /* ViewModels */,
 				FEC2D2851F2B5400006BB8AC /* Services */,
 				FEC2D28A1F2B540E006BB8AC /* Model */,

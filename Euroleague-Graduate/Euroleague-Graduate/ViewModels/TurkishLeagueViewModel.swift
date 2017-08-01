@@ -14,6 +14,10 @@ protocol GameDataViewModelDelegate {
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>)
 }
 
+protocol TeamsDataViewModelDelegate {
+    func updateTeamsData(_ table: Array<Team>)
+}
+
 class TurkishLeagueViewModel {
     
     private let rounds: Array<String> = [
@@ -23,7 +27,8 @@ class TurkishLeagueViewModel {
     fileprivate let gameDataService: TurkishAirLinesGamesDataService
     fileprivate let teamDataService: TurkishAirLinesTeamsDataService
     
-    var delegate: GameDataViewModelDelegate?
+    var gamesDelegate: GameDataViewModelDelegate?
+    var teamsDelegate: TeamsDataViewModelDelegate?
     
     fileprivate var schedule: Results<Game>? {
         didSet {
@@ -31,7 +36,7 @@ class TurkishLeagueViewModel {
                 for round in rounds {
                     makingTableDataOf(round)
                 }
-                delegate?.updateControllersData(table, lastPlayedGames: lastPlayedGame)
+                gamesDelegate?.updateControllersData(table, lastPlayedGames: lastPlayedGame)
             }
         }
     }
@@ -51,6 +56,8 @@ class TurkishLeagueViewModel {
         teamDataService.delegate = self
         gameDataService.delegate = self
         makeTeamsOf(teamDataService.getTeamsTable())
+        schedule = gameDataService.getGamesTable()
+        teamDataService.updateTeams()
     }
     
     func updateData() {
@@ -71,7 +78,6 @@ extension TurkishLeagueViewModel: TurkishAirLinesTeamsDataServiceDelegate {
     
     func updateData(_ table: Results<Team>){
         makeTeamsOf(table)
-        schedule = gameDataService.getGamesTable()
         gameDataService.updateData()
     }
     
@@ -87,23 +93,27 @@ fileprivate extension TurkishLeagueViewModel {
         var gameSection = Array<Game>()
         var prevSectionDate: Date? = nil
         for game in schedule! {
-            let newGame = game.cloneGame()
-            if newGame.round == round {
-                ///newGame.awayUrl = teams[newGame.awayCode]
-                ///newGame.homeUrl = teams[newGame.homeCode]
+            let game = game.cloneGame()
+            if game.round == round {
+                if let homeUrl = teams[game.homeCode]?.logoUrl,
+                    let awayUrl = teams[game.awayCode]?.logoUrl{
+                    game.awayImageUrl = awayUrl
+                    game.homeImageUrl = homeUrl
+                }
+                
                 if prevSectionDate == nil {
-                    prevSectionDate = newGame.date
+                    prevSectionDate = game.date
                     lastPlayedGame[round] = (section, row)
                 }
-                else if prevSectionDate != newGame.date {
+                else if prevSectionDate != game.date {
                     gamesTable.append(gameSection)
                     gameSection.removeAll()
                     section += 1
                     row = 0
-                    prevSectionDate = newGame.date
+                    prevSectionDate = game.date
                 }
-                gameSection.append(newGame)
-                if newGame.played {
+                gameSection.append(game)
+                if game.played {
                     lastPlayedGame[round] = (section, row)
                 }
                 row += 1
@@ -121,6 +131,7 @@ fileprivate extension TurkishLeagueViewModel {
             let club = team.cloneTeam()
             teams[club.code] = club
         }
+        teamsDelegate?.updateTeamsData(Array(table))
     }
     
 }

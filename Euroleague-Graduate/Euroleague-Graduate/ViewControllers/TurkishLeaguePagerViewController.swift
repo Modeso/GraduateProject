@@ -23,7 +23,7 @@ protocol PagerUpdateDelegate {
 
 class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
     
-    fileprivate var myViewControllers: Array<UITableViewController> = []
+    fileprivate var myViewControllers: Array<TurkishLeagueMasterTableViewController> = []
     
     fileprivate let viewModel = TurkishLeagueViewModel()
     
@@ -32,13 +32,6 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
     fileprivate var refreshing = true
     
     override func viewDidLoad() {
-        navigationController?.navigationBar.barTintColor = barColor
-        navigationController?.navigationBar.isTranslucent = false
-        let navImage = UIImage(named: "navbar-turkishairlines")
-        let navImageView = UIImageView(image: navImage)
-        navImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = navImageView
-        
         settings.style.buttonBarItemBackgroundColor = barColor
         settings.style.selectedBarBackgroundColor = UIColor.white
         settings.style.buttonBarItemFont = UIFont(name: "CoText-Regular", size: 13.0)!
@@ -48,24 +41,49 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.barTintColor = barColor
+        navigationController?.navigationBar.isTranslucent = false
+        let navImage = UIImage(named: "navbar-turkishairlines")
+        let navImageView = UIImageView(image: navImage)
+        navImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = navImageView
+        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
         self.buttonBarView.collectionViewLayout
             .collectionView?.backgroundColor = barColor
         self.edgesForExtendedLayout = []
     }
     
     private func createControllers() {
-        myViewControllers.append(TurkishLeagueRegularSeosonTableViewController())
-        myViewControllers.append(TurkishLeaguePOTableViewController())
-        myViewControllers.append(TurkishLeagueFFTableViewController())
-        for controller in myViewControllers {
-            let newController = controller as? TurkishLeagueMasterTableViewController
-            newController?.pagerDelegate = self
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if storyboard.instantiateViewController(
+            withIdentifier: "TurkishLeagueMasterTable") is TurkishLeagueMasterTableViewController {
+            if let regularSeasonController = storyboard.instantiateViewController(
+                    withIdentifier: "TurkishLeagueRSController") as? TurkishLeagueRegularSeosonTableViewController,
+                let playOffSeasonController = storyboard.instantiateViewController(
+                    withIdentifier: "TurkishLeaguePOController") as? TurkishLeaguePOTableViewController,
+                let finalFourSeasonController = storyboard.instantiateViewController(
+                    withIdentifier: "TurkishLeagueFFController") as? TurkishLeagueFFTableViewController {
+    
+                myViewControllers.append(regularSeasonController)
+                myViewControllers.append(playOffSeasonController)
+                myViewControllers.append(finalFourSeasonController)
+           }
+    
         }
+//        myViewControllers.append(TurkishLeagueRegularSeosonTableViewController())
+//        myViewControllers.append(TurkishLeagueFFTableViewController())
+//        myViewControllers.append(TurkishLeaguePOTableViewController())
+        for controller in myViewControllers {
+            controller.pagerDelegate = self
+        }
+
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         createControllers()
-        viewModel.delegate = self
+        viewModel.gamesDelegate = self
         viewModel.getData()
         refreshing = true
         return myViewControllers
@@ -88,10 +106,9 @@ extension TurkishLeaguePagerViewController: GameDataViewModelDelegate {
     func updateControllersData(_ table: Dictionary<String, [Array<Game>]>,
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>) {
         for controller in myViewControllers {
-            if let newController = controller as? PagerUpdateChildData,
-                let lastGameIndex =  lastPlayedGames[newController.getRound()],
-                let schedule = table[newController.getRound()] {
-                newController.updateUIWithData(
+            if let lastGameIndex =  lastPlayedGames[controller.getRound()],
+                let schedule = table[controller.getRound()] {
+                controller.updateUIWithData(
                     schedule,
                     lastGameIndex: lastGameIndex)
             }

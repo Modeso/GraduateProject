@@ -88,16 +88,10 @@ fileprivate extension TurkishAirLinesGamesDataService {
     func parseSchedule(_ xmlData: Data){
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["schedule"]["item"].all {
-            do{
-                var game = Game()
-                game = try game.parseGameData(elem)
-                RealmDBManager.sharedInstance.addGameDataToRealm(game: game)
-                games[game.gameNumber] = game
-            }
-            catch {
-                print("error in parsing the schedule!!")
-                print(error)
-            }
+            let game = Game()
+            game.parseGameData(elem)
+            RealmDBManager.sharedInstance.addGameDataToRealm(game: game)
+            games[game.gameNumber] = game
         }
     }
     

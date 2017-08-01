@@ -29,12 +29,9 @@ IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(
-            UINib(nibName: "TurkishLeagueTableCell", bundle: Bundle.main),
-            forCellReuseIdentifier: "TurkishLeagueCell")
-        tableView.register(
-            UINib(nibName: "TurkishLeagueTableHeaderCell",bundle: Bundle.main),
-            forHeaderFooterViewReuseIdentifier: "TurkishLeagueHeaderCell")
+//        tableView.register(
+//            UINib(nibName: "TurkishLeagueTableCell", bundle: Bundle.main),
+//            forCellReuseIdentifier: "TurkishLeagueCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = headerCellColor
@@ -65,7 +62,7 @@ IndicatorInfoProvider {
         if firstLoad {
             tableView.reloadData()
             firstLoad = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: { [weak self] in
                 self?.moveToLastPlayed()
             })
         }
@@ -147,8 +144,14 @@ extension TurkishLeagueMasterTableViewController: PagerUpdateChildData {
     func updateUIWithData(_ table: [Array<Game>], lastGameIndex: (section: Int, row: Int)) {
         schedule = table
         let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
-        self.indexPath = indexPath
         if !firstLoad {
+            if lastGameIndex.section != self.indexPath?.section , lastGameIndex.row != self.indexPath?.row {
+                self.indexPath = indexPath
+                moveToLastPlayed()
+            }
+        }
+        else {
+            self.indexPath = indexPath
             moveToLastPlayed()
         }
     }

@@ -38,8 +38,8 @@ class TurkishLeagueTableViewCell: UITableViewCell {
         guard let game = self.game
             else { return }
         addSeparatorLineToTop()
-        homeImageView?.sd_setImage(with: URL(string:""), placeholderImage: UIImage(named: "emptyImage"))
-        awayImageView?.sd_setImage(with: URL(string:""), placeholderImage: UIImage(named: "emptyImage"))
+        homeImageView?.sd_setImage(with: URL(string:game.homeImageUrl), placeholderImage: UIImage(named: "emptyImage"))
+        awayImageView?.sd_setImage(with: URL(string:game.awayImageUrl), placeholderImage: UIImage(named: "emptyImage"))
         if game.played {
             resultsLabel?.text = "\(game.homeScore) : \(game.awayScore)"
             detailLabel?.text = "\(game.homeTv)        \(game.awayTv)"
