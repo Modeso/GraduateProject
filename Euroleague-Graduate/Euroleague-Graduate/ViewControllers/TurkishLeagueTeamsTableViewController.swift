@@ -30,7 +30,8 @@ class TurkishLeagueTeamsTableViewController: UIViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
+        tableView.backgroundColor = UIColor.clear
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
         
         navigationController?.navigationBar.barTintColor = Colors.TurkishLeagueBarColor
         navigationController?.navigationBar.isTranslucent = false

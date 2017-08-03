@@ -18,4 +18,13 @@ class TurkishLeagueGamesRouter {
             else { return TurkishLeagueMasterTableViewController() }
         return tableController
     }
+    
+    func createTurkishLeagueRosterTableController () -> RostersTableViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let tableController = storyboard.instantiateViewController(
+            withIdentifier: "RostersTable") as? RostersTableViewController
+            else { return RostersTableViewController() }
+        return tableController
+    }
+    
 }

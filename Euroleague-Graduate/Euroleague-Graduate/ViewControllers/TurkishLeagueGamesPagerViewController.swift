@@ -21,7 +21,7 @@ protocol PagerUpdateDelegate {
     func isRefreshing() -> Bool
 }
 
-class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
+class TurkishLeagueGamesPagerViewController: ButtonBarPagerTabStripViewController {
     
     fileprivate var myViewControllers: Array<TurkishLeagueMasterTableViewController> = []
     
@@ -51,7 +51,7 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
         self.buttonBarView.collectionViewLayout
             .collectionView?.backgroundColor = Colors.TurkishLeagueBarColor
         
-        self.containerView.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
         
         self.edgesForExtendedLayout = []
         
@@ -95,7 +95,7 @@ extension UIViewController {
     }
 }
 
-extension TurkishLeaguePagerViewController: GameDataViewModelDelegate {
+extension TurkishLeagueGamesPagerViewController: GameDataViewModelDelegate {
     
     func updateControllersData(_ table: Dictionary<String, [Array<Game>]>,
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>) {
@@ -113,7 +113,7 @@ extension TurkishLeaguePagerViewController: GameDataViewModelDelegate {
     
 }
 
-extension TurkishLeaguePagerViewController: PagerUpdateDelegate {
+extension TurkishLeagueGamesPagerViewController: PagerUpdateDelegate {
     
     func getUpdatedData() {
         refreshing = true
