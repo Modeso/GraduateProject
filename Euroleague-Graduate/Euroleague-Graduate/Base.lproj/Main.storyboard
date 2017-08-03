@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1366" y="-281"/>
+            <point key="canvasLocation" x="723" y="-281"/>
         </scene>
         <!--Turkish League Master Table View Controller-->
         <scene sceneID="3Hb-SA-bJ1">
@@ -77,15 +77,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GamesTableCell" rowHeight="201" id="Wyi-Ue-eHZ" customClass="GamesTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="201"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GamesTableCell" rowHeight="113" id="Wyi-Ue-eHZ" customClass="GamesTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="113"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wyi-Ue-eHZ" id="r6o-H4-vwl">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="200.66666666666666"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="112.66666666666667"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HSH-Ap-H1l">
-                                            <rect key="frame" x="11" y="60" width="80" height="80"/>
+                                            <rect key="frame" x="11" y="13.666666666666671" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="80" id="8yk-AF-n0q">
                                                     <variation key="heightClass=regular-widthClass=regular" constant="120"/>
@@ -96,10 +96,10 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Cp-23-fsD">
-                                            <rect key="frame" x="151.66666666666669" y="58.333333333333343" width="111.00000000000006" height="84.333333333333314"/>
+                                            <rect key="frame" x="152" y="13.666666666666671" width="111" height="80"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-Oa-FAv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="111.00000000000003" height="52.666666666666664"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-Oa-FAv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="48.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="30"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -108,7 +108,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x74-aF-vYa">
-                                                    <rect key="frame" x="0.0" y="52.666666666666671" width="111.00000000000003" height="31.666666666666657"/>
+                                                    <rect key="frame" x="0.0" y="48.333333333333321" width="111" height="31.666666666666679"/>
                                                     <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="18"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -119,7 +119,7 @@
                                             </subviews>
                                         </stackView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="83u-yV-Sya">
-                                            <rect key="frame" x="323" y="60" width="80" height="80"/>
+                                            <rect key="frame" x="323" y="13.666666666666671" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="EFt-rH-LPf">
                                                     <variation key="heightClass=regular-widthClass=regular" constant="120"/>
@@ -131,14 +131,15 @@
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="HSH-Ap-H1l" firstAttribute="centerY" secondItem="r6o-H4-vwl" secondAttribute="centerY" id="IS3-Yx-kxe"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="8Cp-23-fsD" secondAttribute="bottom" constant="5" id="24Q-Kh-OOL"/>
+                                        <constraint firstItem="HSH-Ap-H1l" firstAttribute="top" secondItem="r6o-H4-vwl" secondAttribute="topMargin" constant="5" id="9Mb-wG-ddi"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="HSH-Ap-H1l" secondAttribute="bottom" constant="5" id="AHM-PJ-GRc"/>
+                                        <constraint firstItem="8Cp-23-fsD" firstAttribute="top" secondItem="r6o-H4-vwl" secondAttribute="topMargin" constant="5" id="Gk9-Mw-Shr"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="83u-yV-Sya" secondAttribute="bottom" constant="5" id="IJ9-QS-gWt"/>
+                                        <constraint firstItem="83u-yV-Sya" firstAttribute="top" secondItem="r6o-H4-vwl" secondAttribute="topMargin" constant="5" id="J1x-n3-F18"/>
                                         <constraint firstItem="HSH-Ap-H1l" firstAttribute="leading" secondItem="r6o-H4-vwl" secondAttribute="leadingMargin" constant="3" id="RIi-Pf-gcC"/>
-                                        <constraint firstItem="8Cp-23-fsD" firstAttribute="centerX" secondItem="r6o-H4-vwl" secondAttribute="centerX" id="Ryk-ED-cyW"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="83u-yV-Sya" secondAttribute="trailing" constant="3" id="TBd-Dl-a71"/>
-                                        <constraint firstItem="83u-yV-Sya" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Cp-23-fsD" secondAttribute="trailing" id="baG-Jy-FSa"/>
-                                        <constraint firstItem="83u-yV-Sya" firstAttribute="centerY" secondItem="r6o-H4-vwl" secondAttribute="centerY" id="d97-mY-mbA"/>
-                                        <constraint firstItem="8Cp-23-fsD" firstAttribute="centerY" secondItem="r6o-H4-vwl" secondAttribute="centerY" id="jlF-dj-za4"/>
-                                        <constraint firstItem="8Cp-23-fsD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HSH-Ap-H1l" secondAttribute="trailing" id="s14-NN-FbV"/>
+                                        <constraint firstItem="gWQ-Oa-FAv" firstAttribute="centerX" secondItem="r6o-H4-vwl" secondAttribute="centerX" id="a5y-WU-TVp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -149,7 +150,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SectionHeader" rowHeight="120" id="CMi-Xs-530">
-                                <rect key="frame" x="0.0" y="229" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="141" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMi-Xs-530" id="gaa-FT-ZSa">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="119.66666666666667"/>
@@ -183,7 +184,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZp-Ih-EXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1366" y="-1021"/>
+            <point key="canvasLocation" x="723" y="-1122"/>
         </scene>
         <!--Game Detail Screen-->
         <scene sceneID="DWL-nY-EP0">
@@ -202,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2O-ap-sSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359" y="-281"/>
+            <point key="canvasLocation" x="1381" y="-281"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qoj-cs-Taf">
@@ -220,7 +221,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUt-Xt-sjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-742" y="123"/>
+            <point key="canvasLocation" x="-432" y="123"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="m7D-fK-NqZ">
@@ -402,7 +403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjJ-ex-RHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1360.8695652173915" y="431.25000000000006"/>
+            <point key="canvasLocation" x="723" y="540"/>
         </scene>
         <!--Turkish League Team Data View Controller-->
         <scene sceneID="TOd-vw-rsK">
@@ -420,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijw-qv-g3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2358" y="431"/>
+            <point key="canvasLocation" x="1381" y="540"/>
         </scene>
     </scenes>
 </document>

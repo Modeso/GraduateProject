@@ -31,8 +31,8 @@ IndicatorInfoProvider {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 150
-        tableView.rowHeight = 137
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = Colors.TurkishLeagueBackGroundColor
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.layoutMargins = UIEdgeInsets.zero
@@ -124,7 +124,6 @@ extension TurkishLeagueMasterTableViewController {
     func moveToLastPlayed() {
         guard let index = indexPath
             else { return }
-        tableView.reloadRows(at: [index], with: .none)
         tableView.scrollToRow(at: index, at: .top, animated: true)
     }
     
