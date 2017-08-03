@@ -19,12 +19,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         let config = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             migrationBlock: { (migration, oldVersion) in
                 migration.enumerateObjects(ofType: Game.className()) { (oldObject, newObject) in
                     if oldVersion < 1 {
                         newObject!["awayCode"] = ""
                         newObject!["homeCode"] = ""
+                    }
+                }
+                
+                migration.enumerateObjects(ofType: Team.className()) { (oldObject, newObject) in
+                    if oldVersion < 2 {
+                        newObject!["coachName"] = ""
+                        newObject!["coachCountry"] = ""
+                        newObject!["rosters"] = List<Player>()
                     }
                 }
         })

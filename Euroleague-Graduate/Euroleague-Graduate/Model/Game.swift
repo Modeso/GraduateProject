@@ -54,7 +54,7 @@ extension Game {
         }
     }
     
-    func cloneGame() -> Game {
+    func clone() -> Game {
         let newGame = Game()
         newGame.awayScore = self.awayScore
         newGame.awayTv = self.awayTv

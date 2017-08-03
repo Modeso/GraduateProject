@@ -14,11 +14,7 @@ protocol GameDataViewModelDelegate {
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>)
 }
 
-protocol TeamsDataViewModelDelegate {
-    func updateTeamsData(_ table: Array<Team>)
-}
-
-class TurkishLeagueViewModel {
+class TurkishLeagueGamesViewModel {
     
     private let rounds: Array<String> = [
         "RS", "PO", "FF"
@@ -28,7 +24,6 @@ class TurkishLeagueViewModel {
     fileprivate let teamDataService: TurkishAirLinesTeamsDataService
     
     var gamesDelegate: GameDataViewModelDelegate?
-    var teamsDelegate: TeamsDataViewModelDelegate?
     
     fileprivate var schedule: Results<Game>? {
         didSet {
@@ -50,11 +45,11 @@ class TurkishLeagueViewModel {
     init() {
         gameDataService = TurkishAirLinesGamesDataService()
         teamDataService = TurkishAirLinesTeamsDataService()
-    }
-    
-    func getData(){
         teamDataService.delegate = self
         gameDataService.delegate = self
+    }
+    
+    func getGamesData(){
         makeTeamsOf(teamDataService.getTeamsTable())
         schedule = gameDataService.getGamesTable()
         teamDataService.updateTeams()
@@ -66,7 +61,7 @@ class TurkishLeagueViewModel {
     
 }
 
-extension TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
+extension TurkishLeagueGamesViewModel: TurkishAirLinesGamesDataServiceDelegate {
     
     func updateData(_ table: Results<Game>){
         schedule = table
@@ -74,7 +69,7 @@ extension TurkishLeagueViewModel: TurkishAirLinesGamesDataServiceDelegate {
     
 }
 
-extension TurkishLeagueViewModel: TurkishAirLinesTeamsDataServiceDelegate {
+extension TurkishLeagueGamesViewModel: TurkishAirLinesTeamsDataServiceDelegate {
     
     func updateData(_ table: Results<Team>){
         makeTeamsOf(table)
@@ -83,7 +78,7 @@ extension TurkishLeagueViewModel: TurkishAirLinesTeamsDataServiceDelegate {
     
 }
 
-fileprivate extension TurkishLeagueViewModel {
+fileprivate extension TurkishLeagueGamesViewModel {
     
     //For games
     func makingTableDataOf(_ round: String) {
@@ -93,7 +88,7 @@ fileprivate extension TurkishLeagueViewModel {
         var gameSection = Array<Game>()
         var prevSectionDate: Date? = nil
         for game in schedule! {
-            let game = game.cloneGame()
+            let game = game.clone()
             if game.round == round {
                 if let homeUrl = teams[game.homeCode]?.logoUrl,
                     let awayUrl = teams[game.awayCode]?.logoUrl{
@@ -128,10 +123,9 @@ fileprivate extension TurkishLeagueViewModel {
     //For Teams
     func makeTeamsOf(_ table: Results<Team>) {
         for team in table {
-            let club = team.cloneTeam()
+            let club = team.clone()
             teams[club.code] = club
         }
-        teamsDelegate?.updateTeamsData(Array(table))
     }
     
 }

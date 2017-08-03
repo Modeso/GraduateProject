@@ -11,7 +11,7 @@ import UIKit
 
 class TurkishLeagueGamesRouter {
     
-    func createTurkishLeagueTableController (indentifier: String) -> TurkishLeagueMasterTableViewController {
+    func createTurkishLeagueGameTableController () -> TurkishLeagueMasterTableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let tableController = storyboard.instantiateViewController(
             withIdentifier: "TurkishLeagueMasterTable") as? TurkishLeagueMasterTableViewController

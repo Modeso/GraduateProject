@@ -25,14 +25,12 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
     
     fileprivate var myViewControllers: Array<TurkishLeagueMasterTableViewController> = []
     
-    fileprivate let viewModel = TurkishLeagueViewModel()
-    
-    private let barColor = UIColor(red: 255.0/255, green: 88.0/255, blue: 4.0/255, alpha: 1)
+    fileprivate let viewModel = TurkishLeagueGamesViewModel()
     
     fileprivate var refreshing = true
     
     override func viewDidLoad() {
-        settings.style.buttonBarItemBackgroundColor = barColor
+        settings.style.buttonBarItemBackgroundColor = Colors.TurkishLeagueBarColor
         settings.style.selectedBarBackgroundColor = UIColor.white
         settings.style.buttonBarItemFont = UIFont(name: "CoText-Regular", size: 13.0)!
         settings.style.selectedBarHeight = 5.0
@@ -42,7 +40,7 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
         
         super.viewDidLoad()
         
-        navigationController?.navigationBar.barTintColor = barColor
+        navigationController?.navigationBar.barTintColor = Colors.TurkishLeagueBarColor
         navigationController?.navigationBar.isTranslucent = false
         let navImage = UIImage(named: "navbar-turkishairlines")
         let navImageView = UIImageView(image: navImage)
@@ -51,7 +49,7 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
         navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
         self.buttonBarView.collectionViewLayout
-            .collectionView?.backgroundColor = barColor
+            .collectionView?.backgroundColor = Colors.TurkishLeagueBarColor
         
         self.containerView.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
         
@@ -61,9 +59,9 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
     
     private func createControllers() {
         let router = TurkishLeagueGamesRouter()
-        let regularSeasonController = router.createTurkishLeagueTableController(indentifier: "TurkishLeagueMasterTable")
-        let playOffSeasonController = router.createTurkishLeagueTableController(indentifier: "TurkishLeagueMasterTable")
-        let finalFourSeasonController = router.createTurkishLeagueTableController(indentifier: "TurkishLeagueMasterTable")
+        let regularSeasonController = router.createTurkishLeagueGameTableController()
+        let playOffSeasonController = router.createTurkishLeagueGameTableController()
+        let finalFourSeasonController = router.createTurkishLeagueGameTableController()
         regularSeasonController.round = "RS"
         playOffSeasonController.round = "PO"
         finalFourSeasonController.round = "FF"
@@ -80,7 +78,7 @@ class TurkishLeaguePagerViewController: ButtonBarPagerTabStripViewController {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         createControllers()
         viewModel.gamesDelegate = self
-        viewModel.getData()
+        viewModel.getGamesData()
         refreshing = true
         return myViewControllers
     }

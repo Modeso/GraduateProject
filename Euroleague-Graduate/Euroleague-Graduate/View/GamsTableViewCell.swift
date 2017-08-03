@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import  SDWebImage
+import SDWebImage
 
-class TurkishLeagueTableViewCell: UITableViewCell {
+class GamesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var homeImageView: UIImageView!
     
@@ -24,7 +24,7 @@ class TurkishLeagueTableViewCell: UITableViewCell {
             updateUI()
         }
     }
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
     }

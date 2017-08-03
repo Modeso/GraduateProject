@@ -21,9 +21,6 @@ IndicatorInfoProvider {
     
     fileprivate var indexPath: IndexPath?
     
-    private let headerCellColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
-    
-    
     fileprivate var firstLoad = true
     
     var pagerDelegate: PagerUpdateDelegate?
@@ -36,7 +33,7 @@ IndicatorInfoProvider {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = 137
-        tableView.separatorColor = headerCellColor
+        tableView.separatorColor = Colors.TurkishLeagueBackGroundColor
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
@@ -45,7 +42,7 @@ IndicatorInfoProvider {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.isEnabled = true
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading")
-        tableView.refreshControl?.backgroundColor = headerCellColor
+        tableView.refreshControl?.backgroundColor = Colors.TurkishLeagueBackGroundColor
         tableView.refreshControl?.tintColor = UIColor.white
         tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
     }
@@ -86,28 +83,21 @@ IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TurkishLeagueCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GamesTableCell", for: indexPath)
         let game = schedule?[indexPath.section][indexPath.row]
-        if let leagueCell = cell as? TurkishLeagueTableViewCell {
+        if let leagueCell = cell as? GamesTableViewCell {
             leagueCell.game = game
-            if (leagueCell.homeImageView.image?.size.width)! == CGFloat(140.0) {
-                tableView.rowHeight = 150
-            }
         }
         cell.layoutMargins = UIEdgeInsets.zero
         return cell
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = headerCellColor
-        let label = UILabel()
-        label.text = Date().convertDateToString((schedule?[section][0].date)!)
-        label.textColor = UIColor.white
-        label.font = UIFont(name: "CoText-Regular", size: 12)
-        label.frame = CGRect(x: 10, y: 7, width: 100, height: 18)
-        view.addSubview(label)
-        return view
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "SectionHeader")
+        if let label = headerCell?.viewWithTag(123) as? UILabel {
+            label.text = Date().convertDateToString((schedule?[section][0].date)!)
+        }
+        return headerCell
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -126,7 +116,7 @@ IndicatorInfoProvider {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         tableView.reloadData()
     }
-
+    
 }
 
 extension TurkishLeagueMasterTableViewController {
