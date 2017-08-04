@@ -37,7 +37,7 @@ class GamesTableViewCell: UITableViewCell {
     private func updateUI() {
         guard let game = self.game
             else { return }
-        addSeparatorLineToTop()
+     //   addSeparatorLineToTop()
         homeImageView?.sd_setImage(with: URL(string:game.homeImageUrl), placeholderImage: UIImage(named: "emptyImage"))
         awayImageView?.sd_setImage(with: URL(string:game.awayImageUrl), placeholderImage: UIImage(named: "emptyImage"))
         if game.played {

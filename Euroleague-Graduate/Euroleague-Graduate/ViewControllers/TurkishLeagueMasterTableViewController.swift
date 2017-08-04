@@ -29,19 +29,13 @@ IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.separatorColor = Colors.TurkishLeagueBackGroundColor
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        tableView.layoutMargins = UIEdgeInsets.zero
-        tableView.separatorInset = UIEdgeInsets.zero
         tableView.backgroundColor = UIColor.clear
    
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.isEnabled = true
-        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading")
+//        tableView.refreshControl = UIRefreshControl()
+//        tableView.refreshControl?.isEnabled = true
+//        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading")
         tableView.refreshControl?.backgroundColor = Colors.TurkishLeagueBackGroundColor
         tableView.refreshControl?.tintColor = UIColor.white
         tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)

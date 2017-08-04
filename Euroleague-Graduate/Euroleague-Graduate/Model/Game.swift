@@ -12,6 +12,7 @@ import SWXMLHash
 
 class Game: Object{
     
+    //V0
     dynamic var round: String = ""
     dynamic var date: Date = Date()
     dynamic var time: String = ""
@@ -21,6 +22,8 @@ class Game: Object{
     dynamic var awayTv: String = ""
     dynamic var awayScore: Int = 0
     dynamic var played: Bool = false
+    
+    //V1
     dynamic var awayCode: String = ""
     dynamic var homeCode: String = ""
     dynamic var awayImageUrl: String = ""

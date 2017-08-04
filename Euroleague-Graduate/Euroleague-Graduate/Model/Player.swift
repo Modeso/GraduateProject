@@ -11,16 +11,12 @@ import RealmSwift
 
 class Player: Object {
     
+    //V2
     dynamic var code: String = ""
-    
     dynamic var name: String = ""
-    
     dynamic var dorsal:Int = 0
-    
     dynamic var position: String = ""
-    
     dynamic var countryName: String = ""
-    
     dynamic var imageUrl: String = ""
     
     override static func primaryKey() -> String? {

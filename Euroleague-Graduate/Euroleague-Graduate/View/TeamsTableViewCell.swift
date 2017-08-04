@@ -32,7 +32,7 @@ fileprivate extension TeamsTableViewCell {
     func updateUI() {
         guard let team = self.team
             else { return }
-        addSeparatorLineToTop()
+  //      addSeparatorLineToTop()
         teamNameLabel?.text = team.name
         tvCodeLabel?.text = team.tvCode
         countryNameLabel?.text = team.countryName

@@ -37,6 +37,7 @@ class TurkishLeagueGamesPagerViewController: ButtonBarPagerTabStripViewControlle
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        self.edgesForExtendedLayout = []
         
         super.viewDidLoad()
         
@@ -52,9 +53,6 @@ class TurkishLeagueGamesPagerViewController: ButtonBarPagerTabStripViewControlle
             .collectionView?.backgroundColor = Colors.TurkishLeagueBarColor
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
-        
-        self.edgesForExtendedLayout = []
-        
     }
     
     private func createControllers() {

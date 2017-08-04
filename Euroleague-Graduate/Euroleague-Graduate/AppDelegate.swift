@@ -19,22 +19,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         let config = Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 4,
             migrationBlock: { (migration, oldVersion) in
-                migration.enumerateObjects(ofType: Game.className()) { (oldObject, newObject) in
-                    if oldVersion < 1 {
-                        newObject!["awayCode"] = ""
-                        newObject!["homeCode"] = ""
+                if oldVersion < 1 {
+                    migration.enumerateObjects(ofType: Game.className()) { (oldObject, newObject) in
+                            newObject!["awayCode"] = ""
+                            newObject!["homeCode"] = ""
                     }
                 }
                 
-                migration.enumerateObjects(ofType: Team.className()) { (oldObject, newObject) in
-                    if oldVersion < 2 {
+                if oldVersion < 2 {
+                    migration.enumerateObjects(ofType: Team.className()) { (oldObject, newObject) in
                         newObject!["coachName"] = ""
                         newObject!["coachCountry"] = ""
                         newObject!["rosters"] = List<Player>()
                     }
                 }
+                
+                if oldVersion < 3 {
+                    migration.enumerateObjects(ofType: Team.className()) { (oldObject, newObject) in
+                        migration.enumerateObjects(ofType: Player.className()) { (oldObject, newObject) in
+                            newObject!["primaryKeyProperty"] = "name"
+                        }
+                        let coach = Player()
+                        coach.name = oldObject!["coachName"] as! String
+                        coach.countryName = oldObject!["coachCountry"] as! String
+                        newObject!["coach"] = coach
+                    }
+                }
+                
+                if oldVersion < 4 {
+                    migration.enumerateObjects(ofType: Player.className()){ (oldObject, newObject) in
+                        newObject!["primaryKeyProperty"] = "code"
+                        
+                    }
+                }
+                
+                
+                
         })
         Realm.Configuration.defaultConfiguration = config
         return true

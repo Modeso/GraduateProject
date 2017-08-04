@@ -14,7 +14,7 @@ class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController 
 
     fileprivate var myViewControllers: Array<UIViewController> = []
     
-    var team: Team?
+    var team = Team()
     
     @IBOutlet weak var teamImageView: UIImageView!
     
@@ -63,7 +63,6 @@ class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController 
 fileprivate extension TurkishLeagueTeamDataViewController {
     
     func updateUI() {
-        guard let team = self.team else { return }
         teamNameLabel.text = team.name
         tvCodeLabel.text = team.tvCode
         countryLabel.text = team.countryName
@@ -73,6 +72,8 @@ fileprivate extension TurkishLeagueTeamDataViewController {
     func createControllers() {
         let router = TurkishLeagueGamesRouter()
         let roster = router.createTurkishLeagueRosterTableController()
+        roster.coach = team.coach!
+        roster.players = team.rosters
         myViewControllers.append(roster)
     }
 }

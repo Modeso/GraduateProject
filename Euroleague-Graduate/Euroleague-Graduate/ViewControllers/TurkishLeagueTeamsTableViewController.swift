@@ -26,8 +26,6 @@ class TurkishLeagueTeamsTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor.clear
@@ -50,7 +48,11 @@ class TurkishLeagueTeamsTableViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        ///Add the selected team to the destination view
+        if segue.identifier == "ShowTeam" {
+            if let destination = segue.destination as? TurkishLeagueTeamDataViewController {
+                destination.team = selectedTeam!
+            }
+        }
     }
     
 
@@ -91,7 +93,6 @@ extension TurkishLeagueTeamsTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return teams[section].count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TeamsTableCell") {

@@ -12,27 +12,24 @@ import SWXMLHash
 
 class Team: Object {
     
+    //V1
     dynamic var code: String = ""
     
     dynamic var tvCode: String = ""
-    
     dynamic var name: String = ""
-    
     dynamic var countryName: String = ""
-    
     dynamic var countryCode: String = ""
-    
     dynamic var logoUrl: String = ""
-    
     dynamic var rosterImageUrl: String = ""
-    
     dynamic var twitterAccount: String = ""
     
-    dynamic var coachName: String = ""
-    
-    dynamic var coachCountry: String = ""
-    
+    //V2
+//    dynamic var coachName: String = ""
+//    dynamic var coachCountry: String = ""
     var rosters = List<Player>()
+    
+    //V3
+    dynamic var coach: Player?
     
     override static func primaryKey() -> String? {
         return "code"
@@ -52,8 +49,11 @@ extension Team {
             self.logoUrl = try node["imageurl"].value()
             self.rosterImageUrl = try node["rosterimageurl"].value()
             self.twitterAccount = try node["twitteraccount"].value()
-            self.coachName = try node["coach"].value(ofAttribute: "name")
-            self.coachCountry = try node["coach"].value(ofAttribute: "countryname")
+            self.coach = Player()
+            self.coach?.name = try node["coach"].value(ofAttribute: "name")
+            self.coach?.countryName = try node["coach"].value(ofAttribute: "countryname")
+            self.coach?.code = try node["coach"].value(ofAttribute: "code")
+            self.coach?.position = "Coach"
             for elem in node["roster"]["player"].all {
                 let player = Player()
                 player.name = try elem.value(ofAttribute: "name")
@@ -77,8 +77,7 @@ extension Team {
         newTeam.rosterImageUrl = self.rosterImageUrl
         newTeam.tvCode = self.tvCode
         newTeam.twitterAccount = self.twitterAccount
-        newTeam.coachName = self.coachName
-        newTeam.coachCountry = self.coachCountry
+        newTeam.coach = self.coach
         newTeam.rosters = self.rosters
         return newTeam
     }
