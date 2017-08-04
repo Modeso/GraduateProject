@@ -30,28 +30,16 @@ class TurkishLeagueGamesPagerViewController: ButtonBarPagerTabStripViewControlle
     fileprivate var refreshing = true
     
     override func viewDidLoad() {
-        settings.style.buttonBarItemBackgroundColor = Colors.TurkishLeagueBarColor
+        settings.style.buttonBarItemBackgroundColor = UIColor.getTurkishLeagueBarColor()
         settings.style.selectedBarBackgroundColor = UIColor.white
         settings.style.buttonBarItemFont = UIFont(name: "CoText-Regular", size: 13.0)!
         settings.style.selectedBarHeight = 5.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        self.edgesForExtendedLayout = []
         
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.barTintColor = Colors.TurkishLeagueBarColor
-        navigationController?.navigationBar.isTranslucent = false
-        let navImage = UIImage(named: "navbar-turkishairlines")
-        let navImageView = UIImageView(image: navImage)
-        navImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = navImageView
-        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        
-        self.buttonBarView.collectionViewLayout
-            .collectionView?.backgroundColor = Colors.TurkishLeagueBarColor
-        
+        self.edgesForExtendedLayout = []
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
     }
     

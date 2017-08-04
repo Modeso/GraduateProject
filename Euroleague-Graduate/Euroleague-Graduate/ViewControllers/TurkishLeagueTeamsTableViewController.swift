@@ -31,14 +31,6 @@ class TurkishLeagueTeamsTableViewController: UIViewController {
         tableView.backgroundColor = UIColor.clear
         view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
         
-        navigationController?.navigationBar.barTintColor = Colors.TurkishLeagueBarColor
-        navigationController?.navigationBar.isTranslucent = false
-        let navImage = UIImage(named: "navbar-turkishairlines")
-        let navImageView = UIImageView(image: navImage)
-        navImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = navImageView
-        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        
         teamViewModel.teamsDelegate = self
         teamViewModel.getTeamsData()
     }
@@ -102,7 +94,7 @@ extension TurkishLeagueTeamsTableViewController: UITableViewDataSource {
                     teamsCell.separator.backgroundColor = UIColor.white
                 }
                 else {
-                    teamsCell.separator.backgroundColor = Colors.TurkishLeagueBackGroundColor
+                    teamsCell.separator.backgroundColor = UIColor.getTurkishLeagueBackGroundColor()
                 }
             }
             return cell

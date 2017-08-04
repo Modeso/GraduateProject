@@ -228,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="2061" y="-210"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Euro League Navigation Controller-->
         <scene sceneID="qoj-cs-Taf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9kl-U1-8rQ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9kl-U1-8rQ" customClass="EuroLeagueNavigationController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9ws-5O-JT4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -599,15 +599,15 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TeamsTableCell" rowHeight="137" id="tqu-xJ-0i6" customClass="TeamsTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="80" width="414" height="137"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayersTableCell" rowHeight="127" id="tqu-xJ-0i6" customClass="PlayersTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="80" width="414" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tqu-xJ-0i6" id="TTd-LR-wnF">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="126"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OSr-nX-Zir">
-                                                    <rect key="frame" x="13" y="34" width="80" height="90"/>
+                                                    <rect key="frame" x="13" y="23" width="80" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="90" id="WRg-wN-e0a">
                                                             <variation key="heightClass=regular-widthClass=regular" constant="120"/>
@@ -618,7 +618,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCN-5r-qEy">
-                                                    <rect key="frame" x="98" y="13" width="308" height="41"/>
+                                                    <rect key="frame" x="98" y="13" width="308" height="30"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="17"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -627,7 +627,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maa-Hb-vo4">
-                                                    <rect key="frame" x="98" y="94" width="308" height="30"/>
+                                                    <rect key="frame" x="98" y="83" width="308" height="30"/>
                                                     <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="17"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -636,7 +636,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgW-Bu-Xwo">
-                                                    <rect key="frame" x="98" y="59" width="308" height="30"/>
+                                                    <rect key="frame" x="98" y="48" width="308" height="30"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="17"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -644,11 +644,16 @@
                                                         <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="24"/>
                                                     </variation>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kfs-LK-KyG">
+                                                    <rect key="frame" x="0.0" y="118" width="414" height="7"/>
+                                                    <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="7" id="1AF-zt-bWd"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="OSr-nX-Zir" secondAttribute="bottom" constant="4" id="0Yg-N6-KVr"/>
                                                 <constraint firstItem="OSr-nX-Zir" firstAttribute="leading" secondItem="TTd-LR-wnF" secondAttribute="leadingMargin" constant="5" id="6UM-J6-8mA"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="maa-Hb-vo4" secondAttribute="bottom" constant="5" id="77t-OK-Vv9"/>
                                                 <constraint firstItem="dCN-5r-qEy" firstAttribute="top" secondItem="TTd-LR-wnF" secondAttribute="topMargin" constant="5" id="MyK-h4-5V9"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dCN-5r-qEy" secondAttribute="trailing" id="PFN-ya-cKt"/>
                                                 <constraint firstItem="pgW-Bu-Xwo" firstAttribute="leading" secondItem="OSr-nX-Zir" secondAttribute="trailing" constant="5" id="Yye-56-8Yo"/>
@@ -657,16 +662,21 @@
                                                 <constraint firstItem="dCN-5r-qEy" firstAttribute="leading" secondItem="OSr-nX-Zir" secondAttribute="trailing" constant="5" id="i4N-TY-bpx"/>
                                                 <constraint firstItem="maa-Hb-vo4" firstAttribute="bottom" secondItem="OSr-nX-Zir" secondAttribute="bottom" id="loh-tj-Kbi"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="pgW-Bu-Xwo" secondAttribute="trailing" id="mcl-OD-CfU"/>
+                                                <constraint firstAttribute="bottom" secondItem="Kfs-LK-KyG" secondAttribute="bottom" id="mfb-5u-pY8"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="maa-Hb-vo4" secondAttribute="trailing" id="ney-Cf-QUY"/>
+                                                <constraint firstItem="Kfs-LK-KyG" firstAttribute="top" secondItem="maa-Hb-vo4" secondAttribute="bottom" constant="5" id="opM-ws-dau"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kfs-LK-KyG" secondAttribute="trailing" id="qcH-q1-MYI"/>
+                                                <constraint firstItem="Kfs-LK-KyG" firstAttribute="leading" secondItem="TTd-LR-wnF" secondAttribute="leading" id="rJo-yy-tPv"/>
                                                 <constraint firstItem="pgW-Bu-Xwo" firstAttribute="top" secondItem="dCN-5r-qEy" secondAttribute="bottom" constant="5" id="v3f-LQ-dm4"/>
                                                 <constraint firstItem="maa-Hb-vo4" firstAttribute="leading" secondItem="OSr-nX-Zir" secondAttribute="trailing" constant="5" id="xli-Z7-Oj4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="countryNameLabel" destination="maa-Hb-vo4" id="TNZ-9F-7iB"/>
-                                            <outlet property="teamImageView" destination="OSr-nX-Zir" id="uNL-CX-Uyb"/>
-                                            <outlet property="teamNameLabel" destination="dCN-5r-qEy" id="wOV-8Y-ZEv"/>
-                                            <outlet property="tvCodeLabel" destination="pgW-Bu-Xwo" id="D54-af-0OZ"/>
+                                            <outlet property="dorsalLabel" destination="pgW-Bu-Xwo" id="0p5-BZ-I4B"/>
+                                            <outlet property="playerImageView" destination="OSr-nX-Zir" id="Mfr-O5-VPm"/>
+                                            <outlet property="playerNameLabel" destination="dCN-5r-qEy" id="j4m-uy-Oth"/>
+                                            <outlet property="separator" destination="Kfs-LK-KyG" id="YNV-27-hf0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -78,11 +78,12 @@ IndicatorInfoProvider {
         if let leagueCell = cell as? GamesTableViewCell {
             leagueCell.game = game
             if let rowcount = schedule?[indexPath.section].count, indexPath.row == rowcount - 1 {
-                leagueCell.separator.backgroundColor = UIColor.white
+                leagueCell.separator.isHidden = true
             }
             else {
-                leagueCell.separator.backgroundColor = Colors.TurkishLeagueBackGroundColor
+                leagueCell.separator.isHidden = false
             }
+            return leagueCell
         }
         cell.layoutMargins = UIEdgeInsets.zero
         return cell
@@ -120,6 +121,7 @@ extension TurkishLeagueMasterTableViewController {
     func moveToLastPlayed() {
         guard let index = indexPath
             else { return }
+        tableView.reloadRows(at: [index], with: .none)
         tableView.scrollToRow(at: index, at: .top, animated: true)
     }
     

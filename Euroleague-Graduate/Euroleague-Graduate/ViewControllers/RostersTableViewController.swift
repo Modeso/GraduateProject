@@ -14,15 +14,17 @@ class RostersTableViewController: UIViewController , IndicatorInfoProvider{
     
     var coach = Player()
     
-    var players = List<Player>() {
-        didSet {
-            if coach.code != "", players.count > 0 {
-                makeRosters()
-                tableView.reloadData()
-            }
-            
-        }
-    }
+//    var players = List<Player>() {
+//        didSet {
+//            if coach.name != "" {
+//                makeRosters()
+//                tableView?.reloadData()
+//            }
+//            
+//        }
+//    }
+    
+    var players: Dictionary<String,Player> = [:]
     
     fileprivate var rosters: [Array<Player>] = []
     
@@ -38,9 +40,28 @@ class RostersTableViewController: UIViewController , IndicatorInfoProvider{
         return "ROSTER"
     }
     
+    func makeRostersOf(_ players: [Player]) {
+        var rostersTable: Dictionary<String,[Player]> = [:]
+        for player in players {
+            ///call data
+            rostersTable[player.position]?.append(player)
+            
+        }
+        var positions:[String] = Array(rostersTable.keys)
+        positions.sort()
+        rosters.append([coach])
+        for position in positions {
+            rosters.append(rostersTable[position]!)
+        }
+    }
+    
 }
 
 extension RostersTableViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+    }
     
 }
 
@@ -55,7 +76,10 @@ extension RostersTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "TeamsTableCell") {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PlayersTableCell") {
+            if let playerCell = cell as? PlayersTableViewCell {
+                playerCell.player = rosters[indexPath.section][indexPath.row]
+            }
             return cell
         }
         return UITableViewCell()
@@ -65,18 +89,6 @@ extension RostersTableViewController: UITableViewDataSource {
 
 fileprivate extension RostersTableViewController {
     
-    func makeRosters(){
-        var rostersTable: Dictionary<String,[Player]> = [:]
-        for player in players {
-            ///call data
-            rostersTable[player.position]?.append(player)
-        }
-        var positions:[String] = Array(rostersTable.keys)
-        positions.sort()
-        rosters.append([coach])
-        for position in positions {
-            rosters.append(rostersTable[position]!)
-        }
-    }
+    
     
 }

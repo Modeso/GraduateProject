@@ -25,30 +25,16 @@ class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController 
     @IBOutlet weak var countryLabel: UILabel!
     
     override func viewDidLoad() {
-        settings.style.buttonBarItemBackgroundColor = Colors.TurkishLeagueBarColor
+        settings.style.buttonBarItemBackgroundColor = UIColor.getTurkishLeagueBarColor()
         settings.style.selectedBarBackgroundColor = UIColor.white
         settings.style.buttonBarItemFont = UIFont(name: "CoText-Regular", size: 14.0)!
         settings.style.selectedBarHeight = 5.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        self.automaticallyAdjustsScrollViewInsets = false
+        
         super.viewDidLoad()
-        
-        
-        navigationController?.navigationBar.barTintColor = Colors.TurkishLeagueBarColor
-        navigationController?.navigationBar.isTranslucent = false
-        let navImage = UIImage(named: "navbar-turkishairlines")
-        let navImageView = UIImageView(image: navImage)
-        navImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = navImageView
-        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        
-        self.buttonBarView.collectionViewLayout
-            .collectionView?.backgroundColor = Colors.TurkishLeagueBarColor
-        
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
-        
         self.edgesForExtendedLayout = []
         
         updateUI()
@@ -73,7 +59,7 @@ fileprivate extension TurkishLeagueTeamDataViewController {
         let router = TurkishLeagueGamesRouter()
         let roster = router.createTurkishLeagueRosterTableController()
         roster.coach = team.coach!
-        roster.players = team.rosters
+        roster.makeRostersOf(Array(team.rosters))
         myViewControllers.append(roster)
     }
 }

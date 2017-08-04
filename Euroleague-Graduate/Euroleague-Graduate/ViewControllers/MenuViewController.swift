@@ -12,13 +12,6 @@ class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = Colors.TurkishLeagueBarColor
-        navigationController?.navigationBar.isTranslucent = false
-        let navImage = UIImage(named: "navbar-turkishairlines")
-        let navImageView = UIImageView(image: navImage)
-        navImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = navImageView
-        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         // Do any additional setup after loading the view.
     }
 
@@ -37,4 +30,15 @@ class MenuViewController: UIViewController {
     }
     
 
+}
+
+extension UIColor {
+    
+    static func getTurkishLeagueBarColor() -> UIColor{
+        return UIColor(red: 255.0/255, green: 88.0/255, blue: 4.0/255, alpha: 1)
+    }
+    
+    static func getTurkishLeagueBackGroundColor() -> UIColor {
+        return UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
+    }
 }
