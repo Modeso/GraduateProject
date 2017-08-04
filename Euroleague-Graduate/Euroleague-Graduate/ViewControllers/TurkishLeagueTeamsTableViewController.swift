@@ -98,6 +98,12 @@ extension TurkishLeagueTeamsTableViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TeamsTableCell") {
             if let teamsCell = cell as? TeamsTableViewCell {
                 teamsCell.team = teams[indexPath.section][indexPath.row]
+                if indexPath.row == (teams[indexPath.section].count - 1) {
+                    teamsCell.separator.backgroundColor = UIColor.white
+                }
+                else {
+                    teamsCell.separator.backgroundColor = Colors.TurkishLeagueBackGroundColor
+                }
             }
             return cell
         }

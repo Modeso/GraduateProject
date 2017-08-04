@@ -19,6 +19,8 @@ class TeamsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var countryNameLabel: UILabel!
     
+    @IBOutlet weak var separator: UIView!
+    
     var team: Team? {
         didSet{
             updateUI()
@@ -32,7 +34,6 @@ fileprivate extension TeamsTableViewCell {
     func updateUI() {
         guard let team = self.team
             else { return }
-  //      addSeparatorLineToTop()
         teamNameLabel?.text = team.name
         tvCodeLabel?.text = team.tvCode
         countryNameLabel?.text = team.countryName

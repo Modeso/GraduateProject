@@ -86,9 +86,9 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Letter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Et-1J-rEs">
                                             <rect key="frame" x="5" y="0.0" width="409" height="43.666666666666664"/>
-                                            <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="13"/>
+                                            <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
+                                            <color key="highlightedColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                             <variation key="heightClass=regular-widthClass=regular">
                                                 <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="20"/>
                                             </variation>
@@ -103,11 +103,11 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GamesTableCell" rowHeight="113" id="Wyi-Ue-eHZ" customClass="GamesTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="113"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GamesTableCell" rowHeight="139" id="Wyi-Ue-eHZ" customClass="GamesTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="139"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wyi-Ue-eHZ" id="r6o-H4-vwl">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HSH-Ap-H1l">
@@ -122,10 +122,10 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Cp-23-fsD">
-                                            <rect key="frame" x="151.66666666666669" y="13" width="111.00000000000006" height="80"/>
+                                            <rect key="frame" x="152" y="13" width="111" height="80"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-Oa-FAv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="111.00000000000003" height="48.333333333333329"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="48.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="30"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -134,7 +134,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x74-aF-vYa">
-                                                    <rect key="frame" x="0.0" y="48.333333333333321" width="111.00000000000003" height="31.666666666666679"/>
+                                                    <rect key="frame" x="0.0" y="48.333333333333321" width="111" height="31.666666666666679"/>
                                                     <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="18"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -155,17 +155,27 @@
                                                 </constraint>
                                             </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7US-Kr-pqT">
+                                            <rect key="frame" x="0.0" y="98" width="414" height="7"/>
+                                            <color key="backgroundColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="7" id="NYj-Ak-TBx"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="8Cp-23-fsD" secondAttribute="bottom" constant="5" id="24Q-Kh-OOL"/>
+                                        <constraint firstItem="7US-Kr-pqT" firstAttribute="centerX" secondItem="8Cp-23-fsD" secondAttribute="centerX" id="1yM-fT-VDm"/>
+                                        <constraint firstItem="7US-Kr-pqT" firstAttribute="top" secondItem="83u-yV-Sya" secondAttribute="bottom" constant="5" id="6ox-fC-8C1"/>
+                                        <constraint firstAttribute="bottom" secondItem="7US-Kr-pqT" secondAttribute="bottom" id="71t-zL-Adj"/>
                                         <constraint firstItem="HSH-Ap-H1l" firstAttribute="top" secondItem="r6o-H4-vwl" secondAttribute="topMargin" constant="5" id="9Mb-wG-ddi"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="HSH-Ap-H1l" secondAttribute="bottom" constant="5" id="AHM-PJ-GRc"/>
                                         <constraint firstItem="8Cp-23-fsD" firstAttribute="top" secondItem="r6o-H4-vwl" secondAttribute="topMargin" constant="5" id="Gk9-Mw-Shr"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="83u-yV-Sya" secondAttribute="bottom" constant="5" id="IJ9-QS-gWt"/>
                                         <constraint firstItem="83u-yV-Sya" firstAttribute="top" secondItem="r6o-H4-vwl" secondAttribute="topMargin" constant="5" id="J1x-n3-F18"/>
+                                        <constraint firstItem="7US-Kr-pqT" firstAttribute="top" secondItem="8Cp-23-fsD" secondAttribute="bottom" constant="5" id="Mvf-Gh-0kk"/>
                                         <constraint firstItem="HSH-Ap-H1l" firstAttribute="leading" secondItem="r6o-H4-vwl" secondAttribute="leadingMargin" constant="3" id="RIi-Pf-gcC"/>
+                                        <constraint firstItem="7US-Kr-pqT" firstAttribute="leading" secondItem="r6o-H4-vwl" secondAttribute="leading" id="RQE-1X-fra"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="83u-yV-Sya" secondAttribute="trailing" constant="3" id="TBd-Dl-a71"/>
                                         <constraint firstItem="gWQ-Oa-FAv" firstAttribute="centerX" secondItem="r6o-H4-vwl" secondAttribute="centerX" id="a5y-WU-TVp"/>
+                                        <constraint firstItem="7US-Kr-pqT" firstAttribute="top" secondItem="HSH-Ap-H1l" secondAttribute="bottom" constant="5" id="vpV-IV-wPp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -173,6 +183,7 @@
                                     <outlet property="detailLabel" destination="x74-aF-vYa" id="V8h-1g-n0Z"/>
                                     <outlet property="homeImageView" destination="HSH-Ap-H1l" id="I6m-XA-nN8"/>
                                     <outlet property="resultsLabel" destination="gWQ-Oa-FAv" id="WDy-Wp-g8U"/>
+                                    <outlet property="separator" destination="7US-Kr-pqT" id="kXI-1D-4wo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -312,7 +323,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Letter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIU-De-8Kj">
                                                     <rect key="frame" x="5" y="0.0" width="409" height="43"/>
-                                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=regular">
@@ -329,15 +340,15 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TeamsTableCell" rowHeight="155" id="eHB-j0-UTl" customClass="TeamsTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="71" width="414" height="155"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TeamsTableCell" rowHeight="120" id="eHB-j0-UTl" customClass="TeamsTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="71" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eHB-j0-UTl" id="Jzk-n3-ZIW">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z3y-TT-HJO">
-                                                    <rect key="frame" x="13" y="52" width="80" height="90"/>
+                                                    <rect key="frame" x="13" y="20" width="80" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="90" id="iwr-DD-gBF">
                                                             <variation key="heightClass=regular-widthClass=regular" constant="120"/>
@@ -348,7 +359,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pED-yS-xO4">
-                                                    <rect key="frame" x="98" y="13" width="308" height="69.666666666666671"/>
+                                                    <rect key="frame" x="98" y="13" width="308" height="38"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="17"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -357,7 +368,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmO-Ty-wbO">
-                                                    <rect key="frame" x="98" y="115.66666666666669" width="308" height="26.333333333333314"/>
+                                                    <rect key="frame" x="98" y="84" width="308" height="26"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="15"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -366,7 +377,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tv code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12D-YR-oer">
-                                                    <rect key="frame" x="98" y="87.666666666666671" width="308" height="23"/>
+                                                    <rect key="frame" x="98" y="56" width="308" height="23"/>
                                                     <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="13"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -374,24 +385,35 @@
                                                         <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="20"/>
                                                     </variation>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPU-No-JvI">
+                                                    <rect key="frame" x="0.0" y="113" width="414" height="7"/>
+                                                    <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="7" id="Yis-6P-1qa"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="12D-YR-oer" secondAttribute="trailing" id="86j-IC-d1b"/>
                                                 <constraint firstItem="z3y-TT-HJO" firstAttribute="leading" secondItem="Jzk-n3-ZIW" secondAttribute="leadingMargin" constant="5" id="DvP-ub-0FW"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="UmO-Ty-wbO" secondAttribute="bottom" constant="5" id="IBF-iw-vjM"/>
+                                                <constraint firstAttribute="trailing" secondItem="lPU-No-JvI" secondAttribute="trailing" id="DwR-Zb-Z91"/>
                                                 <constraint firstItem="UmO-Ty-wbO" firstAttribute="leading" secondItem="z3y-TT-HJO" secondAttribute="trailing" constant="5" id="KBZ-Rq-d4z"/>
                                                 <constraint firstItem="12D-YR-oer" firstAttribute="leading" secondItem="z3y-TT-HJO" secondAttribute="trailing" constant="5" id="L6b-7D-TYf"/>
                                                 <constraint firstItem="pED-yS-xO4" firstAttribute="leading" secondItem="z3y-TT-HJO" secondAttribute="trailing" constant="5" id="ZV1-Mc-Tqf"/>
+                                                <constraint firstAttribute="bottom" secondItem="lPU-No-JvI" secondAttribute="bottom" id="aAT-ax-a4b"/>
+                                                <constraint firstItem="lPU-No-JvI" firstAttribute="top" secondItem="UmO-Ty-wbO" secondAttribute="bottom" constant="3" id="ceM-Hy-Taj"/>
                                                 <constraint firstItem="UmO-Ty-wbO" firstAttribute="bottom" secondItem="z3y-TT-HJO" secondAttribute="bottom" id="gQ3-Lm-MyO"/>
                                                 <constraint firstItem="12D-YR-oer" firstAttribute="top" secondItem="pED-yS-xO4" secondAttribute="bottom" constant="5" id="hmm-7g-AdB"/>
                                                 <constraint firstItem="pED-yS-xO4" firstAttribute="top" secondItem="Jzk-n3-ZIW" secondAttribute="topMargin" constant="5" id="k0w-iV-44q"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="pED-yS-xO4" secondAttribute="trailing" id="nmG-dW-XgZ"/>
+                                                <constraint firstItem="lPU-No-JvI" firstAttribute="leading" secondItem="Jzk-n3-ZIW" secondAttribute="leading" id="ooc-Zt-01W"/>
                                                 <constraint firstItem="UmO-Ty-wbO" firstAttribute="top" secondItem="12D-YR-oer" secondAttribute="bottom" constant="5" id="uID-YA-hM7"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="UmO-Ty-wbO" secondAttribute="trailing" id="upn-VB-0nu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="countryNameLabel" destination="UmO-Ty-wbO" id="zUB-ph-Fqi"/>
+                                            <outlet property="separator" destination="lPU-No-JvI" id="qyq-ur-c9Y"/>
                                             <outlet property="teamImageView" destination="z3y-TT-HJO" id="eFf-Du-cPx"/>
                                             <outlet property="teamNameLabel" destination="pED-yS-xO4" id="vVt-DI-HYp"/>
                                             <outlet property="tvCodeLabel" destination="12D-YR-oer" id="7oq-3f-wCB"/>
@@ -554,12 +576,12 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="73E-ul-Qmt" id="1Ew-6W-6Wu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Letter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5J-De-446">
-                                                    <rect key="frame" x="5" y="0.0" width="409" height="52"/>
-                                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="13"/>
+                                                    <rect key="frame" x="5" y="0.0" width="409" height="51"/>
+                                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=regular">
@@ -581,7 +603,7 @@
                                         <rect key="frame" x="0.0" y="80" width="414" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tqu-xJ-0i6" id="TTd-LR-wnF">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="136.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OSr-nX-Zir">

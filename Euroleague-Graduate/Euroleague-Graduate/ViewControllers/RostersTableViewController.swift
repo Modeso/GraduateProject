@@ -31,6 +31,7 @@ class RostersTableViewController: UIViewController , IndicatorInfoProvider{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.backgroundColor = UIColor.clear
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -67,6 +68,7 @@ fileprivate extension RostersTableViewController {
     func makeRosters(){
         var rostersTable: Dictionary<String,[Player]> = [:]
         for player in players {
+            ///call data
             rostersTable[player.position]?.append(player)
         }
         var positions:[String] = Array(rostersTable.keys)

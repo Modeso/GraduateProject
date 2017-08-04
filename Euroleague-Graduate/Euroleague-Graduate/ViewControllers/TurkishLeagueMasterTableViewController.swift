@@ -33,10 +33,6 @@ IndicatorInfoProvider {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor.clear
    
-//        tableView.refreshControl = UIRefreshControl()
-//        tableView.refreshControl?.isEnabled = true
-//        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Loading")
-        tableView.refreshControl?.backgroundColor = Colors.TurkishLeagueBackGroundColor
         tableView.refreshControl?.tintColor = UIColor.white
         tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
     }
@@ -54,7 +50,7 @@ IndicatorInfoProvider {
         if firstLoad {
             tableView.reloadData()
             firstLoad = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
                 self?.moveToLastPlayed()
             })
         }
@@ -81,6 +77,12 @@ IndicatorInfoProvider {
         let game = schedule?[indexPath.section][indexPath.row]
         if let leagueCell = cell as? GamesTableViewCell {
             leagueCell.game = game
+            if let rowcount = schedule?[indexPath.section].count, indexPath.row == rowcount - 1 {
+                leagueCell.separator.backgroundColor = UIColor.white
+            }
+            else {
+                leagueCell.separator.backgroundColor = Colors.TurkishLeagueBackGroundColor
+            }
         }
         cell.layoutMargins = UIEdgeInsets.zero
         return cell
