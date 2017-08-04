@@ -19,6 +19,8 @@
 		FE5264921F348EBA00E62A58 /* PlayersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5264911F348EBA00E62A58 /* PlayersTableViewCell.swift */; };
 		FE5264941F34951C00E62A58 /* EuroLeagueNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5264931F34951C00E62A58 /* EuroLeagueNavigationController.swift */; };
 		FE5264961F34AA3900E62A58 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5264951F34AA3900E62A58 /* Colors.swift */; };
+		FE5264991F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5264981F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift */; };
+		FE52649B1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE52649A1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift */; };
 		FE528DCD1F289AC700597D0A /* DataRetrivalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE528DCC1F289AC700597D0A /* DataRetrivalTest.swift */; };
 		FE540CD01F20BB9F000A75A0 /* ApiResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */; };
 		FE5C21671F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5C21661F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift */; };
@@ -85,6 +87,8 @@
 		FE5264911F348EBA00E62A58 /* PlayersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersTableViewCell.swift; sourceTree = "<group>"; };
 		FE5264931F34951C00E62A58 /* EuroLeagueNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EuroLeagueNavigationController.swift; sourceTree = "<group>"; };
 		FE5264951F34AA3900E62A58 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FE5264981F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeaguePlayerViewModel.swift; sourceTree = "<group>"; };
+		FE52649A1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeaguePlayersDataService.swift; sourceTree = "<group>"; };
 		FE528DCC1F289AC700597D0A /* DataRetrivalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRetrivalTest.swift; sourceTree = "<group>"; };
 		FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseTest.swift; sourceTree = "<group>"; };
 		FE5C21661F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesTeamsDataService.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 				FEC2D2861F2B5400006BB8AC /* ApiClient.swift */,
 				FEC2D2871F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift */,
 				FE5C21661F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift */,
+				FE52649A1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				FEC2D2901F2B544D006BB8AC /* AbstractViewModel.swift */,
 				FEC2D2911F2B544D006BB8AC /* TurkishLeagueGamsViewModel.swift */,
 				FE615F421F31D4B900B6C3E0 /* TurkishLeagueTeamsViewModel.swift */,
+				FE5264981F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEC2D2931F2B544D006BB8AC /* TurkishLeagueGamsViewModel.swift in Sources */,
+				FE5264991F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift in Sources */,
 				FE5264961F34AA3900E62A58 /* Colors.swift in Sources */,
 				FE615F3B1F31B68900B6C3E0 /* MenuViewController.swift in Sources */,
 				FE5C21671F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift in Sources */,
@@ -560,6 +567,7 @@
 				FE5C21691F2F2F6900522D65 /* Team.swift in Sources */,
 				FEC2D28C1F2B540E006BB8AC /* Game.swift in Sources */,
 				FE615F431F31D4B900B6C3E0 /* TurkishLeagueTeamsViewModel.swift in Sources */,
+				FE52649B1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift in Sources */,
 				FE5264921F348EBA00E62A58 /* PlayersTableViewCell.swift in Sources */,
 				FE368CB01F33453B006963C8 /* RostersTableViewController.swift in Sources */,
 				FEC2D2811F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift in Sources */,
