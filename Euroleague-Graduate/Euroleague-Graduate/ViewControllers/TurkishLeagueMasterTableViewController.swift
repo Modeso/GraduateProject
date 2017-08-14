@@ -78,10 +78,12 @@ IndicatorInfoProvider {
         if let leagueCell = cell as? GamesTableViewCell {
             leagueCell.game = game
             if let rowcount = schedule?[indexPath.section].count, indexPath.row == rowcount - 1 {
-                leagueCell.separator.isHidden = true
+               // leagueCell.separator.isHidden = true
+                leagueCell.separatorHeightConstraint.constant = 0
             }
             else {
-                leagueCell.separator.isHidden = false
+               // leagueCell.separator.isHidden = false
+                leagueCell.separatorHeightConstraint.constant = 7
             }
             return leagueCell
         }

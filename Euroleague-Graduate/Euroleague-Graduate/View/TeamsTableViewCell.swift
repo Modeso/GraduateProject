@@ -21,6 +21,8 @@ class TeamsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var separator: UIView!
     
+    @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
+    
     var team: Team? {
         didSet{
             updateUI()

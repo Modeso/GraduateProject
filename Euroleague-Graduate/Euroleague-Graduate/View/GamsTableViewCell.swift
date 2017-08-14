@@ -21,6 +21,8 @@ class GamesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var separator: UIView!
     
+    @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
+    
     var game: Game? {
         didSet{
             updateUI()

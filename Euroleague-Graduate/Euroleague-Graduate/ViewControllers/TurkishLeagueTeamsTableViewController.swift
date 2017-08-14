@@ -91,10 +91,10 @@ extension TurkishLeagueTeamsTableViewController: UITableViewDataSource {
             if let teamsCell = cell as? TeamsTableViewCell {
                 teamsCell.team = teams[indexPath.section][indexPath.row]
                 if indexPath.row == (teams[indexPath.section].count - 1) {
-                    teamsCell.separator.backgroundColor = UIColor.white
+                    teamsCell.separatorHeightConstraint.constant = 0
                 }
                 else {
-                    teamsCell.separator.backgroundColor = UIColor.getTurkishLeagueBackGroundColor()
+                    teamsCell.separatorHeightConstraint.constant = 7
                 }
             }
             return cell

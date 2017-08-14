@@ -21,6 +21,8 @@ class PlayersTableViewCell: UITableViewCell {
     
     @IBOutlet weak var separator: UIView!
     
+    @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
+    
     var player: Player? {
         didSet{
             updateUI()
@@ -35,8 +37,17 @@ fileprivate extension PlayersTableViewCell {
         guard let player = self.player
             else { return }
         playerNameLabel?.text = player.name
-        dorsalLabel?.text = "#\(player.dorsal) \(player.position)"
+        var text = ""
+        if player.position.caseInsensitiveCompare("Coach") != .orderedSame {
+            text = "#\(player.dorsal) "
+        }
+        text.append(player.position)
+        dorsalLabel?.text = text
         countryNameLabel?.text = player.countryName
+        playerImageView.layer.cornerRadius = playerImageView.bounds.width / 2
+        playerImageView.layer.masksToBounds = true
+        playerImageView.layer.borderWidth = 1.0
+        playerImageView.layer.borderColor = UIColor.black.cgColor
         playerImageView?.sd_setImage(with: URL(string:player.imageUrl), placeholderImage: UIImage(named: "emptyImage"))
     }
     

@@ -14,7 +14,7 @@ class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController 
 
     fileprivate var myViewControllers: Array<UIViewController> = []
     
-    var team = Team()
+    var team: Team?
     
     @IBOutlet weak var teamImageView: UIImageView!
     
@@ -36,7 +36,7 @@ class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController 
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
         self.edgesForExtendedLayout = []
-        
+        containerView.backgroundColor = UIColor.clear
         updateUI()
     }
     
@@ -49,17 +49,17 @@ class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController 
 fileprivate extension TurkishLeagueTeamDataViewController {
     
     func updateUI() {
-        teamNameLabel.text = team.name
-        tvCodeLabel.text = team.tvCode
-        countryLabel.text = team.countryName
-        teamImageView?.sd_setImage(with: URL(string:team.logoUrl), placeholderImage: UIImage(named: "emptyImage"))
+        teamNameLabel.text = team?.name
+        tvCodeLabel.text = team?.tvCode
+        countryLabel.text = team?.countryName
+        teamImageView?.sd_setImage(with: URL(string:(team?.logoUrl)!), placeholderImage: UIImage(named: "emptyImage"))
     }
     
     func createControllers() {
         let router = TurkishLeagueGamesRouter()
         let roster = router.createTurkishLeagueRosterTableController()
-        roster.coach = team.coach!
-        roster.makeRostersOf(Array(team.rosters))
+        roster.coach = (team?.coach?.clone())!
+        roster.makeRostersOf(Array((team?.rosters)!))
         myViewControllers.append(roster)
     }
 }

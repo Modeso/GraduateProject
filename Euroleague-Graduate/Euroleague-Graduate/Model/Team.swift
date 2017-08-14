@@ -61,6 +61,7 @@ extension Team {
                 player.dorsal = try elem.value(ofAttribute: "dorsal")
                 player.position = try elem.value(ofAttribute: "position")
                 player.countryName = try elem.value(ofAttribute: "countryname")
+                self.rosters.append(player)
             }
         } catch {
             

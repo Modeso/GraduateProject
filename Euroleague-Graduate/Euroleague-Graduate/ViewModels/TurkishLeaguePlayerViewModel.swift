@@ -9,9 +9,31 @@
 import Foundation
 
 
-class PlayerViewModel {
+class TurkishLeaguePlayerViewModel {
     
-    func getPlayerWithCode(_ code: String, completion:() -> Void) {
+    fileprivate let playersDataService: TurkishLeaguePlayersDataService
+    
+    init() {
+        playersDataService = TurkishLeaguePlayersDataService()
+        playersDataService.delegate = self
+    }
+    
+    func getPlayer(withCode code: String) -> Player? {
+        let player = playersDataService.getPlayer(withCode: code)
+        return player
+    }
+    
+    func updatePlayer(withCode code: String, completion:@escaping (_ player:Player) -> Void){
+        playersDataService.updatePlayer(withCode: code) { player in
+            completion(player)
+        }
+    }
+    
+}
+
+extension TurkishLeaguePlayerViewModel: TurkishAirLinesPlayersDataServiceDelegate {
+    
+    func updateData(_ player: Player) {
         
     }
     
