@@ -28,4 +28,12 @@ class TurkishLeagueGamesRouter {
         return tableController
     }
     
+    func createTeamStatistics() -> TeamStatisticsViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let view = storyboard.instantiateViewController(
+            withIdentifier: "StatisticsView") as? TeamStatisticsViewController
+            else { return TeamStatisticsViewController() }
+        return view
+    }
+    
 }

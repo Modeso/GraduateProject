@@ -60,6 +60,7 @@ fileprivate extension TurkishLeagueTeamDataViewController {
         let roster = router.createTurkishLeagueRosterTableController()
         roster.coach = (team?.coach?.clone())!
         roster.makeRostersOf(Array((team?.rosters)!))
+        let statistics = router.createTeamStatistics()
         myViewControllers.append(roster)
     }
 }
