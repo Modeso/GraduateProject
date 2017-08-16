@@ -18,6 +18,10 @@ extension UIColor {
     static func getTurkishLeagueBackGroundColor() -> UIColor {
         return UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
     }
+    
+    static func getTurkishLeagueSelectedMenuItemColor() -> UIColor {
+        return UIColor(red: 255.0/255.0, green: 127.0/255.0, blue: 127.0/255.0, alpha: 1)
+    }
 }
 
 extension String {
@@ -50,21 +54,14 @@ extension Date {
 
 
 public extension Float {
-    /// Returns a random floating point number between 0.0 and 1.0, inclusive.
-    public static var random:Float {
+
+    static var random:Float {
         get {
             return Float(arc4random()) / Float(UInt32.max)
         }
     }
-    /**
-     Create a random num Float
-     
-     - parameter min: Float
-     - parameter max: Float
-     
-     - returns: Float
-     */
-    public static func random(min: Float, max: Float) -> Float {
+    
+    static func random(min: Float, max: Float) -> Float {
         return Float.random * (max - min) + min
     }
 }

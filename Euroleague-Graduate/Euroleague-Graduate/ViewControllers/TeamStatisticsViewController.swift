@@ -64,6 +64,7 @@ extension TeamStatisticsViewController: UITableViewDelegate {
 }
 
 extension TeamStatisticsViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

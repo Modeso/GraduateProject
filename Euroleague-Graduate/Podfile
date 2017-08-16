@@ -10,12 +10,18 @@ def app_pods
   # Pods for Euroleague-Graduate
     pod 'Alamofire', '~> 4.4'
     pod 'RealmSwift'
-    pod 'SDWebImage', '~>3.8'
     pod 'SWXMLHash', '~> 4.0.0'
+    
+end
+
+def app_ui_pods
+    pod 'SDWebImage', '~>3.8'
     pod 'XLPagerTabStrip', '~> 7.0'
+    pod 'AKSideMenu'
 end
 
 target 'Euroleague-Graduate' do
+    app_ui_pods
     app_pods
 end
 

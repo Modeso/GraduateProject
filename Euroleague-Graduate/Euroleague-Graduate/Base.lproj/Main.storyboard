@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9kl-U1-8rQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oYv-tJ-XOU">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,7 +21,7 @@
         <!--Turkish Airlines EuroLeague-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TurkishLeagueGamesPagerViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GamesPart" id="BYZ-38-t0r" customClass="TurkishLeagueGamesPagerViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -58,7 +58,13 @@
                             <constraint firstItem="Dch-82-Z5h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xZ2-nB-3fR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Turkish Airlines EuroLeague" id="x5a-gj-heQ"/>
+                    <navigationItem key="navigationItem" title="Turkish Airlines EuroLeague" id="x5a-gj-heQ">
+                        <barButtonItem key="leftBarButtonItem" image="MenuButton" id="nRd-v1-FKL">
+                            <connections>
+                                <action selector="presentLeftMenuViewController:" destination="BYZ-38-t0r" id="357-qu-pqP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="Dch-82-Z5h" id="apl-xq-COW"/>
                         <segue destination="DnU-ys-IEY" kind="show" identifier="showDetailSegue" id="GYZ-GB-O6z"/>
@@ -122,10 +128,10 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Cp-23-fsD">
-                                            <rect key="frame" x="157.66666666666669" y="13" width="99.666666666666686" height="104"/>
+                                            <rect key="frame" x="152" y="13" width="111" height="104"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-Oa-FAv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="99.666666666666657" height="35"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="52.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="30"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -134,7 +140,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x74-aF-vYa">
-                                                    <rect key="frame" x="0.0" y="35" width="99.666666666666657" height="69"/>
+                                                    <rect key="frame" x="0.0" y="52.666666666666679" width="111" height="51.333333333333321"/>
                                                     <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="18"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -231,25 +237,43 @@
         <!--Euro League Navigation Controller-->
         <scene sceneID="qoj-cs-Taf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9kl-U1-8rQ" customClass="EuroLeagueNavigationController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GamesContentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="9kl-U1-8rQ" customClass="EuroLeagueNavigationController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ws-5O-JT4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9ws-5O-JT4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Q7q-DR-dmb" kind="relationship" relationship="rootViewController" id="0Px-ck-irr"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="52r-3w-rJY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUt-Xt-sjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-590" y="122"/>
+            <point key="canvasLocation" x="116" y="-210"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="ekj-71-Uxj">
+            <objects>
+                <viewController id="oYv-tJ-XOU" customClass="RootViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mgt-TQ-vRj"/>
+                        <viewControllerLayoutGuide type="bottom" id="VLP-3p-Owu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qwd-km-Rhm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kb1-fw-4fj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1365" y="-210"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="m7D-fK-NqZ">
             <objects>
-                <viewController id="Q7q-DR-dmb" customClass="MenuViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" id="Q7q-DR-dmb" customClass="MenuViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9rN-sg-gx6"/>
                         <viewControllerLayoutGuide type="bottom" id="e7u-mo-scc"/>
@@ -258,50 +282,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="huZ-0j-LDL">
-                                <rect key="frame" x="175" y="332" width="64" height="72"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faa-zB-YqJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Games"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        </variation>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="129" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1n6-GW-4uz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="1" green="0.34509803919999998" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="129" id="Wnu-dk-6ot" customClass="MenuTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="129"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wnu-dk-6ot" id="41Q-4q-oP7">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="129"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Tt-Bc-txu">
+                                                    <rect key="frame" x="25" y="10" width="369" height="109"/>
+                                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evU-Hc-1iv">
+                                                    <rect key="frame" x="0.0" y="10" width="10" height="109"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.24313725489999999" blue="0.031372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="10" id="ggc-0m-h3v"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="evU-Hc-1iv" firstAttribute="leading" secondItem="41Q-4q-oP7" secondAttribute="leading" id="8rB-AL-2bs"/>
+                                                <constraint firstItem="1Tt-Bc-txu" firstAttribute="top" secondItem="evU-Hc-1iv" secondAttribute="top" id="EQE-ZS-y78"/>
+                                                <constraint firstItem="1Tt-Bc-txu" firstAttribute="bottom" secondItem="evU-Hc-1iv" secondAttribute="bottom" id="MeI-Fo-EWA"/>
+                                                <constraint firstItem="1Tt-Bc-txu" firstAttribute="leading" secondItem="evU-Hc-1iv" secondAttribute="trailing" constant="15" id="OBp-DQ-H0Y"/>
+                                                <constraint firstAttribute="bottom" secondItem="1Tt-Bc-txu" secondAttribute="bottom" constant="10" id="ixU-lr-Ule"/>
+                                                <constraint firstItem="1Tt-Bc-txu" firstAttribute="top" secondItem="41Q-4q-oP7" secondAttribute="top" constant="10" id="oRN-Ve-eDY"/>
+                                                <constraint firstAttribute="trailing" secondItem="1Tt-Bc-txu" secondAttribute="trailing" constant="20" symbolic="YES" id="pZR-Vh-3lN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93333333333333335" green="0.24313725490196078" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="ShowGames" id="kJA-iy-wng"/>
+                                            <outlet property="nameLabel" destination="1Tt-Bc-txu" id="Rms-8R-twg"/>
+                                            <outlet property="selectedBarView" destination="evU-Hc-1iv" id="drV-gm-ol0"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="og2-NU-4OI">
-                                        <rect key="frame" x="0.0" y="36" width="64" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Teams"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        </variation>
-                                        <connections>
-                                            <segue destination="yKG-f1-fhX" kind="show" identifier="ShowTeams" id="4JD-QY-QXB"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Q7q-DR-dmb" id="stz-f3-4YE"/>
+                                    <outlet property="delegate" destination="Q7q-DR-dmb" id="paW-4X-7s1"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="huZ-0j-LDL" firstAttribute="centerX" secondItem="JAd-7l-JLe" secondAttribute="centerX" id="RuB-jK-SVj"/>
-                            <constraint firstItem="huZ-0j-LDL" firstAttribute="centerY" secondItem="JAd-7l-JLe" secondAttribute="centerY" id="WS7-KN-XEm"/>
+                            <constraint firstItem="1n6-GW-4uz" firstAttribute="top" secondItem="JAd-7l-JLe" secondAttribute="top" id="9gm-Pj-lYZ"/>
+                            <constraint firstItem="1n6-GW-4uz" firstAttribute="leading" secondItem="JAd-7l-JLe" secondAttribute="leading" id="JF5-5e-czC"/>
+                            <constraint firstAttribute="trailing" secondItem="1n6-GW-4uz" secondAttribute="trailing" id="JWC-cy-PLh"/>
+                            <constraint firstItem="1n6-GW-4uz" firstAttribute="bottom" secondItem="e7u-mo-scc" secondAttribute="top" id="wFa-cL-moE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jts-hf-BV1"/>
+                    <connections>
+                        <outlet property="tableView" destination="1n6-GW-4uz" id="3ZM-tZ-YR6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9U5-Ge-7Es" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="123"/>
+            <point key="canvasLocation" x="-697.10144927536237" y="-210.32608695652175"/>
         </scene>
         <!--Turkish League Teams Table View Controller-->
         <scene sceneID="FR7-Z6-kBk">
             <objects>
-                <viewController id="yKG-f1-fhX" customClass="TurkishLeagueTeamsTableViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamsPart" id="yKG-f1-fhX" customClass="TurkishLeagueTeamsTableViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ukq-Kb-rE2"/>
                         <viewControllerLayoutGuide type="bottom" id="t3g-hV-fy4"/>
@@ -311,7 +361,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="155" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t6U-EZ-bcg">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SectionHeader" rowHeight="43" id="ghH-Ww-1qu">
@@ -359,7 +409,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pED-yS-xO4">
-                                                    <rect key="frame" x="98" y="13" width="308" height="54"/>
+                                                    <rect key="frame" x="98" y="13" width="308" height="37.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="17"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -368,7 +418,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmO-Ty-wbO">
-                                                    <rect key="frame" x="98" y="92.333333333333314" width="308" height="17.666666666666671"/>
+                                                    <rect key="frame" x="98" y="83.666666666666686" width="308" height="26.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="15"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -377,7 +427,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tv code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12D-YR-oer">
-                                                    <rect key="frame" x="98" y="72" width="308" height="15.333333333333329"/>
+                                                    <rect key="frame" x="98" y="55.666666666666671" width="308" height="23.000000000000014"/>
                                                     <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="13"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -435,6 +485,18 @@
                             <constraint firstItem="t6U-EZ-bcg" firstAttribute="leading" secondItem="qnC-tw-cmj" secondAttribute="leading" id="p1v-mJ-eBm"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="o0c-9m-4gL"/>
+                        <barButtonItem title="Item" id="8Vl-rl-GFu"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="nsM-73-IHF">
+                        <barButtonItem key="leftBarButtonItem" image="MenuButton" id="G7v-mu-Gof">
+                            <connections>
+                                <action selector="presentLeftMenuViewController:" destination="yKG-f1-fhX" id="IMR-go-pLa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="t6U-EZ-bcg" id="8Gi-ad-Vca"/>
                         <segue destination="EPY-ce-egl" kind="show" identifier="ShowTeam" id="Nri-D4-fJJ"/>
@@ -470,7 +532,7 @@
                                 <cells/>
                             </collectionView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zL8-g4-mRN">
-                                <rect key="frame" x="0.0" y="197" width="414" height="539"/>
+                                <rect key="frame" x="0.0" y="197" width="414" height="495"/>
                             </scrollView>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbc-QI-XDP">
                                 <rect key="frame" x="0.0" y="107" width="414" height="90"/>
@@ -619,7 +681,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fn0-cb-odr">
-                                                    <rect key="frame" x="98" y="8" width="308" height="52"/>
+                                                    <rect key="frame" x="98" y="8" width="308" height="32"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="17"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -628,7 +690,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xib-0D-Xe7">
-                                                    <rect key="frame" x="98" y="90" width="308" height="20"/>
+                                                    <rect key="frame" x="98" y="80" width="308" height="30"/>
                                                     <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="17"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -637,7 +699,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Dorsal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQ4-ia-rce">
-                                                    <rect key="frame" x="98" y="65" width="308" height="20"/>
+                                                    <rect key="frame" x="98" y="45" width="308" height="30"/>
                                                     <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="17"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -889,8 +951,27 @@
             </objects>
             <point key="canvasLocation" x="2818.840579710145" y="1107.8804347826087"/>
         </scene>
+        <!--Euro League Navigation Controller-->
+        <scene sceneID="AAu-2g-ocn">
+            <objects>
+                <navigationController storyboardIdentifier="TeamsContentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="IpC-e3-pXZ" customClass="EuroLeagueNavigationController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WDH-R1-1hq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yKG-f1-fhX" kind="relationship" relationship="rootViewController" id="AJZ-qH-Ktf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AUC-lk-Wqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="539"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="MenuButton" width="20" height="14"/>
         <image name="MenuDots" width="200" height="200"/>
     </resources>
 </document>
