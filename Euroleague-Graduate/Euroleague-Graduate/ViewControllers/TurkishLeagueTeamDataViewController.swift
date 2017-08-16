@@ -62,5 +62,6 @@ fileprivate extension TurkishLeagueTeamDataViewController {
         roster.makeRostersOf(Array((team?.rosters)!))
         let statistics = router.createTeamStatistics()
         myViewControllers.append(roster)
+        myViewControllers.append(statistics)
     }
 }

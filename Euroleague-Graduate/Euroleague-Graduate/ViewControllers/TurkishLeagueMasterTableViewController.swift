@@ -120,7 +120,6 @@ extension TurkishLeagueMasterTableViewController {
     func moveToLastPlayed() {
         guard let index = indexPath
             else { return }
-        tableView.reloadRows(at: [index], with: .none)
         tableView.scrollToRow(at: index, at: .top, animated: true)
     }
     

@@ -11,12 +11,7 @@ import Foundation
 
 class TurkishLeaguePlayerViewModel {
     
-    fileprivate let playersDataService: TurkishLeaguePlayersDataService
-    
-    init() {
-        playersDataService = TurkishLeaguePlayersDataService()
-        playersDataService.delegate = self
-    }
+    fileprivate let playersDataService = TurkishLeaguePlayersDataService()
     
     func getPlayer(withCode code: String) -> Player? {
         let player = playersDataService.getPlayer(withCode: code)
@@ -31,10 +26,3 @@ class TurkishLeaguePlayerViewModel {
     
 }
 
-extension TurkishLeaguePlayerViewModel: TurkishAirLinesPlayersDataServiceDelegate {
-    
-    func updateData(_ player: Player) {
-        
-    }
-    
-}

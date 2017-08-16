@@ -10,13 +10,8 @@ import Foundation
 import SWXMLHash
 import RealmSwift
 
-protocol TurkishAirLinesPlayersDataServiceDelegate {
-    func updateData(_ player: Player)
-}
 
 class TurkishLeaguePlayersDataService {
-    
-    var delegate: TurkishAirLinesPlayersDataServiceDelegate?
     
     func getPlayer(withCode code: String) -> Player? {
         guard let player = RealmDBManager.sharedInstance.getPlayer(withCode: code)
@@ -32,7 +27,6 @@ class TurkishLeaguePlayersDataService {
                                  headers: [:]){ [weak self] data ,error in
                                     if let xmlData = data, error == nil {
                                         self?.parsePlayerData(xmlData,code: code){ player in
-                                            self?.delegate?.updateData(player)
                                             completion(player)
                                         }
                                     }
