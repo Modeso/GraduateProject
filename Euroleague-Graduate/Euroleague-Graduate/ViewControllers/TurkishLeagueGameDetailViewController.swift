@@ -7,29 +7,41 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class TurkishLeagueGameDetailViewController: UIViewController {
+class TurkishLeagueGameDetailViewController: ButtonBarPagerTabStripViewController {
+    
+    var game: Game?
+    
+    fileprivate var myViewControllers: [UIViewController] = []
 
     override func viewDidLoad() {
+        settings.style.buttonBarItemFont = UIFont(name: "CoText-Regular", size: 13.0)!
+        settings.style.selectedBarHeight = 5.0
+        settings.style.buttonBarMinimumLineSpacing = 0
+        settings.style.buttonBarItemTitleColor = .white
+        settings.style.buttonBarItemBackgroundColor = UIColor.getTurkishLeagueBarColor()
+        settings.style.selectedBarBackgroundColor = UIColor.white
+        settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.edgesForExtendedLayout = []
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        createViewControllers()
+        return myViewControllers
     }
-    */
 
+}
+
+fileprivate extension TurkishLeagueGameDetailViewController {
+    
+    func createViewControllers() {
+        let router = TurkishLeagueGamesRouter()
+        let boxScore = router.createGameBoxScore()
+        boxScore.game = game
+        myViewControllers.append(boxScore)
+    }
 }

@@ -71,16 +71,6 @@ class TurkishLeagueGamesPagerViewController: ButtonBarPagerTabStripViewControlle
     
 }
 
-extension UIViewController {
-    var contents: UIViewController {
-        if let navcon = self as? UINavigationController {
-            return navcon.visibleViewController ?? self
-        } else {
-            return self
-        }
-    }
-}
-
 extension TurkishLeagueGamesPagerViewController: GameDataViewModelDelegate {
     
     func updateControllersData(_ table: Dictionary<String, [Array<Game>]>,

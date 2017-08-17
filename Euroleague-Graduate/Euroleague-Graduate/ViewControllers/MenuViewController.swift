@@ -30,7 +30,8 @@ class MenuViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let cell = tableView.cellForRow(at: IndexPath(row: selectedRow, section: 0)) {
             if let tableCell = cell as? MenuTableViewCell {
-                tableCell.selectedBarView.backgroundColor = UIColor.getTurkishLeagueSelectedMenuItemColor()
+                tableCell.selectedBarView.backgroundColor = UIColor.white
+                tableCell.selectedBarView.alpha = 0.5
             }
         }
     }
@@ -48,10 +49,11 @@ extension MenuViewController: UITableViewDelegate {
         if let identifier = menu[indexPath.row]?.identifier {
             if let cell = tableView.cellForRow(at: indexPath) {
                 if let tableCell = cell as? MenuTableViewCell {
-                    tableCell.selectedBarView.backgroundColor = UIColor.getTurkishLeagueSelectedMenuItemColor()
+                    tableCell.selectedBarView.backgroundColor = UIColor.white
                     if let cell = tableView.cellForRow(at: IndexPath(row: selectedRow, section: 0)) {
                         if let tableCell = cell as? MenuTableViewCell {
                             tableCell.selectedBarView.backgroundColor = UIColor.getTurkishLeagueBarColor()
+                            tableCell.selectedBarView.alpha = 1
                         }
                     }
                     selectedRow = indexPath.row
@@ -80,7 +82,8 @@ extension MenuViewController: UITableViewDataSource {
             if let tableCell = cell as? MenuTableViewCell {
                 tableCell.nameLabel.text = menu[indexPath.row]?.text
                 if indexPath.row == selectedRow {
-                    tableCell.selectedBarView.backgroundColor = UIColor.getTurkishLeagueSelectedMenuItemColor()
+                    tableCell.selectedBarView.backgroundColor = UIColor.white
+                    tableCell.selectedBarView.alpha = 0.5
                 }
             }
             return cell

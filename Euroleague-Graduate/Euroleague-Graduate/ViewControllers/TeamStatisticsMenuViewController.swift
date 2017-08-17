@@ -26,6 +26,8 @@ class TeamStatisticsMenuViewController: UIViewController {
     
     @IBOutlet weak var fourthButton: UIButton!
     
+    @IBOutlet weak var openMenuButton: UIButton!
+    
     fileprivate var willSelect = false
     
     var delegate: MenuSwapped?
@@ -45,6 +47,8 @@ class TeamStatisticsMenuViewController: UIViewController {
     @IBAction func menuButtonPressed(_ sender: UIButton) {
         if !willSelect {
             willSelect = true
+            buttonsShouldHide(false)
+            openMenuButton.alpha = 0.5
             delegate?.changeMenuSize(toHeight: firstButton.frame.height * CGFloat(menu.count))
         }
         else{
@@ -54,14 +58,19 @@ class TeamStatisticsMenuViewController: UIViewController {
                 text.caseInsensitiveCompare(currentText) != .orderedSame {
                 makeMenuStartWith(text)
                 swapTheUIMenuOrder()
-                delegate?.updateTableData(withRound: (menu[1]?.round)!)
+                if let round = menu[1]?.round {
+                    delegate?.updateTableData(withRound: round)
+                }
+                
             }
+            buttonsShouldHide(true)
+            openMenuButton.alpha = 1.0
             delegate?.changeMenuSize(toHeight: firstButton.frame.height)
         }
     }
     
     func getCurrentMenuRound() -> String {
-        return (menu[1]?.round)!
+        return menu[1]?.round ?? ""
     }
     
 }
@@ -96,7 +105,9 @@ fileprivate extension TeamStatisticsMenuViewController {
             swapped = false
             for i in 2...menu.count - 1 {
                 let j = i + 1
-                if (menu[j-1]?.priority)! < (menu[j]?.priority)! {
+                if let firstPriority = menu[j-1]?.priority,
+                    let secondPriority = menu[j]?.priority,
+                    firstPriority < secondPriority {
                     swapMenu(j-1, j)
                     swapped = true
                 }
@@ -108,6 +119,12 @@ fileprivate extension TeamStatisticsMenuViewController {
         let temp = menu[i]
         menu[i] = menu[j]
         menu[j] = temp
+    }
+    
+    func buttonsShouldHide(_ appear: Bool) {
+        secondButton.isHidden = appear
+        thirdButton.isHidden = appear
+        fourthButton.isHidden = appear
     }
 }
 

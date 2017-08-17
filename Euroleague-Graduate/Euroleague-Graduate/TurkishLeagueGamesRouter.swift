@@ -36,4 +36,12 @@ class TurkishLeagueGamesRouter {
         return view
     }
     
+    func createGameBoxScore() -> GameBoxScoreViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let view = storyboard.instantiateViewController(
+            withIdentifier: "GameBoxScore") as? GameBoxScoreViewController
+            else { return GameBoxScoreViewController() }
+        return view
+    }
+    
 }

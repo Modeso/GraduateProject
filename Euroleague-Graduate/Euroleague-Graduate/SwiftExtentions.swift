@@ -12,19 +12,17 @@ import UIKit
 extension UIColor {
     
     static func getTurkishLeagueBarColor() -> UIColor{
-        return UIColor(red: 255.0/255, green: 88.0/255, blue: 4.0/255, alpha: 1)
+        return UIColor(red: 255.0/255, green: 79.0/255, blue: 30.0/255, alpha: 1)
     }
     
     static func getTurkishLeagueBackGroundColor() -> UIColor {
         return UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
     }
     
-    static func getTurkishLeagueSelectedMenuItemColor() -> UIColor {
-        return UIColor(red: 255.0/255.0, green: 127.0/255.0, blue: 127.0/255.0, alpha: 1)
-    }
 }
 
 extension String {
+    
     func capitalizingFirstLetter() -> String {
         let first = String(characters.prefix(1)).capitalized
         let other = String(characters.dropFirst())
@@ -34,6 +32,7 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
+    
 }
 
 extension Date {

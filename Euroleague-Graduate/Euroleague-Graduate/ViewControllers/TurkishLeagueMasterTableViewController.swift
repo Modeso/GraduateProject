@@ -21,6 +21,8 @@ IndicatorInfoProvider {
     
     fileprivate var indexPath: IndexPath?
     
+    fileprivate var selectedGame = Game()
+    
     fileprivate var firstLoad = true
     
     var pagerDelegate: PagerUpdateDelegate?
@@ -53,6 +55,12 @@ IndicatorInfoProvider {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
                 self?.moveToLastPlayed()
             })
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? TurkishLeagueGameDetailViewController {
+            destination.game = selectedGame
         }
     }
     
@@ -101,11 +109,9 @@ IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let viewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "GameDetailScreen") as? TurkishLeagueGameDetailViewController {
-            if let navigator = navigationController {
-                navigator.pushViewController(viewController, animated: true)
-            }
+        if let game = schedule?[indexPath.section][indexPath.row] {
+            selectedGame = game
+            performSegue(withIdentifier: "showDetailSegue", sender: self)
         }
     }
     
