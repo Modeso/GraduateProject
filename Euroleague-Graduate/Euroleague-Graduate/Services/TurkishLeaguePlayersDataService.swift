@@ -21,9 +21,14 @@ class TurkishLeaguePlayersDataService {
     }
     
     func updatePlayer(withCode code: String, completion:@escaping (_ player:Player) -> Void) {
-        let url = "players?pcode=\(code)&seasoncode=E2016"
+    //    LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
+        let url = "players"
+        let parameters = [
+            "pcode" : "\(code)",
+            "seasoncode" : LeaguesCommenObjects.season
+        ]
         ApiClient.getRequestFrom(url: url,
-                                 parameters: [:],
+                                 parameters: parameters,
                                  headers: [:]){ [weak self] data ,error in
                                     if let xmlData = data, error == nil {
                                         self?.parsePlayerData(xmlData,code: code){ player in

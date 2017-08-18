@@ -16,9 +16,9 @@ protocol TurkishAirLinesGamesDataServiceDelegate {
 
 class TurkishAirLinesGamesDataService {
     
-    enum GameDataType {
-        case schedule
-        case results
+    enum GameDataRequestType: String {
+        case schedule = "schedules"
+        case results = "results"
     }
     
     var delegate: TurkishAirLinesGamesDataServiceDelegate?
@@ -26,11 +26,6 @@ class TurkishAirLinesGamesDataService {
     fileprivate var games: Dictionary<Int, Game> = [:]
     
     fileprivate var isUpdating = false
-    
-    fileprivate let urls: Dictionary<GameDataType, String> = [
-        .schedule : "schedules?seasoncode=E2016",
-        .results : "results?seasoncode=E2016"
-    ]
     
     func getGamesTable() -> Results<Game> {
         let table = RealmDBManager.sharedInstance.getGames()
@@ -50,10 +45,12 @@ fileprivate extension TurkishAirLinesGamesDataService {
     
     func getSchedule() {
         games.removeAll()
+   //     LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
+        let parameters = [ "seasoncode" : LeaguesCommenObjects.season]
         ApiClient
             .getRequestFrom(
-                url: urls[.schedule]!,
-                parameters: [:],
+                url:GameDataRequestType.schedule.rawValue,
+                parameters: parameters,
                 headers: [:]){ [weak self] data ,error in
                     if let xmlData = data, error == nil {
                         self?.parseSchedule(xmlData)
@@ -66,10 +63,12 @@ fileprivate extension TurkishAirLinesGamesDataService {
     }
     
     func getResults() {
+   //     LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
+        let parameters = [ "seasoncode" : LeaguesCommenObjects.season]
         ApiClient
             .getRequestFrom(
-                url: urls[.results]!,
-                parameters: [:],
+                url: GameDataRequestType.results.rawValue,
+                parameters: parameters,
                 headers: [:]){ [weak self] data ,error in
                     if let xmlData = data, error == nil {
                         self?.setResults(xmlData)
@@ -90,6 +89,7 @@ fileprivate extension TurkishAirLinesGamesDataService {
         for elem in xml["schedule"]["item"].all {
             let game = Game()
             game.parseGameData(elem)
+            
             RealmDBManager.sharedInstance.addGameDataToRealm(game: game)
             games[game.gameNumber] = game
         }

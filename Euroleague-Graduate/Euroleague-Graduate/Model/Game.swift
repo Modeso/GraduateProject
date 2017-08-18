@@ -29,6 +29,10 @@ class Game: Object{
     dynamic var awayImageUrl: String = ""
     dynamic var homeImageUrl: String = ""
     
+    //V5
+    dynamic var localTeamGameDetail: GameTeamDetail?
+    dynamic var roadTeamGameDetail: GameTeamDetail?
+    
     override static func primaryKey() -> String? {
         return "gameNumber"
     }
@@ -70,7 +74,27 @@ extension Game {
         newGame.time = self.time
         newGame.awayCode = self.awayCode
         newGame.homeCode = self.homeCode
+        newGame.localTeamGameDetail = self.localTeamGameDetail
+        newGame.roadTeamGameDetail = self.roadTeamGameDetail
         return newGame
+    }
+    
+    func getQuartersPlayed() -> Int {
+        var count = 4
+        guard let localTeam = localTeamGameDetail, let roadTeam = roadTeamGameDetail
+            else { return count }
+        if localTeam.extraPeriod1 != 0 || localTeam.extraPeriod2 != 0
+            || roadTeam.extraPeriod1 != 0 || roadTeam.extraPeriod2 != 0 {
+            count = 6
+        }
+        if localTeam.extraPeriod3 != 0 || localTeam.extraPeriod4 != 0
+            || roadTeam.extraPeriod3 != 0 || roadTeam.extraPeriod4 != 0 {
+            count = 8
+        }
+        if localTeam.extraPeriod5 != 0 || roadTeam.extraPeriod5 != 0 {
+            count = 10
+        }
+        return count
     }
     
 }

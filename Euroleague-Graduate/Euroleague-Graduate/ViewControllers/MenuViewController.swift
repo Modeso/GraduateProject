@@ -10,6 +10,8 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    
+    
     fileprivate let menu: Dictionary<Int, (text: String, identifier: String)> = [
         0 : ("Games","GamesContentNavigationController"),
         1 : ("Teams","TeamsContentNavigationController")

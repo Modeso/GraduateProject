@@ -10,7 +10,7 @@ import UIKit
 import AKSideMenu
 
 class RootViewController: AKSideMenu, AKSideMenuDelegate {
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         self.menuPreferredStatusBarStyle = UIStatusBarStyle.lightContent

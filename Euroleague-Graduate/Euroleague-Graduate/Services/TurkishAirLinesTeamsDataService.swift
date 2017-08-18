@@ -16,7 +16,7 @@ protocol TurkishAirLinesTeamsDataServiceDelegate {
 
 class TurkishAirLinesTeamsDataService {
     
-    fileprivate let url = "teams?seasoncode=E2016"
+    fileprivate let url = "teams"
     
     var delegate: TurkishAirLinesTeamsDataServiceDelegate?
     
@@ -33,8 +33,10 @@ class TurkishAirLinesTeamsDataService {
 fileprivate extension TurkishAirLinesTeamsDataService {
     
     func getTeams() {
+    //    LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
+        let parameters = [ "seasoncode" : LeaguesCommenObjects.season ]
         ApiClient.getRequestFrom(url: url,
-                                 parameters: [:],
+                                 parameters: parameters,
                                  headers: [:]){ [weak self] data ,error in
                                     if let xmlData = data, error == nil {
                                         self?.parseTeamData(xmlData)

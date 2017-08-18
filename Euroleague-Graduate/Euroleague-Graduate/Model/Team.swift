@@ -14,7 +14,6 @@ class Team: Object {
     
     //V1
     dynamic var code: String = ""
-    
     dynamic var tvCode: String = ""
     dynamic var name: String = ""
     dynamic var countryName: String = ""
@@ -24,8 +23,6 @@ class Team: Object {
     dynamic var twitterAccount: String = ""
     
     //V2
-//    dynamic var coachName: String = ""
-//    dynamic var coachCountry: String = ""
     var rosters = List<Player>()
     
     //V3

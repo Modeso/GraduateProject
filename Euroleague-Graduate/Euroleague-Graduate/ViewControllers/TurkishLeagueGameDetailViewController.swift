@@ -27,6 +27,8 @@ class TurkishLeagueGameDetailViewController: ButtonBarPagerTabStripViewControlle
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
+        
+        
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {

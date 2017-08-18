@@ -28,15 +28,28 @@ class RealmDBManager {
     }
     
     func addGameDataToRealm(game: Game){
-        try! realm.write {
-            realm.add(game, update: true)
-        }
+        print("game.gameNumber \(game.gameNumber)")
+//        let predicate = NSPredicate(format: "gameNumber = %@", "\(game.gameNumber)")
+//        let result = realm.objects(Player.self).filter(predicate)
+//        if result.count == 0 {
+            try! realm.write {
+                realm.add(game, update: true)
+            }
+//        }
     }
     
     func updateScoreFor(_ game:Game, homeScore: Int, awayScore: Int){
         try! realm.write {
+            game.played = true
             game.homeScore = homeScore
             game.awayScore = awayScore
+        }
+    }
+    
+    func updateGameTeamsDetailFor(_ game: Game, localTeam: GameTeamDetail?, roadTeam: GameTeamDetail?) {
+        try! realm.write {
+            game.localTeamGameDetail = localTeam
+            game.roadTeamGameDetail = roadTeam
         }
     }
     

@@ -11,7 +11,7 @@ import Alamofire
 
 class ApiClient {
     
-    private static let baseUrl = "http://www.euroleague.net/euroleague/api/"
+    private static var baseUrl = "http://www.euroleague.net/euroleague/api/"
     
     static func getRequestFrom(url: String,
                                parameters: Parameters,
