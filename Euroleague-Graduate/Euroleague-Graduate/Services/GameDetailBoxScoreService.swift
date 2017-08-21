@@ -24,7 +24,7 @@ class GameDetailBoxScoreService {
         let url = "games"
         let parameters = [
             "gamecode" : gameCode,
-            "seasoncode" : LeaguesCommenObjects.season
+            "seasoncode" : LeaguesCommenObjects.season.getSeasonCode()
         ]
         ApiClient.getRequestFrom(
             url: url,

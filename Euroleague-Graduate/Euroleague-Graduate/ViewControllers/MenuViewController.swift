@@ -10,23 +10,31 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    
-    
     fileprivate let menu: Dictionary<Int, (text: String, identifier: String)> = [
         0 : ("Games","GamesContentNavigationController"),
         1 : ("Teams","TeamsContentNavigationController")
     ]
     
+    @IBOutlet weak var topView: UIView!
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    fileprivate var selectedLeagueNumber = 0
     
     fileprivate var selectedRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = UIColor.getTurkishLeagueBarColor()
+        tableView.backgroundColor = UIColor.getLeagueBarColor()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        // Do any additional setup after loading the view.
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        collectionView.collectionViewLayout = layout
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,12 +45,12 @@ class MenuViewController: UIViewController {
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
 
 extension MenuViewController: UITableViewDelegate {
@@ -54,7 +62,7 @@ extension MenuViewController: UITableViewDelegate {
                     tableCell.selectedBarView.backgroundColor = UIColor.white
                     if let cell = tableView.cellForRow(at: IndexPath(row: selectedRow, section: 0)) {
                         if let tableCell = cell as? MenuTableViewCell {
-                            tableCell.selectedBarView.backgroundColor = UIColor.getTurkishLeagueBarColor()
+                            tableCell.selectedBarView.backgroundColor = UIColor.getLeagueBarColor()
                             tableCell.selectedBarView.alpha = 1
                         }
                     }
@@ -91,6 +99,83 @@ extension MenuViewController: UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+extension MenuViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width / 2, height: 80)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueImageCell", for: indexPath) as? LeagueChooserCollectionViewCell {
+            switch indexPath.row{
+            case 0:
+                cell.leagueImageView.image = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague.getImage()
+            case 1:
+                cell.leagueImageView.image = LeaguesCommenObjects.Season.EuroCup.getImage()
+            default :
+                break
+            }
+            if let oldCell = collectionView.cellForItem(at: IndexPath(row: selectedLeagueNumber, section: 1)) {
+                if let leagueCell = oldCell as? LeagueChooserCollectionViewCell {
+                    switch indexPath.row{
+                    case 0:
+                        leagueCell.leagueImageView.image = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague.getNavImage()
+                    case 1:
+                        leagueCell.leagueImageView.image = LeaguesCommenObjects.Season.EuroCup.getNavImage()
+                    default :
+                        break
+                    }
+                }
+
+            }
+            selectedLeagueNumber = indexPath.row
+            collectionView.reloadData()
+        }
+    }
+    
+}
+
+extension MenuViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueImageCell", for: indexPath)
+            as? LeagueChooserCollectionViewCell {
+            switch indexPath.row{
+            case 0:
+                if indexPath.row == selectedLeagueNumber {
+                    cell.leagueImageView.image = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague.getImage()
+                }
+                else{
+                    cell.leagueImageView.image = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague.getNavImage()
+                }
+                
+            case 1:
+                if indexPath.row == selectedLeagueNumber {
+                    cell.leagueImageView.image = LeaguesCommenObjects.Season.EuroCup.getImage()
+                }
+                else{
+                    cell.leagueImageView.image = LeaguesCommenObjects.Season.EuroCup.getNavImage()
+                }
+                
+            default :
+                cell.leagueImageView.image = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague.getImage()
+            }
+            
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }
 

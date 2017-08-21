@@ -25,7 +25,7 @@ class TurkishLeaguePlayersDataService {
         let url = "players"
         let parameters = [
             "pcode" : "\(code)",
-            "seasoncode" : LeaguesCommenObjects.season
+            "seasoncode" : LeaguesCommenObjects.season.getSeasonCode()
         ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,

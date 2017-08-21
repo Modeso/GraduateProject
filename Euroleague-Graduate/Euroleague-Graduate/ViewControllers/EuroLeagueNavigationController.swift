@@ -25,10 +25,10 @@ class EuroLeagueNavigationController: UINavigationController {
 extension EuroLeagueNavigationController:  UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        navigationBar.barTintColor = UIColor.getTurkishLeagueBarColor()
+        navigationBar.barTintColor = UIColor.getLeagueBarColor()
         navigationBar.tintColor = UIColor.white
         navigationBar.isTranslucent = false
-        let navImage = UIImage(named: "navbar-turkishairlines")
+        let navImage = LeaguesCommenObjects.season.getNavImage()
         let navImageView = UIImageView(image: navImage)
         navImageView.contentMode = .scaleAspectFit
         navImageView.center = CGPoint(x: navigationBar.center.x, y: navigationBar.center.y - 20)

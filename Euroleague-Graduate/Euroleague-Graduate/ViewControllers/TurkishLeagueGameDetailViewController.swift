@@ -20,14 +20,15 @@ class TurkishLeagueGameDetailViewController: ButtonBarPagerTabStripViewControlle
         settings.style.selectedBarHeight = 5.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
-        settings.style.buttonBarItemBackgroundColor = UIColor.getTurkishLeagueBarColor()
+        settings.style.buttonBarItemBackgroundColor = UIColor.getLeagueBarColor()
         settings.style.selectedBarBackgroundColor = UIColor.white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
-        
+        if let image = UIImage(named: "LeagueBackGround") {
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }
         
     }
     
@@ -49,13 +50,13 @@ fileprivate extension TurkishLeagueGameDetailViewController {
             else { return }
         let playByPlay = router.createGameDetailWebViewController()
         playByPlay.name = "PLAY BY PLAY"
-        playByPlay.urlString = createWebViewUrl(type: "pbpmobile", gameCode: gameNumber, season: LeaguesCommenObjects.season)
+        playByPlay.urlString = createWebViewUrl(type: "pbpmobile", gameCode: gameNumber, season: LeaguesCommenObjects.season.getSeasonCode())
         let shootingChart = router.createGameDetailWebViewController()
         shootingChart.name = "SHOOTING CHART"
-        shootingChart.urlString = createWebViewUrl(type: "shootingchart", gameCode: gameNumber, season: LeaguesCommenObjects.season)
+        shootingChart.urlString = createWebViewUrl(type: "shootingchart", gameCode: gameNumber, season: LeaguesCommenObjects.season.getSeasonCode())
         let gameEvolution = router.createGameDetailWebViewController()
         gameEvolution.name = "GAME EVOLUTION"
-        gameEvolution.urlString = createWebViewUrl(type: "graphic", gameCode: gameNumber, season: LeaguesCommenObjects.season)
+        gameEvolution.urlString = createWebViewUrl(type: "graphic", gameCode: gameNumber, season: LeaguesCommenObjects.season.getSeasonCode())
         myViewControllers.append(shootingChart)
         myViewControllers.append(gameEvolution)
         myViewControllers.append(playByPlay)

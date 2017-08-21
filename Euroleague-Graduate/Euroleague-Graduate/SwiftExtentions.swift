@@ -11,12 +11,12 @@ import UIKit
 
 extension UIColor {
     
-    static func getTurkishLeagueBarColor() -> UIColor{
-        return UIColor(red: 255.0/255, green: 79.0/255, blue: 30.0/255, alpha: 1)
+    static func getLeagueBarColor() -> UIColor{
+        return LeaguesCommenObjects.season.getColor()
     }
     
-    static func getTurkishLeagueBackGroundColor() -> UIColor {
-        return UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
+    static func getLeagueBackGroundColor() -> UIColor {
+        return LeaguesCommenObjects.BackGroundColor
     }
     
 }

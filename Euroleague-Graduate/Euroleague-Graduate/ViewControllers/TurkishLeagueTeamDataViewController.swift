@@ -25,7 +25,7 @@ class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController 
     @IBOutlet weak var countryLabel: UILabel!
     
     override func viewDidLoad() {
-        settings.style.buttonBarItemBackgroundColor = UIColor.getTurkishLeagueBarColor()
+        settings.style.buttonBarItemBackgroundColor = UIColor.getLeagueBarColor()
         settings.style.selectedBarBackgroundColor = UIColor.white
         settings.style.buttonBarItemFont = UIFont(name: "CoText-Regular", size: 14.0)!
         settings.style.selectedBarHeight = 5.0
@@ -34,7 +34,9 @@ class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController 
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
+        if let image = UIImage(named: "LeagueBackGround") {
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }
         self.edgesForExtendedLayout = []
         containerView.backgroundColor = UIColor.clear
         updateUI()

@@ -29,7 +29,9 @@ class TurkishLeagueTeamsTableViewController: UIViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor.clear
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
+        if let image = UIImage(named: "LeagueBackGround") {
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }
         
         teamViewModel.teamsDelegate = self
         teamViewModel.getTeamsData()

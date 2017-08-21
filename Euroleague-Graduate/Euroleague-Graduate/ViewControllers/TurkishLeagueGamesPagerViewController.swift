@@ -30,7 +30,7 @@ class TurkishLeagueGamesPagerViewController: ButtonBarPagerTabStripViewControlle
     fileprivate var refreshing = true
     
     override func viewDidLoad() {
-        settings.style.buttonBarItemBackgroundColor = UIColor.getTurkishLeagueBarColor()
+        settings.style.buttonBarItemBackgroundColor = UIColor.getLeagueBarColor()
         settings.style.selectedBarBackgroundColor = UIColor.white
         settings.style.buttonBarItemFont = UIFont(name: "CoText-Regular", size: 13.0)!
         settings.style.selectedBarHeight = 5.0
@@ -40,7 +40,9 @@ class TurkishLeagueGamesPagerViewController: ButtonBarPagerTabStripViewControlle
         
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "TurkishLeagueBackGround")!)
+        if let image = UIImage(named: "LeagueBackGround") {
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }
     }
     
     private func createControllers() {

@@ -33,6 +33,8 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         
     @IBOutlet weak var tableViewHeightConstrain: NSLayoutConstraint!
     
+    @IBOutlet weak var browserButton: UIButton!
+    
     fileprivate let boxScoreViewModel = BoxScoreViewModel()
     
     fileprivate let gameDetailBoxScoreService = GameDetailBoxScoreService()
@@ -49,6 +51,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        browserButton.backgroundColor = LeaguesCommenObjects.season.getColor()
         gameDetailBoxScoreService.delegate = self
         
         collectionViewHeightConstrain.constant = 0
@@ -86,7 +89,6 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     
     @IBAction func openBoxScoreOnWebBrowser(_ sender: Any) {
         /// learn how to open it
-        
     }
     
 }
