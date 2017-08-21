@@ -30,9 +30,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var collectionViewHeightConstrain: NSLayoutConstraint!
     
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var scrollView: UIScrollView!
-    
+        
     @IBOutlet weak var tableViewHeightConstrain: NSLayoutConstraint!
     
     fileprivate let boxScoreViewModel = BoxScoreViewModel()
@@ -112,22 +110,11 @@ fileprivate extension GameBoxScoreViewController {
         let date = "\(Date().convertDateToString(game.date))|\(game.time)"
         dateLabel?.text = date
     }
-    
-    func getScrollViewHeight() -> CGFloat {
-        var height: CGFloat = scrollView.contentSize.height
-        height += tableViewHeightConstrain.constant
-        height += collectionViewHeightConstrain.constant
-        return height
-    }
 
 }
 
 extension GameBoxScoreViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("section number is \(indexPath.section)")
-        print("row number is \(indexPath.row)\n")
-    }
 }
 
 extension GameBoxScoreViewController: UITableViewDataSource {

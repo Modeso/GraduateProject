@@ -561,7 +561,6 @@
                         <outlet property="detailLabel" destination="Fy1-6Y-7ke" id="LGN-OZ-vtT"/>
                         <outlet property="homeImageView" destination="hGm-eX-KUM" id="J2k-tN-zQO"/>
                         <outlet property="resultLabel" destination="GE5-hl-soW" id="Dg8-s1-jKo"/>
-                        <outlet property="scrollView" destination="Arj-4E-QwS" id="vJF-D3-iGc"/>
                         <outlet property="separator" destination="bSQ-vn-uUB" id="uqH-G3-UwA"/>
                         <outlet property="tableView" destination="2W9-Tk-BZG" id="tZ7-Xh-rxU"/>
                         <outlet property="tableViewHeightConstrain" destination="WZu-ZL-qwx" id="JqH-3G-ej6"/>
@@ -583,7 +582,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o0X-Ii-LNz">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0X-Ii-LNz">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>

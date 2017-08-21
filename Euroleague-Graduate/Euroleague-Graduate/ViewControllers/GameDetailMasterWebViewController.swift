@@ -24,10 +24,16 @@ class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider
         super.viewDidLoad()
         webView.backgroundColor = UIColor.clear
         view.backgroundColor = UIColor.clear
-        if let url = URL(string: urlString){
-            let request = URLRequest(url: url)
-            webView.loadRequest(request)
+        webView.scrollView.minimumZoomScale = 1.0
+        webView.scrollView.maximumZoomScale = 1.0
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            if let fullUrl = self?.urlString,
+                let url = URL(string: fullUrl){
+                let request = URLRequest(url: url)
+                self?.webView.loadRequest(request)
+            }
         }
+        
         
     }
     
