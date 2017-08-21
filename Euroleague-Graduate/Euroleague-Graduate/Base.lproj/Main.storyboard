@@ -416,52 +416,52 @@
                                             <constraint firstAttribute="height" constant="7" id="ba6-BX-dqv"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="154" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2W9-Tk-BZG">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2W9-Tk-BZG">
                                         <rect key="frame" x="0.0" y="197" width="414" height="335"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="335" id="WZu-ZL-qwx"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MVPCell" rowHeight="154" id="jaS-1C-chX" customClass="BoxScoreMVPTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="154"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MVPCell" rowHeight="46" id="jaS-1C-chX" customClass="BoxScoreMVPTableViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="46"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jaS-1C-chX" id="LFQ-lJ-DGJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Player" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIu-xe-dhF">
-                                                            <rect key="frame" x="13" y="8" width="100.33333333333333" height="138"/>
-                                                            <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Player" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIu-xe-dhF">
+                                                            <rect key="frame" x="13" y="8" width="88" height="29.666666666666664"/>
+                                                            <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                                             <color key="textColor" red="0.3014175892" green="0.3014255166" blue="0.30142122510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-63-pKF">
-                                                            <rect key="frame" x="133.66666666666669" y="61.333333333333343" width="147.00000000000006" height="31.666666666666657"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-63-pKF">
+                                                            <rect key="frame" x="136.66666666666669" y="11" width="141.00000000000006" height="23.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="H-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8du-D5-aTo">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="42.333333333333343" height="31.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="42.333333333333343" height="23.666666666666664"/>
                                                                     <fontDescription key="fontDescription" name="CoText-Bold" family="Co Text" pointSize="18"/>
                                                                     <color key="textColor" red="0.3014175892" green="0.3014255166" blue="0.30142122510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMd-RL-cJp">
-                                                                    <rect key="frame" x="52.333333333333343" y="0.0" width="42.333333333333343" height="31.666666666666664"/>
+                                                                    <rect key="frame" x="49.333333333333343" y="0.0" width="42.333333333333343" height="23.666666666666664"/>
                                                                     <fontDescription key="fontDescription" name="CoText-Bold" family="Co Text" pointSize="18"/>
                                                                     <color key="textColor" red="0.30141758918762207" green="0.3014255166053772" blue="0.30142122507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="A-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Y2-o0-XrN">
-                                                                    <rect key="frame" x="104.66666666666669" y="0.0" width="42.333333333333343" height="31.666666666666664"/>
+                                                                    <rect key="frame" x="98.666666666666686" y="0.0" width="42.333333333333343" height="23.666666666666664"/>
                                                                     <fontDescription key="fontDescription" name="CoText-Bold" family="Co Text" pointSize="18"/>
                                                                     <color key="textColor" red="0.3014175892" green="0.3014255166" blue="0.30142122510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Away Player" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igd-ti-aXe">
-                                                            <rect key="frame" x="305.33333333333326" y="8" width="95.666666666666686" height="138"/>
-                                                            <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Away Player" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="igd-ti-aXe">
+                                                            <rect key="frame" x="317.33333333333326" y="8" width="83.666666666666686" height="29.666666666666664"/>
+                                                            <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                                             <color key="textColor" red="0.30141758918762207" green="0.3014255166053772" blue="0.30142122507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -474,11 +474,13 @@
                                                         <constraint firstAttribute="bottomMargin" secondItem="igd-ti-aXe" secondAttribute="bottom" id="I25-JI-b9J"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="hIu-xe-dhF" secondAttribute="bottom" id="K0i-oJ-O88"/>
                                                         <constraint firstItem="ZZd-63-pKF" firstAttribute="centerX" secondItem="LFQ-lJ-DGJ" secondAttribute="centerX" id="Rld-6U-4JS"/>
-                                                        <constraint firstItem="igd-ti-aXe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZZd-63-pKF" secondAttribute="trailing" constant="10" id="Vs9-lM-mz5"/>
-                                                        <constraint firstItem="ZZd-63-pKF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hIu-xe-dhF" secondAttribute="trailing" constant="10" id="WgB-ee-3Xo"/>
+                                                        <constraint firstItem="igd-ti-aXe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZZd-63-pKF" secondAttribute="trailing" constant="3" id="Vs9-lM-mz5"/>
+                                                        <constraint firstItem="ZZd-63-pKF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hIu-xe-dhF" secondAttribute="trailing" constant="3" id="WgB-ee-3Xo"/>
+                                                        <constraint firstItem="ZZd-63-pKF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LFQ-lJ-DGJ" secondAttribute="topMargin" constant="3" id="deg-rv-VtP"/>
                                                         <constraint firstItem="hIu-xe-dhF" firstAttribute="top" secondItem="LFQ-lJ-DGJ" secondAttribute="topMargin" id="k5g-r5-xiX"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="igd-ti-aXe" secondAttribute="trailing" constant="5" id="wnc-ab-P8L"/>
                                                         <constraint firstItem="hIu-xe-dhF" firstAttribute="leading" secondItem="LFQ-lJ-DGJ" secondAttribute="leadingMargin" constant="5" id="yuk-QC-Rt0"/>
+                                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="ZZd-63-pKF" secondAttribute="bottom" constant="3" id="za0-kG-dVP"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -559,6 +561,7 @@
                         <outlet property="detailLabel" destination="Fy1-6Y-7ke" id="LGN-OZ-vtT"/>
                         <outlet property="homeImageView" destination="hGm-eX-KUM" id="J2k-tN-zQO"/>
                         <outlet property="resultLabel" destination="GE5-hl-soW" id="Dg8-s1-jKo"/>
+                        <outlet property="scrollView" destination="Arj-4E-QwS" id="vJF-D3-iGc"/>
                         <outlet property="separator" destination="bSQ-vn-uUB" id="uqH-G3-UwA"/>
                         <outlet property="tableView" destination="2W9-Tk-BZG" id="tZ7-Xh-rxU"/>
                         <outlet property="tableViewHeightConstrain" destination="WZu-ZL-qwx" id="JqH-3G-ej6"/>

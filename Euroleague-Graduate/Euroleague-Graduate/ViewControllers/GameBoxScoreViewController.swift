@@ -31,6 +31,8 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var tableViewHeightConstrain: NSLayoutConstraint!
     
     fileprivate let boxScoreViewModel = BoxScoreViewModel()
@@ -50,8 +52,15 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameDetailBoxScoreService.delegate = self
-        if game?.localTeamGameDetail == nil || game?.roadTeamGameDetail == nil {
-            if let code = game?.gameNumber {
+        
+        collectionViewHeightConstrain.constant = 0
+        tableViewHeightConstrain.constant = 0
+        if let code = game?.gameNumber {
+            if let realmGame = RealmDBManager.sharedInstance.getGame(withNumber: code) {
+                game?.localTeamGameDetail = realmGame.localTeamGameDetail
+                game?.roadTeamGameDetail = realmGame.roadTeamGameDetail
+            }
+            if game?.localTeamGameDetail == nil || game?.roadTeamGameDetail == nil {
                 gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: String(code))
             }
         }
@@ -61,20 +70,20 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         collectionView.collectionViewLayout = layout
-        updateUI()
-        collectionView.autoresizingMask = [UIViewAutoresizing.flexibleHeight]
         
         // TableView Settings
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         
-        print("didlayoutsubviewsß")
-        tableViewHeightConstrain.constant = tableView.contentSize.height
-
+        updateUI()
+        
+        DispatchQueue.main.async {
+            self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
+        }
+        
+        DispatchQueue.main.async {
+            self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
+        }
     }
     
     @IBAction func openBoxScoreOnWebBrowser(_ sender: Any) {
@@ -103,6 +112,13 @@ fileprivate extension GameBoxScoreViewController {
         let date = "\(Date().convertDateToString(game.date))|\(game.time)"
         dateLabel?.text = date
     }
+    
+    func getScrollViewHeight() -> CGFloat {
+        var height: CGFloat = scrollView.contentSize.height
+        height += tableViewHeightConstrain.constant
+        height += collectionViewHeightConstrain.constant
+        return height
+    }
 
 }
 
@@ -120,6 +136,7 @@ extension GameBoxScoreViewController: UITableViewDataSource {
         if game?.localTeamGameDetail != nil && game?.roadTeamGameDetail != nil {
             return 1
         }
+        tableViewHeightConstrain.constant = 0
         return 0
     }
     
@@ -178,16 +195,24 @@ extension GameBoxScoreViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        collectionViewHeightConstrain.constant = collectionView.contentSize.height
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuarterCell", for: indexPath)
             as? BoxScoreQuarterCollectionViewCell {
             if let localTeam = game?.localTeamGameDetail,
                 let roadTeam = game?.roadTeamGameDetail {
-                cell.quarterResult.text =
-                    "Q\(indexPath.row + 1)   \(localTeam.getQuarter(ofRow: indexPath.row)) : \(roadTeam.getQuarter(ofRow: indexPath.row))"
-            }
-            else {
-                cell.quarterResult.text = "Q\(indexPath.row + 1)   -- : --"
+                var qoute = "Q"
+                var row = indexPath.row + 1
+                var text = ""
+                if indexPath.row > 3 {
+                    qoute = "QT"
+                    row -= 4
+                }
+                let localScore = localTeam.getQuarter(ofRow: indexPath.row)
+                let roadScore = roadTeam.getQuarter(ofRow: indexPath.row)
+                if localScore != 0 && roadScore != 0 {
+                    text = "\(qoute)\(row)   \(localScore) : \(roadScore)"
+                }
+                cell.quarterResult.text = text
+                
             }
             if indexPath.row % 2 == 0 {
                 cell.quarterResult.textAlignment = .right
@@ -206,21 +231,22 @@ extension GameBoxScoreViewController: GameDetailBoxScoreDataServiceDelegate {
     func updateData(localTeamDetail localTeam: GameTeamDetail?, roadTeamDetail roadTeam: GameTeamDetail?) {
         if let game = self.game {
             RealmDBManager.sharedInstance.updateGameTeamsDetailFor(game, localTeam: localTeam, roadTeam: roadTeam)
+            self.game?.localTeamGameDetail = localTeam
+            self.game?.roadTeamGameDetail = roadTeam
         }
-        collectionView.reloadData()
         
+        self.collectionView.reloadData()
+        self.collectionView.performBatchUpdates({
+        }) { (done) in
+            if done {
+                self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
+            }
+        }
         self.tableView.reloadData()
         DispatchQueue.main.async {
             self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
         }
-//        dispatch_async(dispatch_get_main_queue()) {
-//            self.tableHeightConstraint.constant = self.tableView.contentSize.height
-//            UIView.animateWithDuration(0.4) {
-//                self.view.layoutIfNeeded()
-//            }
-//        }
-
-        
+        updateUI()
     }
     
 }

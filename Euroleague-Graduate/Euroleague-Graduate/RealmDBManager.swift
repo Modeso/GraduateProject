@@ -27,15 +27,33 @@ class RealmDBManager {
         return table
     }
     
+    func getGame(withNumber number: Int) -> Game? {
+        let predicate = NSPredicate(format: "gameNumber == %d", number)
+        let result = realm.objects(Game.self).filter(predicate)
+        return result.first
+    }
+    
     func addGameDataToRealm(game: Game){
-        print("game.gameNumber \(game.gameNumber)")
-//        let predicate = NSPredicate(format: "gameNumber = %@", "\(game.gameNumber)")
-//        let result = realm.objects(Player.self).filter(predicate)
-//        if result.count == 0 {
+        let predicate = NSPredicate(format: "gameNumber == %d", game.gameNumber)
+        let result = realm.objects(Game.self).filter(predicate)
+        if result.count == 0 {
             try! realm.write {
                 realm.add(game, update: true)
             }
-//        }
+        }
+        else {
+            try! realm.write {
+                let realmGame = result.first
+                realmGame?.awayCode = game.awayCode
+                realmGame?.awayTv = game.awayTv
+                realmGame?.date = game.date
+                realmGame?.homeCode = game.homeCode
+                realmGame?.homeTv = game.homeTv
+                realmGame?.round = game.round
+                realmGame?.played = game.played
+                realmGame?.time = game.time
+            }
+        }
     }
     
     func updateScoreFor(_ game:Game, homeScore: Int, awayScore: Int){
@@ -47,9 +65,14 @@ class RealmDBManager {
     }
     
     func updateGameTeamsDetailFor(_ game: Game, localTeam: GameTeamDetail?, roadTeam: GameTeamDetail?) {
+        guard let realmGame = getGame(withNumber: game.gameNumber)
+            else {
+                print("Updating Details Failed")
+                return
+            }
         try! realm.write {
-            game.localTeamGameDetail = localTeam
-            game.roadTeamGameDetail = roadTeam
+            realmGame.localTeamGameDetail = localTeam
+            realmGame.roadTeamGameDetail = roadTeam
         }
     }
     

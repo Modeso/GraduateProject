@@ -55,6 +55,7 @@ extension GameTeamDetail {
     func parseTeamGameDetail(_ node: XMLIndexer) {
         do {
             self.code = try node.value(ofAttribute: "code")
+            self.seasonCode = LeaguesCommenObjects.season
             self.partial1 = try node["partials"].value(ofAttribute: "Partial1")
             self.partial2 = try node["partials"].value(ofAttribute: "Partial2")
             self.partial3 = try node["partials"].value(ofAttribute: "Partial3")
