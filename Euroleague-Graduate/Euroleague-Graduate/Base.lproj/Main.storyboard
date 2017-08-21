@@ -571,6 +571,39 @@
             </objects>
             <point key="canvasLocation" x="2973.913043478261" y="-210.32608695652175"/>
         </scene>
+        <!--Game Detail Master Web View Controller-->
+        <scene sceneID="wIY-CG-omr">
+            <objects>
+                <viewController storyboardIdentifier="GameDetailWebViewController" id="n16-vV-aPH" customClass="GameDetailMasterWebViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SED-2L-Q0i"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Ey-65-n0w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eqp-oX-Ysm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o0X-Ii-LNz">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="o0X-Ii-LNz" firstAttribute="top" secondItem="SED-2L-Q0i" secondAttribute="bottom" id="NbK-FR-tiR"/>
+                            <constraint firstItem="7Ey-65-n0w" firstAttribute="top" secondItem="o0X-Ii-LNz" secondAttribute="bottom" id="Rtc-gO-1y7"/>
+                            <constraint firstItem="o0X-Ii-LNz" firstAttribute="leading" secondItem="eqp-oX-Ysm" secondAttribute="leading" id="TUK-Tg-Eze"/>
+                            <constraint firstAttribute="trailing" secondItem="o0X-Ii-LNz" secondAttribute="trailing" id="itx-TQ-4Kc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="o0X-Ii-LNz" id="oOc-Mu-JfX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFm-zf-xk3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3683" y="-210"/>
+        </scene>
         <!--Euro League Navigation Controller-->
         <scene sceneID="qoj-cs-Taf">
             <objects>

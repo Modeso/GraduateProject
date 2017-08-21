@@ -44,4 +44,12 @@ class TurkishLeagueGamesRouter {
         return view
     }
     
+    func createGameDetailWebViewController() -> GameDetailMasterWebViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let view = storyboard.instantiateViewController(
+            withIdentifier: "GameDetailWebViewController") as? GameDetailMasterWebViewController
+            else { return GameDetailMasterWebViewController() }
+        return view
+    }
+    
 }

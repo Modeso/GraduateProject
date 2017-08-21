@@ -15,6 +15,7 @@
 		A5FF78D31F0FA74F00F6E9A2 /* Euroleague_GraduateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78D21F0FA74F00F6E9A2 /* Euroleague_GraduateTests.swift */; };
 		A5FF78DE1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FF78DD1F0FA74F00F6E9A2 /* Euroleague_GraduateUITests.swift */; };
 		E49A004AC4F45BE0AEFD1C45 /* Pods_Euroleague_Graduate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35C4F623F55A7C474F985E8 /* Pods_Euroleague_Graduate.framework */; };
+		FE005FDE1F4AF06100644F54 /* GameDetailMasterWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE005FDD1F4AF06100644F54 /* GameDetailMasterWebViewController.swift */; };
 		FE3324891F4599C200DB345E /* GameBoxScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3324881F4599C200DB345E /* GameBoxScoreViewController.swift */; };
 		FE33248B1F45B18B00DB345E /* BoxScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33248A1F45B18B00DB345E /* BoxScoreViewModel.swift */; };
 		FE33248F1F45C30D00DB345E /* BoxScoreQuarterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33248E1F45C30D00DB345E /* BoxScoreQuarterCollectionViewCell.swift */; };
@@ -98,6 +99,7 @@
 		B35C4F623F55A7C474F985E8 /* Pods_Euroleague_Graduate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Euroleague_Graduate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37D69230445B1A7B7CFD2B6 /* Pods-Euroleague-GraduateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-GraduateTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-GraduateTests/Pods-Euroleague-GraduateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5B4642116FFE1367BFA93F5 /* Pods-Euroleague-Graduate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Euroleague-Graduate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate.release.xcconfig"; sourceTree = "<group>"; };
+		FE005FDD1F4AF06100644F54 /* GameDetailMasterWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailMasterWebViewController.swift; sourceTree = "<group>"; };
 		FE3324881F4599C200DB345E /* GameBoxScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoxScoreViewController.swift; sourceTree = "<group>"; };
 		FE33248A1F45B18B00DB345E /* BoxScoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxScoreViewModel.swift; sourceTree = "<group>"; };
 		FE33248E1F45C30D00DB345E /* BoxScoreQuarterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxScoreQuarterCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				FEC2D27B1F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift */,
 				FEC2D27A1F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift */,
 				FE3324881F4599C200DB345E /* GameBoxScoreViewController.swift */,
+				FE005FDD1F4AF06100644F54 /* GameDetailMasterWebViewController.swift */,
 				FE615F3E1F31BBE600B6C3E0 /* TurkishLeagueTeamsTableViewController.swift */,
 				FE615F441F31EE7400B6C3E0 /* TurkishLeagueTeamDataViewController.swift */,
 				FE368CAF1F33453B006963C8 /* RostersTableViewController.swift */,
@@ -596,6 +599,7 @@
 				FE5B36CC1F41D728005FBCA6 /* TeamStatisticsViewController.swift in Sources */,
 				FE6FB04F1F43010F006C7D44 /* TeamStatisticsTableViewCell.swift in Sources */,
 				FEC2D2931F2B544D006BB8AC /* TurkishLeagueGamsViewModel.swift in Sources */,
+				FE005FDE1F4AF06100644F54 /* GameDetailMasterWebViewController.swift in Sources */,
 				FE5264991F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift in Sources */,
 				FE5264961F34AA3900E62A58 /* Colors.swift in Sources */,
 				FE615F3B1F31B68900B6C3E0 /* MenuViewController.swift in Sources */,
