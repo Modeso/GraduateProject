@@ -53,17 +53,18 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         super.viewDidLoad()
         browserButton.backgroundColor = LeaguesCommenObjects.season.getColor()
         gameDetailBoxScoreService.delegate = self
-        
         collectionViewHeightConstrain.constant = 0
         tableViewHeightConstrain.constant = 0
-        if let code = game?.gameNumber {
-            if let realmGame = RealmDBManager.sharedInstance.getGame(withNumber: code) {
+        if let number = game?.gameNumber {
+            if let code = game?.gameCode,
+                let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code) {
                 game?.localTeamGameDetail = realmGame.localTeamGameDetail
                 game?.roadTeamGameDetail = realmGame.roadTeamGameDetail
             }
-            if game?.localTeamGameDetail == nil || game?.roadTeamGameDetail == nil {
-                gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: String(code))
-            }
+           // if game?.localTeamGameDetail == nil || game?.roadTeamGameDetail == nil {
+                gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: String(number))
+         //   }
+            
         }
         
         // CollectionView Settings
@@ -78,15 +79,21 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         
         updateUI()
         
+        self.view.layoutIfNeeded()
+
         DispatchQueue.main.async {
             self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
         }
+        self.tableView.reloadData()
         
         DispatchQueue.main.async {
             self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
+            
         }
+
     }
     
+  
     @IBAction func openBoxScoreOnWebBrowser(_ sender: Any) {
         /// learn how to open it
     }
@@ -125,7 +132,6 @@ extension GameBoxScoreViewController: UITableViewDataSource {
         if game?.localTeamGameDetail != nil && game?.roadTeamGameDetail != nil {
             return 1
         }
-        tableViewHeightConstrain.constant = 0
         return 0
     }
     
@@ -148,10 +154,17 @@ extension GameBoxScoreViewController: UITableViewDataSource {
                     tableCell.awayPointsLabel.text = boxScoreInfo.guestTeamPlayerPointText
                     tableCell.homePlayerLabel.text = boxScoreInfo.homeTeamPlayerName
                     tableCell.homePlayerPoints.text = boxScoreInfo.homeTeamPlayerPointText
+                   
                 }
-                tableViewHeightConstrain.constant = tableView.contentSize.height
 
             }
+            if indexPath.row == 4 {
+                DispatchQueue.main.async {
+                    self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
+  
+                }
+            }
+            
             return cell
         }
         return UITableViewCell()
@@ -232,8 +245,13 @@ extension GameBoxScoreViewController: GameDetailBoxScoreDataServiceDelegate {
             }
         }
         self.tableView.reloadData()
+        self.view.layoutIfNeeded()
         DispatchQueue.main.async {
+            
             self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
+            print("table view height \(self.tableView.contentSize.height)")
+
+
         }
         updateUI()
     }

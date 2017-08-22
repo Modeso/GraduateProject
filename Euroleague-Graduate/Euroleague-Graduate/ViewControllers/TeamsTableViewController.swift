@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TurkishLeagueTeamsTableViewController: UIViewController {
+class TeamsTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,7 +18,7 @@ class TurkishLeagueTeamsTableViewController: UIViewController {
         }
     }
     
-    private let teamViewModel = TurkishLeagueTeamsViewModel()
+    private let teamViewModel = TeamsViewModel()
     
     fileprivate var selectedTeam: Team?
     
@@ -29,6 +29,8 @@ class TurkishLeagueTeamsTableViewController: UIViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor.clear
+        tableView.sectionIndexColor = UIColor.white
+        tableView.sectionIndexBackgroundColor = UIColor.getLeagueBackGroundColor()
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
         }
@@ -43,7 +45,7 @@ class TurkishLeagueTeamsTableViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowTeam" {
-            if let destination = segue.destination as? TurkishLeagueTeamDataViewController {
+            if let destination = segue.destination as? TeamDataViewController {
                 destination.team = selectedTeam!
             }
         }
@@ -52,12 +54,12 @@ class TurkishLeagueTeamsTableViewController: UIViewController {
 
 }
 
-extension TurkishLeagueTeamsTableViewController: UITableViewDelegate {
+extension TeamsTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "SectionHeader")
         if let label = headerCell?.viewWithTag(123) as? UILabel {
-            let char = teams[section][0].name.characters.first!
+            let char = teams[section][0].name.uppercased().characters.first!
             label.text = String(describing: char)
         }
         return headerCell
@@ -76,9 +78,17 @@ extension TurkishLeagueTeamsTableViewController: UITableViewDelegate {
         tableView.reloadData()
     }
     
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        var sections: [String] = []
+        for team in teams {
+            sections.append(String(describing: team[0].name.uppercased().characters.first!))
+        }
+        return sections
+    }
+    
 }
 
-extension TurkishLeagueTeamsTableViewController: UITableViewDataSource {
+extension TeamsTableViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return teams.count
@@ -106,7 +116,7 @@ extension TurkishLeagueTeamsTableViewController: UITableViewDataSource {
     
 }
 
-extension TurkishLeagueTeamsTableViewController: TeamsDataViewModelDelegate {
+extension TeamsTableViewController: TeamsDataViewModelDelegate {
     
     func updateTeamsData(_ table: [Array<Team>]) {
         teams = table

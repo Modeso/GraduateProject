@@ -10,18 +10,18 @@ import Foundation
 import SWXMLHash
 import RealmSwift
 
-protocol TurkishAirLinesGamesDataServiceDelegate {
+protocol GamesDataServiceDelegate {
     func updateData(_ table: Results<Game>)
 }
 
-class TurkishAirLinesGamesDataService {
+class GamesDataService {
     
     enum GameDataRequestType: String {
         case schedule = "schedules"
         case results = "results"
     }
     
-    var delegate: TurkishAirLinesGamesDataServiceDelegate?
+    var delegate: GamesDataServiceDelegate?
     
     fileprivate var games: Dictionary<Int, Game> = [:]
     
@@ -41,12 +41,12 @@ class TurkishAirLinesGamesDataService {
     
 }
 
-fileprivate extension TurkishAirLinesGamesDataService {
+fileprivate extension GamesDataService {
     
     func getSchedule() {
         games.removeAll()
    //     LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
-        let parameters = [ "seasoncode" : LeaguesCommenObjects.season]
+        let parameters = [ "seasoncode" : LeaguesCommenObjects.season.getSeasonCode()]
         ApiClient
             .getRequestFrom(
                 url:GameDataRequestType.schedule.rawValue,
@@ -64,7 +64,7 @@ fileprivate extension TurkishAirLinesGamesDataService {
     
     func getResults() {
    //     LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
-        let parameters = [ "seasoncode" : LeaguesCommenObjects.season]
+        let parameters = [ "seasoncode" : LeaguesCommenObjects.season.getSeasonCode()]
         ApiClient
             .getRequestFrom(
                 url: GameDataRequestType.results.rawValue,
@@ -100,7 +100,8 @@ fileprivate extension TurkishAirLinesGamesDataService {
         for elem in xml["results"]["game"].all{
             do{
                 let gameNumber: Int = try elem["gamenumber"].value()
-                if (games[gameNumber]?.played)! {
+                if let played = games[gameNumber]?.played,
+                    played {
                     RealmDBManager
                         .sharedInstance
                         .updateScoreFor(games[gameNumber]!,

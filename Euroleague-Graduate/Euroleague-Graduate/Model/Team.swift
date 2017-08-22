@@ -19,7 +19,7 @@ class Team: Object {
     dynamic var countryName: String = ""
     dynamic var countryCode: String = ""
     dynamic var logoUrl: String = ""
-    dynamic var rosterImageUrl: String = ""
+//    dynamic var rosterImageUrl: String = ""
     dynamic var twitterAccount: String = ""
     
     //V2
@@ -27,6 +27,9 @@ class Team: Object {
     
     //V3
     dynamic var coach: Player?
+    
+    //V7
+    dynamic var seasonCode: String = ""
     
     override static func primaryKey() -> String? {
         return "code"
@@ -44,7 +47,7 @@ extension Team {
             self.countryCode = try node["countrycode"].value()
             self.countryName = try node["countryname"].value()
             self.logoUrl = try node["imageurl"].value()
-            self.rosterImageUrl = try node["rosterimageurl"].value()
+        //    self.rosterImageUrl = try node["rosterimageurl"].value()
             self.twitterAccount = try node["twitteraccount"].value()
             self.coach = Player()
             self.coach?.name = try node["coach"].value(ofAttribute: "name")
@@ -60,8 +63,9 @@ extension Team {
                 player.countryName = try elem.value(ofAttribute: "countryname")
                 self.rosters.append(player)
             }
+            self.seasonCode = LeaguesCommenObjects.season.getSeasonCode()
         } catch {
-            
+            print(error)
         }
     }
     
@@ -72,11 +76,12 @@ extension Team {
         newTeam.countryName = self.countryName
         newTeam.logoUrl = self.logoUrl
         newTeam.name = self.name
-        newTeam.rosterImageUrl = self.rosterImageUrl
+ //       newTeam.rosterImageUrl = self.rosterImageUrl
         newTeam.tvCode = self.tvCode
         newTeam.twitterAccount = self.twitterAccount
         newTeam.coach = self.coach
         newTeam.rosters = self.rosters
+        newTeam.seasonCode = self.seasonCode
         return newTeam
     }
     

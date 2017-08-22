@@ -33,8 +33,12 @@ class Game: Object{
     dynamic var localTeamGameDetail: GameTeamDetail?
     dynamic var roadTeamGameDetail: GameTeamDetail?
     
+    //V6
+    dynamic var seasonCode: String = ""
+    dynamic var gameCode: String = ""
+    
     override static func primaryKey() -> String? {
-        return "gameNumber"
+        return "gameCode"
     }
 
     override static func ignoredProperties() -> [String] {
@@ -56,6 +60,8 @@ extension Game {
             self.played = try node["played"].value()
             self.awayCode = try node["awaycode"].value()
             self.homeCode = try node["homecode"].value()
+            self.seasonCode = LeaguesCommenObjects.season.getSeasonCode()
+            self.gameCode = try node["gamecode"].value()
         } catch {
             
         }
@@ -76,6 +82,8 @@ extension Game {
         newGame.homeCode = self.homeCode
         newGame.localTeamGameDetail = self.localTeamGameDetail
         newGame.roadTeamGameDetail = self.roadTeamGameDetail
+        newGame.seasonCode = self.seasonCode
+        newGame.gameCode = self.gameCode
         return newGame
     }
     

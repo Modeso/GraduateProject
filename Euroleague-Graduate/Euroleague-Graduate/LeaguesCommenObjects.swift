@@ -19,32 +19,15 @@ class LeaguesCommenObjects {
         case TurkishAirLinesEuroLeague
         case EuroCup
         
-        func values() -> (season: String, color: UIColor, image: UIImage, navImage: UIImage) {
-            let season: String
-            let color: UIColor
-            var image = UIImage()
-            var navImage = UIImage()
-            switch self {
-            case .TurkishAirLinesEuroLeague:
-                season = "E2016"
-                color = UIColor(red: 244.0/255, green: 84.0/255, blue: 2.0/255, alpha: 1)
-                if let img = UIImage(named: "el-color") {
-                    image = img
-                }
-                if let img = UIImage(named: "el-navbar") {
-                    navImage = img
-                }
-            case .EuroCup:
-                season = "U2016"
-                color = UIColor(red: 0.0/255, green: 114.0/255, blue: 206.0/255, alpha: 1)
-                if let img = UIImage(named: "ec-color") {
-                    image = img
-                }
-                if let img = UIImage(named: "ec-navbar") {
-                    navImage = img
-                }
-            }
-            return (season, color, image, navImage)
+        func values() -> (season: String, color: UIColor, coloredImage: UIImage,
+            unColoredImage: UIImage, navImage: UIImage, rounds: [(round: String, name: String)]) {
+            let season: String = getSeasonCode()
+            let color: UIColor = getColor()
+            let coloredImage = getColoredImage()
+            let unColoredImage = getNonColoredImage()
+            let navImage = getNavImage()
+            let rounds = getRounds()
+            return (season, color, coloredImage, unColoredImage, navImage, rounds)
         }
         
         func getSeasonCode() -> String {
@@ -65,7 +48,7 @@ class LeaguesCommenObjects {
             }
         }
         
-        func getImage() -> UIImage {
+        func getColoredImage() -> UIImage {
             switch self {
             case .TurkishAirLinesEuroLeague:
                 if let image = UIImage(named: "el-color") {
@@ -74,6 +57,21 @@ class LeaguesCommenObjects {
                 return UIImage()
             case .EuroCup:
                 if let image = UIImage(named: "ec-color") {
+                    return image
+                }
+                return UIImage()
+            }
+        }
+        
+        func getNonColoredImage() -> UIImage {
+            switch self {
+            case .TurkishAirLinesEuroLeague:
+                if let image = UIImage(named: "el-nocolor") {
+                    return image
+                }
+                return UIImage()
+            case .EuroCup:
+                if let image = UIImage(named: "ec-nocolor") {
                     return image
                 }
                 return UIImage()
@@ -92,6 +90,27 @@ class LeaguesCommenObjects {
                     return image
                 }
                 return UIImage()
+            }
+        }
+        
+        func getRounds() -> [(round: String, name: String)] {
+            let rounds: [(round: String, name: String)]
+            switch self {
+            case .TurkishAirLinesEuroLeague:
+                rounds = [
+                    ("RS", "RS"),
+                    ("PO", "PO"),
+                    ("FF", "F4")
+                ]
+                return rounds
+            case .EuroCup:
+                rounds = [
+                    ("RS", "RS"),
+                    ("TS", "T16"),
+                    ("4F", "QF"),
+                    ("2F", "SF"),
+                    ("Final", "F")]
+                return rounds
             }
         }
     }

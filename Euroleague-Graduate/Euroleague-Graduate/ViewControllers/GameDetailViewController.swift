@@ -9,7 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 
-class TurkishLeagueGameDetailViewController: ButtonBarPagerTabStripViewController {
+class GameDetailViewController: ButtonBarPagerTabStripViewController {
     
     var game: Game?
     
@@ -25,6 +25,7 @@ class TurkishLeagueGameDetailViewController: ButtonBarPagerTabStripViewControlle
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         
         super.viewDidLoad()
+        buttonBarView.backgroundColor = UIColor.getLeagueBarColor()
         self.edgesForExtendedLayout = []
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
@@ -39,10 +40,10 @@ class TurkishLeagueGameDetailViewController: ButtonBarPagerTabStripViewControlle
 
 }
 
-fileprivate extension TurkishLeagueGameDetailViewController {
+fileprivate extension GameDetailViewController {
     
     func createViewControllers() {
-        let router = TurkishLeagueGamesRouter()
+        let router = Router()
         let boxScore = router.createGameBoxScore()
         boxScore.game = game
         myViewControllers.append(boxScore)

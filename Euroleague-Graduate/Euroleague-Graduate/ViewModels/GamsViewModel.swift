@@ -14,14 +14,11 @@ protocol GameDataViewModelDelegate {
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>)
 }
 
-class TurkishLeagueGamesViewModel {
+class GamesViewModel {
     
-    private let rounds: Array<String> = [
-        "RS", "PO", "FF"
-    ]
-    
-    fileprivate let gameDataService: TurkishAirLinesGamesDataService
-    fileprivate let teamDataService: TurkishAirLinesTeamsDataService
+    private var rounds: [(round: String, name: String)]
+    fileprivate let gameDataService: GamesDataService
+    fileprivate let teamDataService: TeamsDataService
     
     var gamesDelegate: GameDataViewModelDelegate?
     
@@ -29,7 +26,7 @@ class TurkishLeagueGamesViewModel {
         didSet {
             if schedule != nil , (schedule?.count)! > 0 {
                 for round in rounds {
-                    makingTableDataOf(round)
+                    makingTableDataOf(round.round)
                 }
                 gamesDelegate?.updateControllersData(table, lastPlayedGames: lastPlayedGame)
             }
@@ -43,8 +40,9 @@ class TurkishLeagueGamesViewModel {
     fileprivate var table: Dictionary<String, [Array<Game>]> = [:]
     
     init() {
-        gameDataService = TurkishAirLinesGamesDataService()
-        teamDataService = TurkishAirLinesTeamsDataService()
+        rounds = LeaguesCommenObjects.season.getRounds()
+        gameDataService = GamesDataService()
+        teamDataService = TeamsDataService()
         teamDataService.delegate = self
         gameDataService.delegate = self
     }
@@ -61,7 +59,7 @@ class TurkishLeagueGamesViewModel {
     
 }
 
-extension TurkishLeagueGamesViewModel: TurkishAirLinesGamesDataServiceDelegate {
+extension GamesViewModel: GamesDataServiceDelegate {
     
     func updateData(_ table: Results<Game>){
         schedule = table
@@ -69,7 +67,7 @@ extension TurkishLeagueGamesViewModel: TurkishAirLinesGamesDataServiceDelegate {
     
 }
 
-extension TurkishLeagueGamesViewModel: TurkishAirLinesTeamsDataServiceDelegate {
+extension GamesViewModel: TeamsDataServiceDelegate {
     
     func updateData(_ table: Results<Team>){
         makeTeamsOf(table)
@@ -78,7 +76,7 @@ extension TurkishLeagueGamesViewModel: TurkishAirLinesTeamsDataServiceDelegate {
     
 }
 
-fileprivate extension TurkishLeagueGamesViewModel {
+fileprivate extension GamesViewModel {
     
     //For games
     func makingTableDataOf(_ round: String) {

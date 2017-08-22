@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         let config = Realm.Configuration(
-            schemaVersion: 5,
+            schemaVersion: 9,
             migrationBlock: { (migration, oldVersion) in
                 if oldVersion < 1 {
                     migration.enumerateObjects(ofType: Game.className()) { (oldObject, newObject) in
@@ -37,22 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 if oldVersion < 3 {
-                    migration.enumerateObjects(ofType: Team.className()) { (oldObject, newObject) in
-                        migration.enumerateObjects(ofType: Player.className()) { (oldObject, newObject) in
-                            newObject!["primaryKeyProperty"] = "name"
-                        }
-                        let coach = Player()
-                        coach.name = oldObject!["coachName"] as! String
-                        coach.countryName = oldObject!["coachCountry"] as! String
-                        newObject!["coach"] = coach
-                    }
+                    migration.deleteData(forType: Team.className())
+                    migration.deleteData(forType: Player.className())
                 }
                 
                 if oldVersion < 4 {
-                    migration.enumerateObjects(ofType: Player.className()){ (oldObject, newObject) in
-                        newObject!["primaryKeyProperty"] = "code"
-                        
-                    }
+                    migration.deleteData(forType: Player.className())
                 }
                 
                 if oldVersion < 5 {
@@ -60,6 +50,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         newObject!["localTeamGameDetail"] = nil
                         newObject!["roadTeamGameDetail"] = nil
                     }
+                }
+                
+                if oldVersion < 6 {
+                    migration.deleteData(forType: Game.className())
+                }
+                
+                if oldVersion < 7 {
+                    migration.deleteData(forType: Team.className())
+                    migration.deleteData(forType: Player.className())
+                }
+                
+                if oldVersion < 8 {
+                    migration.deleteData(forType: Game.className())
+                }
+                
+                if oldVersion < 9 {
+                    
                 }
         })
         Realm.Configuration.defaultConfiguration = config

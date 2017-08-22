@@ -10,17 +10,17 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class TurkishLeagueGamesRouter {
+class Router {
     
-    func createTurkishLeagueGameTableController () -> TurkishLeagueMasterTableViewController {
+    func createLeagueGameTableController () -> MasterTableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let tableController = storyboard.instantiateViewController(
-            withIdentifier: "TurkishLeagueMasterTable") as? TurkishLeagueMasterTableViewController
-            else { return TurkishLeagueMasterTableViewController() }
+            withIdentifier: "TurkishLeagueMasterTable") as? MasterTableViewController
+            else { return MasterTableViewController() }
         return tableController
     }
     
-    func createTurkishLeagueRosterTableController () -> RostersTableViewController {
+    func createRosterTableController () -> RostersTableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let tableController = storyboard.instantiateViewController(
             withIdentifier: "RostersTable") as? RostersTableViewController

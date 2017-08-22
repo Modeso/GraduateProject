@@ -16,7 +16,7 @@ class RostersTableViewController: UIViewController , IndicatorInfoProvider{
     
     fileprivate var rosters: [Array<Player>] = []
     
-    fileprivate let playersViewModel = TurkishLeaguePlayerViewModel()
+    fileprivate let playersViewModel = PlayerViewModel()
     
     @IBOutlet weak var tableView: UITableView!
     

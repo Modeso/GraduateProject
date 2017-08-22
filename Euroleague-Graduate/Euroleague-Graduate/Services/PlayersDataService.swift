@@ -11,7 +11,7 @@ import SWXMLHash
 import RealmSwift
 
 
-class TurkishLeaguePlayersDataService {
+class PlayersDataService {
     
     func getPlayer(withCode code: String) -> Player? {
         guard let player = RealmDBManager.sharedInstance.getPlayer(withCode: code)
@@ -45,7 +45,7 @@ class TurkishLeaguePlayersDataService {
     
 }
 
-fileprivate extension TurkishLeaguePlayersDataService {
+fileprivate extension PlayersDataService {
     
     func parsePlayerData(_ xmlData: Data, code: String,completion: (Player)->Void) {
         let xml = SWXMLHash.parse(xmlData)

@@ -23,25 +23,25 @@
 		FE3324911F45C32800DB345E /* BoxScoreMVPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3324901F45C32800DB345E /* BoxScoreMVPTableViewCell.swift */; };
 		FE368CB01F33453B006963C8 /* RostersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE368CAF1F33453B006963C8 /* RostersTableViewController.swift */; };
 		FE5264921F348EBA00E62A58 /* PlayersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5264911F348EBA00E62A58 /* PlayersTableViewCell.swift */; };
-		FE5264941F34951C00E62A58 /* EuroLeagueNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5264931F34951C00E62A58 /* EuroLeagueNavigationController.swift */; };
-		FE5264991F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5264981F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift */; };
-		FE52649B1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE52649A1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift */; };
+		FE5264941F34951C00E62A58 /* EuroNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5264931F34951C00E62A58 /* EuroNavigationController.swift */; };
+		FE5264991F34AB1C00E62A58 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5264981F34AB1C00E62A58 /* PlayerViewModel.swift */; };
+		FE52649B1F34ACA500E62A58 /* PlayersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE52649A1F34ACA500E62A58 /* PlayersDataService.swift */; };
 		FE528DCD1F289AC700597D0A /* DataRetrivalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE528DCC1F289AC700597D0A /* DataRetrivalTest.swift */; };
 		FE540CD01F20BB9F000A75A0 /* ApiResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */; };
 		FE5B36CC1F41D728005FBCA6 /* TeamStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B36CB1F41D728005FBCA6 /* TeamStatisticsViewController.swift */; };
 		FE5B36CE1F41E49D005FBCA6 /* TeamStatisticsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B36CD1F41E49D005FBCA6 /* TeamStatisticsMenuViewController.swift */; };
-		FE5C21671F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5C21661F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift */; };
+		FE5C21671F2F27EE00522D65 /* TeamsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5C21661F2F27EE00522D65 /* TeamsDataService.swift */; };
 		FE5C21691F2F2F6900522D65 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5C21681F2F2F6900522D65 /* Team.swift */; };
 		FE615F3B1F31B68900B6C3E0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE615F3A1F31B68900B6C3E0 /* MenuViewController.swift */; };
 		FE615F3D1F31BA2A00B6C3E0 /* TeamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE615F3C1F31BA2A00B6C3E0 /* TeamsTableViewCell.swift */; };
-		FE615F3F1F31BBE600B6C3E0 /* TurkishLeagueTeamsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE615F3E1F31BBE600B6C3E0 /* TurkishLeagueTeamsTableViewController.swift */; };
+		FE615F3F1F31BBE600B6C3E0 /* TeamsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE615F3E1F31BBE600B6C3E0 /* TeamsTableViewController.swift */; };
 		FE615F411F31CA7500B6C3E0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE615F401F31CA7500B6C3E0 /* Player.swift */; };
-		FE615F431F31D4B900B6C3E0 /* TurkishLeagueTeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE615F421F31D4B900B6C3E0 /* TurkishLeagueTeamsViewModel.swift */; };
-		FE615F451F31EE7400B6C3E0 /* TurkishLeagueTeamDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE615F441F31EE7400B6C3E0 /* TurkishLeagueTeamDataViewController.swift */; };
+		FE615F431F31D4B900B6C3E0 /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE615F421F31D4B900B6C3E0 /* TeamsViewModel.swift */; };
+		FE615F451F31EE7400B6C3E0 /* TeamDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE615F441F31EE7400B6C3E0 /* TeamDataViewController.swift */; };
 		FE6FB04F1F43010F006C7D44 /* TeamStatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6FB04E1F43010F006C7D44 /* TeamStatisticsTableViewCell.swift */; };
 		FE6FB0511F433592006C7D44 /* TeamStatisticTableRowsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6FB0501F433592006C7D44 /* TeamStatisticTableRowsModel.swift */; };
 		FE8C60A91F22126700D4EF83 /* RealmDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */; };
-		FE93A6D91F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE93A6D81F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift */; };
+		FE93A6D91F30BAAF00E9A83E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE93A6D81F30BAAF00E9A83E /* Router.swift */; };
 		FEB17D9D1F4435A80044B0A6 /* SwiftExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB17D9C1F4435A80044B0A6 /* SwiftExtentions.swift */; };
 		FEB5761E1F446359005D1E23 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB5761D1F446359005D1E23 /* RootViewController.swift */; };
 		FEB576201F447054005D1E23 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB5761F1F447054005D1E23 /* MenuTableViewCell.swift */; };
@@ -50,14 +50,13 @@
 		FEC0EBC71F46DB4E0048B849 /* GameTeamDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0EBC61F46DB4E0048B849 /* GameTeamDetail.swift */; };
 		FEC0EBC91F4717C50048B849 /* LeaguesCommenObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0EBC81F4717C50048B849 /* LeaguesCommenObjects.swift */; };
 		FEC2D2771F2B53E5006BB8AC /* GamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2751F2B53E5006BB8AC /* GamsTableViewCell.swift */; };
-		FEC2D2801F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27A1F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift */; };
-		FEC2D2811F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27B1F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift */; };
-		FEC2D2821F2B53F7006BB8AC /* TurkishLeagueGamesPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27C1F2B53F7006BB8AC /* TurkishLeagueGamesPagerViewController.swift */; };
+		FEC2D2801F2B53F7006BB8AC /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27A1F2B53F7006BB8AC /* GameDetailViewController.swift */; };
+		FEC2D2811F2B53F7006BB8AC /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27B1F2B53F7006BB8AC /* MasterTableViewController.swift */; };
+		FEC2D2821F2B53F7006BB8AC /* GamesPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D27C1F2B53F7006BB8AC /* GamesPagerViewController.swift */; };
 		FEC2D2881F2B5400006BB8AC /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2861F2B5400006BB8AC /* ApiClient.swift */; };
-		FEC2D2891F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2871F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift */; };
+		FEC2D2891F2B5400006BB8AC /* GamesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2871F2B5400006BB8AC /* GamesDataService.swift */; };
 		FEC2D28C1F2B540E006BB8AC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D28B1F2B540E006BB8AC /* Game.swift */; };
-		FEC2D2921F2B544D006BB8AC /* AbstractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2901F2B544D006BB8AC /* AbstractViewModel.swift */; };
-		FEC2D2931F2B544D006BB8AC /* TurkishLeagueGamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2911F2B544D006BB8AC /* TurkishLeagueGamsViewModel.swift */; };
+		FEC2D2931F2B544D006BB8AC /* GamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2911F2B544D006BB8AC /* GamsViewModel.swift */; };
 		FEC2D29F1F2B69A8006BB8AC /* CoText_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */; };
 		FEC2D2A01F2B69A8006BB8AC /* CoText_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */; };
 		FEC2D2A11F2B69A8006BB8AC /* CoText_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */; };
@@ -107,25 +106,25 @@
 		FE3324901F45C32800DB345E /* BoxScoreMVPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxScoreMVPTableViewCell.swift; sourceTree = "<group>"; };
 		FE368CAF1F33453B006963C8 /* RostersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RostersTableViewController.swift; sourceTree = "<group>"; };
 		FE5264911F348EBA00E62A58 /* PlayersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersTableViewCell.swift; sourceTree = "<group>"; };
-		FE5264931F34951C00E62A58 /* EuroLeagueNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EuroLeagueNavigationController.swift; sourceTree = "<group>"; };
-		FE5264981F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeaguePlayerViewModel.swift; sourceTree = "<group>"; };
-		FE52649A1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeaguePlayersDataService.swift; sourceTree = "<group>"; };
+		FE5264931F34951C00E62A58 /* EuroNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EuroNavigationController.swift; sourceTree = "<group>"; };
+		FE5264981F34AB1C00E62A58 /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		FE52649A1F34ACA500E62A58 /* PlayersDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersDataService.swift; sourceTree = "<group>"; };
 		FE528DCC1F289AC700597D0A /* DataRetrivalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRetrivalTest.swift; sourceTree = "<group>"; };
 		FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseTest.swift; sourceTree = "<group>"; };
 		FE5B36CB1F41D728005FBCA6 /* TeamStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatisticsViewController.swift; sourceTree = "<group>"; };
 		FE5B36CD1F41E49D005FBCA6 /* TeamStatisticsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatisticsMenuViewController.swift; sourceTree = "<group>"; };
-		FE5C21661F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesTeamsDataService.swift; sourceTree = "<group>"; };
+		FE5C21661F2F27EE00522D65 /* TeamsDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsDataService.swift; sourceTree = "<group>"; };
 		FE5C21681F2F2F6900522D65 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		FE615F3A1F31B68900B6C3E0 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		FE615F3C1F31BA2A00B6C3E0 /* TeamsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsTableViewCell.swift; sourceTree = "<group>"; };
-		FE615F3E1F31BBE600B6C3E0 /* TurkishLeagueTeamsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueTeamsTableViewController.swift; sourceTree = "<group>"; };
+		FE615F3E1F31BBE600B6C3E0 /* TeamsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsTableViewController.swift; sourceTree = "<group>"; };
 		FE615F401F31CA7500B6C3E0 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		FE615F421F31D4B900B6C3E0 /* TurkishLeagueTeamsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueTeamsViewModel.swift; sourceTree = "<group>"; };
-		FE615F441F31EE7400B6C3E0 /* TurkishLeagueTeamDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueTeamDataViewController.swift; sourceTree = "<group>"; };
+		FE615F421F31D4B900B6C3E0 /* TeamsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
+		FE615F441F31EE7400B6C3E0 /* TeamDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDataViewController.swift; sourceTree = "<group>"; };
 		FE6FB04E1F43010F006C7D44 /* TeamStatisticsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatisticsTableViewCell.swift; sourceTree = "<group>"; };
 		FE6FB0501F433592006C7D44 /* TeamStatisticTableRowsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatisticTableRowsModel.swift; sourceTree = "<group>"; };
 		FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDBManager.swift; sourceTree = "<group>"; };
-		FE93A6D81F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueGamesRouter.swift; sourceTree = "<group>"; };
+		FE93A6D81F30BAAF00E9A83E /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FEB17D9C1F4435A80044B0A6 /* SwiftExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtentions.swift; sourceTree = "<group>"; };
 		FEB5761D1F446359005D1E23 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		FEB5761F1F447054005D1E23 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -134,14 +133,13 @@
 		FEC0EBC61F46DB4E0048B849 /* GameTeamDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTeamDetail.swift; sourceTree = "<group>"; };
 		FEC0EBC81F4717C50048B849 /* LeaguesCommenObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaguesCommenObjects.swift; sourceTree = "<group>"; };
 		FEC2D2751F2B53E5006BB8AC /* GamsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamsTableViewCell.swift; sourceTree = "<group>"; };
-		FEC2D27A1F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueGameDetailViewController.swift; sourceTree = "<group>"; };
-		FEC2D27B1F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueMasterTableViewController.swift; sourceTree = "<group>"; };
-		FEC2D27C1F2B53F7006BB8AC /* TurkishLeagueGamesPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueGamesPagerViewController.swift; sourceTree = "<group>"; };
+		FEC2D27A1F2B53F7006BB8AC /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
+		FEC2D27B1F2B53F7006BB8AC /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
+		FEC2D27C1F2B53F7006BB8AC /* GamesPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesPagerViewController.swift; sourceTree = "<group>"; };
 		FEC2D2861F2B5400006BB8AC /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		FEC2D2871F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishAirLinesGamesDataService.swift; sourceTree = "<group>"; };
+		FEC2D2871F2B5400006BB8AC /* GamesDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesDataService.swift; sourceTree = "<group>"; };
 		FEC2D28B1F2B540E006BB8AC /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		FEC2D2901F2B544D006BB8AC /* AbstractViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewModel.swift; sourceTree = "<group>"; };
-		FEC2D2911F2B544D006BB8AC /* TurkishLeagueGamsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurkishLeagueGamsViewModel.swift; sourceTree = "<group>"; };
+		FEC2D2911F2B544D006BB8AC /* GamsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamsViewModel.swift; sourceTree = "<group>"; };
 		FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Bold.ttf; sourceTree = "<group>"; };
 		FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Light.ttf; sourceTree = "<group>"; };
 		FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Regular.ttf; sourceTree = "<group>"; };
@@ -259,7 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				FE8C60A81F22126700D4EF83 /* RealmDBManager.swift */,
-				FE93A6D81F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift */,
+				FE93A6D81F30BAAF00E9A83E /* Router.swift */,
 				FEB17D9C1F4435A80044B0A6 /* SwiftExtentions.swift */,
 				FEC0EBC81F4717C50048B849 /* LeaguesCommenObjects.swift */,
 			);
@@ -286,14 +284,14 @@
 			children = (
 				FE615F3A1F31B68900B6C3E0 /* MenuViewController.swift */,
 				FEB5761D1F446359005D1E23 /* RootViewController.swift */,
-				FE5264931F34951C00E62A58 /* EuroLeagueNavigationController.swift */,
-				FEC2D27C1F2B53F7006BB8AC /* TurkishLeagueGamesPagerViewController.swift */,
-				FEC2D27B1F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift */,
-				FEC2D27A1F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift */,
+				FE5264931F34951C00E62A58 /* EuroNavigationController.swift */,
+				FEC2D27C1F2B53F7006BB8AC /* GamesPagerViewController.swift */,
+				FEC2D27B1F2B53F7006BB8AC /* MasterTableViewController.swift */,
+				FEC2D27A1F2B53F7006BB8AC /* GameDetailViewController.swift */,
 				FE3324881F4599C200DB345E /* GameBoxScoreViewController.swift */,
 				FE005FDD1F4AF06100644F54 /* GameDetailMasterWebViewController.swift */,
-				FE615F3E1F31BBE600B6C3E0 /* TurkishLeagueTeamsTableViewController.swift */,
-				FE615F441F31EE7400B6C3E0 /* TurkishLeagueTeamDataViewController.swift */,
+				FE615F3E1F31BBE600B6C3E0 /* TeamsTableViewController.swift */,
+				FE615F441F31EE7400B6C3E0 /* TeamDataViewController.swift */,
 				FE368CAF1F33453B006963C8 /* RostersTableViewController.swift */,
 				FE5B36CB1F41D728005FBCA6 /* TeamStatisticsViewController.swift */,
 				FE5B36CD1F41E49D005FBCA6 /* TeamStatisticsMenuViewController.swift */,
@@ -305,9 +303,9 @@
 			isa = PBXGroup;
 			children = (
 				FEC2D2861F2B5400006BB8AC /* ApiClient.swift */,
-				FEC2D2871F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift */,
-				FE5C21661F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift */,
-				FE52649A1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift */,
+				FEC2D2871F2B5400006BB8AC /* GamesDataService.swift */,
+				FE5C21661F2F27EE00522D65 /* TeamsDataService.swift */,
+				FE52649A1F34ACA500E62A58 /* PlayersDataService.swift */,
 				FEC0EBC21F46CB4E0048B849 /* GameDetailBoxScoreService.swift */,
 			);
 			path = Services;
@@ -330,10 +328,9 @@
 			isa = PBXGroup;
 			children = (
 				FE33248A1F45B18B00DB345E /* BoxScoreViewModel.swift */,
-				FEC2D2901F2B544D006BB8AC /* AbstractViewModel.swift */,
-				FEC2D2911F2B544D006BB8AC /* TurkishLeagueGamsViewModel.swift */,
-				FE615F421F31D4B900B6C3E0 /* TurkishLeagueTeamsViewModel.swift */,
-				FE5264981F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift */,
+				FEC2D2911F2B544D006BB8AC /* GamsViewModel.swift */,
+				FE615F421F31D4B900B6C3E0 /* TeamsViewModel.swift */,
+				FE5264981F34AB1C00E62A58 /* PlayerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -598,42 +595,41 @@
 				FE3324891F4599C200DB345E /* GameBoxScoreViewController.swift in Sources */,
 				FE5B36CC1F41D728005FBCA6 /* TeamStatisticsViewController.swift in Sources */,
 				FE6FB04F1F43010F006C7D44 /* TeamStatisticsTableViewCell.swift in Sources */,
-				FEC2D2931F2B544D006BB8AC /* TurkishLeagueGamsViewModel.swift in Sources */,
+				FEC2D2931F2B544D006BB8AC /* GamsViewModel.swift in Sources */,
 				FE005FDE1F4AF06100644F54 /* GameDetailMasterWebViewController.swift in Sources */,
-				FE5264991F34AB1C00E62A58 /* TurkishLeaguePlayerViewModel.swift in Sources */,
+				FE5264991F34AB1C00E62A58 /* PlayerViewModel.swift in Sources */,
 				FE615F3B1F31B68900B6C3E0 /* MenuViewController.swift in Sources */,
-				FE5C21671F2F27EE00522D65 /* TurkishAirLinesTeamsDataService.swift in Sources */,
+				FE5C21671F2F27EE00522D65 /* TeamsDataService.swift in Sources */,
 				A5FF78BE1F0FA74E00F6E9A2 /* AppDelegate.swift in Sources */,
 				FE005FE21F4B1AF500644F54 /* LeagueChooserCollectionViewCell.swift in Sources */,
 				FEC2D2771F2B53E5006BB8AC /* GamsTableViewCell.swift in Sources */,
-				FEC2D2921F2B544D006BB8AC /* AbstractViewModel.swift in Sources */,
 				FE5B36CE1F41E49D005FBCA6 /* TeamStatisticsMenuViewController.swift in Sources */,
-				FE615F3F1F31BBE600B6C3E0 /* TurkishLeagueTeamsTableViewController.swift in Sources */,
+				FE615F3F1F31BBE600B6C3E0 /* TeamsTableViewController.swift in Sources */,
 				FEC0EBC91F4717C50048B849 /* LeaguesCommenObjects.swift in Sources */,
-				FEC2D2891F2B5400006BB8AC /* TurkishAirLinesGamesDataService.swift in Sources */,
-				FE93A6D91F30BAAF00E9A83E /* TurkishLeagueGamesRouter.swift in Sources */,
-				FE5264941F34951C00E62A58 /* EuroLeagueNavigationController.swift in Sources */,
+				FEC2D2891F2B5400006BB8AC /* GamesDataService.swift in Sources */,
+				FE93A6D91F30BAAF00E9A83E /* Router.swift in Sources */,
+				FE5264941F34951C00E62A58 /* EuroNavigationController.swift in Sources */,
 				FE615F3D1F31BA2A00B6C3E0 /* TeamsTableViewCell.swift in Sources */,
 				FEB17D9D1F4435A80044B0A6 /* SwiftExtentions.swift in Sources */,
-				FEC2D2821F2B53F7006BB8AC /* TurkishLeagueGamesPagerViewController.swift in Sources */,
-				FEC2D2801F2B53F7006BB8AC /* TurkishLeagueGameDetailViewController.swift in Sources */,
+				FEC2D2821F2B53F7006BB8AC /* GamesPagerViewController.swift in Sources */,
+				FEC2D2801F2B53F7006BB8AC /* GameDetailViewController.swift in Sources */,
 				FE8C60A91F22126700D4EF83 /* RealmDBManager.swift in Sources */,
 				FE33248F1F45C30D00DB345E /* BoxScoreQuarterCollectionViewCell.swift in Sources */,
 				FEC0EBC51F46CD6B0048B849 /* GamePlayerStats.swift in Sources */,
 				FE3324911F45C32800DB345E /* BoxScoreMVPTableViewCell.swift in Sources */,
 				FE6FB0511F433592006C7D44 /* TeamStatisticTableRowsModel.swift in Sources */,
-				FE615F451F31EE7400B6C3E0 /* TurkishLeagueTeamDataViewController.swift in Sources */,
+				FE615F451F31EE7400B6C3E0 /* TeamDataViewController.swift in Sources */,
 				FEB5761E1F446359005D1E23 /* RootViewController.swift in Sources */,
 				FEC0EBC31F46CB4E0048B849 /* GameDetailBoxScoreService.swift in Sources */,
 				FE33248B1F45B18B00DB345E /* BoxScoreViewModel.swift in Sources */,
 				FE5C21691F2F2F6900522D65 /* Team.swift in Sources */,
 				FEC2D28C1F2B540E006BB8AC /* Game.swift in Sources */,
-				FE615F431F31D4B900B6C3E0 /* TurkishLeagueTeamsViewModel.swift in Sources */,
-				FE52649B1F34ACA500E62A58 /* TurkishLeaguePlayersDataService.swift in Sources */,
+				FE615F431F31D4B900B6C3E0 /* TeamsViewModel.swift in Sources */,
+				FE52649B1F34ACA500E62A58 /* PlayersDataService.swift in Sources */,
 				FEC0EBC71F46DB4E0048B849 /* GameTeamDetail.swift in Sources */,
 				FE5264921F348EBA00E62A58 /* PlayersTableViewCell.swift in Sources */,
 				FE368CB01F33453B006963C8 /* RostersTableViewController.swift in Sources */,
-				FEC2D2811F2B53F7006BB8AC /* TurkishLeagueMasterTableViewController.swift in Sources */,
+				FEC2D2811F2B53F7006BB8AC /* MasterTableViewController.swift in Sources */,
 				FE615F411F31CA7500B6C3E0 /* Player.swift in Sources */,
 				FEC2D2881F2B5400006BB8AC /* ApiClient.swift in Sources */,
 				FEB576201F447054005D1E23 /* MenuTableViewCell.swift in Sources */,

@@ -10,15 +10,15 @@ import Foundation
 import RealmSwift
 import SWXMLHash
 
-protocol TurkishAirLinesTeamsDataServiceDelegate {
+protocol TeamsDataServiceDelegate {
     func updateData(_ table: Results<Team>)
 }
 
-class TurkishAirLinesTeamsDataService {
+class TeamsDataService {
     
     fileprivate let url = "teams"
     
-    var delegate: TurkishAirLinesTeamsDataServiceDelegate?
+    var delegate: TeamsDataServiceDelegate?
     
     ///Will return the teams data from DataBase
     func getTeamsTable() -> Results<Team>{
@@ -30,11 +30,11 @@ class TurkishAirLinesTeamsDataService {
     }
 }
 
-fileprivate extension TurkishAirLinesTeamsDataService {
+fileprivate extension TeamsDataService {
     
     func getTeams() {
     //    LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
-        let parameters = [ "seasoncode" : LeaguesCommenObjects.season ]
+        let parameters = [ "seasoncode" : LeaguesCommenObjects.season.getSeasonCode() ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,
                                  headers: [:]){ [weak self] data ,error in

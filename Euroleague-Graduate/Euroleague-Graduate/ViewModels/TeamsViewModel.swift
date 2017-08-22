@@ -13,9 +13,9 @@ protocol TeamsDataViewModelDelegate {
     func updateTeamsData(_ table: [Array<Team>])
 }
 
-class TurkishLeagueTeamsViewModel {
+class TeamsViewModel {
     
-    fileprivate let teamDataService: TurkishAirLinesTeamsDataService
+    fileprivate let teamDataService: TeamsDataService
     
     fileprivate var clubs: Results<Team>?{
         didSet {
@@ -31,7 +31,7 @@ class TurkishLeagueTeamsViewModel {
     var teamsDelegate: TeamsDataViewModelDelegate?
     
     init() {
-        teamDataService = TurkishAirLinesTeamsDataService()
+        teamDataService = TeamsDataService()
         teamDataService.delegate = self
     }
     
@@ -41,7 +41,7 @@ class TurkishLeagueTeamsViewModel {
     }
 }
 
-extension TurkishLeagueTeamsViewModel: TurkishAirLinesTeamsDataServiceDelegate {
+extension TeamsViewModel: TeamsDataServiceDelegate {
     
     func updateData(_ table: Results<Team>){
         clubs = table
@@ -49,7 +49,7 @@ extension TurkishLeagueTeamsViewModel: TurkishAirLinesTeamsDataServiceDelegate {
     
 }
 
-fileprivate extension TurkishLeagueTeamsViewModel {
+fileprivate extension TeamsViewModel {
     
     func makeTeams() {
         teams.removeAll()
@@ -58,12 +58,12 @@ fileprivate extension TurkishLeagueTeamsViewModel {
         for club in clubs! {
             let team = club.clone()
             if firstChar == nil {
-                firstChar = team.name.characters.first
+                firstChar = team.name.uppercased().characters.first
             }
-            else if firstChar! != team.name.characters.first! {
+            else if firstChar! != team.name.uppercased().characters.first! {
                 teams.append(teamSection)
                 teamSection.removeAll()
-                firstChar = team.name.characters.first
+                firstChar = team.name.uppercased().characters.first
             }
             teamSection.append(team)
         }

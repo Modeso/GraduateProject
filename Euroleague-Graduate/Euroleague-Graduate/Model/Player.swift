@@ -20,6 +20,9 @@ class Player: Object {
     dynamic var countryName: String = ""
     dynamic var imageUrl: String = ""
     
+    //V7
+    dynamic var seasonCode: String = ""
+    
     override static func primaryKey() -> String? {
         return "code"
     }
@@ -36,6 +39,7 @@ extension Player {
         newPlayer.position = self.position
         newPlayer.countryName = self.countryName
         newPlayer.imageUrl = self.imageUrl
+        newPlayer.seasonCode = self.seasonCode
         return newPlayer
     }
     
@@ -48,6 +52,7 @@ extension Player {
             if self.position != "coach" {
                 self.dorsal = try node["dorsal"].value()
             }
+            self.seasonCode = LeaguesCommenObjects.season.getSeasonCode()
         } catch {
             print(error)
         }

@@ -9,9 +9,9 @@
 import Foundation
 
 
-class TurkishLeaguePlayerViewModel {
+class PlayerViewModel {
     
-    fileprivate let playersDataService = TurkishLeaguePlayersDataService()
+    fileprivate let playersDataService = PlayersDataService()
     
     func getPlayer(withCode code: String) -> Player? {
         let player = playersDataService.getPlayer(withCode: code)

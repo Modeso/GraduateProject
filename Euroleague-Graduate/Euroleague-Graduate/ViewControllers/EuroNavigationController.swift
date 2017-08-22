@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EuroLeagueNavigationController: UINavigationController {
+class EuroNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class EuroLeagueNavigationController: UINavigationController {
 
 }
 
-extension EuroLeagueNavigationController:  UINavigationControllerDelegate {
+extension EuroNavigationController:  UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         navigationBar.barTintColor = UIColor.getLeagueBarColor()

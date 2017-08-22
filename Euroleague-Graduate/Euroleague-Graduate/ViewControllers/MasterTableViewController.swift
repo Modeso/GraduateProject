@@ -9,7 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 
-class TurkishLeagueMasterTableViewController: UITableViewController,
+class MasterTableViewController: UITableViewController,
 IndicatorInfoProvider {
     
     fileprivate var schedule: [Array<Game>]? {
@@ -27,7 +27,7 @@ IndicatorInfoProvider {
     
     var pagerDelegate: PagerUpdateDelegate?
     
-    var round: String = ""
+    var round: (round: String,name: String) = ("", "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,14 +59,14 @@ IndicatorInfoProvider {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? TurkishLeagueGameDetailViewController {
+        if let destination = segue.destination as? GameDetailViewController {
             destination.game = selectedGame
         }
     }
     
     // IndicatorProvider method
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: round == "FF" ? "F4" : round)
+        return IndicatorInfo(title: round.name)
     }
     
     // MARK: - Table view data source
@@ -121,7 +121,7 @@ IndicatorInfoProvider {
     
 }
 
-extension TurkishLeagueMasterTableViewController {
+extension MasterTableViewController {
     
     func moveToLastPlayed() {
         guard let index = indexPath
@@ -131,7 +131,7 @@ extension TurkishLeagueMasterTableViewController {
     
 }
 
-extension TurkishLeagueMasterTableViewController: PagerUpdateChildData {
+extension MasterTableViewController: PagerUpdateChildData {
     
     func updateUIWithData(_ table: [Array<Game>], lastGameIndex: (section: Int, row: Int)) {
         schedule = table
@@ -149,7 +149,7 @@ extension TurkishLeagueMasterTableViewController: PagerUpdateChildData {
     }
     
     func getRound() -> String {
-        return round
+        return round.round
     }
     
 }

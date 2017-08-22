@@ -10,7 +10,7 @@ import UIKit
 import XLPagerTabStrip
 import SDWebImage
 
-class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController {
+class TeamDataViewController: ButtonBarPagerTabStripViewController {
 
     fileprivate var myViewControllers: Array<UIViewController> = []
     
@@ -48,7 +48,7 @@ class TurkishLeagueTeamDataViewController: ButtonBarPagerTabStripViewController 
     }
 }
 
-fileprivate extension TurkishLeagueTeamDataViewController {
+fileprivate extension TeamDataViewController {
     
     func updateUI() {
         teamNameLabel.text = team?.name
@@ -58,8 +58,8 @@ fileprivate extension TurkishLeagueTeamDataViewController {
     }
     
     func createControllers() {
-        let router = TurkishLeagueGamesRouter()
-        let roster = router.createTurkishLeagueRosterTableController()
+        let router = Router()
+        let roster = router.createRosterTableController()
         roster.coach = (team?.coach?.clone())!
         roster.makeRostersOf(Array((team?.rosters)!))
         let statistics = router.createTeamStatistics()
