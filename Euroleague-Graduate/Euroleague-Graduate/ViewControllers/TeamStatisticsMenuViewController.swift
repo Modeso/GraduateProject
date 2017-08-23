@@ -8,14 +8,6 @@
 
 import UIKit
 
-protocol MenuSwapped {
-    
-    func changeMenuSize(toHeight height: CGFloat)
-    
-    func updateTableData(withRound round: String)
-    
-}
-
 class TeamStatisticsMenuViewController: UIViewController {
     
     @IBOutlet var menuButtons: [UIButton]!

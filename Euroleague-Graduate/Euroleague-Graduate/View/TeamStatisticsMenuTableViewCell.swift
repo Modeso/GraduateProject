@@ -11,7 +11,5 @@ import UIKit
 class TeamStatisticsMenuTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    
-    @IBOutlet weak var menuButton: UIButton!
-    
+        
 }

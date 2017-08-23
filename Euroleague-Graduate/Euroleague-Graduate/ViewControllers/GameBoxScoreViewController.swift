@@ -37,8 +37,6 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     
     fileprivate let boxScoreViewModel = BoxScoreViewModel()
     
-    fileprivate let gameDetailBoxScoreService = GameDetailBoxScoreService()
-    
     var game: Game? {
         didSet{
             updateUI()
@@ -51,20 +49,17 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        boxScoreViewModel.delegate = self
         browserButton.backgroundColor = LeaguesCommenObjects.season.getColor()
-        gameDetailBoxScoreService.delegate = self
         collectionViewHeightConstrain.constant = 0
         tableViewHeightConstrain.constant = 0
         if let number = game?.gameNumber {
-            if let code = game?.gameCode,
-                let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code) {
-                game?.localTeamGameDetail = realmGame.localTeamGameDetail
-                game?.roadTeamGameDetail = realmGame.roadTeamGameDetail
+            if let code = game?.gameCode {
+                let detail = boxScoreViewModel.getGameDetail(ofGameWithCode: code)
+                game?.localTeamGameDetail = detail.localTeamDetail
+                game?.roadTeamGameDetail = detail.roadTeamDetail
             }
-           // if game?.localTeamGameDetail == nil || game?.roadTeamGameDetail == nil {
-                gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: String(number))
-         //   }
-            
+            boxScoreViewModel.updateGameDetail(ofGameWithCode: String(number))
         }
         
         // CollectionView Settings
@@ -78,22 +73,16 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         updateUI()
-        
         self.view.layoutIfNeeded()
-
         DispatchQueue.main.async {
             self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
         }
         self.tableView.reloadData()
-        
         DispatchQueue.main.async {
             self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
-            
         }
-
     }
     
-  
     @IBAction func openBoxScoreOnWebBrowser(_ sender: Any) {
         /// learn how to open it
     }
@@ -228,14 +217,11 @@ extension GameBoxScoreViewController: UICollectionViewDataSource {
     }
 }
 
-extension GameBoxScoreViewController: GameDetailBoxScoreDataServiceDelegate {
+extension GameBoxScoreViewController: BoxScoreViewModelDelegate{
     
-    func updateData(localTeamDetail localTeam: GameTeamDetail?, roadTeamDetail roadTeam: GameTeamDetail?) {
-        if let game = self.game {
-            RealmDBManager.sharedInstance.updateGameTeamsDetailFor(game, localTeam: localTeam, roadTeam: roadTeam)
-            self.game?.localTeamGameDetail = localTeam
-            self.game?.roadTeamGameDetail = roadTeam
-        }
+    func updateData(withLocalTeam localTeamDetail: GameTeamDetail?, roadTeam roadTeamDetail: GameTeamDetail?){
+        game?.localTeamGameDetail = localTeamDetail
+        game?.roadTeamGameDetail = roadTeamDetail
         
         self.collectionView.reloadData()
         self.collectionView.performBatchUpdates({
@@ -244,14 +230,11 @@ extension GameBoxScoreViewController: GameDetailBoxScoreDataServiceDelegate {
                 self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
             }
         }
+        
         self.tableView.reloadData()
         self.view.layoutIfNeeded()
         DispatchQueue.main.async {
-            
             self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
-            print("table view height \(self.tableView.contentSize.height)")
-
-
         }
         updateUI()
     }

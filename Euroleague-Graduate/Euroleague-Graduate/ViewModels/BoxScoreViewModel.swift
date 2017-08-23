@@ -10,8 +10,30 @@
 
 import Foundation
 
-class BoxScoreViewModel {
+protocol BoxScoreViewModelDelegate {
+    func updateData(withLocalTeam localTeamDetail: GameTeamDetail?, roadTeam roadTeamDetail: GameTeamDetail?)
+}
 
+class BoxScoreViewModel {
+    
+    fileprivate let gameDetailBoxScoreService = GameDetailBoxScoreService()
+    
+    var delegate: BoxScoreViewModelDelegate?
+    
+    init() {
+        gameDetailBoxScoreService.delegate = self
+    }
+
+    func getGameDetail(ofGameWithCode code: String) -> (localTeamDetail: GameTeamDetail?, roadTeamDetail: GameTeamDetail?){
+        guard let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code)
+            else { return (nil, nil) }
+        return (realmGame.localTeamGameDetail, realmGame.roadTeamGameDetail)
+    }
+    
+    func updateGameDetail(ofGameWithCode code: String) {
+        gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code)
+    }
+    
     func boxScoreInfo(forIndex index: Int,
                       withLocalTeam localTeam: GameTeamDetail,
                       withRoadTeam roadTeam: GameTeamDetail) -> BoxScoreInfo {
@@ -85,6 +107,15 @@ class BoxScoreViewModel {
     }
 
 }
+
+extension BoxScoreViewModel: GameDetailBoxScoreDataServiceDelegate {
+    
+    func updateData(localTeamDetail localTeam: GameTeamDetail?, roadTeamDetail roadTeam: GameTeamDetail?) {
+        delegate?.updateData(withLocalTeam: localTeam, roadTeam: roadTeam)
+    }
+    
+}
+
 
 struct BoxScoreInfo {
     var name: String = ""

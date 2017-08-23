@@ -15,9 +15,11 @@ class TeamStatisticsViewController: UIViewController, IndicatorInfoProvider {
     
     @IBOutlet weak var tableView: UITableView!
     
-    fileprivate var menuViewController: TeamStatisticsMenuViewController?
+    fileprivate var menuViewController: TeamStatisticsMenuTableViewController?
     
     fileprivate let teamStatisticsModel = TeamStatisticTableRowsModel()
+    
+    fileprivate var startHeight: CGFloat = 35
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return "STATISTICS"
@@ -25,8 +27,8 @@ class TeamStatisticsViewController: UIViewController, IndicatorInfoProvider {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        startHeight = menuContainerHeightConstraint.constant
         view.backgroundColor = UIColor.clear
-        tableView.backgroundColor = UIColor.clear
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         //most likely will go with default ask about it
@@ -36,8 +38,9 @@ class TeamStatisticsViewController: UIViewController, IndicatorInfoProvider {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbeddedMenu",
-            let menuViewController = segue.destination as? TeamStatisticsMenuViewController{
+            let menuViewController = segue.destination as? TeamStatisticsMenuTableViewController{
             menuViewController.delegate = self
+            menuViewController.cellRowHeight = menuContainerHeightConstraint.constant
         }
     }
     
@@ -47,6 +50,13 @@ extension TeamStatisticsViewController: MenuSwapped {
     
     func changeMenuSize(toHeight height: CGFloat) {
         menuContainerHeightConstraint.constant = height
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func changeMenuSize(withItemsCount items: Int) {
+        menuContainerHeightConstraint.constant = startHeight * CGFloat(items)
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }

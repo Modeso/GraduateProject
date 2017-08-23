@@ -20,10 +20,10 @@ class GameDetailBoxScoreService {
     
     var delegate: GameDetailBoxScoreDataServiceDelegate?
     
-    func getScoreBoxResults(ofGameWithCode gameCode: String) {
+    func getScoreBoxResults(ofGameWithCode code: String) {
         let url = "games"
         let parameters = [
-            "gamecode" : gameCode,
+            "gamecode" : code,
             "seasoncode" : LeaguesCommenObjects.season.getSeasonCode()
         ]
         ApiClient.getRequestFrom(
@@ -32,6 +32,7 @@ class GameDetailBoxScoreService {
             headers: [:]) { [weak self] (data, error) in
                 if let xmlData = data, error == nil {
                     self?.parseGameDetailData(xmlData)
+                    RealmDBManager.sharedInstance.updateGameTeamsDetailFor(gameWithCode: "\(LeaguesCommenObjects.season.getSeasonCode())_\(code)", localTeam: self?.localTeamDetail, roadTeam: self?.roadTeamDetail)
                     self?.delegate?.updateData(localTeamDetail: self?.localTeamDetail, roadTeamDetail: self?.roadTeamDetail)
                 }
         }

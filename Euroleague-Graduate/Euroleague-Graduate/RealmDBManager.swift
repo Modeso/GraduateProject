@@ -67,8 +67,8 @@ class RealmDBManager {
         }
     }
     
-    func updateGameTeamsDetailFor(_ game: Game, localTeam: GameTeamDetail?, roadTeam: GameTeamDetail?) {
-        guard let realmGame = getGame(withCode: game.gameCode)
+    func updateGameTeamsDetailFor(gameWithCode code: String, localTeam: GameTeamDetail?, roadTeam: GameTeamDetail?) {
+        guard let realmGame = getGame(withCode: code)
             else {
                 print("Updating Details Failed")
                 return
