@@ -20,7 +20,7 @@ class LeaguesCommenObjects {
         case EuroCup
         
         func values() -> (season: String, color: UIColor, coloredImage: UIImage,
-            unColoredImage: UIImage, navImage: UIImage, rounds: [(round: String, name: String)]) {
+            unColoredImage: UIImage, navImage: UIImage, rounds: [(round: String, name: String, completeName: String)]) {
             let season: String = getSeasonCode()
             let color: UIColor = getColor()
             let coloredImage = getColoredImage()
@@ -93,26 +93,41 @@ class LeaguesCommenObjects {
             }
         }
         
-        func getRounds() -> [(round: String, name: String)] {
-            let rounds: [(round: String, name: String)]
+        func getRounds() -> [(round: String, name: String, completeName: String)] {
+            let rounds: [(round: String, name: String, completeName: String)]
             switch self {
             case .TurkishAirLinesEuroLeague:
                 rounds = [
-                    ("RS", "RS"),
-                    ("PO", "PO"),
-                    ("FF", "F4")
+                    ("RS", "RS", "Regular Season"),
+                    ("PO", "PO", "Play Offs"),
+                    ("FF", "F4", "Final Four")
                 ]
                 return rounds
             case .EuroCup:
                 rounds = [
-                    ("RS", "RS"),
-                    ("TS", "T16"),
-                    ("4F", "QF"),
-                    ("2F", "SF"),
-                    ("Final", "F")]
+                    ("RS", "RS", "Regular Season"),
+                    ("TS", "T16", "Top 16"),
+                    ("4F", "QF", "Quarter Final"),
+                    ("2F", "SF", "Semi final"),
+                    ("Final", "F", "Final")]
                 return rounds
             }
         }
+        
+        func getTeamStatisticsMenuOptions() -> Dictionary<Int,(text: String, priority: Int, round: String)> {
+            var menu: Dictionary<Int,(text: String, priority: Int, round: String)> = [:]
+            let rounds = getRounds()
+            var counter = 2
+            var priority = rounds.count
+            menu[1] = ("All phases", priority + 1, "")
+            for round in rounds {
+                menu[counter] = (round.completeName, priority, round.round)
+                priority -= 1
+                counter += 1
+            }
+            return menu
+        }
+        
     }
     
 }

@@ -16,7 +16,7 @@ protocol GameDataViewModelDelegate {
 
 class GamesViewModel {
     
-    private var rounds: [(round: String, name: String)]
+    private var rounds: [(round: String, name: String, completeName: String)]
     fileprivate let gameDataService: GamesDataService
     fileprivate let teamDataService: TeamsDataService
     

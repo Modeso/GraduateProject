@@ -35,9 +35,9 @@ class TeamStatisticsViewController: UIViewController, IndicatorInfoProvider {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EmbeddedMenu" {
-            menuViewController = segue.destination as? TeamStatisticsMenuViewController
-            menuViewController?.delegate = self
+        if segue.identifier == "EmbeddedMenu",
+            let menuViewController = segue.destination as? TeamStatisticsMenuViewController{
+            menuViewController.delegate = self
         }
     }
     

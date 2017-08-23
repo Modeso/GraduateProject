@@ -27,7 +27,7 @@ IndicatorInfoProvider {
     
     var pagerDelegate: PagerUpdateDelegate?
     
-    var round: (round: String,name: String) = ("", "")
+    var round: (round: String, name: String, completeName: String) = ("", "", "")
     
     override func viewDidLoad() {
         super.viewDidLoad()

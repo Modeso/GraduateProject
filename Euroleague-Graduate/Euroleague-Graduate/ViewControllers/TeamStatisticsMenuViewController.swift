@@ -18,44 +18,43 @@ protocol MenuSwapped {
 
 class TeamStatisticsMenuViewController: UIViewController {
     
-    @IBOutlet weak var firstButton: UIButton!
-    
-    @IBOutlet weak var secondButton: UIButton!
-    
-    @IBOutlet weak var thirdButton: UIButton!
-    
-    @IBOutlet weak var fourthButton: UIButton!
+    @IBOutlet var menuButtons: [UIButton]!
     
     @IBOutlet weak var openMenuButton: UIButton!
     
     fileprivate var willSelect = false
     
+    fileprivate var menu: Dictionary<Int,(text: String, priority: Int, round: String)> = [
+        1 : ("Average Statistics - All phases", 100, ""),
+    ]
+    
     var delegate: MenuSwapped?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.changeMenuSize(toHeight: firstButton.frame.height)
+        menu = LeaguesCommenObjects.season.getTeamStatisticsMenuOptions()
+        for button in menuButtons {
+            button.isHidden = true
+        }
+        buttonsShouldHide(false, index: 0)
+        delegate?.changeMenuSize(toHeight: menuButtons[0].frame.height)
+        swapTheUIMenuOrder()
     }
-    
-    fileprivate var menu: Dictionary<Int,(text: String, priority: Int, round: String)> = [
-        1 : ("Average Statistics - All phases", 4, ""),
-        2 : ("Average Statistics - Regular Season", 3, "RS"),
-        3 : ("Average Statistics - Play Offs", 2, "PO"),
-        4 : ("Average Statistics - Final Four", 1, "F4")
-    ]
     
     @IBAction func menuButtonPressed(_ sender: UIButton) {
         if !willSelect {
             willSelect = true
-            buttonsShouldHide(false)
+            for i in 0...menu.count {
+                buttonsShouldHide(false, index: i)
+            }
             openMenuButton.alpha = 0.5
-            delegate?.changeMenuSize(toHeight: firstButton.frame.height * CGFloat(menu.count))
+            delegate?.changeMenuSize(toHeight: menuButtons[0].frame.height * CGFloat(menu.count))
         }
         else{
             willSelect = false
             if let text = sender.currentTitle,
                 let currentText = menu[1]?.text,
-                text.caseInsensitiveCompare(currentText) != .orderedSame {
+                text.caseInsensitiveCompare("Average Statistics - \(currentText)") != .orderedSame {
                 makeMenuStartWith(text)
                 swapTheUIMenuOrder()
                 if let round = menu[1]?.round {
@@ -63,9 +62,11 @@ class TeamStatisticsMenuViewController: UIViewController {
                 }
                 
             }
-            buttonsShouldHide(true)
+            for i in 0...menu.count {
+                buttonsShouldHide(false, index: i)
+            }
             openMenuButton.alpha = 1.0
-            delegate?.changeMenuSize(toHeight: firstButton.frame.height)
+            delegate?.changeMenuSize(toHeight: menuButtons[0].frame.height)
         }
     }
     
@@ -80,23 +81,26 @@ fileprivate extension TeamStatisticsMenuViewController {
     func makeMenuStartWith(_ text: String) {
         var foundAt = 1
         for k in 1...menu.count {
-            let menuText = menu[k]
-            if menuText?.text.caseInsensitiveCompare(text) == .orderedSame {
-                if foundAt != 1 {               // Just to make sure
-                    swapMenu(1, foundAt)
-                    resortMenu()
+            if let currentText = menu[k]?.text {
+                let menuText = "Average Statistics - \(currentText)"
+                if text.caseInsensitiveCompare(menuText) == .orderedSame {
+                    if foundAt != 1 {               // Just to make sure
+                        swapMenu(1, foundAt)
+                        resortMenu()
+                    }
+                    break
                 }
-                break
             }
             foundAt += 1
         }
     }
     
     func swapTheUIMenuOrder() {
-        firstButton.setTitle(menu[1]?.text, for: .normal)
-        secondButton.setTitle(menu[2]?.text, for: .normal)
-        thirdButton.setTitle(menu[3]?.text, for: .normal)
-        fourthButton.setTitle(menu[4]?.text, for: .normal)
+        for i in 0...menu.count {
+            if let text = menu[i+1]?.text {
+                menuButtons[i].setTitle("Average Statistics - \(text)", for: .normal)
+            }
+        }
     }
     
     func resortMenu () {
@@ -121,10 +125,8 @@ fileprivate extension TeamStatisticsMenuViewController {
         menu[j] = temp
     }
     
-    func buttonsShouldHide(_ appear: Bool) {
-        secondButton.isHidden = appear
-        thirdButton.isHidden = appear
-        fourthButton.isHidden = appear
+    func buttonsShouldHide(_ appear: Bool, index: Int) {
+        menuButtons[index].isHidden = appear
     }
 }
 
