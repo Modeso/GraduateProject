@@ -51,6 +51,29 @@ class TeamStatisticsMenuTableViewController: UIViewController {
     func getCurrentMenuRound() -> String {
         return menu[1]?.round ?? ""
     }
+    
+    @IBAction func menuButtonIsPressed(_ sender: UIButton) {
+        if isChoosing {
+            isChoosing = false
+            menuButton.alpha = 1.0
+//            if indexPath.row != 0 {
+//                tableView.beginUpdates()
+//                tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
+//                updateTheMenuOrder(toStartWith: indexPath.row + 1)
+//                tableView.endUpdates()
+//                if let round = menu[1]?.round{
+//                    delegate?.updateTableData(withRound: round)
+//                }
+//            }
+            delegate?.changeMenuSize(withItemsCount: 1)
+        }
+        else{
+            isChoosing = true
+            menuButton.alpha = 0.5
+            delegate?.changeMenuSize(withItemsCount: menu.count)
+            tableView.reloadData()
+        }
+    }
 }
 
 extension TeamStatisticsMenuTableViewController: UITableViewDelegate {

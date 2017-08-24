@@ -48,9 +48,11 @@ class GamesViewModel {
     }
     
     func getGamesData(){
-        makeTeamsOf(teamDataService.getTeamsTable())
-        schedule = gameDataService.getGamesTable()
-        teamDataService.updateTeams()
+//        DispatchQueue.main.async {
+            self.makeTeamsOf(self.teamDataService.getTeamsTable())
+            self.schedule = self.gameDataService.getGamesTable()
+            self.teamDataService.updateTeams()
+//        }
     }
     
     func updateData() {

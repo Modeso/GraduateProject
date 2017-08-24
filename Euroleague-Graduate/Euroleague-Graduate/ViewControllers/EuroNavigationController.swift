@@ -31,8 +31,9 @@ extension EuroNavigationController:  UINavigationControllerDelegate {
         let navImage = LeaguesCommenObjects.season.getNavImage()
         let navImageView = UIImageView(image: navImage)
         navImageView.contentMode = .scaleAspectFit
-        navImageView.center = CGPoint(x: navigationBar.center.x, y: navigationBar.center.y - 20)
+//        navImageView.center = CGPoint(x: navigationBar.center.x, y: navigationBar.center.y - 20)
         viewController.navigationItem.titleView = navImageView
+        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: nil)
         navigationBar.setValue(true, forKey: "hidesShadow")
         viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }

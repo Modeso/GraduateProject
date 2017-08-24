@@ -58,7 +58,7 @@
 		FEC2D2881F2B5400006BB8AC /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2861F2B5400006BB8AC /* ApiClient.swift */; };
 		FEC2D2891F2B5400006BB8AC /* GamesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2871F2B5400006BB8AC /* GamesDataService.swift */; };
 		FEC2D28C1F2B540E006BB8AC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D28B1F2B540E006BB8AC /* Game.swift */; };
-		FEC2D2931F2B544D006BB8AC /* GamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2911F2B544D006BB8AC /* GamsViewModel.swift */; };
+		FEC2D2931F2B544D006BB8AC /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC2D2911F2B544D006BB8AC /* GamesViewModel.swift */; };
 		FEC2D29F1F2B69A8006BB8AC /* CoText_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */; };
 		FEC2D2A01F2B69A8006BB8AC /* CoText_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */; };
 		FEC2D2A11F2B69A8006BB8AC /* CoText_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */; };
@@ -143,7 +143,7 @@
 		FEC2D2861F2B5400006BB8AC /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		FEC2D2871F2B5400006BB8AC /* GamesDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesDataService.swift; sourceTree = "<group>"; };
 		FEC2D28B1F2B540E006BB8AC /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		FEC2D2911F2B544D006BB8AC /* GamsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamsViewModel.swift; sourceTree = "<group>"; };
+		FEC2D2911F2B544D006BB8AC /* GamesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
 		FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Bold.ttf; sourceTree = "<group>"; };
 		FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Light.ttf; sourceTree = "<group>"; };
 		FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Regular.ttf; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				FE33248A1F45B18B00DB345E /* BoxScoreViewModel.swift */,
-				FEC2D2911F2B544D006BB8AC /* GamsViewModel.swift */,
+				FEC2D2911F2B544D006BB8AC /* GamesViewModel.swift */,
 				FE615F421F31D4B900B6C3E0 /* TeamsViewModel.swift */,
 				FE5264981F34AB1C00E62A58 /* PlayerViewModel.swift */,
 			);
@@ -433,7 +433,7 @@
 				TargetAttributes = {
 					A5FF78B91F0FA74E00F6E9A2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = XP9UK5V4RA;
+						DevelopmentTeam = Q9ETT5Y44Q;
 						ProvisioningStyle = Automatic;
 					};
 					A5FF78CD1F0FA74F00F6E9A2 = {
@@ -601,7 +601,7 @@
 				FE3324891F4599C200DB345E /* GameBoxScoreViewController.swift in Sources */,
 				FE5B36CC1F41D728005FBCA6 /* TeamStatisticsViewController.swift in Sources */,
 				FE6FB04F1F43010F006C7D44 /* TeamStatisticsTableViewCell.swift in Sources */,
-				FEC2D2931F2B544D006BB8AC /* GamsViewModel.swift in Sources */,
+				FEC2D2931F2B544D006BB8AC /* GamesViewModel.swift in Sources */,
 				FE005FDE1F4AF06100644F54 /* GameDetailMasterWebViewController.swift in Sources */,
 				FE5264991F34AB1C00E62A58 /* PlayerViewModel.swift in Sources */,
 				FE615F3B1F31B68900B6C3E0 /* MenuViewController.swift in Sources */,
@@ -793,11 +793,14 @@
 			baseConfigurationReference = 84DD3988E1A3253923452F18 /* Pods-Euroleague-Graduate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XP9UK5V4RA;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Q9ETT5Y44Q;
 				INFOPLIST_FILE = "Euroleague-Graduate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Modeso.Euroleague-Graduate";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Modeso.EuroleagueGraduateApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -808,10 +811,11 @@
 			baseConfigurationReference = F5B4642116FFE1367BFA93F5 /* Pods-Euroleague-Graduate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XP9UK5V4RA;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Q9ETT5Y44Q;
 				INFOPLIST_FILE = "Euroleague-Graduate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Modeso.Euroleague-Graduate";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Modeso.EuroleagueGraduateApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

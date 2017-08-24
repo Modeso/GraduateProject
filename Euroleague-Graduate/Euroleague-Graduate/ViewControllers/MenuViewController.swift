@@ -123,11 +123,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDelegate
         }
         tableView.backgroundColor = LeaguesCommenObjects.season.getColor()
         topView.backgroundColor = LeaguesCommenObjects.season.getColor()
-        selectedRow = 0
         collectionView.reloadData()
         tableView.reloadData()
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        if let identifier = menu[0]?.identifier,
+        if let identifier = menu[selectedRow]?.identifier,
             let storyboard = self.storyboard {
             self.sideMenuViewController!.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
             self.sideMenuViewController!.hideMenuViewController()

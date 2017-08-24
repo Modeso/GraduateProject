@@ -36,7 +36,9 @@ class TeamsViewModel {
     }
     
     func getTeamsData() {
-        clubs = teamDataService.getTeamsTable()
+//        DispatchQueue.main.async {
+            self.clubs = self.teamDataService.getTeamsTable()
+//        }
         teamDataService.updateTeams()
     }
 }

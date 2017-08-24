@@ -20,7 +20,13 @@ class GameDetailBoxScoreService {
     
     var delegate: GameDetailBoxScoreDataServiceDelegate?
     
-    func getScoreBoxResults(ofGameWithCode code: String) {
+    func getScoreBoxResults(ofGameWithCode code: String) ->(localTeamDetail: GameTeamDetail?, roadTeamDetail: GameTeamDetail?){
+        guard let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code)
+            else { return (nil, nil) }
+        return (realmGame.localTeamGameDetail, realmGame.roadTeamGameDetail)
+    }
+    
+    func updateScoreBoxResults(ofGameWithCode code: String) {
         let url = "games"
         let parameters = [
             "gamecode" : code,

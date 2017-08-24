@@ -25,13 +25,12 @@ class BoxScoreViewModel {
     }
 
     func getGameDetail(ofGameWithCode code: String) -> (localTeamDetail: GameTeamDetail?, roadTeamDetail: GameTeamDetail?){
-        guard let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code)
-            else { return (nil, nil) }
-        return (realmGame.localTeamGameDetail, realmGame.roadTeamGameDetail)
+        let details = gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code)
+        return details
     }
     
     func updateGameDetail(ofGameWithCode code: String) {
-        gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code)
+        gameDetailBoxScoreService.updateScoreBoxResults(ofGameWithCode: code)
     }
     
     func boxScoreInfo(forIndex index: Int,
