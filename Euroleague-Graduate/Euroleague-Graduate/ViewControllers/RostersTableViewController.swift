@@ -16,7 +16,7 @@ class RostersTableViewController: UIViewController , IndicatorInfoProvider{
     
     fileprivate var rosters: [Array<Player>] = []
     
-    fileprivate let playersViewModel = PlayerViewModel()
+    fileprivate let playersViewModel = PlayerViewModel(season: LeaguesCommenObjects.season)
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,28 +35,50 @@ class RostersTableViewController: UIViewController , IndicatorInfoProvider{
     
     func makeRostersOf(_ players: [Player]) {
         var rostersTable: Dictionary<String,[Player]> = [:]
-        guard let retrivedCoach = playersViewModel.getPlayer(withCode: coach.code)
-            else { return }
-        coach = retrivedCoach.clone()
-        var positions:[String] = []
-        for player in players {
-            guard let retrievedPlayer = playersViewModel.getPlayer(withCode: player.code)
-                else { return }
-            let newPlayer = retrievedPlayer.clone()
-            if !positions.contains(newPlayer.position) {
-                positions.append(newPlayer.position)
-                rostersTable[newPlayer.position] = []
+        let group = DispatchGroup()
+        var newPlayers = players
+        group.enter()
+        playersViewModel.getPlayer(withCode: coach.code) { [weak self] player in
+            if let retrivedCoach = player {
+                self?.coach = retrivedCoach.clone()
             }
-            rostersTable[newPlayer.position]?.append(newPlayer)
+            group.leave()
         }
-        positions.sort()
-        rosters.append([coach])
-        for position in positions {
-            rosters.append(rostersTable[position]!)
+        newPlayers.remove(at: 0)
+        var positions:[String] = []
+        for player in newPlayers {
+            group.enter()
+            playersViewModel.getPlayer(withCode: player.code) { player in
+                if let retrievedPlayer = player {
+                    let newPlayer = retrievedPlayer.clone()
+                    if !positions.contains(newPlayer.position) {
+                        positions.append(newPlayer.position)
+                        rostersTable[newPlayer.position] = []
+                    }
+                    rostersTable[newPlayer.position]?.append(newPlayer)
+                }
+                group.leave()
+            }
         }
-        tableView?.reloadData()
+        group.notify(queue: DispatchQueue.main){ [weak self] in
+            positions.sort()
+            if let mCoach = self?.coach {
+                self?.rosters.append([mCoach])
+            }
+            for position in positions {
+                if var samePositionPlayers = rostersTable[position] {
+                    samePositionPlayers = samePositionPlayers.sorted{ $0.dorsal < $1.dorsal }
+                    self?.rosters.append(samePositionPlayers)
+                }
+                
+            }
+            self?.tableView?.reloadData()
+        }
     }
     
+    deinit {
+        print("deinit RostersTableViewController")
+    }
 }
 
 extension RostersTableViewController: UITableViewDelegate {
@@ -67,7 +89,6 @@ extension RostersTableViewController: UITableViewDelegate {
                 playersViewModel.updatePlayer(withCode: rosters[indexPath.section][indexPath.row].code)
                 { [weak self] player in
                     self?.rosters[indexPath.section][indexPath.row] = player
-//                    self?.tableView?.reloadRows(at: [indexPath], with: .none)
                     self?.tableView.reloadData()
                 }
             }

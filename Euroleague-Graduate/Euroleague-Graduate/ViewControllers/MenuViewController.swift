@@ -30,7 +30,13 @@ class MenuViewController: UIViewController {
         tableView.backgroundColor = UIColor.getLeagueBarColor()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        switch LeaguesCommenObjects.season {
+        case .TurkishAirLinesEuroLeague:
+            selectedLeagueNumber = 0
+        case .EuroCup:
+            selectedLeagueNumber = 1
+        }
+        topView.backgroundColor = UIColor.getLeagueBarColor()
         collectionView.contentInset = UIEdgeInsets(top: 0, left: view.frame.width / 4, bottom: 0, right: view.frame.width / 4)
     }
     
@@ -41,6 +47,10 @@ class MenuViewController: UIViewController {
                 tableCell.selectedBarView.alpha = 0.5
             }
         }
+    }
+    
+    deinit {
+        print("deinit MenuViewController")
     }
     
 }
@@ -110,7 +120,6 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedLeagueNumber = indexPath.row
-        print(selectedLeagueNumber)
         switch selectedLeagueNumber {
         case 0:
             LeaguesCommenObjects.season = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague
@@ -121,11 +130,12 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDelegate
         default:
             break
         }
+        UserDefaults.standard.set(LeaguesCommenObjects.season.getSeasonCode(), forKey: "CurrentSeason")
         tableView.backgroundColor = LeaguesCommenObjects.season.getColor()
         topView.backgroundColor = LeaguesCommenObjects.season.getColor()
         collectionView.reloadData()
         tableView.reloadData()
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+//        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         if let identifier = menu[selectedRow]?.identifier,
             let storyboard = self.storyboard {
             self.sideMenuViewController!.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
@@ -152,6 +162,7 @@ extension MenuViewController: UICollectionViewDataSource {
             case 0:
                 if indexPath.row == selectedLeagueNumber {
                     cell.leagueImageView.image = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague.getColoredImage()
+                    collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
                 }
                 else{
                     cell.leagueImageView.image = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague.getNonColoredImage()
@@ -160,6 +171,7 @@ extension MenuViewController: UICollectionViewDataSource {
             case 1:
                 if indexPath.row == selectedLeagueNumber {
                     cell.leagueImageView.image = LeaguesCommenObjects.Season.EuroCup.getColoredImage()
+                    collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
                 }
                 else{
                     cell.leagueImageView.image = LeaguesCommenObjects.Season.EuroCup.getNonColoredImage()

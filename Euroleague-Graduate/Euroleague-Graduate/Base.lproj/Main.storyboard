@@ -330,7 +330,7 @@
                                 <rect key="frame" x="0.0" y="95.666666666666671" width="414" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sb9-oL-kMx">
-                                        <rect key="frame" x="358" y="0.66666666666665719" width="36" height="24.666666666666671"/>
+                                        <rect key="frame" x="368" y="0.66666666666665719" width="36" height="24.666666666666671"/>
                                         <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                         <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -339,7 +339,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAZ-ID-jMa">
-                                        <rect key="frame" x="20.000000000000004" y="0.66666666666665719" width="33.333333333333343" height="24.666666666666671"/>
+                                        <rect key="frame" x="10" y="0.66666666666665719" width="33.333333333333336" height="24.666666666666671"/>
                                         <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -350,9 +350,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Sb9-oL-kMx" secondAttribute="trailing" constant="20" symbolic="YES" id="BNU-oY-tf3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sb9-oL-kMx" secondAttribute="trailing" constant="10" id="BNU-oY-tf3"/>
                                     <constraint firstItem="Sb9-oL-kMx" firstAttribute="centerY" secondItem="bSQ-vn-uUB" secondAttribute="centerY" id="OI2-R5-deW"/>
-                                    <constraint firstItem="uAZ-ID-jMa" firstAttribute="leading" secondItem="bSQ-vn-uUB" secondAttribute="leading" constant="20" symbolic="YES" id="TmD-Jf-kAy"/>
+                                    <constraint firstItem="uAZ-ID-jMa" firstAttribute="leading" secondItem="bSQ-vn-uUB" secondAttribute="leading" constant="10" id="TmD-Jf-kAy"/>
                                     <constraint firstItem="uAZ-ID-jMa" firstAttribute="centerY" secondItem="bSQ-vn-uUB" secondAttribute="centerY" id="n5G-Lc-gdm"/>
                                     <constraint firstAttribute="height" constant="25" id="yhp-nS-w8Y"/>
                                 </constraints>

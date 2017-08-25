@@ -11,18 +11,30 @@ import Foundation
 
 class PlayerViewModel {
     
-    fileprivate let playersDataService = PlayersDataService()
+    fileprivate let playersDataService: PlayersDataService
     
-    func getPlayer(withCode code: String) -> Player? {
-        let player = playersDataService.getPlayer(withCode: code)
-        return player
+    init(season: LeaguesCommenObjects.Season) {
+        playersDataService = PlayersDataService(season: season)
+    }
+    
+    func getPlayer(withCode code: String, completion:@escaping (Player?)->Void) {
+        playersDataService.getPlayer(withCode: code) { (player) in
+            DispatchQueue.main.async {
+                completion(player)
+            }
+        }
     }
     
     func updatePlayer(withCode code: String, completion:@escaping (_ player:Player) -> Void){
         playersDataService.updatePlayer(withCode: code) { player in
-            completion(player)
+            DispatchQueue.main.async {
+                completion(player)
+            }
         }
     }
     
+    deinit {
+        print("deinit PlayerViewModel")
+    }
 }
 

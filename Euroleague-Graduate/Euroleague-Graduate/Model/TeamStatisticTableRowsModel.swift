@@ -32,13 +32,6 @@ class TeamStatisticTableRowsModel {
         "Fouls" : 0
     ]
     
-    enum StatisticModelDataType {
-        case AllPhases
-        case RegularSeason
-        case PlayOffs
-        case FinalFour
-    }
-    
     fileprivate var currentRound: String = ""
     
     func getDataAccordingToMenu(round: String) {

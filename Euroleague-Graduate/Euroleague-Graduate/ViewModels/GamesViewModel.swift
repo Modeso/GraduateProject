@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-protocol GameDataViewModelDelegate {
+protocol GameDataViewModelDelegate: class {
     func updateControllersData(_ table: Dictionary<String, [Array<Game>]>,
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>)
 }
@@ -20,15 +20,15 @@ class GamesViewModel {
     fileprivate let gameDataService: GamesDataService
     fileprivate let teamDataService: TeamsDataService
     
-    var gamesDelegate: GameDataViewModelDelegate?
+    weak var delegate: GameDataViewModelDelegate?
     
-    fileprivate var schedule: Results<Game>? {
+    fileprivate var schedule: [Game]? {
         didSet {
             if schedule != nil , (schedule?.count)! > 0 {
                 for round in rounds {
                     makingTableDataOf(round.round)
                 }
-                gamesDelegate?.updateControllersData(table, lastPlayedGames: lastPlayedGame)
+                delegate?.updateControllersData(table, lastPlayedGames: lastPlayedGame)
             }
         }
     }
@@ -39,41 +39,50 @@ class GamesViewModel {
     
     fileprivate var table: Dictionary<String, [Array<Game>]> = [:]
     
-    init() {
-        rounds = LeaguesCommenObjects.season.getRounds()
-        gameDataService = GamesDataService()
-        teamDataService = TeamsDataService()
+    init(season: LeaguesCommenObjects.Season) {
+        rounds = season.getRounds()
+        gameDataService = GamesDataService(season: season)
+        teamDataService = TeamsDataService(season: season)
         teamDataService.delegate = self
         gameDataService.delegate = self
     }
     
     func getGamesData(){
-//        DispatchQueue.main.async {
-            self.makeTeamsOf(self.teamDataService.getTeamsTable())
-            self.schedule = self.gameDataService.getGamesTable()
-            self.teamDataService.updateTeams()
-//        }
+        teamDataService.getTeamsTable() { [weak self] realmTable in
+            self?.makeTeamsOf(realmTable)
+            self?.gameDataService.getGamesTable() { [weak self] realmTable in
+                DispatchQueue.main.async {
+                    self?.schedule = realmTable
+                }
+            }
+        }
+        
     }
     
     func updateData() {
         gameDataService.updateData()
     }
     
+    deinit {
+        print("deinit GamesViewModel")
+    }
 }
 
 extension GamesViewModel: GamesDataServiceDelegate {
     
-    func updateData(_ table: Results<Game>){
-        schedule = table
+    func updateData(_ table: [Game]){
+        DispatchQueue.main.async {
+            self.schedule = table
+        }
     }
     
 }
 
 extension GamesViewModel: TeamsDataServiceDelegate {
     
-    func updateData(_ table: Results<Team>){
+    func updateData(_ table: [Team]){
         makeTeamsOf(table)
-        gameDataService.updateData()
+//        gameDataService.updateData()
     }
     
 }
@@ -121,7 +130,7 @@ fileprivate extension GamesViewModel {
     }
     
     //For Teams
-    func makeTeamsOf(_ table: Results<Team>) {
+    func makeTeamsOf(_ table: [Team]) {
         for team in table {
             let club = team.clone()
             teams[club.code] = club

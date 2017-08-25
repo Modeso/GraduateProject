@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MenuSwapped {
+protocol MenuSwapped: class {
     
     func changeMenuSize(withItemsCount items: Int)
     
@@ -26,7 +26,7 @@ class TeamStatisticsMenuTableViewController: UIViewController {
     
     fileprivate var isChoosing = false
     
-    var delegate: MenuSwapped?
+    weak var delegate: MenuSwapped?
     
     var cellRowHeight:CGFloat = 35.0
     
@@ -43,7 +43,6 @@ class TeamStatisticsMenuTableViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("dfdddd \(tableView.contentSize.height)")
         tableView.reloadData()
 
         
@@ -56,15 +55,6 @@ class TeamStatisticsMenuTableViewController: UIViewController {
         if isChoosing {
             isChoosing = false
             menuButton.alpha = 1.0
-//            if indexPath.row != 0 {
-//                tableView.beginUpdates()
-//                tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
-//                updateTheMenuOrder(toStartWith: indexPath.row + 1)
-//                tableView.endUpdates()
-//                if let round = menu[1]?.round{
-//                    delegate?.updateTableData(withRound: round)
-//                }
-//            }
             delegate?.changeMenuSize(withItemsCount: 1)
         }
         else{
@@ -74,6 +64,11 @@ class TeamStatisticsMenuTableViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
+    deinit {
+        print("deinit TeamStatisticsMenuTableViewController")
+    }
+    
 }
 
 extension TeamStatisticsMenuTableViewController: UITableViewDelegate {

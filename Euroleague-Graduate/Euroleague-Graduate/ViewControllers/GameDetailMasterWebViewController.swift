@@ -32,9 +32,11 @@ class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider
                 let request = URLRequest(url: url)
                 self?.webView.loadRequest(request)
             }
-        }
-        
-        
+        } 
+    }
+    
+    deinit {
+        print("deinit GameDetailMasterWebViewController")
     }
     
 }

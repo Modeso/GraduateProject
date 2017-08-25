@@ -52,7 +52,6 @@ extension Player {
             if self.position != "coach" {
                 self.dorsal = try node["dorsal"].value()
             }
-            self.seasonCode = LeaguesCommenObjects.season.getSeasonCode()
         } catch {
             print(error)
         }

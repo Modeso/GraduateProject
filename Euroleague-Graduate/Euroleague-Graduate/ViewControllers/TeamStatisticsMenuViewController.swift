@@ -20,7 +20,7 @@ class TeamStatisticsMenuViewController: UIViewController {
         1 : ("Average Statistics - All phases", 100, ""),
     ]
     
-    var delegate: MenuSwapped?
+    weak var delegate: MenuSwapped?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +66,9 @@ class TeamStatisticsMenuViewController: UIViewController {
         return menu[1]?.round ?? ""
     }
     
+    deinit {
+        print("deinit TeamStatisticsMenuViewController")
+    }
 }
 
 fileprivate extension TeamStatisticsMenuViewController {

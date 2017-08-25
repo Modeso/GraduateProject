@@ -10,37 +10,69 @@ import Foundation
 import RealmSwift
 import SWXMLHash
 
-protocol TeamsDataServiceDelegate {
-    func updateData(_ table: Results<Team>)
+protocol TeamsDataServiceDelegate: class {
+    func updateData(_ table: [Team])
 }
 
 class TeamsDataService {
     
     fileprivate let url = "teams"
     
-    var delegate: TeamsDataServiceDelegate?
+    weak var delegate: TeamsDataServiceDelegate?
+    
+    fileprivate let currentSeason: LeaguesCommenObjects.Season
+    
+    init(season: LeaguesCommenObjects.Season) {
+        currentSeason = season
+    }
     
     ///Will return the teams data from DataBase
-    func getTeamsTable() -> Results<Team>{
-        return RealmDBManager.sharedInstance.getTeams()
+    func getTeamsTable(completion:@escaping ([Team])->Void){
+        print("getTeams:- local get teams for \(LeaguesCommenObjects.season.getSeasonCode())")
+
+        DispatchQueue.global().async { [weak self] in
+            let table = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
+            var arrayTabel: [Team] = []
+            for team in table {
+                arrayTabel.append(team.clone())
+            }
+            completion(arrayTabel)
+            self?.updateTeams()
+        }
     }
     
     func updateTeams() {
+        print("getTeams:- updateTeams for \(LeaguesCommenObjects.season.getSeasonCode())")
+
         getTeams()
     }
+    
+    deinit {
+        print("deinit TeamsDataService")
+    }
+    
 }
 
 fileprivate extension TeamsDataService {
     
     func getTeams() {
-    //    LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
-        let parameters = [ "seasoncode" : LeaguesCommenObjects.season.getSeasonCode() ]
+        print("getTeams:- api get teams for \(currentSeason.getSeasonCode())")
+        let parameters = [ "seasoncode" : currentSeason.getSeasonCode() ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,
                                  headers: [:]){ [weak self] data ,error in
                                     if let xmlData = data, error == nil {
-                                        self?.parseTeamData(xmlData)
-                                        self?.delegate?.updateData(RealmDBManager.sharedInstance.getTeams())
+                                        DispatchQueue.global().async { [weak self] in
+                                            self?.parseTeamData(xmlData)
+                                            let teams = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
+                                            var arrayTabel: [Team] = []
+                                            for team in teams {
+                                                arrayTabel.append(team.clone())
+                                            }
+                                            DispatchQueue.main.async {
+                                                self?.delegate?.updateData(arrayTabel)
+                                            }
+                                        }
                                     }
                                     else {
                                         ///Tell that there was an error
@@ -54,6 +86,7 @@ fileprivate extension TeamsDataService {
         for elem in xml["clubs"]["club"].all {
             let team = Team()
             team.parseTeamData(elem)
+            team.seasonCode = currentSeason.getSeasonCode()
             RealmDBManager.sharedInstance.addTeamDataToRealm(team)
         }
     }

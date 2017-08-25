@@ -48,7 +48,7 @@ fileprivate extension PlayersTableViewCell {
         playerImageView.layer.masksToBounds = true
         playerImageView.layer.borderWidth = 1.0
         playerImageView.layer.borderColor = UIColor.black.cgColor
-        playerImageView?.sd_setImage(with: URL(string:player.imageUrl), placeholderImage: UIImage(named: "emptyImage"))
+        playerImageView?.sd_setImage(with: URL(string:player.imageUrl), placeholderImage: UIImage(named: "emptyPlayer"))
     }
     
 }

@@ -13,26 +13,33 @@ import RealmSwift
 
 class PlayersDataService {
     
-    func getPlayer(withCode code: String) -> Player? {
-        guard let player = RealmDBManager.sharedInstance.getPlayer(withCode: code)
-            else { return nil }
-
-        return player
+    fileprivate let currentSeason: LeaguesCommenObjects.Season
+    
+    init(season: LeaguesCommenObjects.Season) {
+        currentSeason = season
     }
     
-    func updatePlayer(withCode code: String, completion:@escaping (_ player:Player) -> Void) {
-    //    LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
+    func getPlayer(withCode code: String, completion: @escaping (Player?) -> Void){
+        DispatchQueue.global().async {
+            let player = RealmDBManager.sharedInstance.getPlayer(withCode: code)
+            completion(player?.clone())
+        }
+    }
+    
+    func updatePlayer(withCode code: String, completion:@escaping (_ player: Player) -> Void) {
         let url = "players"
         let parameters = [
             "pcode" : "\(code)",
-            "seasoncode" : LeaguesCommenObjects.season.getSeasonCode()
+            "seasoncode" : currentSeason.getSeasonCode()
         ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,
                                  headers: [:]){ [weak self] data ,error in
                                     if let xmlData = data, error == nil {
                                         self?.parsePlayerData(xmlData,code: code){ player in
-                                            completion(player)
+                                            DispatchQueue.main.async {
+                                                completion(player.clone())
+                                            }
                                         }
                                     }
                                     else {
@@ -40,7 +47,10 @@ class PlayersDataService {
                                         print("error in Player data with code \(code)")
                                     }
         }
-
+    }
+    
+    deinit {
+        print("deinit PlayersDataService")
     }
     
 }
@@ -55,8 +65,9 @@ fileprivate extension PlayersDataService {
         }
         if player.name != "" {
             player.code = code
+            player.seasonCode = currentSeason.getSeasonCode()
             RealmDBManager.sharedInstance.addPlayer(player)
-            completion(player)
+            completion(player.clone())
         }
         
     }

@@ -17,11 +17,8 @@ class TeamDataViewController: ButtonBarPagerTabStripViewController {
     var team: Team?
     
     @IBOutlet weak var teamImageView: UIImageView!
-    
     @IBOutlet weak var teamNameLabel: UILabel!
-    
     @IBOutlet weak var tvCodeLabel: UILabel!
-    
     @IBOutlet weak var countryLabel: UILabel!
     
     override func viewDidLoad() {
@@ -46,6 +43,10 @@ class TeamDataViewController: ButtonBarPagerTabStripViewController {
         createControllers()
         return myViewControllers
     }
+    
+    deinit {
+        print("deinit TeamDataViewController")
+    }
 }
 
 fileprivate extension TeamDataViewController {
@@ -59,9 +60,14 @@ fileprivate extension TeamDataViewController {
     
     func createControllers() {
         let router = Router()
+        guard let team = self.team?.clone() else {
+            return
+        }
         let roster = router.createRosterTableController()
-        roster.coach = (team?.coach?.clone())!
-        roster.makeRostersOf(Array((team?.rosters)!))
+        if let coach = team.coach?.clone(){
+            roster.coach = coach
+        }
+        roster.makeRostersOf(Array(team.rosters))
         let statistics = router.createTeamStatistics()
         myViewControllers.append(roster)
         myViewControllers.append(statistics)

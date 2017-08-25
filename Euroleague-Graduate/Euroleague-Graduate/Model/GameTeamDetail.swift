@@ -48,14 +48,17 @@ extension GameTeamDetail {
         newTeamGameDetail.extraPeriod3 = self.extraPeriod3
         newTeamGameDetail.extraPeriod4 = self.extraPeriod4
         newTeamGameDetail.extraPeriod5 = self.extraPeriod5
-        newTeamGameDetail.playersStats = self.playersStats
+        let newPlayerStatus = List<GamePlayerStats>()
+        for playerStats in self.playersStats {
+            newPlayerStatus.append(playerStats.clone())
+        }
+        newTeamGameDetail.playersStats = newPlayerStatus
         return newTeamGameDetail
     }
     
     func parseTeamGameDetail(_ node: XMLIndexer) {
         do {
             self.code = try node.value(ofAttribute: "code")
-            self.seasonCode = LeaguesCommenObjects.season.getSeasonCode()
             self.partial1 = try node["partials"].value(ofAttribute: "Partial1")
             self.partial2 = try node["partials"].value(ofAttribute: "Partial2")
             self.partial3 = try node["partials"].value(ofAttribute: "Partial3")

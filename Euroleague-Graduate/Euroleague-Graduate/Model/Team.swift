@@ -19,7 +19,6 @@ class Team: Object {
     dynamic var countryName: String = ""
     dynamic var countryCode: String = ""
     dynamic var logoUrl: String = ""
-//    dynamic var rosterImageUrl: String = ""
     dynamic var twitterAccount: String = ""
     
     //V2
@@ -47,13 +46,15 @@ extension Team {
             self.countryCode = try node["countrycode"].value()
             self.countryName = try node["countryname"].value()
             self.logoUrl = try node["imageurl"].value()
-        //    self.rosterImageUrl = try node["rosterimageurl"].value()
             self.twitterAccount = try node["twitteraccount"].value()
             self.coach = Player()
             self.coach?.name = try node["coach"].value(ofAttribute: "name")
             self.coach?.countryName = try node["coach"].value(ofAttribute: "countryname")
             self.coach?.code = try node["coach"].value(ofAttribute: "code")
             self.coach?.position = "Coach"
+            if let coach = self.coach {
+                self.rosters.append(coach)
+            }
             for elem in node["roster"]["player"].all {
                 let player = Player()
                 player.name = try elem.value(ofAttribute: "name")
@@ -63,7 +64,6 @@ extension Team {
                 player.countryName = try elem.value(ofAttribute: "countryname")
                 self.rosters.append(player)
             }
-            self.seasonCode = LeaguesCommenObjects.season.getSeasonCode()
         } catch {
             print(error)
         }
@@ -76,11 +76,14 @@ extension Team {
         newTeam.countryName = self.countryName
         newTeam.logoUrl = self.logoUrl
         newTeam.name = self.name
- //       newTeam.rosterImageUrl = self.rosterImageUrl
         newTeam.tvCode = self.tvCode
         newTeam.twitterAccount = self.twitterAccount
-        newTeam.coach = self.coach
-        newTeam.rosters = self.rosters
+        newTeam.coach = self.coach?.clone()
+        let newRosters = List<Player>()
+        for player in self.rosters {
+            newRosters.append(player.clone())
+        }
+        newTeam.rosters = newRosters
         newTeam.seasonCode = self.seasonCode
         return newTeam
     }

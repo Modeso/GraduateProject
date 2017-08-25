@@ -37,6 +37,10 @@ class GameDetailViewController: ButtonBarPagerTabStripViewController {
         createViewControllers()
         return myViewControllers
     }
+    
+    deinit {
+        print("deinit GameDetailViewController")
+    }
 
 }
 

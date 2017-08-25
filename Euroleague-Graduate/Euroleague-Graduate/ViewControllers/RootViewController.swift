@@ -20,6 +20,16 @@ class RootViewController: AKSideMenu, AKSideMenuDelegate {
         self.contentViewShadowRadius = 12
         self.contentViewShadowEnabled = true
         
+        if let season = UserDefaults.standard.value(forKey: "CurrentSeason") as? String {
+            switch season {
+            case LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague.getSeasonCode():
+                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague
+            case LeaguesCommenObjects.Season.EuroCup.getSeasonCode():
+                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.EuroCup
+            default:
+                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague
+            }
+        }
         self.contentViewController = self.storyboard!.instantiateViewController(withIdentifier: "GamesContentNavigationController")
         self.leftMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
         
@@ -28,6 +38,10 @@ class RootViewController: AKSideMenu, AKSideMenuDelegate {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    deinit {
+        print("deinit RootViewController")
     }
     
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 extension UIColor {
     
@@ -50,7 +51,6 @@ extension Date {
     }
     
 }
-
 
 public extension Float {
 

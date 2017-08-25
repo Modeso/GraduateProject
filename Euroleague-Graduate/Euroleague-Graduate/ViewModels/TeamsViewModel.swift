@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-protocol TeamsDataViewModelDelegate {
+protocol TeamsDataViewModelDelegate: class {
     func updateTeamsData(_ table: [Array<Team>])
 }
 
@@ -17,36 +17,44 @@ class TeamsViewModel {
     
     fileprivate let teamDataService: TeamsDataService
     
-    fileprivate var clubs: Results<Team>?{
+    fileprivate var clubs: [Team]?{
         didSet {
             if clubs != nil, (clubs?.count)! > 0 {
                 makeTeams()
-                teamsDelegate?.updateTeamsData(teams)
+                delegate?.updateTeamsData(teams)
             }
         }
     }
     
     fileprivate var teams: [Array<Team>] = []
     
-    var teamsDelegate: TeamsDataViewModelDelegate?
+    weak var delegate: TeamsDataViewModelDelegate?
     
-    init() {
-        teamDataService = TeamsDataService()
+    init(season: LeaguesCommenObjects.Season) {
+        teamDataService = TeamsDataService(season: season)
         teamDataService.delegate = self
     }
     
     func getTeamsData() {
-//        DispatchQueue.main.async {
-            self.clubs = self.teamDataService.getTeamsTable()
-//        }
-        teamDataService.updateTeams()
+        
+        teamDataService.getTeamsTable() {[weak self] realmTable in
+            DispatchQueue.main.async {
+                self?.clubs = realmTable
+            }
+        }
+    }
+    
+    deinit {
+        print("deinit TeamsViewModel")
     }
 }
 
 extension TeamsViewModel: TeamsDataServiceDelegate {
     
-    func updateData(_ table: Results<Team>){
-        clubs = table
+    func updateData(_ table: [Team]){
+        DispatchQueue.main.async {
+            self.clubs = table
+        }
     }
     
 }

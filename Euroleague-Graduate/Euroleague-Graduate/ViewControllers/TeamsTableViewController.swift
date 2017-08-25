@@ -18,7 +18,7 @@ class TeamsTableViewController: UIViewController {
         }
     }
     
-    private let teamViewModel = TeamsViewModel()
+    private let teamViewModel = TeamsViewModel(season: LeaguesCommenObjects.season)
     
     fileprivate var selectedTeam: Team?
     
@@ -35,7 +35,7 @@ class TeamsTableViewController: UIViewController {
             self.view.backgroundColor = UIColor(patternImage: image)
         }
         
-        teamViewModel.teamsDelegate = self
+        teamViewModel.delegate = self
         teamViewModel.getTeamsData()
     }
 
@@ -51,6 +51,9 @@ class TeamsTableViewController: UIViewController {
         }
     }
     
+    deinit {
+        print("deinit TeamsTableViewController")
+    }
 
 }
 

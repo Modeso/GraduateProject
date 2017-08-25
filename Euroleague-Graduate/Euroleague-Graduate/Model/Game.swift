@@ -60,7 +60,6 @@ extension Game {
             self.played = try node["played"].value()
             self.awayCode = try node["awaycode"].value()
             self.homeCode = try node["homecode"].value()
-            self.seasonCode = LeaguesCommenObjects.season.getSeasonCode()
             self.gameCode = try node["gamecode"].value()
         } catch {
             
@@ -80,8 +79,8 @@ extension Game {
         newGame.time = self.time
         newGame.awayCode = self.awayCode
         newGame.homeCode = self.homeCode
-        newGame.localTeamGameDetail = self.localTeamGameDetail
-        newGame.roadTeamGameDetail = self.roadTeamGameDetail
+        newGame.localTeamGameDetail = self.localTeamGameDetail?.clone()
+        newGame.roadTeamGameDetail = self.roadTeamGameDetail?.clone()
         newGame.seasonCode = self.seasonCode
         newGame.gameCode = self.gameCode
         return newGame
@@ -89,7 +88,7 @@ extension Game {
     
     func getQuartersPlayed() -> Int {
         var count = 4
-        guard let localTeam = localTeamGameDetail, let roadTeam = roadTeamGameDetail
+        guard let localTeam = localTeamGameDetail?.clone(), let roadTeam = roadTeamGameDetail?.clone()
             else { return count }
         if localTeam.extraPeriod1 != 0 || localTeam.extraPeriod2 != 0
             || roadTeam.extraPeriod1 != 0 || roadTeam.extraPeriod2 != 0 {

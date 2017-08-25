@@ -12,30 +12,19 @@ import XLPagerTabStrip
 class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     
     @IBOutlet weak var homeImageView: UIImageView!
-    
     @IBOutlet weak var awayImageView: UIImageView!
-    
     @IBOutlet weak var resultLabel: UILabel!
-    
     @IBOutlet weak var detailLabel: UILabel!
-    
     @IBOutlet weak var separator: UIView!
-    
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var codeLabel: UILabel!
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var collectionViewHeightConstrain: NSLayoutConstraint!
-    
     @IBOutlet weak var tableView: UITableView!
-        
     @IBOutlet weak var tableViewHeightConstrain: NSLayoutConstraint!
-    
     @IBOutlet weak var browserButton: UIButton!
-    
-    fileprivate let boxScoreViewModel = BoxScoreViewModel()
+
+    fileprivate let boxScoreViewModel = BoxScoreViewModel(season: LeaguesCommenObjects.season)
     
     var game: Game? {
         didSet{
@@ -55,9 +44,11 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         tableViewHeightConstrain.constant = 0
         if let number = game?.gameNumber {
             if let code = game?.gameCode {
-                let detail = boxScoreViewModel.getGameDetail(ofGameWithCode: code)
-                game?.localTeamGameDetail = detail.localTeamDetail
-                game?.roadTeamGameDetail = detail.roadTeamDetail
+                boxScoreViewModel.getGameDetail(ofGameWithCode: code) {[weak self] localTeamDetail, roadTeamDetail in
+                    self?.game?.localTeamGameDetail = localTeamDetail
+                    self?.game?.roadTeamGameDetail = roadTeamDetail
+                }
+                
             }
             boxScoreViewModel.updateGameDetail(ofGameWithCode: String(number))
         }
@@ -85,6 +76,10 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     
     @IBAction func openBoxScoreOnWebBrowser(_ sender: Any) {
         /// learn how to open it
+    }
+    
+    deinit {
+        print("deinit GameBoxScoreViewController")
     }
     
 }

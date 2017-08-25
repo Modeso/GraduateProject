@@ -14,8 +14,10 @@ IndicatorInfoProvider {
     
     fileprivate var schedule: [Array<Game>]? {
         didSet {
-            tableView?.reloadData()
-            tableView.refreshControl?.endRefreshing()
+            if isAppear {
+                self.tableView?.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            }
         }
     }
     
@@ -25,7 +27,9 @@ IndicatorInfoProvider {
     
     fileprivate var firstLoad = true
     
-    var pagerDelegate: PagerUpdateDelegate?
+    fileprivate var isAppear = false
+    
+    weak var pagerDelegate: PagerUpdateDelegate?
     
     var round: (round: String, name: String, completeName: String) = ("", "", "")
     
@@ -34,7 +38,7 @@ IndicatorInfoProvider {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor.clear
-   
+        
         tableView.refreshControl?.tintColor = UIColor.white
         tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
     }
@@ -49,13 +53,20 @@ IndicatorInfoProvider {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        isAppear = true
         if firstLoad {
             tableView.reloadData()
             firstLoad = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
-                self?.moveToLastPlayed()
-            })
+            DispatchQueue.main.async {
+                self.moveToLastPlayed()
+
+            }
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isAppear = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -119,6 +130,10 @@ IndicatorInfoProvider {
         tableView.reloadData()
     }
     
+    deinit {
+        print("deinit MasterTableViewController")
+    }
+    
 }
 
 extension MasterTableViewController {
@@ -136,15 +151,20 @@ extension MasterTableViewController: PagerUpdateChildData {
     func updateUIWithData(_ table: [Array<Game>], lastGameIndex: (section: Int, row: Int)) {
         schedule = table
         let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
-        if !firstLoad {
-            if lastGameIndex.section != self.indexPath?.section , lastGameIndex.row != self.indexPath?.row {
+        if isAppear {
+            if !firstLoad {
+                if lastGameIndex.section != self.indexPath?.section , lastGameIndex.row != self.indexPath?.row {
+                    self.indexPath = indexPath
+                    moveToLastPlayed()
+                }
+            }
+            else {
                 self.indexPath = indexPath
                 moveToLastPlayed()
             }
         }
         else {
             self.indexPath = indexPath
-            moveToLastPlayed()
         }
     }
     

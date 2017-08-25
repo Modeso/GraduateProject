@@ -47,7 +47,7 @@
 		FEB17D9D1F4435A80044B0A6 /* SwiftExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB17D9C1F4435A80044B0A6 /* SwiftExtentions.swift */; };
 		FEB5761E1F446359005D1E23 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB5761D1F446359005D1E23 /* RootViewController.swift */; };
 		FEB576201F447054005D1E23 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB5761F1F447054005D1E23 /* MenuTableViewCell.swift */; };
-		FEC0EBC31F46CB4E0048B849 /* GameDetailBoxScoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0EBC21F46CB4E0048B849 /* GameDetailBoxScoreService.swift */; };
+		FEC0EBC31F46CB4E0048B849 /* GameDetailBoxScoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0EBC21F46CB4E0048B849 /* GameDetailBoxScoreDataService.swift */; };
 		FEC0EBC51F46CD6B0048B849 /* GamePlayerStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0EBC41F46CD6B0048B849 /* GamePlayerStats.swift */; };
 		FEC0EBC71F46DB4E0048B849 /* GameTeamDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0EBC61F46DB4E0048B849 /* GameTeamDetail.swift */; };
 		FEC0EBC91F4717C50048B849 /* LeaguesCommenObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0EBC81F4717C50048B849 /* LeaguesCommenObjects.swift */; };
@@ -132,7 +132,7 @@
 		FEB17D9C1F4435A80044B0A6 /* SwiftExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtentions.swift; sourceTree = "<group>"; };
 		FEB5761D1F446359005D1E23 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		FEB5761F1F447054005D1E23 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
-		FEC0EBC21F46CB4E0048B849 /* GameDetailBoxScoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailBoxScoreService.swift; sourceTree = "<group>"; };
+		FEC0EBC21F46CB4E0048B849 /* GameDetailBoxScoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailBoxScoreDataService.swift; sourceTree = "<group>"; };
 		FEC0EBC41F46CD6B0048B849 /* GamePlayerStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayerStats.swift; sourceTree = "<group>"; };
 		FEC0EBC61F46DB4E0048B849 /* GameTeamDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTeamDetail.swift; sourceTree = "<group>"; };
 		FEC0EBC81F4717C50048B849 /* LeaguesCommenObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaguesCommenObjects.swift; sourceTree = "<group>"; };
@@ -287,8 +287,8 @@
 		FEC2D2781F2B53F7006BB8AC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FE615F3A1F31B68900B6C3E0 /* MenuViewController.swift */,
 				FEB5761D1F446359005D1E23 /* RootViewController.swift */,
+				FE615F3A1F31B68900B6C3E0 /* MenuViewController.swift */,
 				FE5264931F34951C00E62A58 /* EuroNavigationController.swift */,
 				FEC2D27C1F2B53F7006BB8AC /* GamesPagerViewController.swift */,
 				FEC2D27B1F2B53F7006BB8AC /* MasterTableViewController.swift */,
@@ -312,7 +312,7 @@
 				FEC2D2871F2B5400006BB8AC /* GamesDataService.swift */,
 				FE5C21661F2F27EE00522D65 /* TeamsDataService.swift */,
 				FE52649A1F34ACA500E62A58 /* PlayersDataService.swift */,
-				FEC0EBC21F46CB4E0048B849 /* GameDetailBoxScoreService.swift */,
+				FEC0EBC21F46CB4E0048B849 /* GameDetailBoxScoreDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -627,7 +627,7 @@
 				FE6FB0511F433592006C7D44 /* TeamStatisticTableRowsModel.swift in Sources */,
 				FE615F451F31EE7400B6C3E0 /* TeamDataViewController.swift in Sources */,
 				FEB5761E1F446359005D1E23 /* RootViewController.swift in Sources */,
-				FEC0EBC31F46CB4E0048B849 /* GameDetailBoxScoreService.swift in Sources */,
+				FEC0EBC31F46CB4E0048B849 /* GameDetailBoxScoreDataService.swift in Sources */,
 				FE33248B1F45B18B00DB345E /* BoxScoreViewModel.swift in Sources */,
 				FE5C21691F2F2F6900522D65 /* Team.swift in Sources */,
 				FEC2D28C1F2B540E006BB8AC /* Game.swift in Sources */,

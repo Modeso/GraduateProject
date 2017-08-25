@@ -16,7 +16,7 @@ protocol PagerUpdateChildData {
     func getRound() -> String
 }
 
-protocol PagerUpdateDelegate {
+protocol PagerUpdateDelegate: class {
     func getUpdatedData()
     func isRefreshing() -> Bool
 }
@@ -25,7 +25,7 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
     
     fileprivate var myViewControllers: Array<MasterTableViewController> = []
     
-    fileprivate let viewModel = GamesViewModel()
+    fileprivate let viewModel = GamesViewModel(season: LeaguesCommenObjects.season)
     
     fileprivate var refreshing = true
     
@@ -37,8 +37,10 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        
+        viewModel.delegate = self
+
         super.viewDidLoad()
+
         buttonBarView.backgroundColor = UIColor.getLeagueBarColor()
         self.edgesForExtendedLayout = []
         if let image = UIImage(named: "LeagueBackGround") {
@@ -46,6 +48,19 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
         }
     }
     
+    deinit {
+        print("deinit GamesPagerViewController")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.delegate = self
+
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.delegate = nil
+
+    }
     private func createControllers() {
         let router = Router()
         let rounds = LeaguesCommenObjects.season.getRounds()
@@ -62,7 +77,6 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         createControllers()
-        viewModel.gamesDelegate = self
         viewModel.getGamesData()
         refreshing = true
         return myViewControllers
@@ -90,6 +104,7 @@ extension GamesPagerViewController: GameDataViewModelDelegate {
 
 extension GamesPagerViewController: PagerUpdateDelegate {
     
+    // pull down to refresh..
     func getUpdatedData() {
         refreshing = true
         viewModel.updateData()

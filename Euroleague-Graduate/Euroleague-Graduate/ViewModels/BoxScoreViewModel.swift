@@ -10,23 +10,27 @@
 
 import Foundation
 
-protocol BoxScoreViewModelDelegate {
+protocol BoxScoreViewModelDelegate: class {
     func updateData(withLocalTeam localTeamDetail: GameTeamDetail?, roadTeam roadTeamDetail: GameTeamDetail?)
 }
 
 class BoxScoreViewModel {
     
-    fileprivate let gameDetailBoxScoreService = GameDetailBoxScoreService()
+    fileprivate let gameDetailBoxScoreService: GameDetailBoxScoreDataService
     
-    var delegate: BoxScoreViewModelDelegate?
+    weak var delegate: BoxScoreViewModelDelegate?
     
-    init() {
+    init(season: LeaguesCommenObjects.Season) {
+        gameDetailBoxScoreService = GameDetailBoxScoreDataService(season: season)
         gameDetailBoxScoreService.delegate = self
     }
 
-    func getGameDetail(ofGameWithCode code: String) -> (localTeamDetail: GameTeamDetail?, roadTeamDetail: GameTeamDetail?){
-        let details = gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code)
-        return details
+    func getGameDetail(ofGameWithCode code: String, completion :@escaping (_ localTeamDetail: GameTeamDetail? ,_ roadTeamDetail: GameTeamDetail?) -> Void){
+        gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code) { localTeamDetail, roadTeamDetail in
+            DispatchQueue.main.async {
+                completion(localTeamDetail, roadTeamDetail)
+            }
+        }
     }
     
     func updateGameDetail(ofGameWithCode code: String) {
@@ -104,13 +108,17 @@ class BoxScoreViewModel {
         }
         return boxScoreInfo
     }
+    
+    deinit {
+        print("deinit BoxScoreViewModel")
+    }
 
 }
 
 extension BoxScoreViewModel: GameDetailBoxScoreDataServiceDelegate {
     
     func updateData(localTeamDetail localTeam: GameTeamDetail?, roadTeamDetail roadTeam: GameTeamDetail?) {
-        delegate?.updateData(withLocalTeam: localTeam, roadTeam: roadTeam)
+        delegate?.updateData(withLocalTeam: localTeam?.clone(), roadTeam: roadTeam?.clone())
     }
     
 }

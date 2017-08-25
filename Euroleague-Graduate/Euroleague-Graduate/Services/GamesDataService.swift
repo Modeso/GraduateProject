@@ -10,8 +10,8 @@ import Foundation
 import SWXMLHash
 import RealmSwift
 
-protocol GamesDataServiceDelegate {
-    func updateData(_ table: Results<Game>)
+protocol GamesDataServiceDelegate: class {
+    func updateData(_ table: [Game])
 }
 
 class GamesDataService {
@@ -21,40 +21,57 @@ class GamesDataService {
         case results = "results"
     }
     
-    var delegate: GamesDataServiceDelegate?
+    weak var delegate: GamesDataServiceDelegate?
     
     fileprivate var games: Dictionary<Int, Game> = [:]
     
     fileprivate var isUpdating = false
     
-    func getGamesTable() -> Results<Game> {
-        let table = RealmDBManager.sharedInstance.getGames()
-        return table
+    fileprivate let currentSeason: LeaguesCommenObjects.Season
+    
+    init(season: LeaguesCommenObjects.Season) {
+        currentSeason = season
+    }
+    
+    func getGamesTable(completion: @escaping ([Game])->Void) {
+        DispatchQueue.global().async { [weak self] in
+            let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
+            var arrayTabel: [Game] = []
+            for game in table {
+                arrayTabel.append(game.clone())
+            }
+            completion(arrayTabel)
+        }
     }
     
     func updateData(){
         if !isUpdating {
             isUpdating = true
-            getSchedule()
+            DispatchQueue.global().async { [weak self] in
+                self?.getSchedule()
+            }
         }
     }
-    
+    deinit {
+        print("deinit GamesDataService")
+    }
 }
 
 fileprivate extension GamesDataService {
     
     func getSchedule() {
         games.removeAll()
-   //     LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
-        let parameters = [ "seasoncode" : LeaguesCommenObjects.season.getSeasonCode()]
+        let parameters = [ "seasoncode" : currentSeason.getSeasonCode()]
         ApiClient
             .getRequestFrom(
                 url:GameDataRequestType.schedule.rawValue,
                 parameters: parameters,
                 headers: [:]){ [weak self] data ,error in
                     if let xmlData = data, error == nil {
-                        self?.parseSchedule(xmlData)
-                        self?.getResults()
+                        DispatchQueue.global().async { [weak self] in
+                            self?.parseSchedule(xmlData)
+                            self?.getResults()
+                        }
                     }
                     else {
                         print("error in schedule data")
@@ -63,23 +80,28 @@ fileprivate extension GamesDataService {
     }
     
     func getResults() {
-   //     LeaguesCommenObjects.baseUrl = LeaguesCommenObjects.BaseUrlType.normal.rawValue
-        let parameters = [ "seasoncode" : LeaguesCommenObjects.season.getSeasonCode()]
+        let parameters = [ "seasoncode" : currentSeason.getSeasonCode()]
         ApiClient
             .getRequestFrom(
                 url: GameDataRequestType.results.rawValue,
                 parameters: parameters,
                 headers: [:]){ [weak self] data ,error in
                     if let xmlData = data, error == nil {
-                        self?.setResults(xmlData)
-                        let table = RealmDBManager.sharedInstance.getGames()
-                        self?.games.removeAll()
-                        for game in table {
-                            let gameData = game.clone()
-                            self?.games[game.gameNumber] = gameData
+                        DispatchQueue.global().async {[weak self] in
+                            self?.setResults(xmlData)
+                            let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
+                            var arrayTable: [Game] =  []
+                            self?.games.removeAll()
+                            for game in table {
+                                let gameData = game.clone()
+                                self?.games[game.gameNumber] = gameData
+                                arrayTable.append(gameData)
+                            }
+                            DispatchQueue.main.async {
+                                self?.delegate?.updateData(arrayTable)
+                                self?.isUpdating = false
+                            }
                         }
-                        self?.delegate?.updateData(RealmDBManager.sharedInstance.getGames())
-                        self?.isUpdating = false
                     }
         }
     }
@@ -89,7 +111,7 @@ fileprivate extension GamesDataService {
         for elem in xml["schedule"]["item"].all {
             let game = Game()
             game.parseGameData(elem)
-            
+            game.seasonCode = currentSeason.getSeasonCode()
             RealmDBManager.sharedInstance.addGameDataToRealm(game: game)
             games[game.gameNumber] = game
         }
@@ -101,10 +123,11 @@ fileprivate extension GamesDataService {
             do{
                 let gameNumber: Int = try elem["gamenumber"].value()
                 if let played = games[gameNumber]?.played,
+                    let currentGame = games[gameNumber],
                     played {
                     RealmDBManager
                         .sharedInstance
-                        .updateScoreFor(games[gameNumber]!,
+                        .updateScoreFor(currentGame,
                                         homeScore: try elem["homescore"].value(),
                                         awayScore: try elem["awayscore"].value())
                 }
