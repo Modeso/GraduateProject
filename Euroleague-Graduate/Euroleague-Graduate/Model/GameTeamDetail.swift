@@ -131,7 +131,7 @@ extension GameTeamDetail {
     
     private func getPlayerStats(results: [GamePlayerStats]?) -> GamePlayerStats? {
         let playerStat = results?.first
-        if !(playerStat?.playerName == "" && playerStat?.playerCode == "") {
+        if !(playerStat?.playerName == "Team" && playerStat?.playerCode == "") {
             return playerStat
         } else if let res = results, res.count > 2 {
             return res[1]
