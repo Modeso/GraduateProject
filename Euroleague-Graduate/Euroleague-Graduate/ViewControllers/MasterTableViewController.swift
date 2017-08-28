@@ -55,8 +55,12 @@ IndicatorInfoProvider {
         super.viewWillAppear(animated)
         isAppear = true
         if firstLoad {
-            tableView.reloadData()
             firstLoad = false
+            tableView.reloadData()
+            if let count = schedule?.count,
+                count < 1{
+                firstLoad = true
+            }
             DispatchQueue.main.async {
                 self.moveToLastPlayed()
 

@@ -82,7 +82,7 @@ extension GamesViewModel: TeamsDataServiceDelegate {
     
     func updateData(_ table: [Team]){
         makeTeamsOf(table)
-//        gameDataService.updateData()
+        gameDataService.updateData()
     }
     
 }

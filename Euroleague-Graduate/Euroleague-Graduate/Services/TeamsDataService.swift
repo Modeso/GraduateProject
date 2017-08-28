@@ -28,8 +28,6 @@ class TeamsDataService {
     
     ///Will return the teams data from DataBase
     func getTeamsTable(completion:@escaping ([Team])->Void){
-        print("getTeams:- local get teams for \(LeaguesCommenObjects.season.getSeasonCode())")
-
         DispatchQueue.global().async { [weak self] in
             let table = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
             var arrayTabel: [Team] = []
@@ -42,8 +40,6 @@ class TeamsDataService {
     }
     
     func updateTeams() {
-        print("getTeams:- updateTeams for \(LeaguesCommenObjects.season.getSeasonCode())")
-
         getTeams()
     }
     
@@ -56,7 +52,6 @@ class TeamsDataService {
 fileprivate extension TeamsDataService {
     
     func getTeams() {
-        print("getTeams:- api get teams for \(currentSeason.getSeasonCode())")
         let parameters = [ "seasoncode" : currentSeason.getSeasonCode() ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,

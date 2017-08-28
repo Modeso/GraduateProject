@@ -55,28 +55,30 @@ class MenuViewController: UIViewController {
     
 }
 
+extension MenuViewController {
+   
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: size.width / 4, bottom: 0, right: size.width / 4)
+        collectionView.reloadData()
+
+    }
+    
+}
+
 extension MenuViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let identifier = menu[indexPath.row]?.identifier {
-            if let cell = tableView.cellForRow(at: indexPath) {
-                if let tableCell = cell as? MenuTableViewCell {
-                    tableCell.selectedBarView.backgroundColor = UIColor.white
-                    if let cell = tableView.cellForRow(at: IndexPath(row: selectedRow, section: 0)) {
-                        if let tableCell = cell as? MenuTableViewCell {
-                            tableCell.selectedBarView.backgroundColor = UIColor.getLeagueBarColor()
-                            tableCell.selectedBarView.alpha = 1
-                        }
-                    }
+        if selectedRow != indexPath.row {
+            if let identifier = menu[indexPath.row]?.identifier {
+                selectedRow = indexPath.row
+                if let storyboard = self.storyboard {
+                    self.sideMenuViewController!.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
+                    tableView.deselectRow(at: indexPath, animated: false)
                 }
             }
-            selectedRow = indexPath.row
-            if let storyboard = self.storyboard {
-                self.sideMenuViewController!.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
-                tableView.deselectRow(at: indexPath, animated: false)
-                self.sideMenuViewController!.hideMenuViewController()
-            }
         }
+        tableView.reloadData()
+        self.sideMenuViewController!.hideMenuViewController()
     }
     
 }
@@ -119,28 +121,29 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedLeagueNumber = indexPath.row
-        switch selectedLeagueNumber {
-        case 0:
-            LeaguesCommenObjects.season = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague
-            break
-        case 1:
-            LeaguesCommenObjects.season = LeaguesCommenObjects.Season.EuroCup
-            break
-        default:
-            break
+        if selectedLeagueNumber != indexPath.row {
+            selectedLeagueNumber = indexPath.row
+            switch selectedLeagueNumber {
+            case 0:
+                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague
+                break
+            case 1:
+                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.EuroCup
+                break
+            default:
+                break
+            }
+            UserDefaults.standard.set(LeaguesCommenObjects.season.getSeasonCode(), forKey: "CurrentSeason")
+            tableView.backgroundColor = LeaguesCommenObjects.season.getColor()
+            topView.backgroundColor = LeaguesCommenObjects.season.getColor()
+            collectionView.reloadData()
+            tableView.reloadData()
+            if let identifier = menu[selectedRow]?.identifier,
+                let storyboard = self.storyboard {
+                self.sideMenuViewController!.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
+            }
         }
-        UserDefaults.standard.set(LeaguesCommenObjects.season.getSeasonCode(), forKey: "CurrentSeason")
-        tableView.backgroundColor = LeaguesCommenObjects.season.getColor()
-        topView.backgroundColor = LeaguesCommenObjects.season.getColor()
-        collectionView.reloadData()
-        tableView.reloadData()
-//        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        if let identifier = menu[selectedRow]?.identifier,
-            let storyboard = self.storyboard {
-            self.sideMenuViewController!.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
-            self.sideMenuViewController!.hideMenuViewController()
-        }
+        self.sideMenuViewController!.hideMenuViewController()
     }
     
 }

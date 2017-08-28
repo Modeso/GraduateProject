@@ -118,7 +118,7 @@ class BoxScoreViewModel {
 extension BoxScoreViewModel: GameDetailBoxScoreDataServiceDelegate {
     
     func updateData(localTeamDetail localTeam: GameTeamDetail?, roadTeamDetail roadTeam: GameTeamDetail?) {
-        delegate?.updateData(withLocalTeam: localTeam?.clone(), roadTeam: roadTeam?.clone())
+        delegate?.updateData(withLocalTeam: localTeam, roadTeam: roadTeam)
     }
     
 }

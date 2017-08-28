@@ -9,6 +9,7 @@
 import UIKit
 import AKSideMenu
 
+
 class RootViewController: AKSideMenu, AKSideMenuDelegate {
     
     override public func awakeFromNib() {
@@ -29,11 +30,12 @@ class RootViewController: AKSideMenu, AKSideMenuDelegate {
             default:
                 LeaguesCommenObjects.season = LeaguesCommenObjects.Season.TurkishAirLinesEuroLeague
             }
+            self.contentViewController = self.storyboard!.instantiateViewController(withIdentifier: "GamesContentNavigationController")
+            self.leftMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
+            
+            self.delegate = self
         }
-        self.contentViewController = self.storyboard!.instantiateViewController(withIdentifier: "GamesContentNavigationController")
-        self.leftMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
         
-        self.delegate = self
     }
     
     override public func viewDidLoad() {

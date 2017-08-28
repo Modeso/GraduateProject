@@ -27,10 +27,13 @@ class GameDetailBoxScoreDataService {
     }
     
     func getScoreBoxResults(ofGameWithCode code: String, completion:@escaping (_ localTeamDetail: GameTeamDetail?, _ roadTeamDetail: GameTeamDetail?)->Void){
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [weak self] in
             let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code)
             let game = realmGame?.clone()
             completion(game?.localTeamGameDetail?.clone(), game?.roadTeamGameDetail?.clone())
+            if let code = game?.gameNumber {
+                self?.updateScoreBoxResults(ofGameWithCode: String(code))
+            }
         }
         
     }
@@ -47,8 +50,11 @@ class GameDetailBoxScoreDataService {
             headers: [:]) { [weak self] (data, error) in
                 if let xmlData = data, error == nil {
                     self?.parseGameDetailData(xmlData)
-                    RealmDBManager.sharedInstance.updateGameTeamsDetailFor(gameWithCode: "\(self?.currentSeason.getSeasonCode())_\(code)", localTeam: self?.localTeamDetail, roadTeam: self?.roadTeamDetail)
-                    self?.delegate?.updateData(localTeamDetail: self?.localTeamDetail, roadTeamDetail: self?.roadTeamDetail)
+                    if var gameCode = self?.currentSeason.getSeasonCode() {
+                        gameCode = "\(gameCode)_\(code)"
+                        RealmDBManager.sharedInstance.updateGameTeamsDetailFor(gameWithCode: gameCode, localTeam: self?.localTeamDetail, roadTeam: self?.roadTeamDetail)
+                    }
+                    self?.delegate?.updateData(localTeamDetail: self?.localTeamDetail?.clone(), roadTeamDetail: self?.roadTeamDetail?.clone())
                 }
         }
     }

@@ -45,6 +45,7 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
         self.edgesForExtendedLayout = []
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
+            
         }
     }
     

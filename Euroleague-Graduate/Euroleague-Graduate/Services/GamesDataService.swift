@@ -41,6 +41,7 @@ class GamesDataService {
                 arrayTabel.append(game.clone())
             }
             completion(arrayTabel)
+            self?.getSchedule()
         }
     }
     
@@ -87,7 +88,7 @@ fileprivate extension GamesDataService {
                 parameters: parameters,
                 headers: [:]){ [weak self] data ,error in
                     if let xmlData = data, error == nil {
-                        DispatchQueue.global().async {[weak self] in
+                        DispatchQueue.global().async { [weak self] in
                             self?.setResults(xmlData)
                             let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
                             var arrayTable: [Game] =  []
@@ -113,7 +114,7 @@ fileprivate extension GamesDataService {
             game.parseGameData(elem)
             game.seasonCode = currentSeason.getSeasonCode()
             RealmDBManager.sharedInstance.addGameDataToRealm(game: game)
-            games[game.gameNumber] = game
+            games[game.gameNumber] = game.clone()
         }
     }
     
@@ -122,8 +123,8 @@ fileprivate extension GamesDataService {
         for elem in xml["results"]["game"].all{
             do{
                 let gameNumber: Int = try elem["gamenumber"].value()
-                if let played = games[gameNumber]?.played,
-                    let currentGame = games[gameNumber],
+                if let played = self.games[gameNumber]?.played,
+                    let currentGame = self.games[gameNumber],
                     played {
                     RealmDBManager
                         .sharedInstance

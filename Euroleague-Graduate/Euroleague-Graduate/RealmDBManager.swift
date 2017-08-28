@@ -64,14 +64,17 @@ class RealmDBManager {
     }
     
     func updateScoreFor(_ game:Game, homeScore: Int, awayScore: Int){
-        DispatchQueue.global().async {[weak self] in
-            guard let realmConfiguration = self?.realmConfiguration else { return }
+        guard let realmGame = self.getGame(withCode: game.gameCode)
+            else { return }
+        do {
             let realm = try! Realm(configuration: realmConfiguration)
-            try! realm.write {
-                game.played = true
-                game.homeScore = homeScore
-                game.awayScore = awayScore
+            try realm.write {
+                realmGame.played = true
+                realmGame.homeScore = homeScore
+                realmGame.awayScore = awayScore
             }
+        } catch {
+            print("Failed to update results in Realm")
         }
     }
     
@@ -101,12 +104,9 @@ class RealmDBManager {
     }
     
     func addTeamDataToRealm(_ team: Team){
-        DispatchQueue.global().async {[weak self] in
-            guard let realmConfiguration = self?.realmConfiguration else { return }
-            let realm = try! Realm(configuration: realmConfiguration)
-            try! realm.write {
-                realm.add(team, update: true)
-            }
+        let realm = try! Realm(configuration: realmConfiguration)
+        try! realm.write {
+            realm.add(team, update: true)
         }
     }
     

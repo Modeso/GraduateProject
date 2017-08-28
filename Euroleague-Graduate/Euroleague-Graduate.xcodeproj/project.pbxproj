@@ -62,6 +62,8 @@
 		FEC2D29F1F2B69A8006BB8AC /* CoText_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */; };
 		FEC2D2A01F2B69A8006BB8AC /* CoText_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */; };
 		FEC2D2A11F2B69A8006BB8AC /* CoText_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */; };
+		FEC67FEE1F54266B009471E0 /* Euroleague-Vid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FEC67FED1F54266B009471E0 /* Euroleague-Vid.mp4 */; };
+		FEC67FF01F542D45009471E0 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67FEF1F542D45009471E0 /* SplashViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,8 @@
 		FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Bold.ttf; sourceTree = "<group>"; };
 		FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Light.ttf; sourceTree = "<group>"; };
 		FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Regular.ttf; sourceTree = "<group>"; };
+		FEC67FED1F54266B009471E0 /* Euroleague-Vid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Euroleague-Vid.mp4"; path = "../Euroleague-Vid.mp4"; sourceTree = "<group>"; };
+		FEC67FEF1F542D45009471E0 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +291,7 @@
 		FEC2D2781F2B53F7006BB8AC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FEC67FEF1F542D45009471E0 /* SplashViewController.swift */,
 				FEB5761D1F446359005D1E23 /* RootViewController.swift */,
 				FE615F3A1F31B68900B6C3E0 /* MenuViewController.swift */,
 				FE5264931F34951C00E62A58 /* EuroNavigationController.swift */,
@@ -344,6 +349,7 @@
 		FEC2D29A1F2B69A8006BB8AC /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				FEC67FED1F54266B009471E0 /* Euroleague-Vid.mp4 */,
 				FEC2D29B1F2B69A8006BB8AC /* Fonts */,
 			);
 			path = Resourses;
@@ -475,6 +481,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC67FEE1F54266B009471E0 /* Euroleague-Vid.mp4 in Resources */,
 				FEC2D2A01F2B69A8006BB8AC /* CoText_Light.ttf in Resources */,
 				A5FF78C81F0FA74E00F6E9A2 /* LaunchScreen.storyboard in Resources */,
 				A5FF78C51F0FA74E00F6E9A2 /* Assets.xcassets in Resources */,
@@ -641,6 +648,7 @@
 				FE615F411F31CA7500B6C3E0 /* Player.swift in Sources */,
 				FEC2D2881F2B5400006BB8AC /* ApiClient.swift in Sources */,
 				FEB576201F447054005D1E23 /* MenuTableViewCell.swift in Sources */,
+				FEC67FF01F542D45009471E0 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
