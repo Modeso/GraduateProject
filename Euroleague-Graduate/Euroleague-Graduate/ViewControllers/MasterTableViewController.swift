@@ -54,18 +54,21 @@ IndicatorInfoProvider {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         isAppear = true
-        if firstLoad {
-            firstLoad = false
-            tableView.reloadData()
-            if let count = schedule?.count,
-                count < 1{
-                firstLoad = true
-            }
-            DispatchQueue.main.async {
-                self.moveToLastPlayed()
-
+        if let count = schedule?.count,
+            count > 0 {
+            if firstLoad {
+                firstLoad = false
+                tableView.reloadData()
+                if let count = schedule?.count,
+                    count < 1{
+                    firstLoad = true
+                }
+                DispatchQueue.main.async {
+                    self.moveToLastPlayed()
+                }
             }
         }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

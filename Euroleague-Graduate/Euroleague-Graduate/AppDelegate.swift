@@ -70,6 +70,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
         })
         Realm.Configuration.defaultConfiguration = config
+        
+        if (UserDefaults.standard.value(forKey: "CurrentSeason") as? String) != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "RootViewController")
+            if let window = self.window {
+                window.rootViewController = controller
+            }
+        }
+        
         return true
     }
     

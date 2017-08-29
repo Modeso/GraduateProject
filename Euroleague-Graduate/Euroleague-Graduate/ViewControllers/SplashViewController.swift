@@ -15,40 +15,54 @@ class SplashViewController: UIViewController {
     fileprivate var player = AVPlayer()
     
     @IBOutlet weak var playerView: UIView!
-
+    
     @IBOutlet weak var turkishLeagueView: UIView!
     
     @IBOutlet weak var euroCupView: UIView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-//        if (UserDefaults.standard.value(forKey: "CurrentSeason") as? String) != nil {
-//            performSegue(withIdentifier: "ShowMainScreen", sender: self)
-//        }
-    }
+    @IBOutlet weak var textLabel: UILabel!
+    
+    @IBOutlet weak var euroCupWidthConstrain: NSLayoutConstraint!
+    
+    @IBOutlet weak var turkishLeagueViewTraillingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var euroCupViewTraillingConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (UserDefaults.standard.value(forKey: "CurrentSeason") as? String) != nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "RootViewController")
-            self.present(controller, animated: true, completion: nil)
-        }
-        else{
-            turkishLeagueView.applyGradient(colours: [UIColor.black, UIColor.clear])
-            euroCupView.applyGradient(colours: [UIColor.black, UIColor.clear])
-            playVideo()
-            NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-        }
+        turkishLeagueView.applyGradient(colours: [UIColor.black, UIColor.clear])
+        euroCupView.applyGradient(colours: [UIColor.black, UIColor.clear])
+        playVideo()
+        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        if (UserDefaults.standard.value(forKey: "CurrentSeason") as? String) != nil {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let controller = storyboard.instantiateViewController(withIdentifier: "RootViewController")
-//            self.present(controller, animated: true, completion: nil)
-//        }
+        textLabel.isHidden = true
+        euroCupWidthConstrain.constant = turkishLeagueView.frame.width
+        turkishLeagueViewTraillingConstraint.constant += view.frame.width
+        euroCupViewTraillingConstraint.constant -= (euroCupView.frame.width * 2)
+        view.layoutIfNeeded()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            UIView.animate(withDuration: 0.4,
+                           animations: { [weak self] in
+                            self?.turkishLeagueViewTraillingConstraint.constant = 0
+                            self?.view.layoutIfNeeded()
+            }) { [weak self] (true) in
+                UIView.animate(withDuration: 0.4,
+                               animations: { [weak self] in
+                                self?.euroCupViewTraillingConstraint.constant = 0
+                                self?.view.layoutIfNeeded()
+                }){ [weak self] (true) in
+                    self?.textLabel.isHidden = false
+                    self?.view.layoutIfNeeded()
+                }
+            }
+        }
     }
     
     @IBAction func LeagueChoosed(recognizer:UITapGestureRecognizer) {
@@ -82,7 +96,6 @@ fileprivate extension SplashViewController {
         }
         player = AVPlayer(url: URL(fileURLWithPath: path))
         let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.opacity = 0.5
         playerLayer.frame = playerView.bounds
         playerView.layer.addSublayer(playerLayer)
         player.play()
