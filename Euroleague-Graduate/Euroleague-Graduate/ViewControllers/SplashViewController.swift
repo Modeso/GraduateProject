@@ -32,6 +32,8 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         turkishLeagueView.applyGradient(colours: [UIColor.black, UIColor.clear])
         euroCupView.applyGradient(colours: [UIColor.black, UIColor.clear])
+        turkishLeagueView.layer.cornerRadius = turkishLeagueView.frame.height / 2
+        euroCupView.layer.cornerRadius = euroCupView.frame.height / 2
         playVideo()
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
     }
@@ -40,7 +42,7 @@ class SplashViewController: UIViewController {
         super.viewWillAppear(animated)
         textLabel.isHidden = true
         euroCupWidthConstrain.constant = turkishLeagueView.frame.width
-        turkishLeagueViewTraillingConstraint.constant += view.frame.width
+        turkishLeagueViewTraillingConstraint.constant += view.frame.width + 10
         euroCupViewTraillingConstraint.constant -= (euroCupView.frame.width * 2)
         view.layoutIfNeeded()
     }
@@ -48,14 +50,14 @@ class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            UIView.animate(withDuration: 0.4,
+            UIView.animate(withDuration: 0.3,
                            animations: { [weak self] in
-                            self?.turkishLeagueViewTraillingConstraint.constant = 0
+                            self?.turkishLeagueViewTraillingConstraint.constant = -15
                             self?.view.layoutIfNeeded()
             }) { [weak self] (true) in
-                UIView.animate(withDuration: 0.4,
+                UIView.animate(withDuration: 0.3,
                                animations: { [weak self] in
-                                self?.euroCupViewTraillingConstraint.constant = 0
+                                self?.euroCupViewTraillingConstraint.constant = -15
                                 self?.view.layoutIfNeeded()
                 }){ [weak self] (true) in
                     self?.textLabel.isHidden = false

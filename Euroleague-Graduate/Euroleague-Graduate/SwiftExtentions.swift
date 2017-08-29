@@ -33,6 +33,15 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
+    func roundCornerMask() {
+        // bezier path to setup round coner for topleft, bottom left
+        let bezierPath = UIBezierPath(roundedRect: self.bounds,
+                                      byRoundingCorners: [.bottomLeft, .topLeft],
+                                      cornerRadii: CGSize(width: self.bounds.height * 0.5, height: self.bounds.height * 0.5))
+        let shape = CAShapeLayer()
+        shape.path = bezierPath.cgPath
+        self.layer.mask = shape
+    }
 }
 
 extension String {

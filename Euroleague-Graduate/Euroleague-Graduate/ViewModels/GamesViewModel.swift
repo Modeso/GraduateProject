@@ -28,7 +28,9 @@ class GamesViewModel {
                 for round in rounds {
                     makingTableDataOf(round.round)
                 }
-                delegate?.updateControllersData(table, lastPlayedGames: lastPlayedGame)
+                DispatchQueue.main.async {
+                    self.delegate?.updateControllersData(self.table, lastPlayedGames: self.lastPlayedGame)
+                }
             }
         }
     }
@@ -48,15 +50,18 @@ class GamesViewModel {
     }
     
     func getGamesData(){
-        teamDataService.getTeamsTable() { [weak self] realmTable in
-            self?.makeTeamsOf(realmTable)
-            self?.gameDataService.getGamesTable() { [weak self] realmTable in
-                DispatchQueue.main.async {
-                    self?.schedule = realmTable
+        DispatchQueue.global().async { [weak self] in
+            self?.teamDataService.getTeamsTable() { [weak self] realmTable in
+                DispatchQueue.global().async { [weak self] in
+                    self?.makeTeamsOf(realmTable)
+                    self?.gameDataService.getGamesTable() { [weak self] realmTable in
+                        DispatchQueue.global().async {
+                            self?.schedule = realmTable
+                        }
+                    }
                 }
             }
         }
-        
     }
     
     func updateData() {
@@ -71,7 +76,7 @@ class GamesViewModel {
 extension GamesViewModel: GamesDataServiceDelegate {
     
     func updateData(_ table: [Game]){
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             self.schedule = table
         }
     }
@@ -81,8 +86,10 @@ extension GamesViewModel: GamesDataServiceDelegate {
 extension GamesViewModel: TeamsDataServiceDelegate {
     
     func updateData(_ table: [Team]){
-        makeTeamsOf(table)
-        gameDataService.updateData()
+        DispatchQueue.global().async { [weak self] in
+            self?.makeTeamsOf(table)
+            self?.gameDataService.updateData()
+        }
     }
     
 }
@@ -104,7 +111,6 @@ fileprivate extension GamesViewModel {
                     game.awayImageUrl = awayUrl
                     game.homeImageUrl = homeUrl
                 }
-                
                 if prevSectionDate == nil {
                     prevSectionDate = game.date
                     lastPlayedGame[round] = (section, row)

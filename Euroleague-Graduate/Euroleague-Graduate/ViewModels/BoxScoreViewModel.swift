@@ -118,7 +118,9 @@ class BoxScoreViewModel {
 extension BoxScoreViewModel: GameDetailBoxScoreDataServiceDelegate {
     
     func updateData(localTeamDetail localTeam: GameTeamDetail?, roadTeamDetail roadTeam: GameTeamDetail?) {
-        delegate?.updateData(withLocalTeam: localTeam, roadTeam: roadTeam)
+        DispatchQueue.main.async { [weak self] in
+            self?.delegate?.updateData(withLocalTeam: localTeam, roadTeam: roadTeam)
+        }
     }
     
 }

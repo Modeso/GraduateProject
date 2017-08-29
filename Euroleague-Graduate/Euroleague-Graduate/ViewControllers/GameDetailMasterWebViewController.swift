@@ -16,6 +16,8 @@ class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider
     
     @IBOutlet weak var webView: UIWebView!
     
+    private var isFirst = true
+    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: name)
     }
@@ -24,19 +26,44 @@ class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider
         super.viewDidLoad()
         webView.backgroundColor = UIColor.clear
         view.backgroundColor = UIColor.clear
-        webView.scrollView.minimumZoomScale = 1.0
-        webView.scrollView.maximumZoomScale = 1.0
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            if let fullUrl = self?.urlString,
-                let url = URL(string: fullUrl){
-                let request = URLRequest(url: url)
-                self?.webView.loadRequest(request)
+        webView.scalesPageToFit = true
+        webView.scrollView.delegate = self
+        webView.delegate = self
+        webView.scrollView.isScrollEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isFirst {
+            isFirst = false
+            DispatchQueue.global().async { [weak self] in
+                if let fullUrl = self?.urlString,
+                    let url = URL(string: fullUrl){
+                    let request = URLRequest(url: url)
+                    self?.webView.contentMode = .scaleAspectFit
+                    self?.webView.loadRequest(request)
+                }
             }
-        } 
+        }
+        
     }
     
     deinit {
         print("deinit GameDetailMasterWebViewController")
+    }
+    
+}
+
+extension GameDetailMasterWebViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil
+    }
+}
+
+extension GameDetailMasterWebViewController: UIWebViewDelegate {
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        webView.scrollView.isScrollEnabled = true
     }
     
 }

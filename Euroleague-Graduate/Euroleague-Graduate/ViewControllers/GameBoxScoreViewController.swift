@@ -42,6 +42,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         browserButton.backgroundColor = LeaguesCommenObjects.season.getColor()
         collectionViewHeightConstrain.constant = 0
         tableViewHeightConstrain.constant = 0
+        collectionView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.old.union(NSKeyValueObservingOptions.new), context: nil)
         if let number = game?.gameNumber {
             if let code = game?.gameCode {
                 boxScoreViewModel.getGameDetail(ofGameWithCode: code) {[weak self] localTeamDetail, roadTeamDetail in
@@ -74,11 +75,18 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         }
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "contentSize" {
+            self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
+        }
+    }
+    
     @IBAction func openBoxScoreOnWebBrowser(_ sender: Any) {
         /// learn how to open it
     }
     
     deinit {
+        collectionView.removeObserver(self, forKeyPath: "contentSize")
         print("deinit GameBoxScoreViewController")
     }
     
@@ -219,13 +227,13 @@ extension GameBoxScoreViewController: BoxScoreViewModelDelegate{
         game?.roadTeamGameDetail = roadTeamDetail
         
         self.collectionView.reloadData()
-        self.collectionView.performBatchUpdates({
-        }) { (done) in
-            if done {
-                self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
-            }
-        }
-        
+//        self.collectionView.performBatchUpdates({
+//        }) { (done) in
+//            if done {
+//                self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
+//            }
+//        }
+//        
         self.tableView.reloadData()
         self.view.layoutIfNeeded()
         DispatchQueue.main.async {

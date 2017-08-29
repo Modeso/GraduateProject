@@ -21,7 +21,9 @@ class TeamsViewModel {
         didSet {
             if clubs != nil, (clubs?.count)! > 0 {
                 makeTeams()
-                delegate?.updateTeamsData(teams)
+                DispatchQueue.main.async {
+                    self.delegate?.updateTeamsData(self.teams)
+                }
             }
         }
     }
@@ -38,7 +40,7 @@ class TeamsViewModel {
     func getTeamsData() {
         
         teamDataService.getTeamsTable() {[weak self] realmTable in
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {[weak self] in
                 self?.clubs = realmTable
             }
         }
@@ -52,8 +54,8 @@ class TeamsViewModel {
 extension TeamsViewModel: TeamsDataServiceDelegate {
     
     func updateData(_ table: [Team]){
-        DispatchQueue.main.async {
-            self.clubs = table
+        DispatchQueue.global().async { [weak self] in
+            self?.clubs = table
         }
     }
     

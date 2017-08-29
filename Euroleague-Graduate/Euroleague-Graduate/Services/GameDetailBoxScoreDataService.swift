@@ -49,12 +49,14 @@ class GameDetailBoxScoreDataService {
             parameters: parameters,
             headers: [:]) { [weak self] (data, error) in
                 if let xmlData = data, error == nil {
-                    self?.parseGameDetailData(xmlData)
-                    if var gameCode = self?.currentSeason.getSeasonCode() {
-                        gameCode = "\(gameCode)_\(code)"
-                        RealmDBManager.sharedInstance.updateGameTeamsDetailFor(gameWithCode: gameCode, localTeam: self?.localTeamDetail, roadTeam: self?.roadTeamDetail)
+                    DispatchQueue.global().async { [weak self] in
+                        self?.parseGameDetailData(xmlData)
+                        if var gameCode = self?.currentSeason.getSeasonCode() {
+                            gameCode = "\(gameCode)_\(code)"
+                            RealmDBManager.sharedInstance.updateGameTeamsDetailFor(gameWithCode: gameCode, localTeam: self?.localTeamDetail?.clone(), roadTeam: self?.roadTeamDetail?.clone())
+                        }
+                        self?.delegate?.updateData(localTeamDetail: self?.localTeamDetail?.clone(), roadTeamDetail: self?.roadTeamDetail?.clone())
                     }
-                    self?.delegate?.updateData(localTeamDetail: self?.localTeamDetail?.clone(), roadTeamDetail: self?.roadTeamDetail?.clone())
                 }
         }
     }
