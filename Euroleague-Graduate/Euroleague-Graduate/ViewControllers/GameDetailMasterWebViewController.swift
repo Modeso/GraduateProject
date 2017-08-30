@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 import XLPagerTabStrip
 
 class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider {
@@ -14,56 +15,51 @@ class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider
     var urlString = ""
     var name = ""
     
-//    @IBOutlet weak var webView: UIWebView!
-    
-    private var isFirst = true
-    
+    var webView: WKWebView!
+
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: name)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        webView.backgroundColor = UIColor.clear
-//        view.backgroundColor = UIColor.clear
-//        webView.scalesPageToFit = true
-//        webView.scrollView.delegate = self
-//        webView.delegate = self
-//        webView.scrollView.isScrollEnabled = false
-//        DispatchQueue.global().async { [weak self] in
-//            if let fullUrl = self.urlString,
-//                let url = URL(string: urlString)
-//                let request = URLRequest(url: url!)
-//                self.webView.loadRequest(request)
-        
-//        }
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        webView.navigationDelegate = self
+        view = webView
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if isFirst {
-            isFirst = false
-//
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        DispatchQueue.global().async { [weak self] in
+            if let fullUrl = self?.urlString,
+                let url = URL(string: fullUrl){
+                let request = URLRequest(url: url)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                let _ = self?.webView.load(request)
+            }
         }
         
     }
     
     deinit {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         print("deinit GameDetailMasterWebViewController")
     }
     
 }
 
-extension GameDetailMasterWebViewController: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return nil
-    }
+extension GameDetailMasterWebViewController: WKUIDelegate {
+    
 }
 
-extension GameDetailMasterWebViewController: UIWebViewDelegate {
+extension GameDetailMasterWebViewController: WKNavigationDelegate {
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        webView.scrollView.isScrollEnabled = true
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        
     }
     
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 }

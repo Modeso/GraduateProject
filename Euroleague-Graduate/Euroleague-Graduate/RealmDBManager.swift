@@ -16,9 +16,8 @@ class RealmDBManager {
     private let realmConfiguration: Realm.Configuration = Realm.Configuration.defaultConfiguration
     private var queue = 0
     
-    private init() {
-    }
-    
+    private init() {}
+
     //Game
     func getGames(ofSeason season: String) -> Results<Game> {
         let realm = try! Realm(configuration: realmConfiguration)

@@ -17,12 +17,14 @@ class ApiClient {
                                parameters: Parameters,
                                headers: HTTPHeaders,
                                completion: @escaping (Data?, Error?)->Void){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(baseUrl + url,
                           method: .get,
                           parameters: parameters,
                           headers: headers)
             .response { response in
                 if let data = response.data {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     completion(data, nil)
                 }
         }
@@ -32,12 +34,13 @@ class ApiClient {
                               parameters: Parameters,
                               headers: HTTPHeaders,
                               completion: @escaping (Data?, Error?)->Void){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(baseUrl + url,
                           method: .post,
                           parameters: parameters,
                           headers: headers)
             .response { response in
-                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 }

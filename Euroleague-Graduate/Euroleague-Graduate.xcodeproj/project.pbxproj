@@ -378,6 +378,7 @@
 				A5FF78B81F0FA74E00F6E9A2 /* Resources */,
 				8E8817FA5ADF949E3C2C264B /* [CP] Embed Pods Frameworks */,
 				0AF6EFE00122B782882ED4BF /* [CP] Copy Pods Resources */,
+				FE7BD5CF1F56E5B50014D335 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -597,6 +598,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FE7BD5CF1F56E5B50014D335 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -10,8 +10,7 @@ import Foundation
 import RealmSwift
 import SWXMLHash
 
-class Game: Object{
-    
+class Game: Object {
     //V0
     dynamic var round: String = ""
     dynamic var date: Date = Date()

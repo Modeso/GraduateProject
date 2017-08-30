@@ -221,13 +221,6 @@ extension GameBoxScoreViewController: BoxScoreViewModelDelegate{
         game?.roadTeamGameDetail = roadTeamDetail
         
         self.collectionView.reloadData()
-        //        self.collectionView.performBatchUpdates({
-        //        }) { (done) in
-        //            if done {
-        //                self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
-        //            }
-        //        }
-        //
         self.tableView.reloadData()
         self.view.layoutIfNeeded()
         DispatchQueue.main.async {

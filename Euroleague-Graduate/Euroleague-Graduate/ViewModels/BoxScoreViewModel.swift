@@ -26,11 +26,9 @@ class BoxScoreViewModel {
     }
 
     func getGameDetail(ofGameWithCode code: String){
-        gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code)
-//            DispatchQueue.main.async {
-//                completion(localTeamDetail, roadTeamDetail)
-//            }
-        
+        DispatchQueue.global().async { [weak self] in
+            self?.gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code)
+        }
     }
     
     func boxScoreInfo(forIndex index: Int,

@@ -56,7 +56,9 @@ class GamesViewModel {
     }
     
     func updateData() {
-        gameDataService.updateData()
+        DispatchQueue.global().async { [weak self] in
+            self?.gameDataService.updateData()
+        }
     }
     
     deinit {

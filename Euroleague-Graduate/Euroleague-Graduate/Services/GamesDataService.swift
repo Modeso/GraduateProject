@@ -100,6 +100,7 @@ fileprivate extension GamesDataService {
                                 self?.games[game.gameNumber] = gameData
                                 arrayTable.append(gameData)
                             }
+                            
                             self?.delegate?.updateData(arrayTable)
                             self?.isUpdating = false
                         }

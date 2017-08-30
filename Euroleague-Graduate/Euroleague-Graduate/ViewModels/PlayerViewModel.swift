@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class PlayerViewModel {
     
     fileprivate let playersDataService: PlayersDataService

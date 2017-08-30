@@ -19,11 +19,9 @@ class GamePlayerStats: Object {
     dynamic var steals: Int = 0
     dynamic var assistances: Int = 0
     dynamic var blockFavour: Int = 0
-    
 }
 
 extension GamePlayerStats {
-    
     func clone() -> GamePlayerStats {
         let newPlayerGameStatus = GamePlayerStats()
         newPlayerGameStatus.playerName = self.playerName
@@ -35,7 +33,6 @@ extension GamePlayerStats {
         newPlayerGameStatus.blockFavour = self.blockFavour
         return newPlayerGameStatus
     }
-    
     func parseStatusData(_ node: XMLIndexer) {
         do {
             self.playerCode = try node["PlayerCode"].value()
@@ -64,6 +61,5 @@ extension GamePlayerStats {
         } catch {
 //            print("error in blocks \(error) of player \(playerName) \(playerCode)")
         }
-    }
-    
+    }    
 }
