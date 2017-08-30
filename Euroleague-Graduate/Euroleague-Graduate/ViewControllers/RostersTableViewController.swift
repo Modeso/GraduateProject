@@ -69,15 +69,9 @@ extension RostersTableViewController: UITableViewDelegate {
             if rosters[indexPath.section][indexPath.row].imageUrl == "" {
                 playersViewModel.updatePlayer(withCode: rosters[indexPath.section][indexPath.row].code) { [weak self] player in
                     self?.rosters[indexPath.section][indexPath.row] = player
-                    self?.tableView.reloadData()
-//                    tableView.beginUpdates()
-//                    tableView.reloadRows(at: [indexPath], with: .none)
-//                    tableView.endUpdates()
-//                    cell.reloadInputViews()
-//                    let tableCell = tableView.dequeueReusableCell(withIdentifier: "PlayersTableCell", for: indexPath)
-//                    if let playerCell = tableCell as? PlayersTableViewCell {
-//                        playerCell.player = player
-//                    }
+                    if let playerCell = tableView.cellForRow(at: indexPath) as? PlayersTableViewCell {
+                        playerCell.player = player
+                    }
                 }
             }
         }

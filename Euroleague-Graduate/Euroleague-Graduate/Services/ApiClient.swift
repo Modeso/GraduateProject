@@ -24,9 +24,9 @@ class ApiClient {
                           headers: headers)
             .response { response in
                 if let data = response.data {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     completion(data, nil)
                 }
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 
