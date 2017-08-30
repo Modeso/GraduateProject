@@ -24,7 +24,7 @@ class GamesViewModel {
 
     fileprivate var schedule: [Game]? {
         didSet {
-            if schedule != nil, (schedule?.count)! > 0 {
+            if schedule != nil, let count = schedule?.count, count > 0 {
                 for round in rounds {
                     makingTableDataOf(round.round)
                 }
@@ -96,35 +96,37 @@ fileprivate extension GamesViewModel {
         var gamesTable = [Array<Game>]()
         var gameSection = Array<Game>()
         var prevSectionDate: Date? = nil
-        for game in schedule! {
-            let game = game.clone()
-            if game.round == round {
-                if let homeUrl = teams[game.homeCode]?.logoUrl,
-                    let awayUrl = teams[game.awayCode]?.logoUrl {
-                    game.awayImageUrl = awayUrl
-                    game.homeImageUrl = homeUrl
+        if let gamesSchedule = schedule {
+            for game in gamesSchedule {
+                let game = game.clone()
+                if game.round == round {
+                    if let homeUrl = teams[game.homeCode]?.logoUrl,
+                        let awayUrl = teams[game.awayCode]?.logoUrl {
+                        game.awayImageUrl = awayUrl
+                        game.homeImageUrl = homeUrl
+                    }
+                    if prevSectionDate == nil {
+                        prevSectionDate = game.date
+                        lastPlayedGame[round] = (section, row)
+                    } else if prevSectionDate != game.date {
+                        gamesTable.append(gameSection)
+                        gameSection.removeAll()
+                        section += 1
+                        row = 0
+                        prevSectionDate = game.date
+                    }
+                    gameSection.append(game)
+                    if game.played {
+                        lastPlayedGame[round] = (section, row)
+                    }
+                    row += 1
                 }
-                if prevSectionDate == nil {
-                    prevSectionDate = game.date
-                    lastPlayedGame[round] = (section, row)
-                } else if prevSectionDate != game.date {
-                    gamesTable.append(gameSection)
-                    gameSection.removeAll()
-                    section += 1
-                    row = 0
-                    prevSectionDate = game.date
-                }
-                gameSection.append(game)
-                if game.played {
-                    lastPlayedGame[round] = (section, row)
-                }
-                row += 1
             }
+            if gameSection.count > 0 {
+                gamesTable.append(gameSection)
+            }
+            table[round] = gamesTable
         }
-        if gameSection.count > 0 {
-            gamesTable.append(gameSection)
-        }
-        table[round] = gamesTable
     }
 
     //For Teams

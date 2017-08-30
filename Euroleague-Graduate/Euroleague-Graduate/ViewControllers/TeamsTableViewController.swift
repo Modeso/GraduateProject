@@ -46,7 +46,7 @@ class TeamsTableViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowTeam" {
             if let destination = segue.destination as? TeamDataViewController {
-                destination.team = selectedTeam!
+                destination.team = selectedTeam
             }
         }
     }
@@ -62,8 +62,9 @@ extension TeamsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "SectionHeader")
         if let label = headerCell?.viewWithTag(123) as? UILabel {
-            let char = teams[section][0].name.uppercased().characters.first!
-            label.text = String(describing: char)
+            if let char = teams[section][0].name.uppercased().characters.first {
+                label.text = String(describing: char)
+            }
         }
         return headerCell
     }
@@ -84,7 +85,9 @@ extension TeamsTableViewController: UITableViewDelegate {
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var sections: [String] = []
         for team in teams {
-            sections.append(String(describing: team[0].name.uppercased().characters.first!))
+            if let text = team[0].name.uppercased().characters.first {
+                sections.append(String(describing: text))
+            }
         }
         return sections
     }

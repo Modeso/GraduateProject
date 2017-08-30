@@ -35,13 +35,13 @@ class GamesDataService {
 
     func getGamesTable() {
         DispatchQueue.global().async { [weak self] in
-            let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
-            var arrayTable: [Game] = []
-            for game in table {
-                arrayTable.append(game.clone())
+            if let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "") {
+                var arrayTable: [Game] = []
+                for game in table {
+                    arrayTable.append(game.clone())
+                }
+                self?.delegate?.updateData(arrayTable)
             }
-//            completion(arrayTabel)
-            self?.delegate?.updateData(arrayTable)
             self?.updateData()
         }
     }
@@ -91,16 +91,16 @@ fileprivate extension GamesDataService {
                     if let xmlData = data, error == nil {
                         DispatchQueue.global().async { [weak self] in
                             self?.setResults(xmlData)
-                            let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
-                            var arrayTable: [Game] =  []
-                            self?.games.removeAll()
-                            for game in table {
-                                let gameData = game.clone()
-                                self?.games[game.gameNumber] = gameData
-                                arrayTable.append(gameData)
+                            if let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "") {
+                                var arrayTable: [Game] =  []
+                                self?.games.removeAll()
+                                for game in table {
+                                    let gameData = game.clone()
+                                    self?.games[game.gameNumber] = gameData
+                                    arrayTable.append(gameData)
+                                }
+                                self?.delegate?.updateData(arrayTable)
                             }
-
-                            self?.delegate?.updateData(arrayTable)
                             self?.isUpdating = false
                         }
                     }

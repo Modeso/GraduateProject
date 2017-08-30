@@ -19,7 +19,7 @@ class TeamsViewModel {
 
     fileprivate var clubs: [Team]? {
         didSet {
-            if clubs != nil, (clubs?.count)! > 0 {
+            if clubs != nil, let count = clubs?.count, count > 0 {
                 makeTeams()
                 DispatchQueue.main.async {
                     self.delegate?.updateTeamsData(self.teams)
@@ -64,19 +64,21 @@ fileprivate extension TeamsViewModel {
         teams.removeAll()
         var teamSection = Array<Team>()
         var firstChar: Character? = nil
-        for club in clubs! {
-            let team = club.clone()
-            if firstChar == nil {
-                firstChar = team.name.uppercased().characters.first
-            } else if firstChar! != team.name.uppercased().characters.first! {
-                teams.append(teamSection)
-                teamSection.removeAll()
-                firstChar = team.name.uppercased().characters.first
+        if let currentClubs = clubs {
+            for club in currentClubs {
+                let team = club.clone()
+                if firstChar == nil {
+                    firstChar = team.name.uppercased().characters.first
+                } else if firstChar != team.name.uppercased().characters.first {
+                    teams.append(teamSection)
+                    teamSection.removeAll()
+                    firstChar = team.name.uppercased().characters.first
+                }
+                teamSection.append(team)
             }
-            teamSection.append(team)
-        }
-        if teamSection.count > 0 {
-            teams.append(teamSection)
+            if teamSection.count > 0 {
+                teams.append(teamSection)
+            }
         }
     }
 }

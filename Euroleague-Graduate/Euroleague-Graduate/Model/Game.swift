@@ -11,6 +11,7 @@ import RealmSwift
 import SWXMLHash
 
 class Game: Object {
+
     //V0
     dynamic var round: String = ""
     dynamic var date: Date = Date()
@@ -51,7 +52,8 @@ extension Game {
     func parseGameData(_ node: XMLIndexer) {
         do {
             self.round = try node["round"].value()
-            self.date = Date().convertStringToDate(date: try node["date"].value())
+            let mdate: String = try node["date"].value()
+            self.date = mdate.convertStringToDate()
             self.time = try node["startime"].value()
             self.gameNumber = try node["game"].value()
             self.homeTv = try node["hometv"].value()

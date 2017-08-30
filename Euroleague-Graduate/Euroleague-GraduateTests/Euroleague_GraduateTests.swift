@@ -9,7 +9,7 @@
 import XCTest
 @testable import Euroleague_Graduate
 
-class Euroleague_GraduateTests: XCTestCase {
+class EuroleagueGraduateTests: XCTestCase {
 
     override func setUp() {
         super.setUp()

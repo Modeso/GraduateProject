@@ -72,13 +72,13 @@ extension MenuViewController: UITableViewDelegate {
             if let identifier = menu[indexPath.row]?.identifier {
                 selectedRow = indexPath.row
                 if let storyboard = self.storyboard {
-                    self.sideMenuViewController!.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
+                    self.sideMenuViewController?.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
                     tableView.deselectRow(at: indexPath, animated: false)
                 }
             }
         }
         tableView.reloadData()
-        self.sideMenuViewController!.hideMenuViewController()
+        self.sideMenuViewController?.hideMenuViewController()
     }
 
 }
@@ -139,10 +139,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDelegate
             tableView.reloadData()
             if let identifier = menu[selectedRow]?.identifier,
                 let storyboard = self.storyboard {
-                self.sideMenuViewController!.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
+                self.sideMenuViewController?.setContentViewController(storyboard.instantiateViewController(withIdentifier: identifier), animated: true)
             }
         }
-        self.sideMenuViewController!.hideMenuViewController()
+        self.sideMenuViewController?.hideMenuViewController()
     }
 
 }

@@ -44,7 +44,8 @@ IndicatorInfoProvider {
     }
 
     func refresh() {
-        if !pagerDelegate!.isRefreshing() {
+        if let refreshing = pagerDelegate?.isRefreshing(),
+            !refreshing {
             tableView.refreshControl?.beginRefreshing()
             pagerDelegate?.getUpdatedData()
         }
@@ -116,7 +117,7 @@ IndicatorInfoProvider {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "SectionHeader")
         if let label = headerCell?.viewWithTag(123) as? UILabel {
-            label.text = Date().convertDateToString((schedule?[section][0].date)!)
+            label.text = schedule?[section][0].date.convertDateToString()
         }
         return headerCell
     }

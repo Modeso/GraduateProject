@@ -29,13 +29,13 @@ class TeamsDataService {
     ///Will return the teams data from DataBase
     func getTeamsTable() {
         DispatchQueue.global().async { [weak self] in
-            let table = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
-            var arrayTabel: [Team] = []
-            for team in table {
-                arrayTabel.append(team.clone())
+            if let table = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "") {
+                var arrayTabel: [Team] = []
+                for team in table {
+                    arrayTabel.append(team.clone())
+                }
+                self?.delegate?.updateData(arrayTabel)
             }
-//            completion(arrayTabel)
-            self?.delegate?.updateData(arrayTabel)
             self?.updateTeams()
         }
     }
@@ -60,12 +60,13 @@ fileprivate extension TeamsDataService {
                                     if let xmlData = data, error == nil {
                                         DispatchQueue.global().async { [weak self] in
                                             self?.parseTeamData(xmlData)
-                                            let teams = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
-                                            var arrayTabel: [Team] = []
-                                            for team in teams {
-                                                arrayTabel.append(team.clone())
+                                            if let table = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "") {
+                                                var arrayTabel: [Team] = []
+                                                for team in table {
+                                                    arrayTabel.append(team.clone())
+                                                }
+                                                self?.delegate?.updateData(arrayTabel)
                                             }
-                                            self?.delegate?.updateData(arrayTabel)
                                         }
                                     } else {
                                         ///Tell that there was an error
@@ -78,8 +79,8 @@ fileprivate extension TeamsDataService {
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["clubs"]["club"].all {
             let team = Team()
-            team.parseTeamData(elem)
             team.seasonCode = currentSeason.getSeasonCode()
+            team.parseTeamData(elem)
             RealmDBManager.sharedInstance.addTeamDataToRealm(team)
         }
     }

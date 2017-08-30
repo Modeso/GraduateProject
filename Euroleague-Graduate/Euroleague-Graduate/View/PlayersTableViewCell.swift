@@ -41,7 +41,7 @@ fileprivate extension PlayersTableViewCell {
         if player.position.caseInsensitiveCompare("Coach") != .orderedSame {
             text = "#\(player.dorsal) "
         }
-        text.append(player.position)
+        text.append(player.position.capitalizingFirstLetter())
         dorsalLabel?.text = text
         countryNameLabel?.text = player.countryName
         playerImageView.layer.cornerRadius = playerImageView.bounds.width / 2

@@ -56,20 +56,20 @@ extension String {
         self = self.capitalizingFirstLetter()
     }
 
+    func convertStringToDate() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        return dateFormatter.date(from: self) ?? Date()
+    }
+
 }
 
 extension Date {
 
-    func convertStringToDate(date: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, yyyy"
-        return dateFormatter.date(from: date)!
-    }
-
-    func convertDateToString(_ date: Date) -> String {
+    func convertDateToString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        return dateFormatter.string(from: date)
+        return dateFormatter.string(from: self)
     }
 
 }

@@ -586,7 +586,7 @@
             <objects>
                 <navigationController storyboardIdentifier="GamesContentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="9kl-U1-8rQ" customClass="EuroNavigationController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9ws-5O-JT4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ws-5O-JT4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1473,212 +1473,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Nd-4F-PkB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2885.507246376812" y="1726.6304347826087"/>
-        </scene>
-        <!--Team Statistics Menu View Controller-->
-        <scene sceneID="rBP-Qd-JXj">
-            <objects>
-                <viewController storyboardIdentifier="TeamStaticMenu" id="VIo-8J-QpO" customClass="TeamStatisticsMenuViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rGc-vH-lvS"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fft-lu-2Pq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NI5-CJ-iLp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDh-Zd-hQ9">
-                                <rect key="frame" x="20" y="55" width="394" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="gaO-qJ-fUl">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="45"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="15"/>
-                                <state key="normal" title="Average Statistics - 1">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="20"/>
-                                </variation>
-                                <connections>
-                                    <action selector="menuButtonPressed:" destination="VIo-8J-QpO" eventType="touchUpInside" id="g7H-0o-Ox8"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYM-XJ-yCB">
-                                <rect key="frame" x="20" y="90" width="394" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="8El-RJ-Nl8">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="45"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="15"/>
-                                <state key="normal" title="Average Statistics - 2">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="20"/>
-                                </variation>
-                                <connections>
-                                    <action selector="menuButtonPressed:" destination="VIo-8J-QpO" eventType="touchUpInside" id="Myc-M4-0m4"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P3w-r2-odb">
-                                <rect key="frame" x="20" y="125" width="394" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="n1C-dX-658">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="45"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="15"/>
-                                <state key="normal" title="Average Statistics - 3">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="20"/>
-                                </variation>
-                                <connections>
-                                    <action selector="menuButtonPressed:" destination="VIo-8J-QpO" eventType="touchUpInside" id="msB-lH-Yoi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh9-ay-pKM">
-                                <rect key="frame" x="381" y="20" width="30" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="ekW-0n-oiZ">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="40"/>
-                                    </constraint>
-                                    <constraint firstAttribute="height" constant="35" id="uwl-DL-Eli">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="45"/>
-                                    </constraint>
-                                </constraints>
-                                <state key="normal" title="Button" image="MenuDots"/>
-                                <connections>
-                                    <action selector="menuButtonPressed:" destination="VIo-8J-QpO" eventType="touchUpInside" id="aTf-y6-mxC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1n-8O-CBZ">
-                                <rect key="frame" x="20" y="20" width="394" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="fON-01-3Gu">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="45"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="15"/>
-                                <state key="normal" title="Average Statistics - All phases">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="20"/>
-                                </variation>
-                                <connections>
-                                    <action selector="menuButtonPressed:" destination="VIo-8J-QpO" eventType="touchUpInside" id="k39-9A-mqX"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-zK-eet">
-                                <rect key="frame" x="20" y="160" width="394" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="mK6-aV-LTj">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="45"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="15"/>
-                                <state key="normal" title="Average Statistics - 4">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="20"/>
-                                </variation>
-                                <connections>
-                                    <action selector="menuButtonPressed:" destination="VIo-8J-QpO" eventType="touchUpInside" id="oo3-E9-m93"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maU-I6-QBx">
-                                <rect key="frame" x="20" y="195" width="394" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="642-Pn-rFY">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="45"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="15"/>
-                                <state key="normal" title="Average Statistics - 5">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="20"/>
-                                </variation>
-                                <connections>
-                                    <action selector="menuButtonPressed:" destination="VIo-8J-QpO" eventType="touchUpInside" id="Ffb-oo-TaU"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHp-Zx-tcP">
-                                <rect key="frame" x="20" y="230" width="394" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="o5G-cU-fEt">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="45"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="15"/>
-                                <state key="normal" title="Average Statistics - 6">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="20"/>
-                                </variation>
-                                <connections>
-                                    <action selector="menuButtonPressed:" destination="VIo-8J-QpO" eventType="touchUpInside" id="X00-nF-MqK"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.30141758918762207" green="0.3014255166053772" blue="0.30142122507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="maU-I6-QBx" firstAttribute="top" secondItem="fhv-zK-eet" secondAttribute="bottom" id="0Ic-JI-mLN"/>
-                            <constraint firstItem="maU-I6-QBx" firstAttribute="leading" secondItem="P3w-r2-odb" secondAttribute="leading" id="11A-4w-Xif"/>
-                            <constraint firstItem="oDh-Zd-hQ9" firstAttribute="trailing" secondItem="B1n-8O-CBZ" secondAttribute="trailing" id="1D9-be-NHh"/>
-                            <constraint firstItem="P3w-r2-odb" firstAttribute="top" secondItem="DYM-XJ-yCB" secondAttribute="bottom" id="4vP-Rz-5LU"/>
-                            <constraint firstItem="DYM-XJ-yCB" firstAttribute="leading" secondItem="B1n-8O-CBZ" secondAttribute="leading" id="B3O-ih-1Ym"/>
-                            <constraint firstItem="oDh-Zd-hQ9" firstAttribute="top" secondItem="B1n-8O-CBZ" secondAttribute="bottom" id="BBb-hn-qIC"/>
-                            <constraint firstItem="maU-I6-QBx" firstAttribute="trailing" secondItem="P3w-r2-odb" secondAttribute="trailing" id="BI7-9g-jie"/>
-                            <constraint firstAttribute="trailing" secondItem="uh9-ay-pKM" secondAttribute="trailing" constant="3" id="Bki-SP-8fk"/>
-                            <constraint firstItem="P3w-r2-odb" firstAttribute="leading" secondItem="NI5-CJ-iLp" secondAttribute="leading" constant="20" id="Dzi-T4-GGY"/>
-                            <constraint firstItem="nHp-Zx-tcP" firstAttribute="trailing" secondItem="maU-I6-QBx" secondAttribute="trailing" id="IAB-cj-IQr"/>
-                            <constraint firstItem="nHp-Zx-tcP" firstAttribute="leading" secondItem="P3w-r2-odb" secondAttribute="leading" id="Ias-0z-3zw"/>
-                            <constraint firstItem="DYM-XJ-yCB" firstAttribute="trailing" secondItem="B1n-8O-CBZ" secondAttribute="trailing" id="J9V-sA-tap"/>
-                            <constraint firstItem="uh9-ay-pKM" firstAttribute="top" secondItem="B1n-8O-CBZ" secondAttribute="top" id="JCt-9M-DFe"/>
-                            <constraint firstItem="B1n-8O-CBZ" firstAttribute="top" secondItem="rGc-vH-lvS" secondAttribute="bottom" id="MGm-zh-RXm"/>
-                            <constraint firstItem="fhv-zK-eet" firstAttribute="trailing" secondItem="P3w-r2-odb" secondAttribute="trailing" id="NSn-uB-4cL"/>
-                            <constraint firstItem="nHp-Zx-tcP" firstAttribute="trailing" secondItem="P3w-r2-odb" secondAttribute="trailing" id="OjA-1Z-tnx"/>
-                            <constraint firstItem="uh9-ay-pKM" firstAttribute="bottom" secondItem="B1n-8O-CBZ" secondAttribute="bottom" id="Rwx-XQ-p82"/>
-                            <constraint firstAttribute="trailing" secondItem="P3w-r2-odb" secondAttribute="trailing" id="SSq-9v-BB8"/>
-                            <constraint firstItem="B1n-8O-CBZ" firstAttribute="leading" secondItem="P3w-r2-odb" secondAttribute="leading" id="c2x-FH-bsE"/>
-                            <constraint firstItem="DYM-XJ-yCB" firstAttribute="top" secondItem="oDh-Zd-hQ9" secondAttribute="bottom" id="dwa-cg-KgR"/>
-                            <constraint firstItem="fhv-zK-eet" firstAttribute="leading" secondItem="P3w-r2-odb" secondAttribute="leading" id="npr-84-fMa"/>
-                            <constraint firstItem="nHp-Zx-tcP" firstAttribute="top" secondItem="maU-I6-QBx" secondAttribute="bottom" id="rj5-Cp-WYP"/>
-                            <constraint firstItem="P3w-r2-odb" firstAttribute="trailing" secondItem="DYM-XJ-yCB" secondAttribute="trailing" id="tpw-5r-WX9"/>
-                            <constraint firstItem="oDh-Zd-hQ9" firstAttribute="leading" secondItem="B1n-8O-CBZ" secondAttribute="leading" id="uDV-HK-b6p"/>
-                            <constraint firstItem="fhv-zK-eet" firstAttribute="top" secondItem="P3w-r2-odb" secondAttribute="bottom" id="vp8-7C-oLv"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="openMenuButton" destination="uh9-ay-pKM" id="aMx-ye-EsQ"/>
-                        <outletCollection property="menuButtons" destination="B1n-8O-CBZ" collectionClass="NSMutableArray" id="bDa-tq-Mag"/>
-                        <outletCollection property="menuButtons" destination="oDh-Zd-hQ9" collectionClass="NSMutableArray" id="zmW-ts-F5q"/>
-                        <outletCollection property="menuButtons" destination="DYM-XJ-yCB" collectionClass="NSMutableArray" id="4p8-I3-FdI"/>
-                        <outletCollection property="menuButtons" destination="P3w-r2-odb" collectionClass="NSMutableArray" id="K40-WT-AMe"/>
-                        <outletCollection property="menuButtons" destination="fhv-zK-eet" collectionClass="NSMutableArray" id="ecK-xs-a5J"/>
-                        <outletCollection property="menuButtons" destination="maU-I6-QBx" collectionClass="NSMutableArray" id="dRt-9f-4f8"/>
-                        <outletCollection property="menuButtons" destination="nHp-Zx-tcP" collectionClass="NSMutableArray" id="65b-8D-oIJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GQT-a5-hGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2794" y="1242"/>
+            <point key="canvasLocation" x="2886" y="1486"/>
         </scene>
         <!--Euro Navigation Controller-->
         <scene sceneID="AAu-2g-ocn">
             <objects>
                 <navigationController storyboardIdentifier="TeamsContentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="IpC-e3-pXZ" customClass="EuroNavigationController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WDH-R1-1hq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WDH-R1-1hq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

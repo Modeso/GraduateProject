@@ -39,7 +39,6 @@ class RostersTableViewController: UIViewController, IndicatorInfoProvider {
         newPlayers.remove(at: 0)
         var positions: [String] = []
         for player in newPlayers {
-
             if !positions.contains(player.position) {
                 positions.append(player.position)
                 rostersTable[player.position] = []
@@ -71,6 +70,14 @@ extension RostersTableViewController: UITableViewDelegate {
                 playersViewModel.updatePlayer(withCode: rosters[indexPath.section][indexPath.row].code) { [weak self] player in
                     self?.rosters[indexPath.section][indexPath.row] = player
                     self?.tableView.reloadData()
+//                    tableView.beginUpdates()
+//                    tableView.reloadRows(at: [indexPath], with: .none)
+//                    tableView.endUpdates()
+//                    cell.reloadInputViews()
+//                    let tableCell = tableView.dequeueReusableCell(withIdentifier: "PlayersTableCell", for: indexPath)
+//                    if let playerCell = tableCell as? PlayersTableViewCell {
+//                        playerCell.player = player
+//                    }
                 }
             }
         }

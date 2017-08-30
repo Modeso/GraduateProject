@@ -92,13 +92,13 @@ extension TeamStatisticsViewController: UITableViewDataSource {
             if let tableCell = cell as? TeamStatisticsTableViewCell {
                 let detailText = teamStatisticsModel.rows[indexPath.row]
                 tableCell.detailNameLabel.text = detailText
-                let result = teamStatisticsModel.results[detailText]
-                if !detailText.contains("%") {
-                    tableCell.resultLabel.text = String(Int(result!))
-                } else {
-                    tableCell.resultLabel.text = String(result!)
+                if let result = teamStatisticsModel.results[detailText] {
+                    if !detailText.contains("%") {
+                        tableCell.resultLabel.text = String(Int(result))
+                    } else {
+                        tableCell.resultLabel.text = String(result)
+                    }
                 }
-
             }
             return cell
         }

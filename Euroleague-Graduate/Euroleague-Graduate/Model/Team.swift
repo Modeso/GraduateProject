@@ -47,11 +47,13 @@ extension Team {
             self.countryName = try node["countryname"].value()
             self.logoUrl = try node["imageurl"].value()
             self.twitterAccount = try node["twitteraccount"].value()
+
             let coach = Player()
             coach.name = try node["coach"].value(ofAttribute: "name")
             coach.countryName = try node["coach"].value(ofAttribute: "countryname")
             coach.code = try node["coach"].value(ofAttribute: "code")
             coach.position = "Coach"
+            coach.seasonCode = self.seasonCode
             self.rosters.append(coach)
             for elem in node["roster"]["player"].all {
                 let player = Player()
@@ -60,6 +62,7 @@ extension Team {
                 player.dorsal = try elem.value(ofAttribute: "dorsal")
                 player.position = try elem.value(ofAttribute: "position")
                 player.countryName = try elem.value(ofAttribute: "countryname")
+                player.seasonCode = self.seasonCode
                 self.rosters.append(player)
             }
         } catch {

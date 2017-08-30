@@ -30,8 +30,8 @@ class RootViewController: AKSideMenu, AKSideMenuDelegate {
             default:
                 LeaguesCommenObjects.season = LeaguesCommenObjects.Season.TurkishEuroLeague
             }
-            self.contentViewController = self.storyboard!.instantiateViewController(withIdentifier: "GamesContentNavigationController")
-            self.leftMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
+            self.contentViewController = self.storyboard?.instantiateViewController(withIdentifier: "GamesContentNavigationController")
+            self.leftMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController")
 
             self.delegate = self
         }

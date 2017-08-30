@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Euroleague_GraduateUITests: XCTestCase {
+class EuroleagueGraduateUITests: XCTestCase {
 
     var app: XCUIApplication! = nil
 

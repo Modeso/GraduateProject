@@ -127,7 +127,7 @@ extension TeamStatisticsMenuTableViewController: UITableViewDataSource {
 fileprivate extension TeamStatisticsMenuTableViewController {
 
     func updateTheMenuOrder(toStartWith index: Int) {
-        swapMenu(index, 1)
+        swapMenu(first: index, second: 1)
         resortMenu()
     }
 
@@ -140,16 +140,16 @@ fileprivate extension TeamStatisticsMenuTableViewController {
                 if let firstPriority = menu[j-1]?.priority,
                     let secondPriority = menu[j]?.priority,
                     firstPriority < secondPriority {
-                    swapMenu(j-1, j)
+                    swapMenu(first: j-1, second: j)
                     swapped = true
                 }
             }
         } while swapped
     }
 
-    func swapMenu(_ i: Int, _ j: Int) {
-        let temp = menu[i]
-        menu[i] = menu[j]
-        menu[j] = temp
+    func swapMenu(first: Int, second: Int) {
+        let temp = menu[first]
+        menu[first] = menu[second]
+        menu[second] = temp
     }
 }

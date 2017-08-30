@@ -101,7 +101,7 @@ fileprivate extension GameBoxScoreViewController {
             detailLabel?.text = "\(game.time)"
         }
         codeLabel?.text = "#\(game.homeTv)\(game.awayTv)"
-        let date = "\(Date().convertDateToString(game.date))|\(game.time)"
+        let date = "\(game.date.convertDateToString())|\(game.time)"
         dateLabel?.text = date
     }
 
