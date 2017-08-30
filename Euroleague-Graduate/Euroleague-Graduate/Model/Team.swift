@@ -25,7 +25,7 @@ class Team: Object {
     var rosters = List<Player>()
     
     //V3
-    dynamic var coach: Player?
+   // dynamic var coach: Player?
     
     //V7
     dynamic var seasonCode: String = ""
@@ -47,14 +47,12 @@ extension Team {
             self.countryName = try node["countryname"].value()
             self.logoUrl = try node["imageurl"].value()
             self.twitterAccount = try node["twitteraccount"].value()
-            self.coach = Player()
-            self.coach?.name = try node["coach"].value(ofAttribute: "name")
-            self.coach?.countryName = try node["coach"].value(ofAttribute: "countryname")
-            self.coach?.code = try node["coach"].value(ofAttribute: "code")
-            self.coach?.position = "Coach"
-            if let coach = self.coach {
-                self.rosters.append(coach)
-            }
+            let coach = Player()
+            coach.name = try node["coach"].value(ofAttribute: "name")
+            coach.countryName = try node["coach"].value(ofAttribute: "countryname")
+            coach.code = try node["coach"].value(ofAttribute: "code")
+            coach.position = "Coach"
+            self.rosters.append(coach)
             for elem in node["roster"]["player"].all {
                 let player = Player()
                 player.name = try elem.value(ofAttribute: "name")
@@ -78,7 +76,7 @@ extension Team {
         newTeam.name = self.name
         newTeam.tvCode = self.tvCode
         newTeam.twitterAccount = self.twitterAccount
-        newTeam.coach = self.coach?.clone()
+//        newTeam.coach = self.coach?.clone()
         let newRosters = List<Player>()
         for player in self.rosters {
             newRosters.append(player.clone())

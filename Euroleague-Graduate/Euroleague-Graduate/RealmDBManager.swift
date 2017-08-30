@@ -117,12 +117,9 @@ class RealmDBManager {
     }
     
     func addPlayer(_ player:Player){
-        DispatchQueue.global().async {[weak self] in
-            guard let realmConfiguration = self?.realmConfiguration else { return }
-            let realm = try! Realm(configuration: realmConfiguration)
-            try! realm.write {
-                realm.add(player, update: true)
-            }
+        let realm = try! Realm(configuration: realmConfiguration)
+        try! realm.write {
+            realm.add(player, update: true)
         }
     }
     

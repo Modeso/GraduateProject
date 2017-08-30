@@ -33,15 +33,16 @@ class GamesDataService {
         currentSeason = season
     }
     
-    func getGamesTable(completion: @escaping ([Game])->Void) {
+    func getGamesTable() {
         DispatchQueue.global().async { [weak self] in
             let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
-            var arrayTabel: [Game] = []
+            var arrayTable: [Game] = []
             for game in table {
-                arrayTabel.append(game.clone())
+                arrayTable.append(game.clone())
             }
-            completion(arrayTabel)
-            self?.getSchedule()
+//            completion(arrayTabel)
+            self?.delegate?.updateData(arrayTable)
+            self?.updateData()
         }
     }
     
@@ -53,6 +54,7 @@ class GamesDataService {
             }
         }
     }
+    
     deinit {
         print("deinit GamesDataService")
     }
@@ -98,10 +100,8 @@ fileprivate extension GamesDataService {
                                 self?.games[game.gameNumber] = gameData
                                 arrayTable.append(gameData)
                             }
-                            DispatchQueue.main.async {
-                                self?.delegate?.updateData(arrayTable)
-                                self?.isUpdating = false
-                            }
+                            self?.delegate?.updateData(arrayTable)
+                            self?.isUpdating = false
                         }
                     }
         }

@@ -23,6 +23,9 @@ class PlayersDataService {
         DispatchQueue.global().async {
             let player = RealmDBManager.sharedInstance.getPlayer(withCode: code)
             completion(player?.clone())
+//            self.updatePlayer(withCode: code, completion: { (player) in
+//                completion(player)
+//            })
         }
     }
     
@@ -36,8 +39,8 @@ class PlayersDataService {
                                  parameters: parameters,
                                  headers: [:]){ [weak self] data ,error in
                                     if let xmlData = data, error == nil {
-                                        self?.parsePlayerData(xmlData,code: code){ player in
-                                            DispatchQueue.main.async {
+                                        DispatchQueue.global().async {
+                                            self?.parsePlayerData(xmlData,code: code){ player in
                                                 completion(player.clone())
                                             }
                                         }

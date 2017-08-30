@@ -38,11 +38,8 @@ class TeamsViewModel {
     }
     
     func getTeamsData() {
-        
-        teamDataService.getTeamsTable() {[weak self] realmTable in
-            DispatchQueue.global().async {[weak self] in
-                self?.clubs = realmTable
-            }
+        DispatchQueue.global().async { [weak self] in
+            self?.teamDataService.getTeamsTable()
         }
     }
     

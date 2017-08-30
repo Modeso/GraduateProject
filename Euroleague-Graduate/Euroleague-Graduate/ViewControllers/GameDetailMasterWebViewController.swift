@@ -14,7 +14,7 @@ class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider
     var urlString = ""
     var name = ""
     
-    @IBOutlet weak var webView: UIWebView!
+//    @IBOutlet weak var webView: UIWebView!
     
     private var isFirst = true
     
@@ -24,26 +24,26 @@ class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.backgroundColor = UIColor.clear
-        view.backgroundColor = UIColor.clear
-        webView.scalesPageToFit = true
-        webView.scrollView.delegate = self
-        webView.delegate = self
-        webView.scrollView.isScrollEnabled = false
+//        webView.backgroundColor = UIColor.clear
+//        view.backgroundColor = UIColor.clear
+//        webView.scalesPageToFit = true
+//        webView.scrollView.delegate = self
+//        webView.delegate = self
+//        webView.scrollView.isScrollEnabled = false
+//        DispatchQueue.global().async { [weak self] in
+//            if let fullUrl = self.urlString,
+//                let url = URL(string: urlString)
+//                let request = URLRequest(url: url!)
+//                self.webView.loadRequest(request)
+        
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isFirst {
             isFirst = false
-            DispatchQueue.global().async { [weak self] in
-                if let fullUrl = self?.urlString,
-                    let url = URL(string: fullUrl){
-                    let request = URLRequest(url: url)
-                    self?.webView.contentMode = .scaleAspectFit
-                    self?.webView.loadRequest(request)
-                }
-            }
+//
         }
         
     }

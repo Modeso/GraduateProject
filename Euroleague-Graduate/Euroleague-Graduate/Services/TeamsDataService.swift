@@ -27,14 +27,15 @@ class TeamsDataService {
     }
     
     ///Will return the teams data from DataBase
-    func getTeamsTable(completion:@escaping ([Team])->Void){
+    func getTeamsTable(){
         DispatchQueue.global().async { [weak self] in
             let table = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
             var arrayTabel: [Team] = []
             for team in table {
                 arrayTabel.append(team.clone())
             }
-            completion(arrayTabel)
+//            completion(arrayTabel)
+            self?.delegate?.updateData(arrayTabel)
             self?.updateTeams()
         }
     }
@@ -64,9 +65,7 @@ fileprivate extension TeamsDataService {
                                             for team in teams {
                                                 arrayTabel.append(team.clone())
                                             }
-                                            DispatchQueue.main.async {
-                                                self?.delegate?.updateData(arrayTabel)
-                                            }
+                                            self?.delegate?.updateData(arrayTabel)
                                         }
                                     }
                                     else {

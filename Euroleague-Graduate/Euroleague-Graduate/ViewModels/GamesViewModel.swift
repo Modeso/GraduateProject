@@ -51,16 +51,7 @@ class GamesViewModel {
     
     func getGamesData(){
         DispatchQueue.global().async { [weak self] in
-            self?.teamDataService.getTeamsTable() { [weak self] realmTable in
-                DispatchQueue.global().async { [weak self] in
-                    self?.makeTeamsOf(realmTable)
-                    self?.gameDataService.getGamesTable() { [weak self] realmTable in
-                        DispatchQueue.global().async {
-                            self?.schedule = realmTable
-                        }
-                    }
-                }
-            }
+            self?.teamDataService.getTeamsTable()
         }
     }
     
@@ -88,7 +79,7 @@ extension GamesViewModel: TeamsDataServiceDelegate {
     func updateData(_ table: [Team]){
         DispatchQueue.global().async { [weak self] in
             self?.makeTeamsOf(table)
-            self?.gameDataService.updateData()
+            self?.gameDataService.getGamesTable()
         }
     }
     

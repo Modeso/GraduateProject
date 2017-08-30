@@ -11,6 +11,7 @@ def app_pods
     pod 'Alamofire', '~> 4.4'
     pod 'RealmSwift'
     pod 'SWXMLHash', '~> 4.0.0'
+    pod 'SwiftLint'
     
 end
 

@@ -23,6 +23,9 @@ class Player: Object {
     //V7
     dynamic var seasonCode: String = ""
     
+    //V10
+    var team = LinkingObjects(fromType: Team.self, property: "rosters")
+    
     override static func primaryKey() -> String? {
         return "code"
     }

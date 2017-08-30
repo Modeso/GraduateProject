@@ -64,7 +64,7 @@ fileprivate extension TeamDataViewController {
             return
         }
         let roster = router.createRosterTableController()
-        if let coach = team.coach?.clone(){
+        if let coach = team.rosters.first?.clone(){
             roster.coach = coach
         }
         roster.makeRostersOf(Array(team.rosters))

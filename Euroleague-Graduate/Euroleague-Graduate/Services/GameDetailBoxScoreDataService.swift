@@ -26,17 +26,25 @@ class GameDetailBoxScoreDataService {
         currentSeason = season
     }
     
-    func getScoreBoxResults(ofGameWithCode code: String, completion:@escaping (_ localTeamDetail: GameTeamDetail?, _ roadTeamDetail: GameTeamDetail?)->Void){
+    func getScoreBoxResults(ofGameWithCode code: String){
         DispatchQueue.global().async { [weak self] in
             let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code)
             let game = realmGame?.clone()
-            completion(game?.localTeamGameDetail?.clone(), game?.roadTeamGameDetail?.clone())
+            self?.delegate?.updateData(localTeamDetail: game?.localTeamGameDetail?.clone(), roadTeamDetail: game?.roadTeamGameDetail?.clone())
+//            completion(game?.localTeamGameDetail?.clone(), game?.roadTeamGameDetail?.clone())
             if let code = game?.gameNumber {
                 self?.updateScoreBoxResults(ofGameWithCode: String(code))
             }
         }
         
     }
+    
+    deinit {
+        print("deinit GameDetailBoxScoreDataService")
+    }
+}
+
+fileprivate extension GameDetailBoxScoreDataService {
     
     func updateScoreBoxResults(ofGameWithCode code: String) {
         let url = "games"
@@ -60,13 +68,6 @@ class GameDetailBoxScoreDataService {
                 }
         }
     }
-    
-    deinit {
-        print("deinit GameDetailBoxScoreDataService")
-    }
-}
-
-fileprivate extension GameDetailBoxScoreDataService {
     
     func parseGameDetailData(_ xmlData: Data) {
         let xml = SWXMLHash.parse(xmlData)

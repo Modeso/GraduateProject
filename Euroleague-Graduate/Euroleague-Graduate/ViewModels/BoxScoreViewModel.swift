@@ -25,16 +25,12 @@ class BoxScoreViewModel {
         gameDetailBoxScoreService.delegate = self
     }
 
-    func getGameDetail(ofGameWithCode code: String, completion :@escaping (_ localTeamDetail: GameTeamDetail? ,_ roadTeamDetail: GameTeamDetail?) -> Void){
-        gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code) { localTeamDetail, roadTeamDetail in
-            DispatchQueue.main.async {
-                completion(localTeamDetail, roadTeamDetail)
-            }
-        }
-    }
-    
-    func updateGameDetail(ofGameWithCode code: String) {
-        gameDetailBoxScoreService.updateScoreBoxResults(ofGameWithCode: code)
+    func getGameDetail(ofGameWithCode code: String){
+        gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code)
+//            DispatchQueue.main.async {
+//                completion(localTeamDetail, roadTeamDetail)
+//            }
+        
     }
     
     func boxScoreInfo(forIndex index: Int,

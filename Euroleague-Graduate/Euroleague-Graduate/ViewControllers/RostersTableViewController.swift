@@ -35,45 +35,27 @@ class RostersTableViewController: UIViewController , IndicatorInfoProvider{
     
     func makeRostersOf(_ players: [Player]) {
         var rostersTable: Dictionary<String,[Player]> = [:]
-        let group = DispatchGroup()
         var newPlayers = players
-        group.enter()
-        playersViewModel.getPlayer(withCode: coach.code) { [weak self] player in
-            if let retrivedCoach = player {
-                self?.coach = retrivedCoach.clone()
-            }
-            group.leave()
-        }
         newPlayers.remove(at: 0)
         var positions:[String] = []
         for player in newPlayers {
-            group.enter()
-            playersViewModel.getPlayer(withCode: player.code) { player in
-                if let retrievedPlayer = player {
-                    let newPlayer = retrievedPlayer.clone()
-                    if !positions.contains(newPlayer.position) {
-                        positions.append(newPlayer.position)
-                        rostersTable[newPlayer.position] = []
-                    }
-                    rostersTable[newPlayer.position]?.append(newPlayer)
-                }
-                group.leave()
+            
+            if !positions.contains(player.position) {
+                positions.append(player.position)
+                rostersTable[player.position] = []
             }
+            rostersTable[player.position]?.append(player)
         }
-        group.notify(queue: DispatchQueue.main){ [weak self] in
-            positions.sort()
-            if let mCoach = self?.coach {
-                self?.rosters.append([mCoach])
+        positions.sort()
+        self.rosters.append([coach])
+        for position in positions {
+            if var samePositionPlayers = rostersTable[position] {
+                samePositionPlayers = samePositionPlayers.sorted{ $0.dorsal < $1.dorsal }
+                self.rosters.append(samePositionPlayers)
             }
-            for position in positions {
-                if var samePositionPlayers = rostersTable[position] {
-                    samePositionPlayers = samePositionPlayers.sorted{ $0.dorsal < $1.dorsal }
-                    self?.rosters.append(samePositionPlayers)
-                }
-                
-            }
-            self?.tableView?.reloadData()
+            
         }
+        self.tableView?.reloadData()
     }
     
     deinit {

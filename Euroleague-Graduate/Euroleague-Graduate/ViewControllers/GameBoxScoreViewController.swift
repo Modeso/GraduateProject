@@ -23,7 +23,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightConstrain: NSLayoutConstraint!
     @IBOutlet weak var browserButton: UIButton!
-
+    
     fileprivate let boxScoreViewModel = BoxScoreViewModel(season: LeaguesCommenObjects.season)
     
     var game: Game? {
@@ -43,15 +43,9 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         collectionViewHeightConstrain.constant = 0
         tableViewHeightConstrain.constant = 0
         collectionView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.old.union(NSKeyValueObservingOptions.new), context: nil)
-        if let number = game?.gameNumber {
-            if let code = game?.gameCode {
-                boxScoreViewModel.getGameDetail(ofGameWithCode: code) {[weak self] localTeamDetail, roadTeamDetail in
-                    self?.game?.localTeamGameDetail = localTeamDetail
-                    self?.game?.roadTeamGameDetail = roadTeamDetail
-                }
-                
-            }
-            boxScoreViewModel.updateGameDetail(ofGameWithCode: String(number))
+        
+        if let code = game?.gameCode {
+            boxScoreViewModel.getGameDetail(ofGameWithCode: code)
         }
         
         // CollectionView Settings
@@ -111,7 +105,7 @@ fileprivate extension GameBoxScoreViewController {
         let date = "\(Date().convertDateToString(game.date))|\(game.time)"
         dateLabel?.text = date
     }
-
+    
 }
 
 extension GameBoxScoreViewController: UITableViewDelegate {
@@ -146,14 +140,14 @@ extension GameBoxScoreViewController: UITableViewDataSource {
                     tableCell.awayPointsLabel.text = boxScoreInfo.guestTeamPlayerPointText
                     tableCell.homePlayerLabel.text = boxScoreInfo.homeTeamPlayerName
                     tableCell.homePlayerPoints.text = boxScoreInfo.homeTeamPlayerPointText
-                   
+                    
                 }
-
+                
             }
             if indexPath.row == 4 {
                 DispatchQueue.main.async {
                     self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
-  
+                    
                 }
             }
             
@@ -227,13 +221,13 @@ extension GameBoxScoreViewController: BoxScoreViewModelDelegate{
         game?.roadTeamGameDetail = roadTeamDetail
         
         self.collectionView.reloadData()
-//        self.collectionView.performBatchUpdates({
-//        }) { (done) in
-//            if done {
-//                self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
-//            }
-//        }
-//        
+        //        self.collectionView.performBatchUpdates({
+        //        }) { (done) in
+        //            if done {
+        //                self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
+        //            }
+        //        }
+        //
         self.tableView.reloadData()
         self.view.layoutIfNeeded()
         DispatchQueue.main.async {
