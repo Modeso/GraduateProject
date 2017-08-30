@@ -10,9 +10,9 @@ import UIKit
 import XLPagerTabStrip
 
 class GameDetailViewController: ButtonBarPagerTabStripViewController {
-    
+
     var game: Game?
-    
+
     fileprivate var myViewControllers: [UIViewController] = []
 
     override func viewDidLoad() {
@@ -23,21 +23,21 @@ class GameDetailViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemBackgroundColor = UIColor.getLeagueBarColor()
         settings.style.selectedBarBackgroundColor = UIColor.white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        
+
         super.viewDidLoad()
         buttonBarView.backgroundColor = UIColor.getLeagueBarColor()
         self.edgesForExtendedLayout = []
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
         }
-        
+
     }
-    
+
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         createViewControllers()
         return myViewControllers
     }
-    
+
     deinit {
         print("deinit GameDetailViewController")
     }
@@ -45,7 +45,7 @@ class GameDetailViewController: ButtonBarPagerTabStripViewController {
 }
 
 fileprivate extension GameDetailViewController {
-    
+
     func createViewControllers() {
         let router = Router()
         let boxScore = router.createGameBoxScore()
@@ -66,12 +66,12 @@ fileprivate extension GameDetailViewController {
         myViewControllers.append(gameEvolution)
         myViewControllers.append(playByPlay)
     }
-    
+
     func createWebViewUrl(type: String, gameCode: Int, season: String) -> String {
         var url = "http://live.euroleague.net/"
         url.append("\(type)/?")
         url.append("gamecode=\(gameCode)&seasoncode=\(season)")
         return url
     }
-    
+
 }

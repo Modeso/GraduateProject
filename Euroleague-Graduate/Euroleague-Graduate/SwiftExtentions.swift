@@ -11,19 +11,19 @@ import UIKit
 import RealmSwift
 
 extension UIColor {
-    
-    static func getLeagueBarColor() -> UIColor{
+
+    static func getLeagueBarColor() -> UIColor {
         return LeaguesCommenObjects.season.getColor()
     }
-    
+
     static func getLeagueBackGroundColor() -> UIColor {
         return LeaguesCommenObjects.BackGroundColor
     }
-    
+
 }
 
 extension UIView {
-    
+
     func applyGradient(colours: [UIColor]) -> Void {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = self.bounds
@@ -32,7 +32,7 @@ extension UIView {
         gradient.endPoint = CGPoint(x: 1, y: 0.5)
         self.layer.insertSublayer(gradient, at: 0)
     }
-    
+
     func roundCornerMask() {
         // bezier path to setup round coner for topleft, bottom left
         let bezierPath = UIBezierPath(roundedRect: self.bounds,
@@ -45,43 +45,43 @@ extension UIView {
 }
 
 extension String {
-    
+
     func capitalizingFirstLetter() -> String {
         let first = String(characters.prefix(1)).capitalized
         let other = String(characters.dropFirst())
         return first + other
     }
-    
+
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
-    
+
 }
 
 extension Date {
-    
+
     func convertStringToDate(date: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, yyyy"
         return dateFormatter.date(from: date)!
     }
-    
+
     func convertDateToString(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         return dateFormatter.string(from: date)
     }
-    
+
 }
 
 public extension Float {
 
-    static var random:Float {
+    static var random: Float {
         get {
             return Float(arc4random()) / Float(UInt32.max)
         }
     }
-    
+
     static func random(min: Float, max: Float) -> Float {
         return Float.random * (max - min) + min
     }

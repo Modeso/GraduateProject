@@ -21,21 +21,21 @@ class Game: Object {
     dynamic var awayTv: String = ""
     dynamic var awayScore: Int = 0
     dynamic var played: Bool = false
-    
+
     //V1
     dynamic var awayCode: String = ""
     dynamic var homeCode: String = ""
     dynamic var awayImageUrl: String = ""
     dynamic var homeImageUrl: String = ""
-    
+
     //V5
     dynamic var localTeamGameDetail: GameTeamDetail?
     dynamic var roadTeamGameDetail: GameTeamDetail?
-    
+
     //V6
     dynamic var seasonCode: String = ""
     dynamic var gameCode: String = ""
-    
+
     override static func primaryKey() -> String? {
         return "gameCode"
     }
@@ -43,12 +43,12 @@ class Game: Object {
     override static func ignoredProperties() -> [String] {
         return ["awayImageUrl", "homeImageUrl"]
     }
-    
+
 }
 
 extension Game {
-    
-    func parseGameData(_ node: XMLIndexer){
+
+    func parseGameData(_ node: XMLIndexer) {
         do {
             self.round = try node["round"].value()
             self.date = Date().convertStringToDate(date: try node["date"].value())
@@ -61,10 +61,10 @@ extension Game {
             self.homeCode = try node["homecode"].value()
             self.gameCode = try node["gamecode"].value()
         } catch {
-            
+
         }
     }
-    
+
     func clone() -> Game {
         let newGame = Game()
         newGame.awayScore = self.awayScore
@@ -84,7 +84,7 @@ extension Game {
         newGame.gameCode = self.gameCode
         return newGame
     }
-    
+
     func getQuartersPlayed() -> Int {
         var count = 4
         guard let localTeam = localTeamGameDetail?.clone(), let roadTeam = roadTeamGameDetail?.clone()
@@ -102,5 +102,5 @@ extension Game {
         }
         return count
     }
-    
+
 }

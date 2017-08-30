@@ -10,13 +10,13 @@ import Foundation
 import Alamofire
 
 class ApiClient {
-    
+
     private static var baseUrl = "http://www.euroleague.net/euroleague/api/"
-    
+
     static func getRequestFrom(url: String,
                                parameters: Parameters,
                                headers: HTTPHeaders,
-                               completion: @escaping (Data?, Error?)->Void){
+                               completion: @escaping (Data?, Error?) -> Void) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(baseUrl + url,
                           method: .get,
@@ -29,11 +29,11 @@ class ApiClient {
                 }
         }
     }
-    
+
     static func postRequestTo(url: String,
                               parameters: Parameters,
                               headers: HTTPHeaders,
-                              completion: @escaping (Data?, Error?)->Void){
+                              completion: @escaping (Data?, Error?) -> Void) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(baseUrl + url,
                           method: .post,

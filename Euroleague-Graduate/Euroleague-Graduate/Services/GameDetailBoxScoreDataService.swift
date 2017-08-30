@@ -14,19 +14,19 @@ protocol GameDetailBoxScoreDataServiceDelegate: class {
 }
 
 class GameDetailBoxScoreDataService {
-    
+
     fileprivate var localTeamDetail: GameTeamDetail?
     fileprivate var roadTeamDetail: GameTeamDetail?
-    
+
     weak var delegate: GameDetailBoxScoreDataServiceDelegate?
-    
+
     fileprivate let currentSeason: LeaguesCommenObjects.Season
-    
+
     init(season: LeaguesCommenObjects.Season) {
         currentSeason = season
     }
-    
-    func getScoreBoxResults(ofGameWithCode code: String){
+
+    func getScoreBoxResults(ofGameWithCode code: String) {
         DispatchQueue.global().async { [weak self] in
             let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code)
             let game = realmGame?.clone()
@@ -36,16 +36,16 @@ class GameDetailBoxScoreDataService {
                 self?.updateScoreBoxResults(ofGameWithCode: String(code))
             }
         }
-        
+
     }
-    
+
     deinit {
         print("deinit GameDetailBoxScoreDataService")
     }
 }
 
 fileprivate extension GameDetailBoxScoreDataService {
-    
+
     func updateScoreBoxResults(ofGameWithCode code: String) {
         let url = "games"
         let parameters = [
@@ -68,7 +68,7 @@ fileprivate extension GameDetailBoxScoreDataService {
                 }
         }
     }
-    
+
     func parseGameDetailData(_ xmlData: Data) {
         let xml = SWXMLHash.parse(xmlData)
         let mlocalTeamDetail = GameTeamDetail()

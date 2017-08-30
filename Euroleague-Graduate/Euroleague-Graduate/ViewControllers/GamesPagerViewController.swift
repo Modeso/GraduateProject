@@ -22,13 +22,13 @@ protocol PagerUpdateDelegate: class {
 }
 
 class GamesPagerViewController: ButtonBarPagerTabStripViewController {
-    
+
     fileprivate var myViewControllers: Array<MasterTableViewController> = []
-    
+
     fileprivate let viewModel = GamesViewModel(season: LeaguesCommenObjects.season)
-    
+
     fileprivate var refreshing = true
-    
+
     override func viewDidLoad() {
         settings.style.buttonBarItemBackgroundColor = UIColor.getLeagueBarColor()
         settings.style.selectedBarBackgroundColor = UIColor.white
@@ -45,10 +45,10 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
         self.edgesForExtendedLayout = []
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
-            
+
         }
     }
-    
+
     deinit {
         print("deinit GamesPagerViewController")
     }
@@ -73,20 +73,20 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
         for controller in myViewControllers {
             controller.pagerDelegate = self
         }
-        
+
     }
-    
+
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         createControllers()
         viewModel.getGamesData()
         refreshing = true
         return myViewControllers
     }
-    
+
 }
 
 extension GamesPagerViewController: GameDataViewModelDelegate {
-    
+
     func updateControllersData(_ table: Dictionary<String, [Array<Game>]>,
                                lastPlayedGames: Dictionary<String, (section: Int, row: Int)>) {
         for controller in myViewControllers {
@@ -96,21 +96,21 @@ extension GamesPagerViewController: GameDataViewModelDelegate {
                     schedule,
                     lastGameIndex: lastGameIndex)
             }
-            
+
         }
         refreshing = false
     }
-    
+
 }
 
 extension GamesPagerViewController: PagerUpdateDelegate {
-    
+
     // pull down to refresh..
     func getUpdatedData() {
         refreshing = true
         viewModel.updateData()
     }
-    
+
     func isRefreshing() -> Bool {
         return refreshing
     }

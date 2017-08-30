@@ -14,10 +14,10 @@ protocol TeamsDataViewModelDelegate: class {
 }
 
 class TeamsViewModel {
-    
+
     fileprivate let teamDataService: TeamsDataService
-    
-    fileprivate var clubs: [Team]?{
+
+    fileprivate var clubs: [Team]? {
         didSet {
             if clubs != nil, (clubs?.count)! > 0 {
                 makeTeams()
@@ -27,39 +27,39 @@ class TeamsViewModel {
             }
         }
     }
-    
+
     fileprivate var teams: [Array<Team>] = []
-    
+
     weak var delegate: TeamsDataViewModelDelegate?
-    
+
     init(season: LeaguesCommenObjects.Season) {
         teamDataService = TeamsDataService(season: season)
         teamDataService.delegate = self
     }
-    
+
     func getTeamsData() {
         DispatchQueue.global().async { [weak self] in
             self?.teamDataService.getTeamsTable()
         }
     }
-    
+
     deinit {
         print("deinit TeamsViewModel")
     }
 }
 
 extension TeamsViewModel: TeamsDataServiceDelegate {
-    
-    func updateData(_ table: [Team]){
+
+    func updateData(_ table: [Team]) {
         DispatchQueue.global().async { [weak self] in
             self?.clubs = table
         }
     }
-    
+
 }
 
 fileprivate extension TeamsViewModel {
-    
+
     func makeTeams() {
         teams.removeAll()
         var teamSection = Array<Team>()
@@ -68,8 +68,7 @@ fileprivate extension TeamsViewModel {
             let team = club.clone()
             if firstChar == nil {
                 firstChar = team.name.uppercased().characters.first
-            }
-            else if firstChar! != team.name.uppercased().characters.first! {
+            } else if firstChar! != team.name.uppercased().characters.first! {
                 teams.append(teamSection)
                 teamSection.removeAll()
                 firstChar = team.name.uppercased().characters.first

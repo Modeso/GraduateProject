@@ -11,13 +11,13 @@ import UIKit
 class BoxScoreMVPTableViewCell: UITableViewCell {
 
     @IBOutlet weak var homePlayerLabel: UILabel!
-    
+
     @IBOutlet weak var homePlayerPoints: UILabel!
-    
+
     @IBOutlet weak var typeLabel: UILabel!
-    
+
     @IBOutlet weak var awayPointsLabel: UILabel!
-    
+
     @IBOutlet weak var awayPlayerLabel: UILabel!
-    
+
 }

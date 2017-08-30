@@ -15,24 +15,24 @@ protocol GamesDataServiceDelegate: class {
 }
 
 class GamesDataService {
-    
+
     enum GameDataRequestType: String {
-        case schedule = "schedules"
-        case results = "results"
+        case Schedule = "schedules"
+        case Results = "results"
     }
-    
+
     weak var delegate: GamesDataServiceDelegate?
-    
+
     fileprivate var games: Dictionary<Int, Game> = [:]
-    
+
     fileprivate var isUpdating = false
-    
+
     fileprivate let currentSeason: LeaguesCommenObjects.Season
-    
+
     init(season: LeaguesCommenObjects.Season) {
         currentSeason = season
     }
-    
+
     func getGamesTable() {
         DispatchQueue.global().async { [weak self] in
             let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
@@ -45,8 +45,8 @@ class GamesDataService {
             self?.updateData()
         }
     }
-    
-    func updateData(){
+
+    func updateData() {
         if !isUpdating {
             isUpdating = true
             DispatchQueue.global().async { [weak self] in
@@ -54,41 +54,40 @@ class GamesDataService {
             }
         }
     }
-    
+
     deinit {
         print("deinit GamesDataService")
     }
 }
 
 fileprivate extension GamesDataService {
-    
+
     func getSchedule() {
         games.removeAll()
         let parameters = [ "seasoncode" : currentSeason.getSeasonCode()]
         ApiClient
             .getRequestFrom(
-                url:GameDataRequestType.schedule.rawValue,
+                url:GameDataRequestType.Schedule.rawValue,
                 parameters: parameters,
-                headers: [:]){ [weak self] data ,error in
+                headers: [:]) { [weak self] data, error in
                     if let xmlData = data, error == nil {
                         DispatchQueue.global().async { [weak self] in
                             self?.parseSchedule(xmlData)
                             self?.getResults()
                         }
-                    }
-                    else {
+                    } else {
                         print("error in schedule data")
                     }
         }
     }
-    
+
     func getResults() {
         let parameters = [ "seasoncode" : currentSeason.getSeasonCode()]
         ApiClient
             .getRequestFrom(
-                url: GameDataRequestType.results.rawValue,
+                url: GameDataRequestType.Results.rawValue,
                 parameters: parameters,
-                headers: [:]){ [weak self] data ,error in
+                headers: [:]) { [weak self] data, error in
                     if let xmlData = data, error == nil {
                         DispatchQueue.global().async { [weak self] in
                             self?.setResults(xmlData)
@@ -100,15 +99,15 @@ fileprivate extension GamesDataService {
                                 self?.games[game.gameNumber] = gameData
                                 arrayTable.append(gameData)
                             }
-                            
+
                             self?.delegate?.updateData(arrayTable)
                             self?.isUpdating = false
                         }
                     }
         }
     }
-    
-    func parseSchedule(_ xmlData: Data){
+
+    func parseSchedule(_ xmlData: Data) {
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["schedule"]["item"].all {
             let game = Game()
@@ -118,11 +117,11 @@ fileprivate extension GamesDataService {
             games[game.gameNumber] = game.clone()
         }
     }
-    
-    func setResults(_ xmlData: Data){
+
+    func setResults(_ xmlData: Data) {
         let xml = SWXMLHash.parse(xmlData)
-        for elem in xml["results"]["game"].all{
-            do{
+        for elem in xml["results"]["game"].all {
+            do {
                 let gameNumber: Int = try elem["gamenumber"].value()
                 if let played = self.games[gameNumber]?.played,
                     let currentGame = self.games[gameNumber],
@@ -139,6 +138,5 @@ fileprivate extension GamesDataService {
             }
         }
     }
-    
-}
 
+}

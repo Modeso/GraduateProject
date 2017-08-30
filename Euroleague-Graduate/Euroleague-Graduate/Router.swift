@@ -11,7 +11,7 @@ import UIKit
 import RealmSwift
 
 class Router {
-    
+
     func createLeagueGameTableController () -> MasterTableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let tableController = storyboard.instantiateViewController(
@@ -19,7 +19,7 @@ class Router {
             else { return MasterTableViewController() }
         return tableController
     }
-    
+
     func createRosterTableController () -> RostersTableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let tableController = storyboard.instantiateViewController(
@@ -27,7 +27,7 @@ class Router {
             else { return RostersTableViewController() }
         return tableController
     }
-    
+
     func createTeamStatistics() -> TeamStatisticsViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let view = storyboard.instantiateViewController(
@@ -35,7 +35,7 @@ class Router {
             else { return TeamStatisticsViewController() }
         return view
     }
-    
+
     func createGameBoxScore() -> GameBoxScoreViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let view = storyboard.instantiateViewController(
@@ -43,7 +43,7 @@ class Router {
             else { return GameBoxScoreViewController() }
         return view
     }
-    
+
     func createGameDetailWebViewController() -> GameDetailMasterWebViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let view = storyboard.instantiateViewController(
@@ -51,5 +51,5 @@ class Router {
             else { return GameDetailMasterWebViewController() }
         return view
     }
-    
+
 }

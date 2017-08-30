@@ -11,7 +11,7 @@ import AKSideMenu
 
 
 class RootViewController: AKSideMenu, AKSideMenuDelegate {
-    
+
     override public func awakeFromNib() {
         super.awakeFromNib()
         self.menuPreferredStatusBarStyle = UIStatusBarStyle.lightContent
@@ -20,30 +20,30 @@ class RootViewController: AKSideMenu, AKSideMenuDelegate {
         self.contentViewShadowOpacity = 0.6
         self.contentViewShadowRadius = 12
         self.contentViewShadowEnabled = true
-        
+
         if let season = UserDefaults.standard.value(forKey: "CurrentSeason") as? String {
             switch season {
-            case LeaguesCommenObjects.Season.turkishEuroLeague.getSeasonCode():
-                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.turkishEuroLeague
-            case LeaguesCommenObjects.Season.euroCup.getSeasonCode():
-                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.euroCup
+            case LeaguesCommenObjects.Season.TurkishEuroLeague.getSeasonCode():
+                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.TurkishEuroLeague
+            case LeaguesCommenObjects.Season.EuroCup.getSeasonCode():
+                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.EuroCup
             default:
-                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.turkishEuroLeague
+                LeaguesCommenObjects.season = LeaguesCommenObjects.Season.TurkishEuroLeague
             }
             self.contentViewController = self.storyboard!.instantiateViewController(withIdentifier: "GamesContentNavigationController")
             self.leftMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
-            
+
             self.delegate = self
         }
-        
+
     }
-    
+
     override public func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     deinit {
         print("deinit RootViewController")
     }
-    
+
 }

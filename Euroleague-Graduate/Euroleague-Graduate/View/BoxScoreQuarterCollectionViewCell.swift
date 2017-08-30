@@ -11,5 +11,5 @@ import UIKit
 class BoxScoreQuarterCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var quarterResult: UILabel!
-    
+
 }

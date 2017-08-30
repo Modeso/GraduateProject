@@ -10,21 +10,21 @@ import UIKit
 import SDWebImage
 
 class TeamsTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var teamImageView: UIImageView!
-    
+
     @IBOutlet weak var teamNameLabel: UILabel!
-    
+
     @IBOutlet weak var tvCodeLabel: UILabel!
-    
+
     @IBOutlet weak var countryNameLabel: UILabel!
-    
+
     @IBOutlet weak var separator: UIView!
-    
+
     @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
-    
+
     var team: Team? {
-        didSet{
+        didSet {
             updateUI()
         }
     }
@@ -32,7 +32,7 @@ class TeamsTableViewCell: UITableViewCell {
 }
 
 fileprivate extension TeamsTableViewCell {
-    
+
     func updateUI() {
         guard let team = self.team
             else { return }
@@ -41,5 +41,5 @@ fileprivate extension TeamsTableViewCell {
         countryNameLabel?.text = team.countryName
         teamImageView?.sd_setImage(with: URL(string:team.logoUrl), placeholderImage: UIImage(named: "emptyImage"))
     }
-    
+
 }

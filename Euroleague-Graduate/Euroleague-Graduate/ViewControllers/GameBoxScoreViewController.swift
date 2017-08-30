@@ -10,7 +10,7 @@ import UIKit
 import XLPagerTabStrip
 
 class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
-    
+
     @IBOutlet weak var homeImageView: UIImageView!
     @IBOutlet weak var awayImageView: UIImageView!
     @IBOutlet weak var resultLabel: UILabel!
@@ -23,19 +23,19 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightConstrain: NSLayoutConstraint!
     @IBOutlet weak var browserButton: UIButton!
-    
+
     fileprivate let boxScoreViewModel = BoxScoreViewModel(season: LeaguesCommenObjects.season)
-    
+
     var game: Game? {
-        didSet{
+        didSet {
             updateUI()
         }
     }
-    
+
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return "BOXSCORE"
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         boxScoreViewModel.delegate = self
@@ -43,21 +43,21 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         collectionViewHeightConstrain.constant = 0
         tableViewHeightConstrain.constant = 0
         collectionView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.old.union(NSKeyValueObservingOptions.new), context: nil)
-        
+
         if let code = game?.gameCode {
             boxScoreViewModel.getGameDetail(ofGameWithCode: code)
         }
-        
+
         // CollectionView Settings
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         collectionView.collectionViewLayout = layout
-        
+
         // TableView Settings
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+
         updateUI()
         self.view.layoutIfNeeded()
         DispatchQueue.main.async {
@@ -68,26 +68,26 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
             self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
         }
     }
-    
+
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentSize" {
             self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
         }
     }
-    
+
     @IBAction func openBoxScoreOnWebBrowser(_ sender: Any) {
         /// learn how to open it
     }
-    
+
     deinit {
         collectionView.removeObserver(self, forKeyPath: "contentSize")
         print("deinit GameBoxScoreViewController")
     }
-    
+
 }
 
 fileprivate extension GameBoxScoreViewController {
-    
+
     func updateUI() {
         guard let game = self.game
             else { return }
@@ -96,8 +96,7 @@ fileprivate extension GameBoxScoreViewController {
         if game.played {
             resultLabel?.text = "\(game.homeScore) : \(game.awayScore)"
             detailLabel?.text = "\(game.homeTv)        \(game.awayTv)"
-        }
-        else {
+        } else {
             resultLabel?.text = "Tip-Off"
             detailLabel?.text = "\(game.time)"
         }
@@ -105,34 +104,34 @@ fileprivate extension GameBoxScoreViewController {
         let date = "\(Date().convertDateToString(game.date))|\(game.time)"
         dateLabel?.text = date
     }
-    
+
 }
 
 extension GameBoxScoreViewController: UITableViewDelegate {
-    
+
 }
 
 extension GameBoxScoreViewController: UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         if game?.localTeamGameDetail != nil && game?.roadTeamGameDetail != nil {
             return 1
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if game?.localTeamGameDetail != nil && game?.roadTeamGameDetail != nil {
             return 5
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "MVPCell") {
             if let tableCell = cell as? BoxScoreMVPTableViewCell {
                 if let localTeam = game?.localTeamGameDetail,
-                    let roadTeam = game?.roadTeamGameDetail{
+                    let roadTeam = game?.roadTeamGameDetail {
                     let boxScoreInfo = boxScoreViewModel.boxScoreInfo(
                         forIndex: indexPath.row, withLocalTeam: localTeam, withRoadTeam: roadTeam)
                     tableCell.typeLabel.text = boxScoreInfo.name
@@ -140,17 +139,17 @@ extension GameBoxScoreViewController: UITableViewDataSource {
                     tableCell.awayPointsLabel.text = boxScoreInfo.guestTeamPlayerPointText
                     tableCell.homePlayerLabel.text = boxScoreInfo.homeTeamPlayerName
                     tableCell.homePlayerPoints.text = boxScoreInfo.homeTeamPlayerPointText
-                    
+
                 }
-                
+
             }
             if indexPath.row == 4 {
                 DispatchQueue.main.async {
                     self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
-                    
+
                 }
             }
-            
+
             return cell
         }
         return UITableViewCell()
@@ -158,30 +157,30 @@ extension GameBoxScoreViewController: UITableViewDataSource {
 }
 
 extension GameBoxScoreViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2, height: 40)
     }
-    
+
 }
 
 extension GameBoxScoreViewController: UICollectionViewDataSource {
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if game?.localTeamGameDetail != nil && game?.roadTeamGameDetail != nil {
             return 1
         }
         return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if game?.localTeamGameDetail != nil && game?.roadTeamGameDetail != nil {
             return game?.getQuartersPlayed() ?? 4
         }
         return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuarterCell", for: indexPath)
             as? BoxScoreQuarterCollectionViewCell {
@@ -200,12 +199,11 @@ extension GameBoxScoreViewController: UICollectionViewDataSource {
                     text = "\(qoute)\(row)   \(localScore) : \(roadScore)"
                 }
                 cell.quarterResult.text = text
-                
+
             }
             if indexPath.row % 2 == 0 {
                 cell.quarterResult.textAlignment = .right
-            }
-            else {
+            } else {
                 cell.quarterResult.textAlignment = .left
             }
             return cell
@@ -214,12 +212,12 @@ extension GameBoxScoreViewController: UICollectionViewDataSource {
     }
 }
 
-extension GameBoxScoreViewController: BoxScoreViewModelDelegate{
-    
-    func updateData(withLocalTeam localTeamDetail: GameTeamDetail?, roadTeam roadTeamDetail: GameTeamDetail?){
+extension GameBoxScoreViewController: BoxScoreViewModelDelegate {
+
+    func updateData(withLocalTeam localTeamDetail: GameTeamDetail?, roadTeam roadTeamDetail: GameTeamDetail?) {
         game?.localTeamGameDetail = localTeamDetail
         game?.roadTeamGameDetail = roadTeamDetail
-        
+
         self.collectionView.reloadData()
         self.tableView.reloadData()
         self.view.layoutIfNeeded()
@@ -228,5 +226,5 @@ extension GameBoxScoreViewController: BoxScoreViewModelDelegate{
         }
         updateUI()
     }
-    
+
 }

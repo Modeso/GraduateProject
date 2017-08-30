@@ -11,7 +11,7 @@ import RealmSwift
 import SWXMLHash
 
 class Player: Object {
-    
+
     //V2
     dynamic var code: String = ""
     dynamic var name: String = ""
@@ -19,21 +19,21 @@ class Player: Object {
     dynamic var position: String = ""
     dynamic var countryName: String = ""
     dynamic var imageUrl: String = ""
-    
+
     //V7
     dynamic var seasonCode: String = ""
-    
+
     //V10
     var team = LinkingObjects(fromType: Team.self, property: "rosters")
-    
+
     override static func primaryKey() -> String? {
         return "code"
     }
-    
+
 }
 
 extension Player {
-    
+
     func clone() -> Player {
         let newPlayer = Player()
         newPlayer.code = self.code
@@ -45,7 +45,7 @@ extension Player {
         newPlayer.seasonCode = self.seasonCode
         return newPlayer
     }
-    
+
     func parsePlayerData(_ node: XMLIndexer) {
         do {
             self.name = try node["name"].value()
@@ -59,5 +59,5 @@ extension Player {
             print(error)
         }
     }
-    
+
 }

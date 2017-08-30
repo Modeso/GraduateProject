@@ -9,19 +9,19 @@
 import UIKit
 
 class TeamsTableViewController: UIViewController {
-    
+
     @IBOutlet weak var tableView: UITableView!
-    
+
     fileprivate var teams: [Array<Team>] = [] {
         didSet {
             tableView?.reloadData()
         }
     }
-    
+
     private let teamViewModel = TeamsViewModel(season: LeaguesCommenObjects.season)
-    
+
     fileprivate var selectedTeam: Team?
-    
+
     fileprivate let headerCellColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
 
     override func viewDidLoad() {
@@ -34,12 +34,12 @@ class TeamsTableViewController: UIViewController {
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
         }
-        
+
         teamViewModel.delegate = self
         teamViewModel.getTeamsData()
     }
 
-    
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -50,7 +50,7 @@ class TeamsTableViewController: UIViewController {
             }
         }
     }
-    
+
     deinit {
         print("deinit TeamsTableViewController")
     }
@@ -58,7 +58,7 @@ class TeamsTableViewController: UIViewController {
 }
 
 extension TeamsTableViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "SectionHeader")
         if let label = headerCell?.viewWithTag(123) as? UILabel {
@@ -67,7 +67,7 @@ extension TeamsTableViewController: UITableViewDelegate {
         }
         return headerCell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 25
     }
@@ -76,11 +76,11 @@ extension TeamsTableViewController: UITableViewDelegate {
         selectedTeam = teams[indexPath.section][indexPath.row]
         performSegue(withIdentifier: "ShowTeam", sender: self)
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         tableView.reloadData()
     }
-    
+
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var sections: [String] = []
         for team in teams {
@@ -88,27 +88,26 @@ extension TeamsTableViewController: UITableViewDelegate {
         }
         return sections
     }
-    
+
 }
 
 extension TeamsTableViewController: UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return teams.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return teams[section].count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TeamsTableCell") {
             if let teamsCell = cell as? TeamsTableViewCell {
                 teamsCell.team = teams[indexPath.section][indexPath.row]
                 if indexPath.row == (teams[indexPath.section].count - 1) {
                     teamsCell.separatorHeightConstraint.constant = 0
-                }
-                else {
+                } else {
                     teamsCell.separatorHeightConstraint.constant = 7
                 }
             }
@@ -116,13 +115,13 @@ extension TeamsTableViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
+
 }
 
 extension TeamsTableViewController: TeamsDataViewModelDelegate {
-    
+
     func updateTeamsData(_ table: [Array<Team>]) {
         teams = table
     }
-    
+
 }

@@ -11,23 +11,23 @@ import AVKit
 import AVFoundation
 
 class SplashViewController: UIViewController {
-    
+
     fileprivate var player = AVPlayer()
-    
+
     @IBOutlet weak var playerView: UIView!
-    
+
     @IBOutlet weak var turkishLeagueView: UIView!
-    
+
     @IBOutlet weak var euroCupView: UIView!
-    
+
     @IBOutlet weak var textLabel: UILabel!
-    
+
     @IBOutlet weak var euroCupWidthConstrain: NSLayoutConstraint!
-    
+
     @IBOutlet weak var turkishLeagueViewTraillingConstraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var euroCupViewTraillingConstraint: NSLayoutConstraint!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         turkishLeagueView.applyGradient(colours: [UIColor.black, UIColor.clear])
@@ -37,7 +37,7 @@ class SplashViewController: UIViewController {
         playVideo()
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textLabel.isHidden = true
@@ -46,7 +46,7 @@ class SplashViewController: UIViewController {
         euroCupViewTraillingConstraint.constant -= (euroCupView.frame.width * 2)
         view.layoutIfNeeded()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
@@ -59,25 +59,25 @@ class SplashViewController: UIViewController {
                                animations: { [weak self] in
                                 self?.euroCupViewTraillingConstraint.constant = -15
                                 self?.view.layoutIfNeeded()
-                }){ [weak self] (true) in
+                }) { [weak self] (true) in
                     self?.textLabel.isHidden = false
                     self?.view.layoutIfNeeded()
                 }
             }
         }
     }
-    
-    @IBAction func LeagueChoosed(recognizer:UITapGestureRecognizer) {
+
+    @IBAction func LeagueChoosed(recognizer: UITapGestureRecognizer) {
         let season: String
         if let touchedView = recognizer.view {
             switch touchedView {
             case turkishLeagueView:
-                season = LeaguesCommenObjects.Season.turkishEuroLeague.getSeasonCode()
+                season = LeaguesCommenObjects.Season.TurkishEuroLeague.getSeasonCode()
                 UserDefaults.standard.set(season, forKey: "CurrentSeason")
                 performSegue(withIdentifier: "ShowMainScreen", sender: self)
                 break
             case euroCupView:
-                season = LeaguesCommenObjects.Season.euroCup.getSeasonCode()
+                season = LeaguesCommenObjects.Season.EuroCup.getSeasonCode()
                 UserDefaults.standard.set(season, forKey: "CurrentSeason")
                 performSegue(withIdentifier: "ShowMainScreen", sender: self)
                 break
@@ -85,12 +85,12 @@ class SplashViewController: UIViewController {
                 break
             }
         }
-        
+
     }
 }
 
 fileprivate extension SplashViewController {
-    
+
     func playVideo() {
         guard let path = Bundle.main.path(forResource: "Euroleague-Vid", ofType:"mp4") else {
             print("Euroleague-Vid.mp4 not found")
@@ -102,10 +102,10 @@ fileprivate extension SplashViewController {
         playerView.layer.addSublayer(playerLayer)
         player.play()
     }
-    
+
     @objc func playerItemDidReachEnd(notification: NSNotification) {
         self.player.seek(to: kCMTimeZero)
         self.player.play()
     }
-    
+
 }

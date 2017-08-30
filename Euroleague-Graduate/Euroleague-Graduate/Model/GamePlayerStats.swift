@@ -61,5 +61,5 @@ extension GamePlayerStats {
         } catch {
 //            print("error in blocks \(error) of player \(playerName) \(playerCode)")
         }
-    }    
+    }
 }

@@ -11,7 +11,7 @@ import UIKit
 class TeamStatisticsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var detailNameLabel: UILabel!
-    
+
     @IBOutlet weak var resultLabel: UILabel!
-    
+
 }

@@ -13,14 +13,14 @@ import SDWebImage
 class TeamDataViewController: ButtonBarPagerTabStripViewController {
 
     fileprivate var myViewControllers: Array<UIViewController> = []
-    
+
     var team: Team?
-    
+
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var tvCodeLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
-    
+
     override func viewDidLoad() {
         settings.style.buttonBarItemBackgroundColor = UIColor.getLeagueBarColor()
         settings.style.selectedBarBackgroundColor = UIColor.white
@@ -29,7 +29,7 @@ class TeamDataViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        
+
         super.viewDidLoad()
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
@@ -38,33 +38,33 @@ class TeamDataViewController: ButtonBarPagerTabStripViewController {
         containerView.backgroundColor = UIColor.clear
         updateUI()
     }
-    
+
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         createControllers()
         return myViewControllers
     }
-    
+
     deinit {
         print("deinit TeamDataViewController")
     }
 }
 
 fileprivate extension TeamDataViewController {
-    
+
     func updateUI() {
         teamNameLabel.text = team?.name
         tvCodeLabel.text = team?.tvCode
         countryLabel.text = team?.countryName
         teamImageView?.sd_setImage(with: URL(string:(team?.logoUrl)!), placeholderImage: UIImage(named: "emptyImage"))
     }
-    
+
     func createControllers() {
         let router = Router()
         guard let team = self.team?.clone() else {
             return
         }
         let roster = router.createRosterTableController()
-        if let coach = team.rosters.first?.clone(){
+        if let coach = team.rosters.first?.clone() {
             roster.coach = coach
         }
         roster.makeRostersOf(Array(team.rosters))

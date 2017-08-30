@@ -12,27 +12,27 @@ import SDWebImage
 class PlayersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var playerImageView: UIImageView!
-    
+
     @IBOutlet weak var playerNameLabel: UILabel!
-    
+
     @IBOutlet weak var dorsalLabel: UILabel!
-    
+
     @IBOutlet weak var countryNameLabel: UILabel!
-    
+
     @IBOutlet weak var separator: UIView!
-    
+
     @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
-    
+
     var player: Player? {
-        didSet{
+        didSet {
             updateUI()
         }
     }
-    
+
 }
 
 fileprivate extension PlayersTableViewCell {
-    
+
     func updateUI() {
         guard let player = self.player
             else { return }
@@ -50,5 +50,5 @@ fileprivate extension PlayersTableViewCell {
         playerImageView.layer.borderColor = UIColor.black.cgColor
         playerImageView?.sd_setImage(with: URL(string:player.imageUrl), placeholderImage: UIImage(named: "emptyPlayer"))
     }
-    
+
 }

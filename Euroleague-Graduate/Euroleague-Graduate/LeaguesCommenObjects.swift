@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 
 class LeaguesCommenObjects {
-    
+
     static let BackGroundColor: UIColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
-    
-    static var season: Season = Season.turkishEuroLeague
-    
+
+    static var season: Season = Season.TurkishEuroLeague
+
     enum Season {
-        case turkishEuroLeague
-        case euroCup
-        
+        case TurkishEuroLeague
+        case EuroCup
+
         func values() -> (season: String, color: UIColor, coloredImage: UIImage,
             unColoredImage: UIImage, navImage: UIImage, rounds: [(round: String, name: String, completeName: String)]) {
             let season: String = getSeasonCode()
@@ -29,81 +29,81 @@ class LeaguesCommenObjects {
             let rounds = getRounds()
             return (season, color, coloredImage, unColoredImage, navImage, rounds)
         }
-        
+
         func getSeasonCode() -> String {
             switch self {
-            case .turkishEuroLeague:
+            case .TurkishEuroLeague:
                 return "E2016"
-            case .euroCup:
+            case .EuroCup:
                 return "U2016"
             }
         }
-        
+
         func getColor() -> UIColor {
             switch self {
-            case .turkishEuroLeague:
+            case .TurkishEuroLeague:
                 return UIColor(red: 255.0/255, green: 88.0/255, blue: 4.0/255, alpha: 1)
-            case .euroCup:
+            case .EuroCup:
                 return UIColor(red: 0.0/255, green: 114.0/255, blue: 206.0/255, alpha: 1)
             }
         }
-        
+
         func getColoredImage() -> UIImage {
             switch self {
-            case .turkishEuroLeague:
+            case .TurkishEuroLeague:
                 if let image = UIImage(named: "el-color") {
                     return image
                 }
                 return UIImage()
-            case .euroCup:
+            case .EuroCup:
                 if let image = UIImage(named: "ec-color") {
                     return image
                 }
                 return UIImage()
             }
         }
-        
+
         func getNonColoredImage() -> UIImage {
             switch self {
-            case .turkishEuroLeague:
+            case .TurkishEuroLeague:
                 if let image = UIImage(named: "el-nocolor") {
                     return image
                 }
                 return UIImage()
-            case .euroCup:
+            case .EuroCup:
                 if let image = UIImage(named: "ec-nocolor") {
                     return image
                 }
                 return UIImage()
             }
         }
-        
+
         func getNavImage() -> UIImage {
             switch self {
-            case .turkishEuroLeague:
+            case .TurkishEuroLeague:
                 if let image = UIImage(named: "el-navbar") {
                     return image
                 }
                 return UIImage()
-            case .euroCup:
+            case .EuroCup:
                 if let image = UIImage(named: "ec-navbar") {
                     return image
                 }
                 return UIImage()
             }
         }
-        
+
         func getRounds() -> [(round: String, name: String, completeName: String)] {
             let rounds: [(round: String, name: String, completeName: String)]
             switch self {
-            case .turkishEuroLeague:
+            case .TurkishEuroLeague:
                 rounds = [
                     ("RS", "RS", "Regular Season"),
                     ("PO", "PO", "Play Offs"),
                     ("FF", "F4", "Final Four")
                 ]
                 return rounds
-            case .euroCup:
+            case .EuroCup:
                 rounds = [
                     ("RS", "RS", "Regular Season"),
                     ("TS", "T16", "Top 16"),
@@ -113,9 +113,9 @@ class LeaguesCommenObjects {
                 return rounds
             }
         }
-        
+
         func getTeamStatisticsMenuOptions() -> Dictionary<Int, (text: String, priority: Int, round: String)> {
-            var menu: Dictionary<Int,(text: String, priority: Int, round: String)> = [:]
+            var menu: Dictionary<Int, (text: String, priority: Int, round: String)> = [:]
             let rounds = getRounds()
             var counter = 2
             var priority = rounds.count
@@ -127,7 +127,7 @@ class LeaguesCommenObjects {
             }
             return menu
         }
-        
+
     }
-    
+
 }

@@ -15,16 +15,16 @@ protocol GameDataViewModelDelegate: class {
 }
 
 class GamesViewModel {
-    
+
     private var rounds: [(round: String, name: String, completeName: String)]
     fileprivate let gameDataService: GamesDataService
     fileprivate let teamDataService: TeamsDataService
-    
+
     weak var delegate: GameDataViewModelDelegate?
-    
+
     fileprivate var schedule: [Game]? {
         didSet {
-            if schedule != nil , (schedule?.count)! > 0 {
+            if schedule != nil, (schedule?.count)! > 0 {
                 for round in rounds {
                     makingTableDataOf(round.round)
                 }
@@ -34,13 +34,13 @@ class GamesViewModel {
             }
         }
     }
-    
+
     fileprivate var teams: Dictionary<String, Team> = [:]
-    
+
     fileprivate var lastPlayedGame: Dictionary<String, (section: Int, row: Int)> = [:]
-    
+
     fileprivate var table: Dictionary<String, [Array<Game>]> = [:]
-    
+
     init(season: LeaguesCommenObjects.Season) {
         rounds = season.getRounds()
         gameDataService = GamesDataService(season: season)
@@ -48,47 +48,47 @@ class GamesViewModel {
         teamDataService.delegate = self
         gameDataService.delegate = self
     }
-    
-    func getGamesData(){
+
+    func getGamesData() {
         DispatchQueue.global().async { [weak self] in
             self?.teamDataService.getTeamsTable()
         }
     }
-    
+
     func updateData() {
         DispatchQueue.global().async { [weak self] in
             self?.gameDataService.updateData()
         }
     }
-    
+
     deinit {
         print("deinit GamesViewModel")
     }
 }
 
 extension GamesViewModel: GamesDataServiceDelegate {
-    
-    func updateData(_ table: [Game]){
+
+    func updateData(_ table: [Game]) {
         DispatchQueue.global().async {
             self.schedule = table
         }
     }
-    
+
 }
 
 extension GamesViewModel: TeamsDataServiceDelegate {
-    
-    func updateData(_ table: [Team]){
+
+    func updateData(_ table: [Team]) {
         DispatchQueue.global().async { [weak self] in
             self?.makeTeamsOf(table)
             self?.gameDataService.getGamesTable()
         }
     }
-    
+
 }
 
 fileprivate extension GamesViewModel {
-    
+
     //For games
     func makingTableDataOf(_ round: String) {
         var section = 0
@@ -100,15 +100,14 @@ fileprivate extension GamesViewModel {
             let game = game.clone()
             if game.round == round {
                 if let homeUrl = teams[game.homeCode]?.logoUrl,
-                    let awayUrl = teams[game.awayCode]?.logoUrl{
+                    let awayUrl = teams[game.awayCode]?.logoUrl {
                     game.awayImageUrl = awayUrl
                     game.homeImageUrl = homeUrl
                 }
                 if prevSectionDate == nil {
                     prevSectionDate = game.date
                     lastPlayedGame[round] = (section, row)
-                }
-                else if prevSectionDate != game.date {
+                } else if prevSectionDate != game.date {
                     gamesTable.append(gameSection)
                     gameSection.removeAll()
                     section += 1
@@ -127,7 +126,7 @@ fileprivate extension GamesViewModel {
         }
         table[round] = gamesTable
     }
-    
+
     //For Teams
     func makeTeamsOf(_ table: [Team]) {
         for team in table {
@@ -135,5 +134,5 @@ fileprivate extension GamesViewModel {
             teams[club.code] = club
         }
     }
-    
+
 }

@@ -23,7 +23,7 @@ class EuroNavigationController: UINavigationController {
 }
 
 extension EuroNavigationController:  UINavigationControllerDelegate {
-    
+
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         navigationBar.barTintColor = UIColor.getLeagueBarColor()
         navigationBar.tintColor = UIColor.white

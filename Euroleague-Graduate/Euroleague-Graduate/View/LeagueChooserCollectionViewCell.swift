@@ -9,7 +9,7 @@
 import UIKit
 
 class LeagueChooserCollectionViewCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var leagueImageView: UIImageView!
-    
+
 }

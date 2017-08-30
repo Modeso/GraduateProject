@@ -15,22 +15,22 @@ protocol BoxScoreViewModelDelegate: class {
 }
 
 class BoxScoreViewModel {
-    
+
     fileprivate let gameDetailBoxScoreService: GameDetailBoxScoreDataService
-    
+
     weak var delegate: BoxScoreViewModelDelegate?
-    
+
     init(season: LeaguesCommenObjects.Season) {
         gameDetailBoxScoreService = GameDetailBoxScoreDataService(season: season)
         gameDetailBoxScoreService.delegate = self
     }
 
-    func getGameDetail(ofGameWithCode code: String){
+    func getGameDetail(ofGameWithCode code: String) {
         DispatchQueue.global().async { [weak self] in
             self?.gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code)
         }
     }
-    
+
     func boxScoreInfo(forIndex index: Int,
                       withLocalTeam localTeam: GameTeamDetail,
                       withRoadTeam roadTeam: GameTeamDetail) -> BoxScoreInfo {
@@ -39,7 +39,7 @@ class BoxScoreViewModel {
 
         var homeGamePlayerStats: GamePlayerStats?
         var guestGamePlayerStats: GamePlayerStats?
-        
+
         switch index {
         case 0:
             boxScoreInfo.name = "PTS"
@@ -78,7 +78,7 @@ class BoxScoreViewModel {
             if homeBlocksFavour > 0 {
                 homeBlocksFavourStr = "\(homeBlocksFavour)"
                 boxScoreInfo.homeTeamPlayerName = homeGamePlayerStats?.playerName ?? ""
-                
+
             }
 
             let guestBlocksFavour = guestGamePlayerStats?.blockFavour ?? 0
@@ -86,7 +86,7 @@ class BoxScoreViewModel {
             if guestBlocksFavour > 0 {
                 guestBlocksFavourStr = "\(guestBlocksFavour)"
                 boxScoreInfo.guestTeamPlayerName = guestGamePlayerStats?.playerName ?? ""
-                
+
             }
 
             boxScoreInfo.homeTeamPlayerPointText = homeBlocksFavourStr
@@ -98,11 +98,11 @@ class BoxScoreViewModel {
         if index < 4 {
             boxScoreInfo.homeTeamPlayerName = homeGamePlayerStats?.playerName ?? ""
             boxScoreInfo.guestTeamPlayerName = guestGamePlayerStats?.playerName ?? ""
-            
+
         }
         return boxScoreInfo
     }
-    
+
     deinit {
         print("deinit BoxScoreViewModel")
     }
@@ -110,13 +110,13 @@ class BoxScoreViewModel {
 }
 
 extension BoxScoreViewModel: GameDetailBoxScoreDataServiceDelegate {
-    
+
     func updateData(localTeamDetail localTeam: GameTeamDetail?, roadTeamDetail roadTeam: GameTeamDetail?) {
         DispatchQueue.main.async { [weak self] in
             self?.delegate?.updateData(withLocalTeam: localTeam, roadTeam: roadTeam)
         }
     }
-    
+
 }
 
 

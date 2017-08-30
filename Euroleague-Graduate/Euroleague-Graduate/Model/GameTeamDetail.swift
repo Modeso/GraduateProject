@@ -14,7 +14,7 @@ class GameTeamDetail: Object {
     //V5
     dynamic var seasonCode: String = ""
     dynamic var code: String = ""
-    
+
     dynamic var partial1: Int = 0
     dynamic var partial2: Int = 0
     dynamic var partial3: Int = 0
@@ -24,17 +24,17 @@ class GameTeamDetail: Object {
     dynamic var extraPeriod3: Int = 0
     dynamic var extraPeriod4: Int = 0
     dynamic var extraPeriod5: Int = 0
-    
+
     var playersStats = List<GamePlayerStats>()
-    
+
     //    override static func ignoredProperties() -> [String] {
     //        return ["playersStatus"]
     //    }
-    
+
 }
 
 extension GameTeamDetail {
-    
+
     func clone() -> GameTeamDetail {
         let newTeamGameDetail = GameTeamDetail()
         newTeamGameDetail.seasonCode = self.seasonCode
@@ -55,7 +55,7 @@ extension GameTeamDetail {
         newTeamGameDetail.playersStats = newPlayerStatus
         return newTeamGameDetail
     }
-    
+
     func parseTeamGameDetail(_ node: XMLIndexer) {
         do {
             self.code = try node.value(ofAttribute: "code")
@@ -77,8 +77,8 @@ extension GameTeamDetail {
             print(error)
         }
     }
-    
-    func getQuarter(ofRow row:Int) -> Int {
+
+    func getQuarter(ofRow row: Int) -> Int {
         switch row {
         case 0:
             return partial1
@@ -102,33 +102,33 @@ extension GameTeamDetail {
             return 0
         }
     }
-    
+
     // MARK: - Get statistics methods
     func mvpForPoints() -> GamePlayerStats? {
         let results = self.playersStats.sorted(by: { $0.score > $1.score })
         return getPlayerStats(results: results)
     }
-    
+
     func mvpForRebounds() -> GamePlayerStats? {
         let results = self.playersStats.sorted(by: { $0.totalRebounds > $1.totalRebounds })
         return getPlayerStats(results: results)
     }
-    
+
     func mvpForAssistances() -> GamePlayerStats? {
         let results = self.playersStats.sorted(by: { $0.assistances > $1.assistances })
         return getPlayerStats(results: results)
     }
-    
+
     func mvpForSteals() -> GamePlayerStats? {
         let results = self.playersStats.sorted(by: { $0.steals > $1.steals })
         return getPlayerStats(results: results)
     }
-    
+
     func mvpForBlocksFavour() -> GamePlayerStats? {
         let results = self.playersStats.sorted(by: { $0.blockFavour > $1.blockFavour })
         return getPlayerStats(results: results)
     }
-    
+
     private func getPlayerStats(results: [GamePlayerStats]?) -> GamePlayerStats? {
         let playerStat = results?.first
         if !(playerStat?.playerName == "Team" && playerStat?.playerCode == "") {

@@ -10,34 +10,34 @@ import UIKit
 import SDWebImage
 
 class GamesTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var homeImageView: UIImageView!
-    
+
     @IBOutlet weak var awayImageView: UIImageView!
-    
+
     @IBOutlet weak var resultsLabel: UILabel!
-    
+
     @IBOutlet weak var detailLabel: UILabel!
-    
+
     @IBOutlet weak var separator: UIView!
-    
+
     @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
-    
+
     var game: Game? {
-        didSet{
+        didSet {
             updateUI()
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
     }
-    
+
     private func updateUI() {
         guard let game = self.game
             else { return }
@@ -46,12 +46,10 @@ class GamesTableViewCell: UITableViewCell {
         if game.played {
             resultsLabel?.text = "\(game.homeScore) : \(game.awayScore)"
             detailLabel?.text = "\(game.homeTv)        \(game.awayTv)"
-        }
-        else {
+        } else {
             resultsLabel?.text = "Tip-Off"
             detailLabel?.text = "\(game.time)"
         }
     }
-    
-}
 
+}

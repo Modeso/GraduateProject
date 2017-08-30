@@ -9,7 +9,7 @@
 import UIKit
 
 class TeamStatisticsMenuTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var titleLabel: UILabel!
-        
+
 }

@@ -15,19 +15,19 @@ protocol TeamsDataServiceDelegate: class {
 }
 
 class TeamsDataService {
-    
+
     fileprivate let url = "teams"
-    
+
     weak var delegate: TeamsDataServiceDelegate?
-    
+
     fileprivate let currentSeason: LeaguesCommenObjects.Season
-    
+
     init(season: LeaguesCommenObjects.Season) {
         currentSeason = season
     }
-    
+
     ///Will return the teams data from DataBase
-    func getTeamsTable(){
+    func getTeamsTable() {
         DispatchQueue.global().async { [weak self] in
             let table = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "")
             var arrayTabel: [Team] = []
@@ -39,24 +39,24 @@ class TeamsDataService {
             self?.updateTeams()
         }
     }
-    
+
     func updateTeams() {
         getTeams()
     }
-    
+
     deinit {
         print("deinit TeamsDataService")
     }
-    
+
 }
 
 fileprivate extension TeamsDataService {
-    
+
     func getTeams() {
         let parameters = [ "seasoncode" : currentSeason.getSeasonCode() ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,
-                                 headers: [:]){ [weak self] data ,error in
+                                 headers: [:]) { [weak self] data, error in
                                     if let xmlData = data, error == nil {
                                         DispatchQueue.global().async { [weak self] in
                                             self?.parseTeamData(xmlData)
@@ -67,14 +67,13 @@ fileprivate extension TeamsDataService {
                                             }
                                             self?.delegate?.updateData(arrayTabel)
                                         }
-                                    }
-                                    else {
+                                    } else {
                                         ///Tell that there was an error
                                         print("error in Teams data")
                                     }
         }
     }
-    
+
     func parseTeamData(_ xmlData: Data) {
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["clubs"]["club"].all {

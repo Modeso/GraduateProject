@@ -378,7 +378,7 @@
 				A5FF78B81F0FA74E00F6E9A2 /* Resources */,
 				8E8817FA5ADF949E3C2C264B /* [CP] Embed Pods Frameworks */,
 				0AF6EFE00122B782882ED4BF /* [CP] Copy Pods Resources */,
-				FE7BD5CF1F56E5B50014D335 /* ShellScript */,
+				FE7BD5CF1F56E5B50014D335 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -599,18 +599,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Euroleague-Graduate/Pods-Euroleague-Graduate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FE7BD5CF1F56E5B50014D335 /* ShellScript */ = {
+		FE7BD5CF1F56E5B50014D335 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = Swiftlint;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
