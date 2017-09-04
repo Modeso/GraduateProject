@@ -23,11 +23,13 @@ class PlayersDataService {
         DispatchQueue.global().async {
             let player = RealmDBManager.sharedInstance.getPlayer(withCode: code)
             completion(player?.clone())
-//            self.updatePlayer(withCode: code, completion: { (player) in
-//                completion(player)
-//            })
+            self.updatePlayer(withCode: code, completion: completion)
         }
     }
+
+}
+
+fileprivate extension PlayersDataService {
 
     func updatePlayer(withCode code: String, completion:@escaping (_ player: Player) -> Void) {
         let url = "players"
@@ -50,14 +52,6 @@ class PlayersDataService {
                                     }
         }
     }
-
-    deinit {
-        print("deinit PlayersDataService")
-    }
-
-}
-
-fileprivate extension PlayersDataService {
 
     func parsePlayerData(_ xmlData: Data, code: String, completion: (Player) -> Void) {
         let xml = SWXMLHash.parse(xmlData)

@@ -10,18 +10,12 @@ import Foundation
 import SWXMLHash
 import RealmSwift
 
-protocol GamesDataServiceDelegate: class {
-    func updateData(_ table: [Game])
-}
-
 class GamesDataService {
 
     enum GameDataRequestType: String {
         case Schedule = "schedules"
         case Results = "results"
     }
-
-    weak var delegate: GamesDataServiceDelegate?
 
     fileprivate var games: Dictionary<Int, Game> = [:]
 
@@ -33,36 +27,33 @@ class GamesDataService {
         currentSeason = season
     }
 
-    func getGamesTable() {
+    func getGamesTable(completion: @escaping ([Game]) -> Void) {
         DispatchQueue.global().async { [weak self] in
             if let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "") {
                 var arrayTable: [Game] = []
                 for game in table {
                     arrayTable.append(game.clone())
                 }
-                self?.delegate?.updateData(arrayTable)
+                completion(arrayTable)
             }
-            self?.updateData()
+            self?.updateData(completion: completion)
         }
     }
 
-    func updateData() {
+    func updateData(completion: @escaping ([Game]) -> Void) {
         if !isUpdating {
             isUpdating = true
             DispatchQueue.global().async { [weak self] in
-                self?.getSchedule()
+                self?.getSchedule(completion: completion)
             }
         }
     }
 
-    deinit {
-        print("deinit GamesDataService")
-    }
 }
 
 fileprivate extension GamesDataService {
 
-    func getSchedule() {
+    func getSchedule(completion: @escaping ([Game]) -> Void) {
         games.removeAll()
         let parameters = [ "seasoncode" : currentSeason.getSeasonCode()]
         ApiClient
@@ -73,7 +64,7 @@ fileprivate extension GamesDataService {
                     if let xmlData = data, error == nil {
                         DispatchQueue.global().async { [weak self] in
                             self?.parseSchedule(xmlData)
-                            self?.getResults()
+                            self?.getResults(completion: completion)
                         }
                     } else {
                         print("error in schedule data")
@@ -81,7 +72,7 @@ fileprivate extension GamesDataService {
         }
     }
 
-    func getResults() {
+    func getResults(completion: @escaping ([Game]) -> Void) {
         let parameters = [ "seasoncode" : currentSeason.getSeasonCode()]
         ApiClient
             .getRequestFrom(
@@ -99,7 +90,7 @@ fileprivate extension GamesDataService {
                                     self?.games[game.gameNumber] = gameData
                                     arrayTable.append(gameData)
                                 }
-                                self?.delegate?.updateData(arrayTable)
+                                completion(arrayTable)
                             }
                             self?.isUpdating = false
                         }

@@ -44,10 +44,6 @@ class TeamStatisticsViewController: UIViewController, IndicatorInfoProvider {
         }
     }
 
-    deinit {
-        print("deinit TeamStatisticsViewController")
-    }
-
 }
 
 extension TeamStatisticsViewController: MenuSwapped {

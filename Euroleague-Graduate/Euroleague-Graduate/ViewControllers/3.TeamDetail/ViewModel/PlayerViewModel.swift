@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlayerViewModel {
+class PlayerViewModel: AbstractViewModel {
 
     fileprivate let playersDataService: PlayersDataService
 
@@ -16,23 +16,30 @@ class PlayerViewModel {
         playersDataService = PlayersDataService(season: season)
     }
 
-    func getPlayer(withCode code: String, completion:@escaping (Player?) -> Void) {
+    func getData(withData data: [Any]?, completion: @escaping ([NSArray]?) -> Void) {
+        if let code = data?[0] as? String {
+            getPlayer(withCode: code, completion: completion)
+        }
+    }
+
+}
+
+fileprivate extension PlayerViewModel {
+
+    func getPlayer(withCode code: String, completion:@escaping ([NSArray]?) -> Void) {
         playersDataService.getPlayer(withCode: code) { (player) in
             DispatchQueue.main.async {
-                completion(player)
+                var array: [[Player]]? = [[Player]]()
+                if let mPlayer = player {
+                    var subArray = [Player]()
+                    subArray.append(mPlayer)
+                    array?.append(subArray)
+                }
+                DispatchQueue.main.async {
+                    completion(array as [NSArray]?)
+                }
             }
         }
     }
 
-    func updatePlayer(withCode code: String, completion:@escaping (_ player: Player) -> Void) {
-        playersDataService.updatePlayer(withCode: code) { player in
-            DispatchQueue.main.async {
-                completion(player)
-            }
-        }
-    }
-
-    deinit {
-        print("deinit PlayerViewModel")
-    }
 }

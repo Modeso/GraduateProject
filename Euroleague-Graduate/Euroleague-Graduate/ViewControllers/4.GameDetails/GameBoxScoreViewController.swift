@@ -38,14 +38,20 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        boxScoreViewModel.delegate = self
         browserButton.backgroundColor = Constants.season.getColor()
         collectionViewHeightConstrain.constant = 0
         tableViewHeightConstrain.constant = 0
         collectionView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.old.union(NSKeyValueObservingOptions.new), context: nil)
 
         if let code = game?.gameCode {
-            boxScoreViewModel.getGameDetail(ofGameWithCode: code)
+            let data: Any = code
+            boxScoreViewModel.getData(withData: [data]) { [weak self] detailArray in
+                if let detailData = detailArray?[0] as? [GameTeamDetail] {
+                    self?.game?.localTeamGameDetail = detailData[0]
+                    self?.game?.roadTeamGameDetail = detailData[1]
+                    self?.updateUI()
+                }
+            }
         }
 
         // CollectionView Settings
@@ -69,6 +75,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         }
     }
 
+    // Observer on collectionView contentSize
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentSize" {
             self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
@@ -81,7 +88,6 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
 
     deinit {
         collectionView.removeObserver(self, forKeyPath: "contentSize")
-        print("deinit GameBoxScoreViewController")
     }
 
 }
@@ -103,6 +109,13 @@ fileprivate extension GameBoxScoreViewController {
         codeLabel?.text = "#\(game.homeTv)\(game.awayTv)"
         let date = "\(game.date.convertDateToString())|\(game.time)"
         dateLabel?.text = date
+
+        self.collectionView?.reloadData()
+        self.tableView?.reloadData()
+        self.view.layoutIfNeeded()
+        DispatchQueue.main.async {
+            self.tableViewHeightConstrain?.constant = self.tableView?.contentSize.height ?? 0
+        }
     }
 
 }
@@ -210,21 +223,4 @@ extension GameBoxScoreViewController: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
-}
-
-extension GameBoxScoreViewController: BoxScoreViewModelDelegate {
-
-    func updateData(withLocalTeam localTeamDetail: GameTeamDetail?, roadTeam roadTeamDetail: GameTeamDetail?) {
-        game?.localTeamGameDetail = localTeamDetail
-        game?.roadTeamGameDetail = roadTeamDetail
-
-        self.collectionView.reloadData()
-        self.tableView.reloadData()
-        self.view.layoutIfNeeded()
-        DispatchQueue.main.async {
-            self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
-        }
-        updateUI()
-    }
-
 }

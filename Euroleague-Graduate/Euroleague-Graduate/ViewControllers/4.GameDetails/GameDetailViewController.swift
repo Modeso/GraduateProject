@@ -40,10 +40,6 @@ class GameDetailViewController: ButtonBarPagerTabStripViewController {
         return myViewControllers
     }
 
-    deinit {
-        print("deinit GameDetailViewController")
-    }
-
 }
 
 fileprivate extension GameDetailViewController {

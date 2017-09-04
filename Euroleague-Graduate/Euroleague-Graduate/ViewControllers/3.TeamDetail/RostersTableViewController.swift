@@ -57,9 +57,6 @@ class RostersTableViewController: UIViewController, IndicatorInfoProvider {
         self.tableView?.reloadData()
     }
 
-    deinit {
-        print("deinit RostersTableViewController")
-    }
 }
 
 extension RostersTableViewController: UITableViewDelegate {
@@ -67,10 +64,15 @@ extension RostersTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell.reuseIdentifier == "PlayersTableCell" {
             if rosters[indexPath.section][indexPath.row].imageUrl == "" {
-                playersViewModel.updatePlayer(withCode: rosters[indexPath.section][indexPath.row].code) { [weak self] player in
-                    self?.rosters[indexPath.section][indexPath.row] = player
-                    if let playerCell = tableView.cellForRow(at: indexPath) as? PlayersTableViewCell {
-                        playerCell.player = player
+                let code: Any = rosters[indexPath.section][indexPath.row].code
+                playersViewModel.getData(withData: [code]) { [weak self] playerArray in
+                    if let mArray = playerArray,
+                        mArray.count > 0,
+                        let mPlayer = mArray[0][0] as? Player {
+                        self?.rosters[indexPath.section][indexPath.row] = mPlayer
+                        if let playerCell = tableView.cellForRow(at: indexPath) as? PlayersTableViewCell {
+                            playerCell.player = mPlayer
+                        }
                     }
                 }
             }

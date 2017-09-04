@@ -42,8 +42,4 @@ class RootViewController: AKSideMenu, AKSideMenuDelegate {
         super.viewDidLoad()
     }
 
-    deinit {
-        print("deinit RootViewController")
-    }
-
 }

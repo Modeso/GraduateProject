@@ -16,8 +16,8 @@ IndicatorInfoProvider {
         didSet {
             if isAppear {
                 self.tableView?.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
             }
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
 
@@ -47,7 +47,7 @@ IndicatorInfoProvider {
         if let refreshing = pagerDelegate?.isRefreshing(),
             !refreshing {
             tableView.refreshControl?.beginRefreshing()
-            pagerDelegate?.getUpdatedData()
+            pagerDelegate?.getUpdatedData(ofRound: round.round)
         }
 
     }
@@ -137,10 +137,6 @@ IndicatorInfoProvider {
         tableView.reloadData()
     }
 
-    deinit {
-        print("deinit MasterTableViewController")
-    }
-
 }
 
 extension MasterTableViewController {
@@ -165,6 +161,7 @@ extension MasterTableViewController: PagerUpdateChildData {
                     moveToLastPlayed()
                 }
             } else {
+                firstLoad = false
                 self.indexPath = indexPath
                 moveToLastPlayed()
             }

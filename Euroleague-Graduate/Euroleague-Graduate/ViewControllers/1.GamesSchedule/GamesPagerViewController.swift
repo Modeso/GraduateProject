@@ -17,7 +17,7 @@ protocol PagerUpdateChildData {
 }
 
 protocol PagerUpdateDelegate: class {
-    func getUpdatedData()
+    func getUpdatedData(ofRound round: String)
     func isRefreshing() -> Bool
 }
 
@@ -39,7 +39,6 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        viewModel.delegate = self
 
         super.viewDidLoad()
 
@@ -51,24 +50,35 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
         }
     }
 
-    deinit {
-        print("deinit GamesPagerViewController")
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.delegate = self
 
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        viewModel.delegate = nil
-
     }
-    private func createControllers() {
+
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        createControllers()
+        refreshing = false
+        return myViewControllers
+    }
+
+}
+
+fileprivate extension GamesPagerViewController {
+
+    func createControllers() {
         let router = Router()
         let rounds = Constants.season.getRounds()
         for round in rounds {
             let roundViewController = router.createLeagueGameTableController()
+            viewModel.getData(withData: [round.round]) { schedule in
+                if let games = schedule as? [[Game]],
+                    let lastGame = self.viewModel.getLastGame(round: round.round) {
+                    roundViewController.updateUIWithData(games, lastGameIndex: lastGame)
+                }
+            }
             roundViewController.round = round
             myViewControllers.append(roundViewController)
         }
@@ -78,39 +88,31 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
 
     }
 
-    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        createControllers()
-        viewModel.getGamesData()
-        refreshing = true
-        return myViewControllers
-    }
-
-}
-
-extension GamesPagerViewController: GameDataViewModelDelegate {
-
-    func updateControllersData(_ table: Dictionary<String, [Array<Game>]>,
-                               lastPlayedGames: Dictionary<String, (section: Int, row: Int)>) {
-        for controller in myViewControllers {
-            if let lastGameIndex =  lastPlayedGames[controller.getRound()],
-                let schedule = table[controller.getRound()] {
-                controller.updateUIWithData(
-                    schedule,
-                    lastGameIndex: lastGameIndex)
-            }
-
-        }
-        refreshing = false
-    }
-
 }
 
 extension GamesPagerViewController: PagerUpdateDelegate {
 
     // pull down to refresh..
-    func getUpdatedData() {
+    func getUpdatedData(ofRound round: String) {
         refreshing = true
-        viewModel.updateData()
+        viewModel.updateData(withData: round) { schedule in
+            for controller in self.myViewControllers {
+                if controller.round.round == round {
+                    self.refreshing = false
+                    if let games = schedule as? [[Game]],
+                        let lastGame = self.viewModel.getLastGame(round: round) {
+                        if Thread.isMainThread {
+                            controller.updateUIWithData(games, lastGameIndex: lastGame)
+                        } else {
+                            DispatchQueue.main.async {
+                                controller.updateUIWithData(games, lastGameIndex: lastGame)
+                            }
+                        }
+                    }
+                    break
+                }
+            }
+        }
     }
 
     func isRefreshing() -> Bool {

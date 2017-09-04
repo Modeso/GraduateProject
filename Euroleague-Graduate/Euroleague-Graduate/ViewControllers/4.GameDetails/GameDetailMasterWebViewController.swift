@@ -44,7 +44,6 @@ class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider
 
     deinit {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        print("deinit GameDetailMasterWebViewController")
     }
 
 }

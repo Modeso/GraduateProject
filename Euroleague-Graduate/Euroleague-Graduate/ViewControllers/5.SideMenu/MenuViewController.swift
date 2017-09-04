@@ -49,10 +49,6 @@ class MenuViewController: UIViewController {
         }
     }
 
-    deinit {
-        print("deinit MenuViewController")
-    }
-
 }
 
 extension MenuViewController {

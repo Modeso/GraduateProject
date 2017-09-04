@@ -34,9 +34,17 @@ class TeamsTableViewController: UIViewController {
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
         }
-
-        teamViewModel.delegate = self
-        teamViewModel.getTeamsData()
+        teamViewModel.getData(withData: nil) { teamsTable in
+            if let clubs = teamsTable as? [[Team]] {
+                if Thread.isMainThread {
+                    self.teams = clubs
+                } else {
+                    DispatchQueue.main.async {
+                        self.teams = clubs
+                    }
+                }
+            }
+        }
     }
 
 
@@ -49,10 +57,6 @@ class TeamsTableViewController: UIViewController {
                 destination.team = selectedTeam
             }
         }
-    }
-
-    deinit {
-        print("deinit TeamsTableViewController")
     }
 
 }
@@ -117,14 +121,6 @@ extension TeamsTableViewController: UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
-    }
-
-}
-
-extension TeamsTableViewController: TeamsDataViewModelDelegate {
-
-    func updateTeamsData(_ table: [Array<Team>]) {
-        teams = table
     }
 
 }

@@ -64,10 +64,6 @@ class TeamStatisticsMenuTableViewController: UIViewController {
         }
     }
 
-    deinit {
-        print("deinit TeamStatisticsMenuTableViewController")
-    }
-
 }
 
 extension TeamStatisticsMenuTableViewController: UITableViewDelegate {

@@ -10,16 +10,9 @@ import Foundation
 import RealmSwift
 import SWXMLHash
 
-protocol TeamsDataServiceDelegate: class {
-    func updateData(_ table: [Team])
-}
-
 class TeamsDataService {
 
     fileprivate let url = "teams"
-
-    weak var delegate: TeamsDataServiceDelegate?
-
     fileprivate let currentSeason: Constants.Season
 
     init(season: Constants.Season) {
@@ -27,32 +20,28 @@ class TeamsDataService {
     }
 
     ///Will return the teams data from DataBase
-    func getTeamsTable() {
+    func getTeamsTable(completion: @escaping ([Team]) -> Void) {
         DispatchQueue.global().async { [weak self] in
             if let table = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "") {
                 var arrayTabel: [Team] = []
                 for team in table {
                     arrayTabel.append(team.clone())
                 }
-                self?.delegate?.updateData(arrayTabel)
+                completion(arrayTabel)
             }
-            self?.updateTeams()
+            self?.updateTeams(completion: completion)
         }
-    }
-
-    func updateTeams() {
-        getTeams()
-    }
-
-    deinit {
-        print("deinit TeamsDataService")
     }
 
 }
 
 fileprivate extension TeamsDataService {
 
-    func getTeams() {
+    func updateTeams(completion: @escaping ([Team]) -> Void) {
+        getTeams(completion: completion)
+    }
+
+    func getTeams(completion: @escaping ([Team]) -> Void) {
         let parameters = [ "seasoncode" : currentSeason.getSeasonCode() ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,
@@ -65,7 +54,7 @@ fileprivate extension TeamsDataService {
                                                 for team in table {
                                                     arrayTabel.append(team.clone())
                                                 }
-                                                self?.delegate?.updateData(arrayTabel)
+                                                completion(arrayTabel)
                                             }
                                         }
                                     } else {

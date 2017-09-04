@@ -14,20 +14,31 @@ protocol BoxScoreViewModelDelegate: class {
     func updateData(withLocalTeam localTeamDetail: GameTeamDetail?, roadTeam roadTeamDetail: GameTeamDetail?)
 }
 
-class BoxScoreViewModel {
+class BoxScoreViewModel: AbstractViewModel {
 
     fileprivate let gameDetailBoxScoreService: GameDetailBoxScoreDataService
 
-    weak var delegate: BoxScoreViewModelDelegate?
-
     init(season: Constants.Season) {
         gameDetailBoxScoreService = GameDetailBoxScoreDataService(season: season)
-        gameDetailBoxScoreService.delegate = self
     }
 
-    func getGameDetail(ofGameWithCode code: String) {
-        DispatchQueue.global().async { [weak self] in
-            self?.gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code)
+    func getData(withData data: [Any]?, completion: @escaping ([NSArray]?) -> Void) {
+        if let code = data?[0] as? String {
+            DispatchQueue.global().async { [weak self] in
+                self?.gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code) {(localTeamDetail, roadTeamDetail) in
+                    var array: [[GameTeamDetail]]? = [[GameTeamDetail]]()
+                    guard let local = localTeamDetail, let road = roadTeamDetail
+                        else {
+                            completion(nil)
+                            return
+                    }
+                    let subArray = [local, road]
+                    array?.append(subArray)
+                    DispatchQueue.main.async {
+                        completion(array as [NSArray]?)
+                    }
+                }
+            }
         }
     }
 
@@ -103,22 +114,20 @@ class BoxScoreViewModel {
         return boxScoreInfo
     }
 
-    deinit {
-        print("deinit BoxScoreViewModel")
-    }
-
 }
 
-extension BoxScoreViewModel: GameDetailBoxScoreDataServiceDelegate {
+extension BoxScoreViewModel {
 
-    func updateData(localTeamDetail localTeam: GameTeamDetail?, roadTeamDetail roadTeam: GameTeamDetail?) {
-        DispatchQueue.main.async { [weak self] in
-            self?.delegate?.updateData(withLocalTeam: localTeam, roadTeam: roadTeam)
+    func getGameDetail(ofGameWithCode code: String,
+                       completion: @escaping (_ localTeamDetail: GameTeamDetail?, _ roadTeamDetail: GameTeamDetail?) -> Void) {
+        DispatchQueue.global().async { [weak self] in
+            self?.gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code) { (localTeamDetail, roadTeamDetail) in
+                completion(localTeamDetail, roadTeamDetail)
+            }
         }
     }
 
 }
-
 
 struct BoxScoreInfo {
     var name: String = ""

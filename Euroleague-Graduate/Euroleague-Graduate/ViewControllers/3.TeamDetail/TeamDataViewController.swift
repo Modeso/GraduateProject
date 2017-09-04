@@ -46,9 +46,6 @@ class TeamDataViewController: ButtonBarPagerTabStripViewController {
         return myViewControllers
     }
 
-    deinit {
-        print("deinit TeamDataViewController")
-    }
 }
 
 fileprivate extension TeamDataViewController {

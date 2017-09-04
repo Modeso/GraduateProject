@@ -26,27 +26,25 @@ class GameDetailBoxScoreDataService {
         currentSeason = season
     }
 
-    func getScoreBoxResults(ofGameWithCode code: String) {
+    func getScoreBoxResults(ofGameWithCode code: String,
+                            completion: @escaping (_ localTeamDetail: GameTeamDetail?, _ roadTeamDetail: GameTeamDetail?) -> Void) {
         DispatchQueue.global().async { [weak self] in
             let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code)
             let game = realmGame?.clone()
-            self?.delegate?.updateData(localTeamDetail: game?.localTeamGameDetail?.clone(), roadTeamDetail: game?.roadTeamGameDetail?.clone())
-//            completion(game?.localTeamGameDetail?.clone(), game?.roadTeamGameDetail?.clone())
+            completion(game?.localTeamGameDetail?.clone(), game?.roadTeamGameDetail?.clone())
             if let code = game?.gameNumber {
-                self?.updateScoreBoxResults(ofGameWithCode: String(code))
+                self?.updateScoreBoxResults(ofGameWithCode: String(code), completion: completion)
             }
         }
 
     }
 
-    deinit {
-        print("deinit GameDetailBoxScoreDataService")
-    }
 }
 
 fileprivate extension GameDetailBoxScoreDataService {
 
-    func updateScoreBoxResults(ofGameWithCode code: String) {
+    func updateScoreBoxResults(ofGameWithCode code: String,
+                               completion: @escaping (_ localTeamDetail: GameTeamDetail?, _ roadTeamDetail: GameTeamDetail?) -> Void) {
         let url = "games"
         let parameters = [
             "gamecode" : code,
@@ -63,7 +61,7 @@ fileprivate extension GameDetailBoxScoreDataService {
                             gameCode = "\(gameCode)_\(code)"
                             RealmDBManager.sharedInstance.updateGameTeamsDetailFor(gameWithCode: gameCode, localTeam: self?.localTeamDetail?.clone(), roadTeam: self?.roadTeamDetail?.clone())
                         }
-                        self?.delegate?.updateData(localTeamDetail: self?.localTeamDetail?.clone(), roadTeamDetail: self?.roadTeamDetail?.clone())
+                        completion(self?.localTeamDetail?.clone(), self?.roadTeamDetail?.clone())
                     }
                 }
         }
