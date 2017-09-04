@@ -18,7 +18,7 @@ class TeamsTableViewController: UIViewController {
         }
     }
 
-    private let teamViewModel = TeamsViewModel(season: LeaguesCommenObjects.season)
+    private let teamViewModel = TeamsViewModel(season: Constants.season)
 
     fileprivate var selectedTeam: Team?
 

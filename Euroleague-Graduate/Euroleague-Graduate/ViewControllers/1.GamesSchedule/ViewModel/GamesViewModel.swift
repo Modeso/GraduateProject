@@ -41,7 +41,7 @@ class GamesViewModel {
 
     fileprivate var table: Dictionary<String, [Array<Game>]> = [:]
 
-    init(season: LeaguesCommenObjects.Season) {
+    init(season: Constants.Season) {
         rounds = season.getRounds()
         gameDataService = GamesDataService(season: season)
         teamDataService = TeamsDataService(season: season)

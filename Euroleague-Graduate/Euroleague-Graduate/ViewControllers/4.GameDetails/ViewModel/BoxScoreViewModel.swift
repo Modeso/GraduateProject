@@ -20,7 +20,7 @@ class BoxScoreViewModel {
 
     weak var delegate: BoxScoreViewModelDelegate?
 
-    init(season: LeaguesCommenObjects.Season) {
+    init(season: Constants.Season) {
         gameDetailBoxScoreService = GameDetailBoxScoreDataService(season: season)
         gameDetailBoxScoreService.delegate = self
     }

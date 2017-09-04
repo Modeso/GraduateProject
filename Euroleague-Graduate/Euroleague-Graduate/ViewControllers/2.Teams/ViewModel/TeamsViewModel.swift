@@ -32,7 +32,7 @@ class TeamsViewModel {
 
     weak var delegate: TeamsDataViewModelDelegate?
 
-    init(season: LeaguesCommenObjects.Season) {
+    init(season: Constants.Season) {
         teamDataService = TeamsDataService(season: season)
         teamDataService.delegate = self
     }

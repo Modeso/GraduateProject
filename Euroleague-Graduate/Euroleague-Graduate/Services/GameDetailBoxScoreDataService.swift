@@ -20,9 +20,9 @@ class GameDetailBoxScoreDataService {
 
     weak var delegate: GameDetailBoxScoreDataServiceDelegate?
 
-    fileprivate let currentSeason: LeaguesCommenObjects.Season
+    fileprivate let currentSeason: Constants.Season
 
-    init(season: LeaguesCommenObjects.Season) {
+    init(season: Constants.Season) {
         currentSeason = season
     }
 

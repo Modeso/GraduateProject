@@ -25,7 +25,7 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
 
     fileprivate var myViewControllers: Array<MasterTableViewController> = []
 
-    fileprivate let viewModel = GamesViewModel(season: LeaguesCommenObjects.season)
+    fileprivate let viewModel = GamesViewModel(season: Constants.season)
 
     fileprivate var refreshing = true
 
@@ -66,7 +66,7 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
     }
     private func createControllers() {
         let router = Router()
-        let rounds = LeaguesCommenObjects.season.getRounds()
+        let rounds = Constants.season.getRounds()
         for round in rounds {
             let roundViewController = router.createLeagueGameTableController()
             roundViewController.round = round

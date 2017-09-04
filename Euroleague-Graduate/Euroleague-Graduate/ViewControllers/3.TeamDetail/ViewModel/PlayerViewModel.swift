@@ -12,7 +12,7 @@ class PlayerViewModel {
 
     fileprivate let playersDataService: PlayersDataService
 
-    init(season: LeaguesCommenObjects.Season) {
+    init(season: Constants.Season) {
         playersDataService = PlayersDataService(season: season)
     }
 

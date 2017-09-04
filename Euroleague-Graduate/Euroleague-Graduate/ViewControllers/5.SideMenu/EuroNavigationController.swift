@@ -28,7 +28,7 @@ extension EuroNavigationController:  UINavigationControllerDelegate {
         navigationBar.barTintColor = UIColor.getLeagueBarColor()
         navigationBar.tintColor = UIColor.white
         navigationBar.isTranslucent = false
-        let navImage = LeaguesCommenObjects.season.getNavImage()
+        let navImage = Constants.season.getNavImage()
         let navImageView = UIImageView(image: navImage)
         navImageView.contentMode = .scaleAspectFit
 //        navImageView.center = CGPoint(x: navigationBar.center.x, y: navigationBar.center.y - 20)

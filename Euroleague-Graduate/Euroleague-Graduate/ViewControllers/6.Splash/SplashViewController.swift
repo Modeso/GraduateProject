@@ -72,12 +72,12 @@ class SplashViewController: UIViewController {
         if let touchedView = recognizer.view {
             switch touchedView {
             case turkishLeagueView:
-                season = LeaguesCommenObjects.Season.TurkishEuroLeague.getSeasonCode()
+                season = Constants.Season.TurkishEuroLeague.getSeasonCode()
                 UserDefaults.standard.set(season, forKey: "CurrentSeason")
                 performSegue(withIdentifier: "ShowMainScreen", sender: self)
                 break
             case euroCupView:
-                season = LeaguesCommenObjects.Season.EuroCup.getSeasonCode()
+                season = Constants.Season.EuroCup.getSeasonCode()
                 UserDefaults.standard.set(season, forKey: "CurrentSeason")
                 performSegue(withIdentifier: "ShowMainScreen", sender: self)
                 break

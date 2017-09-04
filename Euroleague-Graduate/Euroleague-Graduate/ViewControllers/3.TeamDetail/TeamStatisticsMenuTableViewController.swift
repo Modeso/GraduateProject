@@ -36,7 +36,7 @@ class TeamStatisticsMenuTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        menu = LeaguesCommenObjects.season.getTeamStatisticsMenuOptions()
+        menu = Constants.season.getTeamStatisticsMenuOptions()
         tableView.reloadData()
         delegate?.changeMenuSize(withItemsCount: 1)
     }

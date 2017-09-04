@@ -57,13 +57,13 @@ fileprivate extension GameDetailViewController {
             else { return }
         let playByPlay = router.createGameDetailWebViewController()
         playByPlay.name = "PLAY BY PLAY"
-        playByPlay.urlString = createWebViewUrl(type: "pbpmobile", gameCode: gameNumber, season: LeaguesCommenObjects.season.getSeasonCode())
+        playByPlay.urlString = createWebViewUrl(type: "pbpmobile", gameCode: gameNumber, season: Constants.season.getSeasonCode())
         let shootingChart = router.createGameDetailWebViewController()
         shootingChart.name = "SHOOTING CHART"
-        shootingChart.urlString = createWebViewUrl(type: "shootingchart", gameCode: gameNumber, season: LeaguesCommenObjects.season.getSeasonCode())
+        shootingChart.urlString = createWebViewUrl(type: "shootingchart", gameCode: gameNumber, season: Constants.season.getSeasonCode())
         let gameEvolution = router.createGameDetailWebViewController()
         gameEvolution.name = "GAME EVOLUTION"
-        gameEvolution.urlString = createWebViewUrl(type: "graphic", gameCode: gameNumber, season: LeaguesCommenObjects.season.getSeasonCode())
+        gameEvolution.urlString = createWebViewUrl(type: "graphic", gameCode: gameNumber, season: Constants.season.getSeasonCode())
         myViewControllers.append(shootingChart)
         myViewControllers.append(gameEvolution)
         myViewControllers.append(playByPlay)

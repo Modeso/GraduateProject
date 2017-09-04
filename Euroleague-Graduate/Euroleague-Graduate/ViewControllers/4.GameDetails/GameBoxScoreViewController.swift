@@ -24,7 +24,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var tableViewHeightConstrain: NSLayoutConstraint!
     @IBOutlet weak var browserButton: UIButton!
 
-    fileprivate let boxScoreViewModel = BoxScoreViewModel(season: LeaguesCommenObjects.season)
+    fileprivate let boxScoreViewModel = BoxScoreViewModel(season: Constants.season)
 
     var game: Game? {
         didSet {
@@ -39,7 +39,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         boxScoreViewModel.delegate = self
-        browserButton.backgroundColor = LeaguesCommenObjects.season.getColor()
+        browserButton.backgroundColor = Constants.season.getColor()
         collectionViewHeightConstrain.constant = 0
         tableViewHeightConstrain.constant = 0
         collectionView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.old.union(NSKeyValueObservingOptions.new), context: nil)
