@@ -8,7 +8,7 @@
 
 import Foundation
 import RealmSwift
-
+import EuroLeagueKit
 
 class TeamsViewModel: AbstractViewModel {
 
@@ -29,9 +29,14 @@ fileprivate extension TeamsViewModel {
     func getTeamsData(completion: @escaping ([NSArray]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
             self?.teamDataService.getTeamsTable() { (clubs) in
-                let teams = self?.makeTeams(from: clubs)
-                DispatchQueue.main.async {
-                    completion(teams as [NSArray]?)
+                if let clubsData = clubs {
+                    let teams = self?.makeTeams(from: clubsData)
+                    DispatchQueue.main.async {
+                        completion(teams as [NSArray]?)
+                    }
+
+                } else {
+                        completion(nil)
                 }
             }
         }

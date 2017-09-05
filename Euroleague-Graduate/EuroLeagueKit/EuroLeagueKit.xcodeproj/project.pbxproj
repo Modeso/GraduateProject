@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE34F42540DEDDB7B207C297 /* Pods_EuroLeagueKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42367D9AF4F3C45C41CB607F /* Pods_EuroLeagueKit.framework */; };
+		FE466AEF1F5EABDA00075CB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466ADA1F5EABDA00075CB0 /* Constants.swift */; };
+		FE466AF01F5EABDA00075CB0 /* RealmDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466ADB1F5EABDA00075CB0 /* RealmDBManager.swift */; };
+		FE466AF11F5EABDA00075CB0 /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466ADD1F5EABDA00075CB0 /* DateExtention.swift */; };
+		FE466AF21F5EABDA00075CB0 /* FloatExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466ADE1F5EABDA00075CB0 /* FloatExtention.swift */; };
+		FE466AF31F5EABDA00075CB0 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466ADF1F5EABDA00075CB0 /* StringExtention.swift */; };
+		FE466AF41F5EABDA00075CB0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AE01F5EABDA00075CB0 /* UIColorExtension.swift */; };
+		FE466AF51F5EABDA00075CB0 /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AE11F5EABDA00075CB0 /* UIViewExtention.swift */; };
+		FE466AF61F5EABDA00075CB0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AE31F5EABDA00075CB0 /* Game.swift */; };
+		FE466AF71F5EABDA00075CB0 /* GamePlayerStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AE41F5EABDA00075CB0 /* GamePlayerStats.swift */; };
+		FE466AF81F5EABDA00075CB0 /* GameTeamDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AE51F5EABDA00075CB0 /* GameTeamDetail.swift */; };
+		FE466AF91F5EABDA00075CB0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AE61F5EABDA00075CB0 /* Player.swift */; };
+		FE466AFA1F5EABDA00075CB0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AE71F5EABDA00075CB0 /* Team.swift */; };
+		FE466AFC1F5EABDA00075CB0 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AEA1F5EABDA00075CB0 /* ApiClient.swift */; };
+		FE466AFD1F5EABDA00075CB0 /* GameDetailBoxScoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AEB1F5EABDA00075CB0 /* GameDetailBoxScoreDataService.swift */; };
+		FE466AFE1F5EABDA00075CB0 /* GamesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AEC1F5EABDA00075CB0 /* GamesDataService.swift */; };
+		FE466AFF1F5EABDA00075CB0 /* PlayersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AED1F5EABDA00075CB0 /* PlayersDataService.swift */; };
+		FE466B001F5EABDA00075CB0 /* TeamsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE466AEE1F5EABDA00075CB0 /* TeamsDataService.swift */; };
+		FE4BF7E51F5EC78A00ADF8D5 /* Constants.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466ADA1F5EABDA00075CB0 /* Constants.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7E61F5EC78C00ADF8D5 /* RealmDBManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466ADB1F5EABDA00075CB0 /* RealmDBManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7E71F5EC79400ADF8D5 /* DateExtention.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466ADD1F5EABDA00075CB0 /* DateExtention.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7E81F5EC79400ADF8D5 /* FloatExtention.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466ADE1F5EABDA00075CB0 /* FloatExtention.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7E91F5EC79400ADF8D5 /* StringExtention.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466ADF1F5EABDA00075CB0 /* StringExtention.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7EA1F5EC79400ADF8D5 /* UIColorExtension.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AE01F5EABDA00075CB0 /* UIColorExtension.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7EB1F5EC79400ADF8D5 /* UIViewExtention.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AE11F5EABDA00075CB0 /* UIViewExtention.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7EC1F5EC7B500ADF8D5 /* Game.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AE31F5EABDA00075CB0 /* Game.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7ED1F5EC7B500ADF8D5 /* GamePlayerStats.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AE41F5EABDA00075CB0 /* GamePlayerStats.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7EE1F5EC7B500ADF8D5 /* GameTeamDetail.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AE51F5EABDA00075CB0 /* GameTeamDetail.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7EF1F5EC7B500ADF8D5 /* Player.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AE61F5EABDA00075CB0 /* Player.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7F01F5EC7B500ADF8D5 /* Team.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AE71F5EABDA00075CB0 /* Team.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7F21F5EC7B500ADF8D5 /* ApiClient.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AEA1F5EABDA00075CB0 /* ApiClient.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7F31F5EC7B500ADF8D5 /* GameDetailBoxScoreDataService.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AEB1F5EABDA00075CB0 /* GameDetailBoxScoreDataService.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7F41F5EC7B500ADF8D5 /* GamesDataService.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AEC1F5EABDA00075CB0 /* GamesDataService.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7F51F5EC7B500ADF8D5 /* PlayersDataService.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AED1F5EABDA00075CB0 /* PlayersDataService.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE4BF7F61F5EC7B500ADF8D5 /* TeamsDataService.swift in Headers */ = {isa = PBXBuildFile; fileRef = FE466AEE1F5EABDA00075CB0 /* TeamsDataService.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE8F97631F5EA58D00E98D3F /* EuroLeagueKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FE8F97611F5EA58D00E98D3F /* EuroLeagueKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		42367D9AF4F3C45C41CB607F /* Pods_EuroLeagueKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroLeagueKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9563D496291EE4DABE47B469 /* Pods-EuroLeagueKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroLeagueKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EuroLeagueKit/Pods-EuroLeagueKit.debug.xcconfig"; sourceTree = "<group>"; };
+		CFBCCBFF99D37C4D2B3BC54F /* Pods-EuroLeagueKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroLeagueKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-EuroLeagueKit/Pods-EuroLeagueKit.release.xcconfig"; sourceTree = "<group>"; };
+		FE466ADA1F5EABDA00075CB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FE466ADB1F5EABDA00075CB0 /* RealmDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDBManager.swift; sourceTree = "<group>"; };
+		FE466ADD1F5EABDA00075CB0 /* DateExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
+		FE466ADE1F5EABDA00075CB0 /* FloatExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtention.swift; sourceTree = "<group>"; };
+		FE466ADF1F5EABDA00075CB0 /* StringExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
+		FE466AE01F5EABDA00075CB0 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		FE466AE11F5EABDA00075CB0 /* UIViewExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
+		FE466AE31F5EABDA00075CB0 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		FE466AE41F5EABDA00075CB0 /* GamePlayerStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayerStats.swift; sourceTree = "<group>"; };
+		FE466AE51F5EABDA00075CB0 /* GameTeamDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTeamDetail.swift; sourceTree = "<group>"; };
+		FE466AE61F5EABDA00075CB0 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		FE466AE71F5EABDA00075CB0 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		FE466AEA1F5EABDA00075CB0 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		FE466AEB1F5EABDA00075CB0 /* GameDetailBoxScoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailBoxScoreDataService.swift; sourceTree = "<group>"; };
+		FE466AEC1F5EABDA00075CB0 /* GamesDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesDataService.swift; sourceTree = "<group>"; };
+		FE466AED1F5EABDA00075CB0 /* PlayersDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersDataService.swift; sourceTree = "<group>"; };
+		FE466AEE1F5EABDA00075CB0 /* TeamsDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsDataService.swift; sourceTree = "<group>"; };
+		FE8F975E1F5EA58D00E98D3F /* EuroLeagueKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EuroLeagueKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE8F97611F5EA58D00E98D3F /* EuroLeagueKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EuroLeagueKit.h; sourceTree = "<group>"; };
+		FE8F97621F5EA58D00E98D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE8F975A1F5EA58D00E98D3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE34F42540DEDDB7B207C297 /* Pods_EuroLeagueKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB1171E5B51F4F942911EA3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42367D9AF4F3C45C41CB607F /* Pods_EuroLeagueKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D47506AED94E055E99BF73FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9563D496291EE4DABE47B469 /* Pods-EuroLeagueKit.debug.xcconfig */,
+				CFBCCBFF99D37C4D2B3BC54F /* Pods-EuroLeagueKit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FE466AD91F5EABDA00075CB0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FE466ADA1F5EABDA00075CB0 /* Constants.swift */,
+				FE466ADB1F5EABDA00075CB0 /* RealmDBManager.swift */,
+				FE466ADC1F5EABDA00075CB0 /* SwiftExtentions */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		FE466ADC1F5EABDA00075CB0 /* SwiftExtentions */ = {
+			isa = PBXGroup;
+			children = (
+				FE466ADD1F5EABDA00075CB0 /* DateExtention.swift */,
+				FE466ADE1F5EABDA00075CB0 /* FloatExtention.swift */,
+				FE466ADF1F5EABDA00075CB0 /* StringExtention.swift */,
+				FE466AE01F5EABDA00075CB0 /* UIColorExtension.swift */,
+				FE466AE11F5EABDA00075CB0 /* UIViewExtention.swift */,
+			);
+			path = SwiftExtentions;
+			sourceTree = "<group>";
+		};
+		FE466AE21F5EABDA00075CB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE466AE31F5EABDA00075CB0 /* Game.swift */,
+				FE466AE41F5EABDA00075CB0 /* GamePlayerStats.swift */,
+				FE466AE51F5EABDA00075CB0 /* GameTeamDetail.swift */,
+				FE466AE61F5EABDA00075CB0 /* Player.swift */,
+				FE466AE71F5EABDA00075CB0 /* Team.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE466AE91F5EABDA00075CB0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FE466AEA1F5EABDA00075CB0 /* ApiClient.swift */,
+				FE466AEB1F5EABDA00075CB0 /* GameDetailBoxScoreDataService.swift */,
+				FE466AEC1F5EABDA00075CB0 /* GamesDataService.swift */,
+				FE466AED1F5EABDA00075CB0 /* PlayersDataService.swift */,
+				FE466AEE1F5EABDA00075CB0 /* TeamsDataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FE8F97541F5EA58D00E98D3F = {
+			isa = PBXGroup;
+			children = (
+				FE8F97601F5EA58D00E98D3F /* EuroLeagueKit */,
+				FE8F975F1F5EA58D00E98D3F /* Products */,
+				D47506AED94E055E99BF73FB /* Pods */,
+				CB1171E5B51F4F942911EA3A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FE8F975F1F5EA58D00E98D3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE8F975E1F5EA58D00E98D3F /* EuroLeagueKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE8F97601F5EA58D00E98D3F /* EuroLeagueKit */ = {
+			isa = PBXGroup;
+			children = (
+				FE466AD91F5EABDA00075CB0 /* Helper */,
+				FE466AE21F5EABDA00075CB0 /* Model */,
+				FE466AE91F5EABDA00075CB0 /* Services */,
+				FE8F97611F5EA58D00E98D3F /* EuroLeagueKit.h */,
+				FE8F97621F5EA58D00E98D3F /* Info.plist */,
+			);
+			path = EuroLeagueKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FE8F975B1F5EA58D00E98D3F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE8F97631F5EA58D00E98D3F /* EuroLeagueKit.h in Headers */,
+				FE4BF7E51F5EC78A00ADF8D5 /* Constants.swift in Headers */,
+				FE4BF7E61F5EC78C00ADF8D5 /* RealmDBManager.swift in Headers */,
+				FE4BF7E71F5EC79400ADF8D5 /* DateExtention.swift in Headers */,
+				FE4BF7E81F5EC79400ADF8D5 /* FloatExtention.swift in Headers */,
+				FE4BF7E91F5EC79400ADF8D5 /* StringExtention.swift in Headers */,
+				FE4BF7EA1F5EC79400ADF8D5 /* UIColorExtension.swift in Headers */,
+				FE4BF7EB1F5EC79400ADF8D5 /* UIViewExtention.swift in Headers */,
+				FE4BF7EC1F5EC7B500ADF8D5 /* Game.swift in Headers */,
+				FE4BF7ED1F5EC7B500ADF8D5 /* GamePlayerStats.swift in Headers */,
+				FE4BF7EE1F5EC7B500ADF8D5 /* GameTeamDetail.swift in Headers */,
+				FE4BF7EF1F5EC7B500ADF8D5 /* Player.swift in Headers */,
+				FE4BF7F01F5EC7B500ADF8D5 /* Team.swift in Headers */,
+				FE4BF7F21F5EC7B500ADF8D5 /* ApiClient.swift in Headers */,
+				FE4BF7F31F5EC7B500ADF8D5 /* GameDetailBoxScoreDataService.swift in Headers */,
+				FE4BF7F41F5EC7B500ADF8D5 /* GamesDataService.swift in Headers */,
+				FE4BF7F51F5EC7B500ADF8D5 /* PlayersDataService.swift in Headers */,
+				FE4BF7F61F5EC7B500ADF8D5 /* TeamsDataService.swift in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FE8F975D1F5EA58D00E98D3F /* EuroLeagueKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE8F97661F5EA58E00E98D3F /* Build configuration list for PBXNativeTarget "EuroLeagueKit" */;
+			buildPhases = (
+				9BF2B725BDA4B74C490F51EB /* [CP] Check Pods Manifest.lock */,
+				FE8F97591F5EA58D00E98D3F /* Sources */,
+				FE8F975A1F5EA58D00E98D3F /* Frameworks */,
+				FE8F975B1F5EA58D00E98D3F /* Headers */,
+				FE8F975C1F5EA58D00E98D3F /* Resources */,
+				04A0ED8E5CA5ACC0033057D2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EuroLeagueKit;
+			productName = EuroLeagueKit;
+			productReference = FE8F975E1F5EA58D00E98D3F /* EuroLeagueKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE8F97551F5EA58D00E98D3F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Modeso;
+				TargetAttributes = {
+					FE8F975D1F5EA58D00E98D3F = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FE8F97581F5EA58D00E98D3F /* Build configuration list for PBXProject "EuroLeagueKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FE8F97541F5EA58D00E98D3F;
+			productRefGroup = FE8F975F1F5EA58D00E98D3F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE8F975D1F5EA58D00E98D3F /* EuroLeagueKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE8F975C1F5EA58D00E98D3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04A0ED8E5CA5ACC0033057D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EuroLeagueKit/Pods-EuroLeagueKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BF2B725BDA4B74C490F51EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE8F97591F5EA58D00E98D3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE466AFA1F5EABDA00075CB0 /* Team.swift in Sources */,
+				FE466AF91F5EABDA00075CB0 /* Player.swift in Sources */,
+				FE466AF51F5EABDA00075CB0 /* UIViewExtention.swift in Sources */,
+				FE466AEF1F5EABDA00075CB0 /* Constants.swift in Sources */,
+				FE466AF01F5EABDA00075CB0 /* RealmDBManager.swift in Sources */,
+				FE466AF31F5EABDA00075CB0 /* StringExtention.swift in Sources */,
+				FE466AFC1F5EABDA00075CB0 /* ApiClient.swift in Sources */,
+				FE466AF11F5EABDA00075CB0 /* DateExtention.swift in Sources */,
+				FE466AFE1F5EABDA00075CB0 /* GamesDataService.swift in Sources */,
+				FE466B001F5EABDA00075CB0 /* TeamsDataService.swift in Sources */,
+				FE466AF21F5EABDA00075CB0 /* FloatExtention.swift in Sources */,
+				FE466AF71F5EABDA00075CB0 /* GamePlayerStats.swift in Sources */,
+				FE466AFD1F5EABDA00075CB0 /* GameDetailBoxScoreDataService.swift in Sources */,
+				FE466AFF1F5EABDA00075CB0 /* PlayersDataService.swift in Sources */,
+				FE466AF41F5EABDA00075CB0 /* UIColorExtension.swift in Sources */,
+				FE466AF61F5EABDA00075CB0 /* Game.swift in Sources */,
+				FE466AF81F5EABDA00075CB0 /* GameTeamDetail.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FE8F97641F5EA58E00E98D3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FE8F97651F5EA58E00E98D3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FE8F97671F5EA58E00E98D3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9563D496291EE4DABE47B469 /* Pods-EuroLeagueKit.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EuroLeagueKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ch.modeso.learning.EuroLeagueKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		FE8F97681F5EA58E00E98D3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFBCCBFF99D37C4D2B3BC54F /* Pods-EuroLeagueKit.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EuroLeagueKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ch.modeso.learning.EuroLeagueKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE8F97581F5EA58D00E98D3F /* Build configuration list for PBXProject "EuroLeagueKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE8F97641F5EA58E00E98D3F /* Debug */,
+				FE8F97651F5EA58E00E98D3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE8F97661F5EA58E00E98D3F /* Build configuration list for PBXNativeTarget "EuroLeagueKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE8F97671F5EA58E00E98D3F /* Debug */,
+				FE8F97681F5EA58E00E98D3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FE8F97551F5EA58D00E98D3F /* Project object */;
+}

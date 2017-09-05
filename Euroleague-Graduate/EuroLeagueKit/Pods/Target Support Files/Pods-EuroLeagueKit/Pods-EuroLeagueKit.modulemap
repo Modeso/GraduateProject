@@ -1,0 +1,6 @@
+framework module Pods_EuroLeagueKit {
+  umbrella header "Pods-EuroLeagueKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

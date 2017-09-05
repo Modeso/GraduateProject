@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import EuroLeagueKit
 
 class GamesViewModel: AbstractViewModel {
 
@@ -15,13 +16,9 @@ class GamesViewModel: AbstractViewModel {
     fileprivate let gameDataService: GamesDataService
     fileprivate let teamDataService: TeamsDataService
 
-    fileprivate var schedule: [Game]?
-
     fileprivate var teams: Dictionary<String, Team> = [:]
 
     fileprivate var lastPlayedGame: Dictionary<String, (section: Int, row: Int)> = [:]
-
-//    fileprivate var table: Dictionary<String, [Array<Game>]> = [:]
 
     init(season: Constants.Season) {
         rounds = season.getRounds()
@@ -51,14 +48,24 @@ fileprivate extension GamesViewModel {
         DispatchQueue.global().async { [weak self] in
             self?.teamDataService.getTeamsTable() { [weak self] clubs in
                 DispatchQueue.global().async { [weak self] in
-                    self?.makeTeamsOf(clubs)
-                    self?.gameDataService.getGamesTable() { [weak self] gameArray in
-                        DispatchQueue.global().async { [weak self] in
-                            let table = self?.makingTableDataOf(round, schedule: gameArray)
-                            DispatchQueue.main.async {
-                                completion(table as [NSArray]?)
+                    if let clubsData = clubs {
+                        self?.makeTeamsOf(clubsData)
+                        self?.gameDataService.getGamesTable() { [weak self] gameArray in
+                            DispatchQueue.global().async { [weak self] in
+                                if let games = gameArray {
+                                    let table = self?.makingTableDataOf(round, schedule: games)
+                                    DispatchQueue.main.async {
+                                        completion(table as [NSArray]?)
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                        completion(nil)
+                                    }
+                                }
                             }
                         }
+                    } else {
+                        completion(nil)
                     }
                 }
             }
@@ -69,9 +76,15 @@ fileprivate extension GamesViewModel {
         DispatchQueue.global().async { [weak self] in
             self?.gameDataService.updateData() { [weak self] gameArray in
                 DispatchQueue.global().async { [weak self] in
-                    let table = self?.makingTableDataOf(round, schedule: gameArray)
-                    DispatchQueue.main.async {
-                        completion(table as [NSArray]?)
+                    if let games = gameArray {
+                        let table = self?.makingTableDataOf(round, schedule: games)
+                        DispatchQueue.main.async {
+                            completion(table as [NSArray]?)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            completion(nil)
+                        }
                     }
                 }
             }

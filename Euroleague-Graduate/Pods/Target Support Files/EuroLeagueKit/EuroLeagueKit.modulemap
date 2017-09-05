@@ -1,0 +1,6 @@
+framework module EuroLeagueKit {
+  umbrella header "EuroLeagueKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

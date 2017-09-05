@@ -8,6 +8,7 @@
 
 import UIKit
 import XLPagerTabStrip
+import EuroLeagueKit
 
 class GameDetailViewController: ButtonBarPagerTabStripViewController {
 

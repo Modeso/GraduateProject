@@ -9,6 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 import SDWebImage
+import EuroLeagueKit
 
 class TeamDataViewController: ButtonBarPagerTabStripViewController {
 

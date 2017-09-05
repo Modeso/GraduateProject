@@ -10,14 +10,16 @@
 import UIKit
 import RealmSwift
 import XLPagerTabStrip
+import EuroLeagueKit
 
 protocol PagerUpdateChildData {
-    func updateUIWithData(_ table: [Array<Game>], lastGameIndex: (section: Int, row: Int))
+    func updateUIWithData(_ table: [Array<Game>]?, lastGameIndex: (section: Int, row: Int)?)
     func getRound() -> String
 }
 
 protocol PagerUpdateDelegate: class {
-    func getUpdatedData(ofRound round: String)
+    func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void)
+    func getUpdatedData(ofRound round: String) 
     func isRefreshing() -> Bool
 }
 
@@ -73,12 +75,6 @@ fileprivate extension GamesPagerViewController {
         let rounds = Constants.season.getRounds()
         for round in rounds {
             let roundViewController = router.createLeagueGameTableController()
-            viewModel.getData(withData: [round.round]) { schedule in
-                if let games = schedule as? [[Game]],
-                    let lastGame = self.viewModel.getLastGame(round: round.round) {
-                    roundViewController.updateUIWithData(games, lastGameIndex: lastGame)
-                }
-            }
             roundViewController.round = round
             myViewControllers.append(roundViewController)
         }
@@ -92,13 +88,10 @@ fileprivate extension GamesPagerViewController {
 
 extension GamesPagerViewController: PagerUpdateDelegate {
 
-    // pull down to refresh..
-    func getUpdatedData(ofRound round: String) {
-        refreshing = true
-        viewModel.updateData(withData: round) { schedule in
+    func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void) {
+        viewModel.getData(withData: [round]) { schedule in
             for controller in self.myViewControllers {
                 if controller.round.round == round {
-                    self.refreshing = false
                     if let games = schedule as? [[Game]],
                         let lastGame = self.viewModel.getLastGame(round: round) {
                         if Thread.isMainThread {
@@ -108,6 +101,32 @@ extension GamesPagerViewController: PagerUpdateDelegate {
                                 controller.updateUIWithData(games, lastGameIndex: lastGame)
                             }
                         }
+                    }
+                    break
+                }
+            }
+        }
+    }
+
+    // pull down to refresh..
+    func getUpdatedData(ofRound round: String) {
+        refreshing = true
+        viewModel.updateData(withData: round) { schedule in
+            for controller in self.myViewControllers {
+                if controller.round.round == round {
+                    self.refreshing = false
+                    print("completion refreshing finish round \(round)")
+                    if let games = schedule as? [[Game]],
+                        let lastGame = self.viewModel.getLastGame(round: round) {
+                        if Thread.isMainThread {
+                            controller.updateUIWithData(games, lastGameIndex: lastGame)
+                        } else {
+                            DispatchQueue.main.async {
+                                controller.updateUIWithData(games, lastGameIndex: lastGame)
+                            }
+                        }
+                    } else {
+                        controller.updateUIWithData(nil, lastGameIndex: nil)
                     }
                     break
                 }

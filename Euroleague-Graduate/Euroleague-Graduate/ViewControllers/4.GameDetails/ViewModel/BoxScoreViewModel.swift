@@ -9,6 +9,7 @@
 // swiftlint:disable cyclomatic_complexity
 
 import Foundation
+import EuroLeagueKit
 
 protocol BoxScoreViewModelDelegate: class {
     func updateData(withLocalTeam localTeamDetail: GameTeamDetail?, roadTeam roadTeamDetail: GameTeamDetail?)

@@ -8,10 +8,7 @@ use_frameworks!
 
 def app_pods
   # Pods for Euroleague-Graduate
-    pod 'Alamofire', '~> 4.4'
-    pod 'RealmSwift'
-    pod 'SWXMLHash', '~> 4.0.0'
-    
+    pod 'EuroLeagueKit', :path => '/Users/Modeso/Desktop/MohamedElsayedProjects/GraduateProject/Euroleague-Graduate/EuroLeagueKit'
 end
 
 def app_ui_pods

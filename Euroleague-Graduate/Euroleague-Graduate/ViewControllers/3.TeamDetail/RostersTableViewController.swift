@@ -9,6 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 import RealmSwift
+import EuroLeagueKit
 
 class RostersTableViewController: UIViewController, IndicatorInfoProvider {
 

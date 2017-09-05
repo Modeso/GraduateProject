@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import EuroLeagueKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

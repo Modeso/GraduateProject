@@ -8,6 +8,7 @@
 
 import UIKit
 import XLPagerTabStrip
+import EuroLeagueKit
 
 class MasterTableViewController: UITableViewController,
 IndicatorInfoProvider {
@@ -17,6 +18,7 @@ IndicatorInfoProvider {
             if isAppear {
                 self.tableView?.reloadData()
             }
+            print("completion endRefreshing with data")
             self.tableView.refreshControl?.endRefreshing()
         }
     }
@@ -38,16 +40,22 @@ IndicatorInfoProvider {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor.clear
-
         tableView.refreshControl?.tintColor = UIColor.white
         tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        pagerDelegate?.getDataToShow(ofRound: self.round.round) { (table, lastPlayed) in
+            self.schedule = table
+            self.indexPath = IndexPath(row: lastPlayed.row, section: lastPlayed.section)
+        }
     }
 
     func refresh() {
         if let refreshing = pagerDelegate?.isRefreshing(),
             !refreshing {
+            print("completion beginRefreshing \(round.round)")
             tableView.refreshControl?.beginRefreshing()
             pagerDelegate?.getUpdatedData(ofRound: round.round)
+        } else {
+            tableView.refreshControl?.endRefreshing()
         }
 
     }
@@ -151,7 +159,12 @@ extension MasterTableViewController {
 
 extension MasterTableViewController: PagerUpdateChildData {
 
-    func updateUIWithData(_ table: [Array<Game>], lastGameIndex: (section: Int, row: Int)) {
+    func updateUIWithData(_ table: [Array<Game>]?, lastGameIndex: (section: Int, row: Int)?) {
+        guard let table = table, let lastGameIndex = lastGameIndex else {
+            self.tableView?.refreshControl?.endRefreshing()
+            print("completion endRefreshing with no data")
+            return
+        }
         schedule = table
         let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
         if isAppear {

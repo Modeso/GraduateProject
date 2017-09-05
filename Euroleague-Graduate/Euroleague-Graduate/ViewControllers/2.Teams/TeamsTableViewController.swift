@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EuroLeagueKit
 
 class TeamsTableViewController: UIViewController {
 

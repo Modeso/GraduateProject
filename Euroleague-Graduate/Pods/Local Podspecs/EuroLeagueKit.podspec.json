@@ -1,0 +1,34 @@
+{
+  "name": "EuroLeagueKit",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "summary": "EuroLeagueKit for services and database.",
+  "requires_arc": true,
+  "version": "0.1.0",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Mohamed Elsayed": "mohamed.compu2018@hotmail.com"
+  },
+  "homepage": "https://github.com/Modeso/GraduateProject.git",
+  "source": {
+    "git": "https://github.com/Modeso/GraduateProject.git",
+    "tag": "0.1.0"
+  },
+  "frameworks": "UIKit",
+  "dependencies": {
+    "Alamofire": [
+      "~> 4.4"
+    ],
+    "SWXMLHash": [
+      "~> 4.0.0"
+    ],
+    "RealmSwift": [
+
+    ]
+  },
+  "source_files": "EuroLeagueKit/**/*.{swift}"
+}
