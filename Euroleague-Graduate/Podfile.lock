@@ -18,13 +18,13 @@ PODS:
 
 DEPENDENCIES:
   - AKSideMenu
-  - EuroLeagueKit (from `/Users/Modeso/Desktop/MohamedElsayedProjects/GraduateProject/Euroleague-Graduate/EuroLeagueKit`)
+  - EuroLeagueKit (from `./EuroLeagueKit`)
   - SDWebImage (~> 3.8)
   - XLPagerTabStrip (~> 7.0)
 
 EXTERNAL SOURCES:
   EuroLeagueKit:
-    :path: /Users/Modeso/Desktop/MohamedElsayedProjects/GraduateProject/Euroleague-Graduate/EuroLeagueKit
+    :path: ./EuroLeagueKit
 
 SPEC CHECKSUMS:
   AKSideMenu: 15c78ef0f6b4fee7e7175f8828b08ae4bcbc86ac
@@ -36,6 +36,6 @@ SPEC CHECKSUMS:
   SWXMLHash: 6bbc0bf72975a18ceda469fb7d6a886a26d81694
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: 508e646468ea3152408e70a6837cfe9f57e6b0b6
+PODFILE CHECKSUM: 5b99aea33aa0ba399984b0c6c34c9de8489a969e
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.1.1
