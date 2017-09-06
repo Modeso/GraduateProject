@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import XLPagerTabStrip
 
-class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider {
+class GameDetailWebViewController: UIViewController, IndicatorInfoProvider {
 
     var urlString = ""
     var name = ""
@@ -48,11 +48,11 @@ class GameDetailMasterWebViewController: UIViewController, IndicatorInfoProvider
 
 }
 
-extension GameDetailMasterWebViewController: WKUIDelegate {
+extension GameDetailWebViewController: WKUIDelegate {
 
 }
 
-extension GameDetailMasterWebViewController: WKNavigationDelegate {
+extension GameDetailWebViewController: WKNavigationDelegate {
 
     func webViewDidStartLoad(_ webView: UIWebView) {
 

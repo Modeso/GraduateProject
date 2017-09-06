@@ -17,15 +17,9 @@ protocol PagerUpdateChildData {
     func getRound() -> String
 }
 
-protocol PagerUpdateDelegate: class {
-    func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void)
-    func getUpdatedData(ofRound round: String) 
-    func isRefreshing() -> Bool
-}
-
 class GamesPagerViewController: ButtonBarPagerTabStripViewController {
 
-    fileprivate var myViewControllers: Array<MasterTableViewController> = []
+    fileprivate var myViewControllers: Array<MatchesTableViewController> = []
 
     fileprivate let viewModel = GamesViewModel(season: Constants.season)
 
@@ -71,22 +65,21 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
 fileprivate extension GamesPagerViewController {
 
     func createControllers() {
-        let router = Router()
         let rounds = Constants.season.getRounds()
         for round in rounds {
-            let roundViewController = router.createLeagueGameTableController()
+            let roundViewController = Router.createLeagueGameTableController()
             roundViewController.round = round
             myViewControllers.append(roundViewController)
         }
         for controller in myViewControllers {
-            controller.pagerDelegate = self
+            controller.delegate = self
         }
 
     }
 
 }
 
-extension GamesPagerViewController: PagerUpdateDelegate {
+extension GamesPagerViewController: UpdateRoundDataDelegate {
 
     func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void) {
         viewModel.getData(withData: [round]) { schedule in

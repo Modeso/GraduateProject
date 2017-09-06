@@ -11,7 +11,7 @@ import UIKit
 
 public class Constants {
 
-    public static let BackGroundColor: UIColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
+    public static let backGroundColor: UIColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
 
     public static var season: Season = Season.TurkishEuroLeague
 

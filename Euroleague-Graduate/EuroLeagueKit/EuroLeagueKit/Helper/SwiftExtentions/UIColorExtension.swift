@@ -16,7 +16,7 @@ public extension UIColor {
     }
 
     public static func getLeagueBackGroundColor() -> UIColor {
-        return Constants.BackGroundColor
+        return Constants.backGroundColor
     }
 
 }

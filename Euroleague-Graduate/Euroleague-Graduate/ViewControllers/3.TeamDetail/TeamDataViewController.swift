@@ -61,16 +61,15 @@ fileprivate extension TeamDataViewController {
     }
 
     func createControllers() {
-        let router = Router()
         guard let team = self.team?.clone() else {
             return
         }
-        let roster = router.createRosterTableController()
+        let roster = Router.createRosterTableController()
         if let coach = team.rosters.first?.clone() {
             roster.coach = coach
         }
         roster.makeRostersOf(Array(team.rosters))
-        let statistics = router.createTeamStatistics()
+        let statistics = Router.createTeamStatistics()
         myViewControllers.append(roster)
         myViewControllers.append(statistics)
     }
