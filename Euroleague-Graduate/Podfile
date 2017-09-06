@@ -7,7 +7,11 @@ platform :ios, ’10.0’
 use_frameworks!
 
 def app_pods
+<<<<<<< HEAD
   # Pods for Euroleague-Graduate /Users/Modeso/Desktop/MohamedElsayedProjects/GraduateProject/Euroleague-Graduate
+=======
+  # Pods for Euroleague-Graduate
+>>>>>>> 9582045fd5022f177e05ea37de7b310a0b8991d0
     pod 'EuroLeagueKit', :path => './EuroLeagueKit'
 end
 
