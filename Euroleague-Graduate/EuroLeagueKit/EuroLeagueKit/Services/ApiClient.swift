@@ -17,7 +17,7 @@ public class ApiClient {
                                       parameters: Parameters,
                                       headers: HTTPHeaders,
                                       completion: @escaping (Data?, Error?) -> Void) {
-//        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
 //        let configuration = URLSessionConfiguration.default
 //        configuration.timeoutIntervalForRequest = 10
 //        let sessionManager = Alamofire.SessionManager(configuration: configuration)

@@ -51,6 +51,8 @@
 		FEE5857F1F5D51F2005A0A98 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE585771F5D51F2005A0A98 /* PlayerViewModel.swift */; };
 		FEE585881F5D528A005A0A98 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE585831F5D528A005A0A98 /* Router.swift */; };
 		FEE5859A1F5D62B1005A0A98 /* AbstractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE585991F5D62B1005A0A98 /* AbstractViewModel.swift */; };
+		FEF8C5871F60404A001BCB92 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEF8C5851F60404A001BCB92 /* Game.storyboard */; };
+		FEF8C5891F60407E001BCB92 /* Team.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEF8C5881F60407E001BCB92 /* Team.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,8 @@
 		FEE585771F5D51F2005A0A98 /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		FEE585831F5D528A005A0A98 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FEE585991F5D62B1005A0A98 /* AbstractViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewModel.swift; sourceTree = "<group>"; };
+		FEF8C5861F60404A001BCB92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Game.storyboard; sourceTree = "<group>"; };
+		FEF8C5881F60407E001BCB92 /* Team.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Team.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,8 @@
 				FEC2D29A1F2B69A8006BB8AC /* Resourses */,
 				A5FF78BD1F0FA74E00F6E9A2 /* AppDelegate.swift */,
 				A5FF78C11F0FA74E00F6E9A2 /* Main.storyboard */,
+				FEF8C5881F60407E001BCB92 /* Team.storyboard */,
+				FEF8C5851F60404A001BCB92 /* Game.storyboard */,
 				A5FF78C41F0FA74E00F6E9A2 /* Assets.xcassets */,
 				A5FF78C61F0FA74E00F6E9A2 /* LaunchScreen.storyboard */,
 				A5FF78C91F0FA74E00F6E9A2 /* Info.plist */,
@@ -539,8 +545,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEF8C5871F60404A001BCB92 /* Game.storyboard in Resources */,
 				FEC67FEE1F54266B009471E0 /* Euroleague-Vid.mp4 in Resources */,
 				FEC2D2A01F2B69A8006BB8AC /* CoText_Light.ttf in Resources */,
+				FEF8C5891F60407E001BCB92 /* Team.storyboard in Resources */,
 				A5FF78C81F0FA74E00F6E9A2 /* LaunchScreen.storyboard in Resources */,
 				A5FF78C51F0FA74E00F6E9A2 /* Assets.xcassets in Resources */,
 				FEC2D29F1F2B69A8006BB8AC /* CoText_Bold.ttf in Resources */,
@@ -759,6 +767,14 @@
 				A5FF78C71F0FA74E00F6E9A2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FEF8C5851F60404A001BCB92 /* Game.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FEF8C5861F60404A001BCB92 /* Base */,
+			);
+			name = Game.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

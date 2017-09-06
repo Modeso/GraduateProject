@@ -47,26 +47,23 @@ fileprivate extension GamesViewModel {
     func getGamesData(ofRound round: String, completion: @escaping ([NSArray]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
             self?.teamDataService.getTeamsTable { [weak self] clubs in
-                DispatchQueue.global().async { [weak self] in
-                    if let clubsData = clubs {
-                        self?.makeTeamsOf(clubsData)
-                        self?.gameDataService.getGamesTable { [weak self] gameArray in
-                            DispatchQueue.global().async { [weak self] in
-                                if let games = gameArray {
-                                    let table = self?.makingTableDataOf(round, schedule: games)
-                                    DispatchQueue.main.async {
-                                        completion(table as [NSArray]?)
-                                    }
-                                } else {
-                                    DispatchQueue.main.async {
-                                        completion(nil)
-                                    }
-                                }
+                print("current thread in getGamesData is \(Thread.current)")
+                if let clubsData = clubs {
+                    self?.makeTeamsOf(clubsData)
+                    self?.gameDataService.getGamesTable { [weak self] gameArray in
+                        if let games = gameArray {
+                            let table = self?.makingTableDataOf(round, schedule: games)
+                            DispatchQueue.main.async {
+                                completion(table as [NSArray]?)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(nil)
                             }
                         }
-                    } else {
-                        completion(nil)
                     }
+                } else {
+                    completion(nil)
                 }
             }
         }
@@ -75,16 +72,14 @@ fileprivate extension GamesViewModel {
     func updateGames(ofRound round: String, completion: @escaping ([NSArray]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
             self?.gameDataService.updateData { [weak self] gameArray in
-                DispatchQueue.global().async { [weak self] in
-                    if let games = gameArray {
-                        let table = self?.makingTableDataOf(round, schedule: games)
-                        DispatchQueue.main.async {
-                            completion(table as [NSArray]?)
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            completion(nil)
-                        }
+                if let games = gameArray {
+                    let table = self?.makingTableDataOf(round, schedule: games)
+                    DispatchQueue.main.async {
+                        completion(table as [NSArray]?)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(nil)
                     }
                 }
             }

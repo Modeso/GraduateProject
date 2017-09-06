@@ -24,7 +24,6 @@ IndicatorInfoProvider {
             if isAppear {
                 self.tableView?.reloadData()
             }
-            print("completion endRefreshing with data")
             self.tableView.refreshControl?.endRefreshing()
         }
     }
@@ -57,7 +56,6 @@ IndicatorInfoProvider {
     func refresh() {
         if let refreshing = delegate?.isRefreshing(),
             !refreshing {
-            print("completion beginRefreshing \(round.name)")
             tableView.refreshControl?.beginRefreshing()
             delegate?.getUpdatedData(ofRound: round.name)
         } else {
@@ -82,6 +80,8 @@ IndicatorInfoProvider {
                     self.moveToLastPlayed()
                 }
             }
+        } else {
+            delegate?.getUpdatedData(ofRound: round.name)
         }
 
     }
@@ -99,7 +99,7 @@ IndicatorInfoProvider {
 
     // IndicatorProvider method
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: round.name)
+        return IndicatorInfo(title: round.barName)
     }
 
     // MARK: - Table view data source
@@ -168,7 +168,6 @@ extension MatchesTableViewController: PagerUpdateChildData {
     func updateUIWithData(_ table: [[Game]]?, lastGameIndex: (section: Int, row: Int)?) {
         guard let table = table, let lastGameIndex = lastGameIndex else {
             self.tableView?.refreshControl?.endRefreshing()
-            print("completion endRefreshing with no data")
             return
         }
         schedule = table

@@ -89,7 +89,6 @@ public class RealmDBManager {
         } catch {
             return
         }
-
     }
 
     public func updateGameTeamsDetailFor(gameWithCode code: String, localTeam: GameTeamDetail?, roadTeam: GameTeamDetail?) {
@@ -108,7 +107,6 @@ public class RealmDBManager {
         } catch {
             return
         }
-
     }
 
     //Team
@@ -123,7 +121,6 @@ public class RealmDBManager {
         } catch {
             return nil
         }
-
     }
 
     public func addTeamDataToRealm(_ team: Team) {
@@ -135,7 +132,6 @@ public class RealmDBManager {
         } catch {
             return
         }
-
     }
 
     //Player
@@ -148,7 +144,6 @@ public class RealmDBManager {
         } catch {
             return nil
         }
-
     }
 
     public func addPlayer(_ player: Player) {
