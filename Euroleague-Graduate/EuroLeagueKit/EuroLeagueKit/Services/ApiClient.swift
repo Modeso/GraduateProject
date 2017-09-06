@@ -11,25 +11,20 @@ import Alamofire
 
 public class ApiClient {
 
-    public static let sharedInstance = ApiClient()
-
-    private static let manager = Alamofire.SessionManager.default
-
-    private init() {
-        ApiClient.manager.session.configuration.timeoutIntervalForRequest = 5
-    }
-
     private static var baseUrl = "http://www.euroleague.net/euroleague/api/"
 
     public static func getRequestFrom(url: String,
-                               parameters: Parameters,
-                               headers: HTTPHeaders,
-                               completion: @escaping (Data?, Error?) -> Void) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        manager.request(baseUrl + url,
-                          method: .get,
-                          parameters: parameters,
-                          headers: headers)
+                                      parameters: Parameters,
+                                      headers: HTTPHeaders,
+                                      completion: @escaping (Data?, Error?) -> Void) {
+//        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//        let configuration = URLSessionConfiguration.default
+//        configuration.timeoutIntervalForRequest = 10
+//        let sessionManager = Alamofire.SessionManager(configuration: configuration)
+        Alamofire.request(baseUrl + url,
+                        method: .get,
+                        parameters: parameters,
+                        headers: headers)
             .response { response in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 if let data = response.data, response.error == nil {
@@ -41,15 +36,18 @@ public class ApiClient {
     }
 
     public static func postRequestTo(url: String,
-                              parameters: Parameters,
-                              headers: HTTPHeaders,
-                              completion: @escaping (Data?, Error?) -> Void) {
+                                     parameters: Parameters,
+                                     headers: HTTPHeaders,
+                                     completion: @escaping (Data?, Error?) -> Void) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        manager.request(baseUrl + url,
-                          method: .post,
-                          parameters: parameters,
-                          headers: headers)
-            .response { response in
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 10
+        let sessionManager = Alamofire.SessionManager(configuration: configuration)
+        Alamofire.request(baseUrl + url,
+                        method: .post,
+                        parameters: parameters,
+                        headers: headers)
+            .response { _ in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }

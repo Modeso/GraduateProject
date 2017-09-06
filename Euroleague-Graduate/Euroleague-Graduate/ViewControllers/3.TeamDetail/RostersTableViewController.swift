@@ -15,7 +15,7 @@ class RostersTableViewController: UIViewController, IndicatorInfoProvider {
 
     var coach = Player()
 
-    fileprivate var rosters: [Array<Player>] = []
+    fileprivate var rosters: [[Player]] = []
 
     fileprivate let playersViewModel = PlayerViewModel(season: Constants.season)
 
@@ -35,7 +35,7 @@ class RostersTableViewController: UIViewController, IndicatorInfoProvider {
     }
 
     func makeRostersOf(_ players: [Player]) {
-        var rostersTable: Dictionary<String, [Player]> = [:]
+        var rostersTable: [String : [Player]] = [:]
         var newPlayers = players
         newPlayers.remove(at: 0)
         var positions: [String] = []
@@ -49,11 +49,10 @@ class RostersTableViewController: UIViewController, IndicatorInfoProvider {
         positions.sort()
         self.rosters.append([coach])
         for position in positions {
-            if var samePositionPlayers = rostersTable[position] {
-                samePositionPlayers = samePositionPlayers.sorted { $0.dorsal < $1.dorsal }
-                self.rosters.append(samePositionPlayers)
+            let samePositionPlayers = rostersTable[position]?.sorted { $0.dorsal < $1.dorsal }
+            if let sortedPlayers = samePositionPlayers {
+                self.rosters.append(sortedPlayers)
             }
-
         }
         self.tableView?.reloadData()
     }

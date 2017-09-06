@@ -23,14 +23,14 @@
 		FEC2D2A11F2B69A8006BB8AC /* CoText_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */; };
 		FEC67FEE1F54266B009471E0 /* Euroleague-Vid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FEC67FED1F54266B009471E0 /* Euroleague-Vid.mp4 */; };
 		FEE585421F5D4ED0005A0A98 /* GamesPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5853B1F5D4ED0005A0A98 /* GamesPagerViewController.swift */; };
-		FEE585431F5D4ED0005A0A98 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5853C1F5D4ED0005A0A98 /* MasterTableViewController.swift */; };
+		FEE585431F5D4ED0005A0A98 /* MatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5853C1F5D4ED0005A0A98 /* MatchesTableViewController.swift */; };
 		FEE585441F5D4ED0005A0A98 /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5853E1F5D4ED0005A0A98 /* GamesTableViewCell.swift */; };
 		FEE585451F5D4ED0005A0A98 /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE585401F5D4ED0005A0A98 /* GamesViewModel.swift */; };
 		FEE5855E1F5D518E005A0A98 /* TeamsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE585471F5D518E005A0A98 /* TeamsTableViewController.swift */; };
 		FEE5855F1F5D518E005A0A98 /* TeamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE585491F5D518E005A0A98 /* TeamsTableViewCell.swift */; };
 		FEE585601F5D518E005A0A98 /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5854B1F5D518E005A0A98 /* TeamsViewModel.swift */; };
 		FEE585611F5D518E005A0A98 /* GameBoxScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5854D1F5D518E005A0A98 /* GameBoxScoreViewController.swift */; };
-		FEE585621F5D518E005A0A98 /* GameDetailMasterWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5854E1F5D518E005A0A98 /* GameDetailMasterWebViewController.swift */; };
+		FEE585621F5D518E005A0A98 /* GameDetailWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5854E1F5D518E005A0A98 /* GameDetailWebViewController.swift */; };
 		FEE585631F5D518E005A0A98 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5854F1F5D518E005A0A98 /* GameDetailViewController.swift */; };
 		FEE585641F5D518E005A0A98 /* BoxScoreMVPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE585511F5D518E005A0A98 /* BoxScoreMVPTableViewCell.swift */; };
 		FEE585651F5D518E005A0A98 /* BoxScoreQuarterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE585521F5D518E005A0A98 /* BoxScoreQuarterCollectionViewCell.swift */; };
@@ -97,14 +97,14 @@
 		FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Regular.ttf; sourceTree = "<group>"; };
 		FEC67FED1F54266B009471E0 /* Euroleague-Vid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Euroleague-Vid.mp4"; path = "../Euroleague-Vid.mp4"; sourceTree = "<group>"; };
 		FEE5853B1F5D4ED0005A0A98 /* GamesPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesPagerViewController.swift; sourceTree = "<group>"; };
-		FEE5853C1F5D4ED0005A0A98 /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
+		FEE5853C1F5D4ED0005A0A98 /* MatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
 		FEE5853E1F5D4ED0005A0A98 /* GamesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesTableViewCell.swift; sourceTree = "<group>"; };
 		FEE585401F5D4ED0005A0A98 /* GamesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
 		FEE585471F5D518E005A0A98 /* TeamsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsTableViewController.swift; sourceTree = "<group>"; };
 		FEE585491F5D518E005A0A98 /* TeamsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsTableViewCell.swift; sourceTree = "<group>"; };
 		FEE5854B1F5D518E005A0A98 /* TeamsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
 		FEE5854D1F5D518E005A0A98 /* GameBoxScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoxScoreViewController.swift; sourceTree = "<group>"; };
-		FEE5854E1F5D518E005A0A98 /* GameDetailMasterWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailMasterWebViewController.swift; sourceTree = "<group>"; };
+		FEE5854E1F5D518E005A0A98 /* GameDetailWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailWebViewController.swift; sourceTree = "<group>"; };
 		FEE5854F1F5D518E005A0A98 /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		FEE585511F5D518E005A0A98 /* BoxScoreMVPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxScoreMVPTableViewCell.swift; sourceTree = "<group>"; };
 		FEE585521F5D518E005A0A98 /* BoxScoreQuarterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxScoreQuarterCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				FEE5853B1F5D4ED0005A0A98 /* GamesPagerViewController.swift */,
-				FEE5853C1F5D4ED0005A0A98 /* MasterTableViewController.swift */,
+				FEE5853C1F5D4ED0005A0A98 /* MatchesTableViewController.swift */,
 				FEE5853D1F5D4ED0005A0A98 /* View */,
 				FEE5853F1F5D4ED0005A0A98 /* ViewModel */,
 			);
@@ -322,7 +322,7 @@
 			children = (
 				FEE5854F1F5D518E005A0A98 /* GameDetailViewController.swift */,
 				FEE5854D1F5D518E005A0A98 /* GameBoxScoreViewController.swift */,
-				FEE5854E1F5D518E005A0A98 /* GameDetailMasterWebViewController.swift */,
+				FEE5854E1F5D518E005A0A98 /* GameDetailWebViewController.swift */,
 				FEE585501F5D518E005A0A98 /* View */,
 				FEE585531F5D518E005A0A98 /* ViewModel */,
 			);
@@ -668,7 +668,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -687,8 +687,8 @@
 				FEE585881F5D528A005A0A98 /* Router.swift in Sources */,
 				FEE585661F5D518E005A0A98 /* BoxScoreViewModel.swift in Sources */,
 				FEE5857D1F5D51F2005A0A98 /* TeamStatisticsMenuTableViewCell.swift in Sources */,
-				FEE585621F5D518E005A0A98 /* GameDetailMasterWebViewController.swift in Sources */,
-				FEE585431F5D4ED0005A0A98 /* MasterTableViewController.swift in Sources */,
+				FEE585621F5D518E005A0A98 /* GameDetailWebViewController.swift in Sources */,
+				FEE585431F5D4ED0005A0A98 /* MatchesTableViewController.swift in Sources */,
 				FEE585611F5D518E005A0A98 /* GameBoxScoreViewController.swift in Sources */,
 				FEE5856A1F5D518E005A0A98 /* LeagueChooserCollectionViewCell.swift in Sources */,
 				FEE5855F1F5D518E005A0A98 /* TeamsTableViewCell.swift in Sources */,
@@ -869,7 +869,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -885,7 +885,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Modeso.EuroleagueGraduateApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -10,10 +10,16 @@ import UIKit
 import XLPagerTabStrip
 import EuroLeagueKit
 
-class MasterTableViewController: UITableViewController,
+protocol UpdateRoundDataDelegate: class {
+    func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void)
+    func getUpdatedData(ofRound round: String)
+    func isRefreshing() -> Bool
+}
+
+class MatchesTableViewController: UITableViewController,
 IndicatorInfoProvider {
 
-    fileprivate var schedule: [Array<Game>]? {
+    fileprivate var schedule: [[Game]]? {
         didSet {
             if isAppear {
                 self.tableView?.reloadData()
@@ -31,9 +37,9 @@ IndicatorInfoProvider {
 
     fileprivate var isAppear = false
 
-    weak var pagerDelegate: PagerUpdateDelegate?
+    weak var delegate: UpdateRoundDataDelegate?
 
-    var round: (round: String, name: String, completeName: String) = ("", "", "")
+    var round: LeagueRound = LeagueRound()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,18 +48,18 @@ IndicatorInfoProvider {
         tableView.backgroundColor = UIColor.clear
         tableView.refreshControl?.tintColor = UIColor.white
         tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
-        pagerDelegate?.getDataToShow(ofRound: self.round.round) { (table, lastPlayed) in
+        delegate?.getDataToShow(ofRound: self.round.name) { (table, lastPlayed) in
             self.schedule = table
             self.indexPath = IndexPath(row: lastPlayed.row, section: lastPlayed.section)
         }
     }
 
     func refresh() {
-        if let refreshing = pagerDelegate?.isRefreshing(),
+        if let refreshing = delegate?.isRefreshing(),
             !refreshing {
-            print("completion beginRefreshing \(round.round)")
+            print("completion beginRefreshing \(round.name)")
             tableView.refreshControl?.beginRefreshing()
-            pagerDelegate?.getUpdatedData(ofRound: round.round)
+            delegate?.getUpdatedData(ofRound: round.name)
         } else {
             tableView.refreshControl?.endRefreshing()
         }
@@ -147,7 +153,7 @@ IndicatorInfoProvider {
 
 }
 
-extension MasterTableViewController {
+extension MatchesTableViewController {
 
     func moveToLastPlayed() {
         guard let index = indexPath
@@ -157,9 +163,9 @@ extension MasterTableViewController {
 
 }
 
-extension MasterTableViewController: PagerUpdateChildData {
+extension MatchesTableViewController: PagerUpdateChildData {
 
-    func updateUIWithData(_ table: [Array<Game>]?, lastGameIndex: (section: Int, row: Int)?) {
+    func updateUIWithData(_ table: [[Game]]?, lastGameIndex: (section: Int, row: Int)?) {
         guard let table = table, let lastGameIndex = lastGameIndex else {
             self.tableView?.refreshControl?.endRefreshing()
             print("completion endRefreshing with no data")
@@ -184,7 +190,7 @@ extension MasterTableViewController: PagerUpdateChildData {
     }
 
     func getRound() -> String {
-        return round.round
+        return round.name
     }
 
 }

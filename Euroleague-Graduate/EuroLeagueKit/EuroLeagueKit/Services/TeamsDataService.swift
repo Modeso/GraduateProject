@@ -42,7 +42,7 @@ fileprivate extension TeamsDataService {
     }
 
     func getTeams(completion: @escaping ([Team]?) -> Void) {
-        let parameters = [ "seasoncode" : currentSeason.getSeasonCode() ]
+        let parameters = [ "seasoncode": currentSeason.getSeasonCode() ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,
                                  headers: [:]) { [weak self] data, error in

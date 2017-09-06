@@ -11,9 +11,9 @@ import EuroLeagueKit
 
 class MenuViewController: UIViewController {
 
-    fileprivate let menu: Dictionary<Int, (text: String, identifier: String)> = [
-        0 : ("Games", "GamesContentNavigationController"),
-        1 : ("Teams", "TeamsContentNavigationController")
+    fileprivate let menu: [Int: (text: String, identifier: String)] = [
+        0: ("Games", "GamesContentNavigationController"),
+        1: ("Teams", "TeamsContentNavigationController")
     ]
 
     @IBOutlet weak var topView: UIView!
@@ -32,9 +32,9 @@ class MenuViewController: UIViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         switch Constants.season {
-        case .TurkishEuroLeague:
+        case .turkishEuroLeague:
             selectedLeagueNumber = 0
-        case .EuroCup:
+        case .euroCup:
             selectedLeagueNumber = 1
         }
         topView.backgroundColor = UIColor.getLeagueBarColor()
@@ -121,10 +121,10 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDelegate
             selectedLeagueNumber = indexPath.row
             switch selectedLeagueNumber {
             case 0:
-                Constants.season = Constants.Season.TurkishEuroLeague
+                Constants.season = Constants.Season.turkishEuroLeague
                 break
             case 1:
-                Constants.season = Constants.Season.EuroCup
+                Constants.season = Constants.Season.euroCup
                 break
             default:
                 break
@@ -160,22 +160,22 @@ extension MenuViewController: UICollectionViewDataSource {
             switch indexPath.row {
             case 0:
                 if indexPath.row == selectedLeagueNumber {
-                    cell.leagueImageView.image = Constants.Season.TurkishEuroLeague.getColoredImage()
+                    cell.leagueImageView.image = Constants.Season.turkishEuroLeague.getColoredImage()
                     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
                 } else {
-                    cell.leagueImageView.image = Constants.Season.TurkishEuroLeague.getNonColoredImage()
+                    cell.leagueImageView.image = Constants.Season.turkishEuroLeague.getNonColoredImage()
                 }
 
             case 1:
                 if indexPath.row == selectedLeagueNumber {
-                    cell.leagueImageView.image = Constants.Season.EuroCup.getColoredImage()
+                    cell.leagueImageView.image = Constants.Season.euroCup.getColoredImage()
                     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
                 } else {
-                    cell.leagueImageView.image = Constants.Season.EuroCup.getNonColoredImage()
+                    cell.leagueImageView.image = Constants.Season.euroCup.getNonColoredImage()
                 }
 
             default :
-                cell.leagueImageView.image = Constants.Season.TurkishEuroLeague.getColoredImage()
+                cell.leagueImageView.image = Constants.Season.turkishEuroLeague.getColoredImage()
             }
 
             return cell

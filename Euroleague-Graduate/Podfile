@@ -7,6 +7,7 @@ platform :ios, ’10.0’
 use_frameworks!
 
 def app_pods
+    pod 'SwiftLint'
     pod 'EuroLeagueKit', :path => './EuroLeagueKit'
 end
 

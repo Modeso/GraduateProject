@@ -11,9 +11,7 @@ import Foundation
 public extension Float {
 
     public static var random: Float {
-        get {
-            return Float(arc4random()) / Float(UInt32.max)
-        }
+        return Float(arc4random()) / Float(UInt32.max)
     }
 
     public static func random(min: Float, max: Float) -> Float {

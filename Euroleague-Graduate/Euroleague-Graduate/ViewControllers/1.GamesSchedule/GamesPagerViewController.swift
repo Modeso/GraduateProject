@@ -6,26 +6,19 @@
 //  Copyright © 2017 Modeso. All rights reserved.
 //
 
-
 import UIKit
 import RealmSwift
 import XLPagerTabStrip
 import EuroLeagueKit
 
 protocol PagerUpdateChildData {
-    func updateUIWithData(_ table: [Array<Game>]?, lastGameIndex: (section: Int, row: Int)?)
+    func updateUIWithData(_ table: [[Game]]?, lastGameIndex: (section: Int, row: Int)?)
     func getRound() -> String
-}
-
-protocol PagerUpdateDelegate: class {
-    func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void)
-    func getUpdatedData(ofRound round: String) 
-    func isRefreshing() -> Bool
 }
 
 class GamesPagerViewController: ButtonBarPagerTabStripViewController {
 
-    fileprivate var myViewControllers: Array<MasterTableViewController> = []
+    fileprivate var myViewControllers: [MatchesTableViewController] = []
 
     fileprivate let viewModel = GamesViewModel(season: Constants.season)
 
@@ -79,30 +72,26 @@ fileprivate extension GamesPagerViewController {
             myViewControllers.append(roundViewController)
         }
         for controller in myViewControllers {
-            controller.pagerDelegate = self
+            controller.delegate = self
         }
 
     }
 
 }
 
-extension GamesPagerViewController: PagerUpdateDelegate {
+extension GamesPagerViewController: UpdateRoundDataDelegate {
 
     func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void) {
-        viewModel.getData(withData: [round]) { schedule in
-            for controller in self.myViewControllers {
-                if controller.round.round == round {
-                    if let games = schedule as? [[Game]],
-                        let lastGame = self.viewModel.getLastGame(round: round) {
-                        if Thread.isMainThread {
-                            controller.updateUIWithData(games, lastGameIndex: lastGame)
-                        } else {
-                            DispatchQueue.main.async {
-                                controller.updateUIWithData(games, lastGameIndex: lastGame)
-                            }
-                        }
+        viewModel.getData(withData: [round]) { [weak self] schedule in
+            let matchesController = self?.myViewControllers.first(where: { $0.getRound() == round })
+            if let games = schedule as? [[Game]],
+                let lastGame = self?.viewModel.getLastGame(round: round) {
+                if Thread.isMainThread {
+                    matchesController?.updateUIWithData(games, lastGameIndex: lastGame)
+                } else {
+                    DispatchQueue.main.async {
+                        matchesController?.updateUIWithData(games, lastGameIndex: lastGame)
                     }
-                    break
                 }
             }
         }
@@ -111,24 +100,17 @@ extension GamesPagerViewController: PagerUpdateDelegate {
     // pull down to refresh..
     func getUpdatedData(ofRound round: String) {
         refreshing = true
-        viewModel.updateData(withData: round) { schedule in
-            for controller in self.myViewControllers {
-                if controller.round.round == round {
-                    self.refreshing = false
-                    print("completion refreshing finish round \(round)")
-                    if let games = schedule as? [[Game]],
-                        let lastGame = self.viewModel.getLastGame(round: round) {
-                        if Thread.isMainThread {
-                            controller.updateUIWithData(games, lastGameIndex: lastGame)
-                        } else {
-                            DispatchQueue.main.async {
-                                controller.updateUIWithData(games, lastGameIndex: lastGame)
-                            }
-                        }
-                    } else {
-                        controller.updateUIWithData(nil, lastGameIndex: nil)
+        viewModel.updateData(withData: round) { [weak self] schedule in
+            self?.refreshing = false
+            let matchesController = self?.myViewControllers.first(where: { $0.getRound() == round })
+            if let games = schedule as? [[Game]],
+                let lastGame = self?.viewModel.getLastGame(round: round) {
+                if Thread.isMainThread {
+                    matchesController?.updateUIWithData(games, lastGameIndex: lastGame)
+                } else {
+                    DispatchQueue.main.async {
+                        matchesController?.updateUIWithData(games, lastGameIndex: lastGame)
                     }
-                    break
                 }
             }
         }

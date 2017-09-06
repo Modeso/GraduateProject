@@ -55,12 +55,12 @@ class SplashViewController: UIViewController {
                            animations: { [weak self] in
                             self?.turkishLeagueViewTraillingConstraint.constant = -15
                             self?.view.layoutIfNeeded()
-            }) { [weak self] (true) in
+            }) { [weak self] (_) in
                 UIView.animate(withDuration: 0.3,
                                animations: { [weak self] in
                                 self?.euroCupViewTraillingConstraint.constant = -15
                                 self?.view.layoutIfNeeded()
-                }) { [weak self] (true) in
+                }) { [weak self] (_) in
                     self?.textLabel.isHidden = false
                     self?.view.layoutIfNeeded()
                 }
@@ -68,17 +68,17 @@ class SplashViewController: UIViewController {
         }
     }
 
-    @IBAction func LeagueChoosed(recognizer: UITapGestureRecognizer) {
+    @IBAction func leagueChoosed(recognizer: UITapGestureRecognizer) {
         let season: String
         if let touchedView = recognizer.view {
             switch touchedView {
             case turkishLeagueView:
-                season = Constants.Season.TurkishEuroLeague.getSeasonCode()
+                season = Constants.Season.turkishEuroLeague.getSeasonCode()
                 UserDefaults.standard.set(season, forKey: "CurrentSeason")
                 performSegue(withIdentifier: "ShowMainScreen", sender: self)
                 break
             case euroCupView:
-                season = Constants.Season.EuroCup.getSeasonCode()
+                season = Constants.Season.euroCup.getSeasonCode()
                 UserDefaults.standard.set(season, forKey: "CurrentSeason")
                 performSegue(withIdentifier: "ShowMainScreen", sender: self)
                 break

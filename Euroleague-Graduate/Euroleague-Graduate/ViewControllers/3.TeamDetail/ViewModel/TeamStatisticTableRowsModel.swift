@@ -17,19 +17,19 @@ public class TeamStatisticTableRowsModel {
         "Blocks", "Fouls"
     ]
 
-    public var results: Dictionary<String, Float> = [
-        "Games" : 0,
-        "Wins" : 0,
-        "Points" : 0,
-        "2 Points Field Goal %" : 0,
-        "3 Points Field Goal %" : 0,
-        "Free throws %" : 0,
-        "Rebounds" : 0,
-        "Assists" : 0,
-        "Steals" : 0,
-        "Turnovers" : 0,
-        "Blocks" : 0,
-        "Fouls" : 0
+    public var results: [String: Float] = [
+        "Games": 0,
+        "Wins": 0,
+        "Points": 0,
+        "2 Points Field Goal %": 0,
+        "3 Points Field Goal %": 0,
+        "Free throws %": 0,
+        "Rebounds": 0,
+        "Assists": 0,
+        "Steals": 0,
+        "Turnovers": 0,
+        "Blocks": 0,
+        "Fouls": 0
     ]
 
     fileprivate var currentRound: String = ""

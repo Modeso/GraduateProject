@@ -31,9 +31,7 @@ class TeamStatisticsMenuTableViewController: UIViewController {
 
     var cellRowHeight: CGFloat = 35.0
 
-    fileprivate var menu: Dictionary<Int, (text: String, priority: Int, round: String)> = [
-        1 : ("All phases", 100, "")
-    ]
+    fileprivate var menu: [Int: LeagueRound] = [ : ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +43,10 @@ class TeamStatisticsMenuTableViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
-
-
     }
+
     func getCurrentMenuRound() -> String {
-        return menu[1]?.round ?? ""
+        return menu[1]?.name ?? ""
     }
 
     @IBAction func menuButtonIsPressed(_ sender: UIButton) {
@@ -78,7 +75,7 @@ extension TeamStatisticsMenuTableViewController: UITableViewDelegate {
                 tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
                 updateTheMenuOrder(toStartWith: indexPath.row + 1)
                 tableView.endUpdates()
-                if let round = menu[1]?.round {
+                if let round = menu[1]?.name {
                     delegate?.updateTableData(withRound: round)
                 }
             }
@@ -110,7 +107,7 @@ extension TeamStatisticsMenuTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TeamStatisticsMenuCell") {
             if let tableCell = cell as? TeamStatisticsMenuTableViewCell {
-                if let text = menu[indexPath.row + 1]?.text {
+                if let text = menu[indexPath.row + 1]?.completeName {
                     tableCell.titleLabel.text = "Average Stattistics - \(text)"
                 }
             }

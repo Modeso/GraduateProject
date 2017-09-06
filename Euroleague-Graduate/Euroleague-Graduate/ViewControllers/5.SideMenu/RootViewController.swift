@@ -23,12 +23,12 @@ class RootViewController: AKSideMenu, AKSideMenuDelegate {
 
         if let season = UserDefaults.standard.value(forKey: "CurrentSeason") as? String {
             switch season {
-            case Constants.Season.TurkishEuroLeague.getSeasonCode():
-                Constants.season = Constants.Season.TurkishEuroLeague
-            case Constants.Season.EuroCup.getSeasonCode():
-                Constants.season = Constants.Season.EuroCup
+            case Constants.Season.turkishEuroLeague.getSeasonCode():
+                Constants.season = Constants.Season.turkishEuroLeague
+            case Constants.Season.euroCup.getSeasonCode():
+                Constants.season = Constants.Season.euroCup
             default:
-                Constants.season = Constants.Season.TurkishEuroLeague
+                Constants.season = Constants.Season.turkishEuroLeague
             }
             self.contentViewController = self.storyboard?.instantiateViewController(withIdentifier: "GamesContentNavigationController")
             self.leftMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController")

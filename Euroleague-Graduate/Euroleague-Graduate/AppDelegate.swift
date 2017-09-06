@@ -24,14 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             schemaVersion: 10,
             migrationBlock: { (migration, oldVersion) in
                 if oldVersion < 1 {
-                    migration.enumerateObjects(ofType: Game.className()) { (oldObject, newObject) in
+                    migration.enumerateObjects(ofType: Game.className()) { (_, newObject) in
                             newObject?["awayCode"] = ""
                             newObject?["homeCode"] = ""
                     }
                 }
 
                 if oldVersion < 2 {
-                    migration.enumerateObjects(ofType: Team.className()) { (oldObject, newObject) in
+                    migration.enumerateObjects(ofType: Team.className()) { (_, newObject) in
                         newObject?["coachName"] = ""
                         newObject?["coachCountry"] = ""
                         newObject?["rosters"] = List<Player>()
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
 
                 if oldVersion < 5 {
-                    migration.enumerateObjects(ofType: Game.className()) { (oldObject, newObject) in
+                    migration.enumerateObjects(ofType: Game.className()) { (_, newObject) in
                         newObject?["localTeamGameDetail"] = nil
                         newObject?["roadTeamGameDetail"] = nil
                     }

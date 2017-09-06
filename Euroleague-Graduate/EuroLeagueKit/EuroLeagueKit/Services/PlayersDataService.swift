@@ -10,7 +10,6 @@ import Foundation
 import SWXMLHash
 import RealmSwift
 
-
 public class PlayersDataService {
 
     fileprivate let currentSeason: Constants.Season
@@ -34,8 +33,8 @@ fileprivate extension PlayersDataService {
     func updatePlayer(withCode code: String, completion:@escaping (_ player: Player?) -> Void) {
         let url = "players"
         let parameters = [
-            "pcode" : "\(code)",
-            "seasoncode" : currentSeason.getSeasonCode()
+            "pcode": "\(code)",
+            "seasoncode": currentSeason.getSeasonCode()
         ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,

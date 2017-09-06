@@ -13,7 +13,7 @@ class TeamsTableViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    fileprivate var teams: [Array<Team>] = [] {
+    fileprivate var teams: [[Team]] = [] {
         didSet {
             tableView?.reloadData()
         }
@@ -47,7 +47,6 @@ class TeamsTableViewController: UIViewController {
             }
         }
     }
-
 
     // MARK: - Navigation
 

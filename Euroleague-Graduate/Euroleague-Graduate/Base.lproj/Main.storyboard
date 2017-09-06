@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="1096" y="-210"/>
         </scene>
-        <!--Master Table View Controller-->
+        <!--Matches Table View Controller-->
         <scene sceneID="3Hb-SA-bJ1">
             <objects>
-                <tableViewController storyboardIdentifier="TurkishLeagueMasterTable" id="Zf3-Mh-Txt" customClass="MasterTableViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TurkishLeagueMasterTable" id="Zf3-Mh-Txt" customClass="MatchesTableViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="201" sectionHeaderHeight="28" sectionFooterHeight="28" id="g2l-8e-8vW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -563,10 +563,10 @@
             </objects>
             <point key="canvasLocation" x="2886" y="-210"/>
         </scene>
-        <!--Game Detail Master Web View Controller-->
+        <!--Game Detail Web View Controller-->
         <scene sceneID="wIY-CG-omr">
             <objects>
-                <viewController storyboardIdentifier="GameDetailWebViewController" id="n16-vV-aPH" customClass="GameDetailMasterWebViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameDetailWebViewController" id="n16-vV-aPH" customClass="GameDetailWebViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SED-2L-Q0i"/>
                         <viewControllerLayoutGuide type="bottom" id="7Ey-65-n0w"/>
@@ -586,7 +586,7 @@
             <objects>
                 <navigationController storyboardIdentifier="GamesContentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="9kl-U1-8rQ" customClass="EuroNavigationController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ws-5O-JT4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9ws-5O-JT4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1065,7 +1065,7 @@
                                 <rect key="frame" x="0.0" y="107.00000000000001" width="414" height="90.333333333333357"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Weg-FL-USy">
-                                        <rect key="frame" x="10" y="5.3333333333333286" width="80" height="80.000000000000014"/>
+                                        <rect key="frame" x="10" y="5.6666666666666714" width="80" height="79.999999999999986"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="OWO-PG-pNh">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="110"/>
@@ -1480,7 +1480,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TeamsContentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="IpC-e3-pXZ" customClass="EuroNavigationController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WDH-R1-1hq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WDH-R1-1hq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

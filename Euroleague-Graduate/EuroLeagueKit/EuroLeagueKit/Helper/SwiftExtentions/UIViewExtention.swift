@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIView {
 
-    public func applyGradient(colours: [UIColor]) -> Void {
+    public func applyGradient(colours: [UIColor]) {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = colours.map { $0.cgColor }

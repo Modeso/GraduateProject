@@ -21,7 +21,7 @@ public class GameDetailBoxScoreDataService {
     }
 
     public func getScoreBoxResults(ofGameWithCode code: String,
-                            completion: @escaping (_ localTeamDetail: GameTeamDetail?, _ roadTeamDetail: GameTeamDetail?) -> Void) {
+                                   completion: @escaping (_ localTeamDetail: GameTeamDetail?, _ roadTeamDetail: GameTeamDetail?) -> Void) {
         DispatchQueue.global().async { [weak self] in
             let realmGame = RealmDBManager.sharedInstance.getGame(withCode: code)
             let game = realmGame?.clone()
@@ -30,9 +30,7 @@ public class GameDetailBoxScoreDataService {
                 self?.updateScoreBoxResults(ofGameWithCode: String(code), completion: completion)
             }
         }
-
     }
-
 }
 
 fileprivate extension GameDetailBoxScoreDataService {
@@ -41,8 +39,8 @@ fileprivate extension GameDetailBoxScoreDataService {
                                completion: @escaping (_ localTeamDetail: GameTeamDetail?, _ roadTeamDetail: GameTeamDetail?) -> Void) {
         let url = "games"
         let parameters = [
-            "gamecode" : code,
-            "seasoncode" : currentSeason.getSeasonCode()
+            "gamecode": code,
+            "seasoncode": currentSeason.getSeasonCode()
         ]
         ApiClient.getRequestFrom(
             url: url,

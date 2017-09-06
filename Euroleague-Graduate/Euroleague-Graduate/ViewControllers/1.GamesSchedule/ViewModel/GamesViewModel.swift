@@ -12,13 +12,13 @@ import EuroLeagueKit
 
 class GamesViewModel: AbstractViewModel {
 
-    private var rounds: [(round: String, name: String, completeName: String)]
+    private var rounds: [LeagueRound]
     fileprivate let gameDataService: GamesDataService
     fileprivate let teamDataService: TeamsDataService
 
-    fileprivate var teams: Dictionary<String, Team> = [:]
+    fileprivate var teams: [String : Team] = [:]
 
-    fileprivate var lastPlayedGame: Dictionary<String, (section: Int, row: Int)> = [:]
+    fileprivate var lastPlayedGame: [String : (section: Int, row: Int)] = [:]
 
     init(season: Constants.Season) {
         rounds = season.getRounds()
@@ -46,11 +46,11 @@ fileprivate extension GamesViewModel {
     //For games
     func getGamesData(ofRound round: String, completion: @escaping ([NSArray]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
-            self?.teamDataService.getTeamsTable() { [weak self] clubs in
+            self?.teamDataService.getTeamsTable { [weak self] clubs in
                 DispatchQueue.global().async { [weak self] in
                     if let clubsData = clubs {
                         self?.makeTeamsOf(clubsData)
-                        self?.gameDataService.getGamesTable() { [weak self] gameArray in
+                        self?.gameDataService.getGamesTable { [weak self] gameArray in
                             DispatchQueue.global().async { [weak self] in
                                 if let games = gameArray {
                                     let table = self?.makingTableDataOf(round, schedule: games)
@@ -74,7 +74,7 @@ fileprivate extension GamesViewModel {
 
     func updateGames(ofRound round: String, completion: @escaping ([NSArray]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
-            self?.gameDataService.updateData() { [weak self] gameArray in
+            self?.gameDataService.updateData { [weak self] gameArray in
                 DispatchQueue.global().async { [weak self] in
                     if let games = gameArray {
                         let table = self?.makingTableDataOf(round, schedule: games)
@@ -91,11 +91,11 @@ fileprivate extension GamesViewModel {
         }
     }
 
-    func makingTableDataOf(_ round: String, schedule: [Game]) -> [Array<Game>] {
+    func makingTableDataOf(_ round: String, schedule: [Game]) -> [[Game]] {
         var section = 0
         var row = 0
-        var gamesTable = [Array<Game>]()
-        var gameSection = Array<Game>()
+        var gamesTable = [[Game]]()
+        var gameSection = [Game]()
         var prevSectionDate: Date? = nil
         for game in schedule {
             let game = game.clone()

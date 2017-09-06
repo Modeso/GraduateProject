@@ -13,11 +13,11 @@ import RealmSwift
 public class GamesDataService {
 
     enum GameDataRequestType: String {
-        case Schedule = "schedules"
-        case Results = "results"
+        case schedule = "schedules"
+        case results = "results"
     }
 
-    fileprivate var games: Dictionary<Int, Game> = [:]
+    fileprivate var games: [Int: Game] = [:]
 
     fileprivate var isUpdating = false
 
@@ -46,7 +46,7 @@ public class GamesDataService {
             DispatchQueue.global().async { [weak self] in
                 self?.getSchedule(completion: completion)
             }
-        }else {
+        } else {
             completion(nil)
         }
     }
@@ -57,10 +57,10 @@ fileprivate extension GamesDataService {
 
     func getSchedule(completion: @escaping ([Game]?) -> Void) {
         games.removeAll()
-        let parameters = [ "seasoncode" : currentSeason.getSeasonCode()]
+        let parameters = [ "seasoncode": currentSeason.getSeasonCode()]
         ApiClient
             .getRequestFrom(
-                url:GameDataRequestType.Schedule.rawValue,
+                url:GameDataRequestType.schedule.rawValue,
                 parameters: parameters,
                 headers: [:]) { [weak self] data, error in
                     if let xmlData = data, error == nil {
@@ -75,12 +75,12 @@ fileprivate extension GamesDataService {
     }
 
     func getResults(completion: @escaping ([Game]?) -> Void) {
-        let parameters = [ "seasoncode" : currentSeason.getSeasonCode()]
+        let parameters = [ "seasoncode": currentSeason.getSeasonCode()]
         print("completion start ----------if")
 
         ApiClient
             .getRequestFrom(
-                url: GameDataRequestType.Results.rawValue,
+                url: GameDataRequestType.results.rawValue,
                 parameters: parameters,
                 headers: [:]) { [weak self] data, error in
                     if let xmlData = data, error == nil {

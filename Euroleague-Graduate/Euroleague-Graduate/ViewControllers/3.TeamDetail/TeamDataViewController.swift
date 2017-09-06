@@ -13,7 +13,7 @@ import EuroLeagueKit
 
 class TeamDataViewController: ButtonBarPagerTabStripViewController {
 
-    fileprivate var myViewControllers: Array<UIViewController> = []
+    fileprivate var myViewControllers: [UIViewController] = []
 
     var team: Team?
 

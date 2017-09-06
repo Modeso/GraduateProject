@@ -148,14 +148,8 @@ extension GameBoxScoreViewController: UITableViewDataSource {
                     let roadTeam = game?.roadTeamGameDetail {
                     let boxScoreInfo = boxScoreViewModel.boxScoreInfo(
                         forIndex: indexPath.row, withLocalTeam: localTeam, withRoadTeam: roadTeam)
-                    tableCell.typeLabel.text = boxScoreInfo.name
-                    tableCell.awayPlayerLabel.text = boxScoreInfo.guestTeamPlayerName
-                    tableCell.awayPointsLabel.text = boxScoreInfo.guestTeamPlayerPointText
-                    tableCell.homePlayerLabel.text = boxScoreInfo.homeTeamPlayerName
-                    tableCell.homePlayerPoints.text = boxScoreInfo.homeTeamPlayerPointText
-
+                    tableCell.boxScore = boxScoreInfo
                 }
-
             }
             if indexPath.row == 4 {
                 DispatchQueue.main.async {

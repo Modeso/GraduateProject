@@ -28,7 +28,7 @@ fileprivate extension TeamsViewModel {
 
     func getTeamsData(completion: @escaping ([NSArray]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
-            self?.teamDataService.getTeamsTable() { (clubs) in
+            self?.teamDataService.getTeamsTable { (clubs) in
                 if let clubsData = clubs {
                     let teams = self?.makeTeams(from: clubsData)
                     DispatchQueue.main.async {
@@ -42,9 +42,9 @@ fileprivate extension TeamsViewModel {
         }
     }
 
-    func makeTeams(from clubs: [Team]) -> Array<[Team]> {
-        var teams = Array<[Team]>()
-        var teamSection = Array<Team>()
+    func makeTeams(from clubs: [Team]) -> [[Team]] {
+        var teams = [[Team]]()
+        var teamSection = [Team]()
         var firstChar: Character? = nil
         for club in clubs {
             let team = club.clone()
