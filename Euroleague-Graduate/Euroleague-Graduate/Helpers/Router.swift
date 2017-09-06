@@ -12,15 +12,15 @@ import RealmSwift
 
 class Router {
 
-    static func createLeagueGameTableController () -> MatchesTableViewController {
+    func createLeagueGameTableController () -> MasterTableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let tableController = storyboard.instantiateViewController(
-            withIdentifier: "TurkishLeagueMasterTable") as? MatchesTableViewController
-            else { return MatchesTableViewController() }
+            withIdentifier: "TurkishLeagueMasterTable") as? MasterTableViewController
+            else { return MasterTableViewController() }
         return tableController
     }
 
-    static func createRosterTableController () -> RostersTableViewController {
+    func createRosterTableController () -> RostersTableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let tableController = storyboard.instantiateViewController(
             withIdentifier: "RostersTable") as? RostersTableViewController
@@ -28,7 +28,7 @@ class Router {
         return tableController
     }
 
-    static func createTeamStatistics() -> TeamStatisticsViewController {
+    func createTeamStatistics() -> TeamStatisticsViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let view = storyboard.instantiateViewController(
             withIdentifier: "StatisticsView") as? TeamStatisticsViewController
@@ -36,7 +36,7 @@ class Router {
         return view
     }
 
-    static func createGameBoxScore() -> GameBoxScoreViewController {
+    func createGameBoxScore() -> GameBoxScoreViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let view = storyboard.instantiateViewController(
             withIdentifier: "GameBoxScore") as? GameBoxScoreViewController
@@ -44,11 +44,11 @@ class Router {
         return view
     }
 
-    static func createGameDetailWebViewController() -> GameDetailWebViewController {
+    func createGameDetailWebViewController() -> GameDetailMasterWebViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let view = storyboard.instantiateViewController(
-            withIdentifier: "GameDetailWebViewController") as? GameDetailWebViewController
-            else { return GameDetailWebViewController() }
+            withIdentifier: "GameDetailWebViewController") as? GameDetailMasterWebViewController
+            else { return GameDetailMasterWebViewController() }
         return view
     }
 

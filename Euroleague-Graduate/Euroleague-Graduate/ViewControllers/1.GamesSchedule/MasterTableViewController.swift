@@ -10,13 +10,7 @@ import UIKit
 import XLPagerTabStrip
 import EuroLeagueKit
 
-protocol UpdateRoundDataDelegate: class {
-    func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void)
-    func getUpdatedData(ofRound round: String)
-    func isRefreshing() -> Bool
-}
-
-class MatchesTableViewController: UITableViewController,
+class MasterTableViewController: UITableViewController,
 IndicatorInfoProvider {
 
     fileprivate var schedule: [Array<Game>]? {
@@ -37,7 +31,7 @@ IndicatorInfoProvider {
 
     fileprivate var isAppear = false
 
-    weak var delegate: UpdateRoundDataDelegate?
+    weak var pagerDelegate: PagerUpdateDelegate?
 
     var round: (round: String, name: String, completeName: String) = ("", "", "")
 
@@ -48,18 +42,18 @@ IndicatorInfoProvider {
         tableView.backgroundColor = UIColor.clear
         tableView.refreshControl?.tintColor = UIColor.white
         tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
-        delegate?.getDataToShow(ofRound: self.round.round) { (table, lastPlayed) in
+        pagerDelegate?.getDataToShow(ofRound: self.round.round) { (table, lastPlayed) in
             self.schedule = table
             self.indexPath = IndexPath(row: lastPlayed.row, section: lastPlayed.section)
         }
     }
 
     func refresh() {
-        if let refreshing = delegate?.isRefreshing(),
+        if let refreshing = pagerDelegate?.isRefreshing(),
             !refreshing {
             print("completion beginRefreshing \(round.round)")
             tableView.refreshControl?.beginRefreshing()
-            delegate?.getUpdatedData(ofRound: round.round)
+            pagerDelegate?.getUpdatedData(ofRound: round.round)
         } else {
             tableView.refreshControl?.endRefreshing()
         }
@@ -153,7 +147,7 @@ IndicatorInfoProvider {
 
 }
 
-extension MatchesTableViewController {
+extension MasterTableViewController {
 
     func moveToLastPlayed() {
         guard let index = indexPath
@@ -163,7 +157,7 @@ extension MatchesTableViewController {
 
 }
 
-extension MatchesTableViewController: PagerUpdateChildData {
+extension MasterTableViewController: PagerUpdateChildData {
 
     func updateUIWithData(_ table: [Array<Game>]?, lastGameIndex: (section: Int, row: Int)?) {
         guard let table = table, let lastGameIndex = lastGameIndex else {

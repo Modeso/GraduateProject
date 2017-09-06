@@ -66,6 +66,14 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         tableView.rowHeight = UITableViewAutomaticDimension
 
         updateUI()
+        self.view.layoutIfNeeded()
+        DispatchQueue.main.async {
+            self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
+        }
+        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
+        }
     }
 
     // Observer on collectionView contentSize
@@ -140,15 +148,22 @@ extension GameBoxScoreViewController: UITableViewDataSource {
                     let roadTeam = game?.roadTeamGameDetail {
                     let boxScoreInfo = boxScoreViewModel.boxScoreInfo(
                         forIndex: indexPath.row, withLocalTeam: localTeam, withRoadTeam: roadTeam)
-                    tableCell.boxScore = boxScoreInfo
+                    tableCell.typeLabel.text = boxScoreInfo.name
+                    tableCell.awayPlayerLabel.text = boxScoreInfo.guestTeamPlayerName
+                    tableCell.awayPointsLabel.text = boxScoreInfo.guestTeamPlayerPointText
+                    tableCell.homePlayerLabel.text = boxScoreInfo.homeTeamPlayerName
+                    tableCell.homePlayerPoints.text = boxScoreInfo.homeTeamPlayerPointText
+
                 }
 
             }
             if indexPath.row == 4 {
                 DispatchQueue.main.async {
                     self.tableViewHeightConstrain.constant = self.tableView.contentSize.height
+
                 }
             }
+
             return cell
         }
         return UITableViewCell()
@@ -198,6 +213,7 @@ extension GameBoxScoreViewController: UICollectionViewDataSource {
                     text = "\(qoute)\(row)   \(localScore) : \(roadScore)"
                 }
                 cell.quarterResult.text = text
+
             }
             if indexPath.row % 2 == 0 {
                 cell.quarterResult.textAlignment = .right

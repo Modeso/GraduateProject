@@ -46,18 +46,19 @@ class GameDetailViewController: ButtonBarPagerTabStripViewController {
 fileprivate extension GameDetailViewController {
 
     func createViewControllers() {
-        let boxScore = Router.createGameBoxScore()
+        let router = Router()
+        let boxScore = router.createGameBoxScore()
         boxScore.game = game
         myViewControllers.append(boxScore)
         guard  let gameNumber = game?.gameNumber
             else { return }
-        let playByPlay = Router.createGameDetailWebViewController()
+        let playByPlay = router.createGameDetailWebViewController()
         playByPlay.name = "PLAY BY PLAY"
         playByPlay.urlString = createWebViewUrl(type: "pbpmobile", gameCode: gameNumber, season: Constants.season.getSeasonCode())
-        let shootingChart = Router.createGameDetailWebViewController()
+        let shootingChart = router.createGameDetailWebViewController()
         shootingChart.name = "SHOOTING CHART"
         shootingChart.urlString = createWebViewUrl(type: "shootingchart", gameCode: gameNumber, season: Constants.season.getSeasonCode())
-        let gameEvolution = Router.createGameDetailWebViewController()
+        let gameEvolution = router.createGameDetailWebViewController()
         gameEvolution.name = "GAME EVOLUTION"
         gameEvolution.urlString = createWebViewUrl(type: "graphic", gameCode: gameNumber, season: Constants.season.getSeasonCode())
         myViewControllers.append(shootingChart)

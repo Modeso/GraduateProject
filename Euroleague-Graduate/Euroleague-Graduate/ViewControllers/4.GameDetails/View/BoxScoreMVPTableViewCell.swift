@@ -20,24 +20,4 @@ class BoxScoreMVPTableViewCell: UITableViewCell {
 
     @IBOutlet weak var awayPlayerLabel: UILabel!
 
-    var boxScore: BoxScoreInfo? {
-        didSet {
-            updateUI()
-        }
-    }
-
-}
-
-fileprivate extension BoxScoreMVPTableViewCell {
-
-    func updateUI() {
-        guard let boxScore = self.boxScore else {
-            return
-        }
-        homePlayerLabel.text = boxScore.homeTeamPlayerName
-        homePlayerPoints.text = boxScore.homeTeamPlayerPointText
-        typeLabel.text = boxScore.name
-        awayPlayerLabel.text = boxScore.guestTeamPlayerName
-        awayPointsLabel.text = boxScore.guestTeamPlayerPointText
-    }
 }

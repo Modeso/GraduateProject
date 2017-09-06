@@ -46,7 +46,7 @@ public class GamesDataService {
             DispatchQueue.global().async { [weak self] in
                 self?.getSchedule(completion: completion)
             }
-        } else {
+        }else {
             completion(nil)
         }
     }

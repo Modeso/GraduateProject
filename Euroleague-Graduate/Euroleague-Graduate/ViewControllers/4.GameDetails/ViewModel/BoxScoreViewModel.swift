@@ -117,6 +117,19 @@ class BoxScoreViewModel: AbstractViewModel {
 
 }
 
+extension BoxScoreViewModel {
+
+    func getGameDetail(ofGameWithCode code: String,
+                       completion: @escaping (_ localTeamDetail: GameTeamDetail?, _ roadTeamDetail: GameTeamDetail?) -> Void) {
+        DispatchQueue.global().async { [weak self] in
+            self?.gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code) { (localTeamDetail, roadTeamDetail) in
+                completion(localTeamDetail, roadTeamDetail)
+            }
+        }
+    }
+
+}
+
 struct BoxScoreInfo {
     var name: String = ""
     var homeTeamPlayerName: String = ""
