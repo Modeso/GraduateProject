@@ -64,7 +64,6 @@ fileprivate extension GamesDataService {
                 parameters: parameters,
                 headers: [:]) { [weak self] data, error in
                     if let xmlData = data, error == nil {
-                        print("current thread in getSchedule is \(Thread.current)")
                         DispatchQueue.global().async { [weak self] in
                             self?.parseSchedule(xmlData)
                             self?.getResults(completion: completion)
@@ -77,14 +76,12 @@ fileprivate extension GamesDataService {
 
     func getResults(completion: @escaping ([Game]?) -> Void) {
         let parameters = [ "seasoncode": currentSeason.getSeasonCode()]
-
         ApiClient
             .getRequestFrom(
                 url: GameDataRequestType.results.rawValue,
                 parameters: parameters,
                 headers: [:]) { [weak self] data, error in
                     if let xmlData = data, error == nil {
-                        print("current thread in getResult is \(Thread.current)")
                         DispatchQueue.global().async { [weak self] in
                             self?.setResults(xmlData)
                             if let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "") {

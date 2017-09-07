@@ -18,6 +18,7 @@
 		FE4BF7F81F5ECF3D00ADF8D5 /* TeamStatisticTableRowsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4BF7F71F5ECF3D00ADF8D5 /* TeamStatisticTableRowsModel.swift */; };
 		FE528DCD1F289AC700597D0A /* DataRetrivalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE528DCC1F289AC700597D0A /* DataRetrivalTest.swift */; };
 		FE540CD01F20BB9F000A75A0 /* ApiResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */; };
+		FEB301FF1F614F2B00D739C5 /* RoundsMatchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB301FE1F614F2B00D739C5 /* RoundsMatchesViewModel.swift */; };
 		FEC2D29F1F2B69A8006BB8AC /* CoText_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */; };
 		FEC2D2A01F2B69A8006BB8AC /* CoText_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */; };
 		FEC2D2A11F2B69A8006BB8AC /* CoText_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */; };
@@ -94,6 +95,7 @@
 		FE4BF7F71F5ECF3D00ADF8D5 /* TeamStatisticTableRowsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatisticTableRowsModel.swift; sourceTree = "<group>"; };
 		FE528DCC1F289AC700597D0A /* DataRetrivalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRetrivalTest.swift; sourceTree = "<group>"; };
 		FE540CCF1F20BB9F000A75A0 /* ApiResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseTest.swift; sourceTree = "<group>"; };
+		FEB301FE1F614F2B00D739C5 /* RoundsMatchesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundsMatchesViewModel.swift; sourceTree = "<group>"; };
 		FEC2D29C1F2B69A8006BB8AC /* CoText_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Bold.ttf; sourceTree = "<group>"; };
 		FEC2D29D1F2B69A8006BB8AC /* CoText_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Light.ttf; sourceTree = "<group>"; };
 		FEC2D29E1F2B69A8006BB8AC /* CoText_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoText_Regular.ttf; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				FEE585401F5D4ED0005A0A98 /* GamesViewModel.swift */,
+				FEB301FE1F614F2B00D739C5 /* RoundsMatchesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				FEE585611F5D518E005A0A98 /* GameBoxScoreViewController.swift in Sources */,
 				FEE5856A1F5D518E005A0A98 /* LeagueChooserCollectionViewCell.swift in Sources */,
 				FEE5855F1F5D518E005A0A98 /* TeamsTableViewCell.swift in Sources */,
+				FEB301FF1F614F2B00D739C5 /* RoundsMatchesViewModel.swift in Sources */,
 				FEE5857B1F5D51F2005A0A98 /* TeamStatisticsViewController.swift in Sources */,
 				FEE5857F1F5D51F2005A0A98 /* PlayerViewModel.swift in Sources */,
 				FEE585791F5D51F2005A0A98 /* TeamDataViewController.swift in Sources */,

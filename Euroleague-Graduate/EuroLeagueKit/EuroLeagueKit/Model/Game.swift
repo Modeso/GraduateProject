@@ -80,6 +80,8 @@ public extension Game {
         newGame.time = self.time
         newGame.awayCode = self.awayCode
         newGame.homeCode = self.homeCode
+        newGame.awayImageUrl = self.awayImageUrl
+        newGame.homeImageUrl = self.homeImageUrl
         newGame.localTeamGameDetail = self.localTeamGameDetail?.clone()
         newGame.roadTeamGameDetail = self.roadTeamGameDetail?.clone()
         newGame.seasonCode = self.seasonCode

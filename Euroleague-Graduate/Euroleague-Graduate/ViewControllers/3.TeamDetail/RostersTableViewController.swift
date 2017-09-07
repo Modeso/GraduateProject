@@ -68,7 +68,7 @@ extension RostersTableViewController: UITableViewDelegate {
                 playersViewModel.getData(withData: [code]) { [weak self] playerArray in
                     if let mArray = playerArray,
                         mArray.count > 0,
-                        let mPlayer = mArray[0][0] as? Player {
+                        let mPlayer = mArray[0] as? Player {
                         self?.rosters[indexPath.section][indexPath.row] = mPlayer
                         if let playerCell = tableView.cellForRow(at: indexPath) as? PlayersTableViewCell {
                             playerCell.player = mPlayer

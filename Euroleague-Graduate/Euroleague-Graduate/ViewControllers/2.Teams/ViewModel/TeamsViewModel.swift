@@ -18,7 +18,7 @@ class TeamsViewModel: AbstractViewModel {
         teamDataService = TeamsDataService(season: season)
     }
 
-    func getData(withData: [Any]?, completion: @escaping ([NSArray]?) -> Void) {
+    func getData(withData: [Any]?, completion: @escaping ([Any]?) -> Void) {
         getTeamsData(completion: completion)
     }
 
@@ -26,15 +26,14 @@ class TeamsViewModel: AbstractViewModel {
 
 fileprivate extension TeamsViewModel {
 
-    func getTeamsData(completion: @escaping ([NSArray]?) -> Void) {
+    func getTeamsData(completion: @escaping ([Any]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
             self?.teamDataService.getTeamsTable { (clubs) in
                 if let clubsData = clubs {
                     let teams = self?.makeTeams(from: clubsData)
                     DispatchQueue.main.async {
-                        completion(teams as [NSArray]?)
+                        completion(teams as [Any]?)
                     }
-
                 } else {
                         completion(nil)
                 }

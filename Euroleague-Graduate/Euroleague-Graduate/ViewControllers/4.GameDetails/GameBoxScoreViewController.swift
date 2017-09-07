@@ -47,7 +47,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         if let code = game?.gameCode {
             let data: Any = code
             boxScoreViewModel.getData(withData: [data]) { [weak self] detailArray in
-                if let detailData = detailArray?[0] as? [GameTeamDetail] {
+                if let detailData = detailArray as? [GameTeamDetail] {
                     self?.game?.localTeamGameDetail = detailData[0]
                     self?.game?.roadTeamGameDetail = detailData[1]
                     self?.updateUI()
@@ -81,10 +81,6 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
         if keyPath == "contentSize" {
             self.collectionViewHeightConstrain.constant = self.collectionView.contentSize.height
         }
-    }
-
-    @IBAction func openBoxScoreOnWebBrowser(_ sender: Any) {
-        /// learn how to open it
     }
 
     deinit {

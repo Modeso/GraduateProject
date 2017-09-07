@@ -23,20 +23,20 @@ class BoxScoreViewModel: AbstractViewModel {
         gameDetailBoxScoreService = GameDetailBoxScoreDataService(season: season)
     }
 
-    func getData(withData data: [Any]?, completion: @escaping ([NSArray]?) -> Void) {
+    func getData(withData data: [Any]?, completion: @escaping ([Any]?) -> Void) {
         if let code = data?[0] as? String {
             DispatchQueue.global().async { [weak self] in
                 self?.gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code) {(localTeamDetail, roadTeamDetail) in
-                    var array: [[GameTeamDetail]]? = [[GameTeamDetail]]()
+                    var array: [GameTeamDetail]? = [GameTeamDetail]()
                     guard let local = localTeamDetail, let road = roadTeamDetail
                         else {
                             completion(nil)
                             return
                     }
-                    let subArray = [local, road]
-                    array?.append(subArray)
+                    array?.append(local)
+                    array?.append(road)
                     DispatchQueue.main.async {
-                        completion(array as [NSArray]?)
+                        completion(array as [Any]?)
                     }
                 }
             }

@@ -11,7 +11,6 @@ import XLPagerTabStrip
 import EuroLeagueKit
 
 protocol UpdateRoundDataDelegate: class {
-    func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void)
     func getUpdatedData(ofRound round: String)
     func isRefreshing() -> Bool
 }
@@ -47,10 +46,7 @@ IndicatorInfoProvider {
         tableView.backgroundColor = UIColor.clear
         tableView.refreshControl?.tintColor = UIColor.white
         tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
-        delegate?.getDataToShow(ofRound: self.round.name) { (table, lastPlayed) in
-            self.schedule = table
-            self.indexPath = IndexPath(row: lastPlayed.row, section: lastPlayed.section)
-        }
+
     }
 
     func refresh() {
@@ -61,7 +57,6 @@ IndicatorInfoProvider {
         } else {
             tableView.refreshControl?.endRefreshing()
         }
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -79,11 +74,10 @@ IndicatorInfoProvider {
                 DispatchQueue.main.async {
                     self.moveToLastPlayed()
                 }
+            } else {
+                tableView?.reloadData()
             }
-        } else {
-            delegate?.getUpdatedData(ofRound: round.name)
         }
-
     }
 
     override func viewDidDisappear(_ animated: Bool) {

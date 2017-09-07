@@ -111,6 +111,7 @@ public class Constants {
             menu[1] = LeagueRound(name: "", barName: "", completeName: "All phases", priority: priority + 1)
             for round in rounds {
                 menu[counter] = LeagueRound(name: round.name, barName: round.barName, completeName: round.completeName, priority: round.priority)
+                counter += 1
             }
             return menu
         }

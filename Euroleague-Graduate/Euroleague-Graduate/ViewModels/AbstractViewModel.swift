@@ -11,6 +11,6 @@ import RealmSwift
 
 protocol AbstractViewModel {
 
-    func getData(withData data: [Any]?, completion: @escaping ([NSArray]?) -> Void)
+    func getData(withData data: [Any]?, completion: @escaping ([Any]?) -> Void)
 
 }

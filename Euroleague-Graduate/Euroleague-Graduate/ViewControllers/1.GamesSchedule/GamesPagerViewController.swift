@@ -20,7 +20,8 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
 
     fileprivate var myViewControllers: [MatchesTableViewController] = []
 
-    fileprivate let viewModel = GamesViewModel(season: Constants.season)
+    fileprivate let gamesViewModel = GamesViewModel(season: Constants.season)
+    fileprivate let roundMatchesViewmodel = RoundsMatchesViewModel(season: Constants.season)
 
     fileprivate var refreshing = true
 
@@ -36,12 +37,26 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
 
         super.viewDidLoad()
-
+        gamesViewModel.getData(withData: nil) { [weak self] schedule in
+            guard let schedule = schedule as? [Game], let myViewControllers = self?.myViewControllers else { return }
+            self?.roundMatchesViewmodel.makeRoundsMatches(from: schedule)
+            for matchesController in myViewControllers {
+                if let games = self?.roundMatchesViewmodel.getGames(of: matchesController.getRound()),
+                    let lastGame = self?.roundMatchesViewmodel.getLastGame(of: matchesController.getRound()) {
+                    if Thread.isMainThread {
+                        matchesController.updateUIWithData(games, lastGameIndex: lastGame)
+                    } else {
+                        DispatchQueue.main.async {
+                            matchesController.updateUIWithData(games, lastGameIndex: lastGame)
+                        }
+                    }
+                }
+            }
+        }
         buttonBarView.backgroundColor = UIColor.getLeagueBarColor()
         self.edgesForExtendedLayout = []
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
-
         }
     }
 
@@ -74,37 +89,22 @@ fileprivate extension GamesPagerViewController {
         for controller in myViewControllers {
             controller.delegate = self
         }
-
     }
 
 }
 
 extension GamesPagerViewController: UpdateRoundDataDelegate {
 
-    func getDataToShow(ofRound round: String, completion: ([[Game]], (section: Int, row: Int)) -> Void) {
-        viewModel.getData(withData: [round]) { [weak self] schedule in
-            let matchesController = self?.myViewControllers.first(where: { $0.getRound() == round })
-            if let games = schedule as? [[Game]],
-                let lastGame = self?.viewModel.getLastGame(round: round) {
-                if Thread.isMainThread {
-                    matchesController?.updateUIWithData(games, lastGameIndex: lastGame)
-                } else {
-                    DispatchQueue.main.async {
-                        matchesController?.updateUIWithData(games, lastGameIndex: lastGame)
-                    }
-                }
-            }
-        }
-    }
-
     // pull down to refresh..
     func getUpdatedData(ofRound round: String) {
         refreshing = true
-        viewModel.updateData(withData: round) { [weak self] schedule in
+        gamesViewModel.updateData(withData: round) { [weak self] schedule in
             self?.refreshing = false
+            guard let schedule = schedule as? [Game] else { return }
+            self?.roundMatchesViewmodel.makeRoundsMatches(from: schedule)
             let matchesController = self?.myViewControllers.first(where: { $0.getRound() == round })
-            if let games = schedule as? [[Game]],
-                let lastGame = self?.viewModel.getLastGame(round: round) {
+            if let games = self?.roundMatchesViewmodel.getGames(of: round),
+                let lastGame = self?.roundMatchesViewmodel.getLastGame(of: round) {
                 if Thread.isMainThread {
                     matchesController?.updateUIWithData(games, lastGameIndex: lastGame)
                 } else {
