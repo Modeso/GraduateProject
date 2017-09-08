@@ -26,6 +26,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet fileprivate weak var browserButton: UIButton!
 
     fileprivate let boxScoreViewModel = BoxScoreViewModel(season: Constants.season)
+    fileprivate var collectionViewEstimatedWidth: CGFloat = 0
 
     var game: Game? {
         didSet {
@@ -39,6 +40,7 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionViewEstimatedWidth = view.frame.width
         browserButton.backgroundColor = Constants.season.getColor()
         collectionViewHeightConstrain.constant = 0
         tableViewHeightConstrain.constant = 0
@@ -85,6 +87,16 @@ class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
 
     deinit {
         collectionView.removeObserver(self, forKeyPath: "contentSize")
+    }
+
+}
+
+extension GameBoxScoreViewController {
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionViewEstimatedWidth = size.width
+        collectionView?.reloadData()
+        tableView?.reloadData()
     }
 
 }
@@ -164,7 +176,7 @@ extension GameBoxScoreViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2, height: 40)
+        return CGSize(width: collectionViewEstimatedWidth / 2, height: 40)
     }
 
 }
@@ -203,7 +215,6 @@ extension GameBoxScoreViewController: UICollectionViewDataSource {
                     text = "\(qoute)\(row)   \(localScore) : \(roadScore)"
                 }
                 cell.quarterResult.text = text
-
             }
             if indexPath.row % 2 == 0 {
                 cell.quarterResult.textAlignment = .right

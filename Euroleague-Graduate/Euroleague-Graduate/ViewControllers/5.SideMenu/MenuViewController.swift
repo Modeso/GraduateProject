@@ -161,7 +161,7 @@ extension MenuViewController: UICollectionViewDataSource {
                 } else {
                     cell.leagueImageView.image = Constants.Season.turkishEuroLeague.getNonColoredImage()
                 }
-
+                break
             case 1:
                 if indexPath.row == selectedLeagueNumber {
                     cell.leagueImageView.image = Constants.Season.euroCup.getColoredImage()
@@ -169,11 +169,11 @@ extension MenuViewController: UICollectionViewDataSource {
                 } else {
                     cell.leagueImageView.image = Constants.Season.euroCup.getNonColoredImage()
                 }
-
+                break
             default :
                 cell.leagueImageView.image = Constants.Season.turkishEuroLeague.getColoredImage()
+                break
             }
-
             return cell
         }
         return UICollectionViewCell()
