@@ -1,5 +1,5 @@
 //
-//  TurkishAirLinesHelper.swift
+//  GamesDataService.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 7/19/17.
@@ -27,7 +27,7 @@ public class GamesDataService {
         currentSeason = season
     }
 
-    public func getGamesTable(completion: @escaping ([Game]?) -> Void) {
+    public func getGames(completion: @escaping ([Game]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
             if let table = RealmDBManager.sharedInstance.getGames(ofSeason: self?.currentSeason.getSeasonCode() ?? "") {
                 var arrayTable: [Game] = []

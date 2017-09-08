@@ -15,32 +15,20 @@ protocol BoxScoreViewModelDelegate: class {
     func updateData(withLocalTeam localTeamDetail: GameTeamDetail?, roadTeam roadTeamDetail: GameTeamDetail?)
 }
 
-class BoxScoreViewModel: AbstractViewModel {
+struct BoxScoreInfo {
+    var name: String = ""
+    var homeTeamPlayerName: String = ""
+    var guestTeamPlayerName: String = ""
+    var homeTeamPlayerPointText: String = ""
+    var guestTeamPlayerPointText: String = ""
+}
+
+class BoxScoreViewModel {
 
     fileprivate let gameDetailBoxScoreService: GameDetailBoxScoreDataService
 
     init(season: Constants.Season) {
         gameDetailBoxScoreService = GameDetailBoxScoreDataService(season: season)
-    }
-
-    func getData(withData data: [Any]?, completion: @escaping ([Any]?) -> Void) {
-        if let code = data?[0] as? String {
-            DispatchQueue.global().async { [weak self] in
-                self?.gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code) {(localTeamDetail, roadTeamDetail) in
-                    var array: [GameTeamDetail]? = [GameTeamDetail]()
-                    guard let local = localTeamDetail, let road = roadTeamDetail
-                        else {
-                            completion(nil)
-                            return
-                    }
-                    array?.append(local)
-                    array?.append(road)
-                    DispatchQueue.main.async {
-                        completion(array as [Any]?)
-                    }
-                }
-            }
-        }
     }
 
     func boxScoreInfo(forIndex index: Int,
@@ -117,10 +105,26 @@ class BoxScoreViewModel: AbstractViewModel {
 
 }
 
-struct BoxScoreInfo {
-    var name: String = ""
-    var homeTeamPlayerName: String = ""
-    var guestTeamPlayerName: String = ""
-    var homeTeamPlayerPointText: String = ""
-    var guestTeamPlayerPointText: String = ""
+extension BoxScoreViewModel: AbstractViewModel {
+
+    func getData(withData data: [Any]?, completion: @escaping ([Any]?) -> Void) {
+        if let code = data?[0] as? String {
+            DispatchQueue.global().async { [weak self] in
+                self?.gameDetailBoxScoreService.getScoreBoxResults(ofGameWithCode: code) {(localTeamDetail, roadTeamDetail) in
+                    var array: [GameTeamDetail]? = [GameTeamDetail]()
+                    guard let local = localTeamDetail, let road = roadTeamDetail
+                        else {
+                            completion(nil)
+                            return
+                    }
+                    array?.append(local)
+                    array?.append(road)
+                    DispatchQueue.main.async {
+                        completion(array as [Any]?)
+                    }
+                }
+            }
+        }
+    }
+
 }

@@ -91,7 +91,7 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your Competition" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="as5-TA-Bi5">
-                                <rect key="frame" x="77.333333333333314" y="65" width="259.33333333333337" height="35"/>
+                                <rect key="frame" x="92.333333333333314" y="65" width="229.33333333333337" height="23.333333333333329"/>
                                 <fontDescription key="fontDescription" name="CoText-Bold" family="Co Text" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -307,10 +307,10 @@
             </objects>
             <point key="canvasLocation" x="322" y="-57"/>
         </scene>
-        <!--TurkishLeagueMasterTable-->
+        <!--MatchesTableViewController-->
         <scene sceneID="Krp-1K-9AQ">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="TurkishLeagueMasterTable" storyboardName="Game" referencedIdentifier="TurkishLeagueMasterTable" id="xFT-ek-UPs" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="MatchesTableViewController" storyboardName="Game" referencedIdentifier="MatchesTableViewController" id="xFT-ek-UPs" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAR-Ak-znD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="391" y="-113"/>

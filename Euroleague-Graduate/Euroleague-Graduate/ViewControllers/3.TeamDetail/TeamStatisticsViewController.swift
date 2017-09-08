@@ -12,14 +12,11 @@ import EuroLeagueKit
 
 class TeamStatisticsViewController: UIViewController, IndicatorInfoProvider {
 
-    @IBOutlet weak var menuContainerHeightConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var menuContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var tableView: UITableView!
 
     fileprivate var menuViewController: TeamStatisticsMenuTableViewController?
-
-    fileprivate let teamStatisticsModel = TeamStatisticTableRowsModel()
-
+    fileprivate let teamStatisticsModel = TeamStatisticViewModel()
     fileprivate var startHeight: CGFloat = 35
 
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {

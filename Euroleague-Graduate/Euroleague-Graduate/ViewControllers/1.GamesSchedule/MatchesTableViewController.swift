@@ -1,5 +1,5 @@
 //
-//  TurkishLeagueMasterTableViewController.swift
+//  MatchesTableViewController.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 7/27/17.
@@ -12,12 +12,13 @@ import EuroLeagueKit
 
 protocol UpdateRoundDataDelegate: class {
     func getUpdatedData(ofRound round: String)
-    func isRefreshing() -> Bool
+    func isPagerRefreshing() -> Bool
 }
 
 class MatchesTableViewController: UITableViewController,
 IndicatorInfoProvider {
 
+    fileprivate lazy var matchesViewModel = MatchesTableViewModel()
     fileprivate var schedule: [[Game]]? {
         didSet {
             if isAppear {
@@ -28,11 +29,9 @@ IndicatorInfoProvider {
     }
 
     fileprivate var indexPath: IndexPath?
-
     fileprivate var selectedGame = Game()
 
     fileprivate var firstLoad = true
-
     fileprivate var isAppear = false
 
     weak var delegate: UpdateRoundDataDelegate?
@@ -50,7 +49,7 @@ IndicatorInfoProvider {
     }
 
     func refresh() {
-        if let refreshing = delegate?.isRefreshing(),
+        if let refreshing = delegate?.isPagerRefreshing(),
             !refreshing {
             tableView.refreshControl?.beginRefreshing()
             delegate?.getUpdatedData(ofRound: round.name)
@@ -147,7 +146,7 @@ IndicatorInfoProvider {
 
 }
 
-extension MatchesTableViewController {
+fileprivate extension MatchesTableViewController {
 
     func moveToLastPlayed() {
         guard let index = indexPath
@@ -159,26 +158,23 @@ extension MatchesTableViewController {
 
 extension MatchesTableViewController: PagerUpdateChildData {
 
-    func updateUIWithData(_ table: [[Game]]?, lastGameIndex: (section: Int, row: Int)?) {
-        guard let table = table, let lastGameIndex = lastGameIndex else {
-            self.tableView?.refreshControl?.endRefreshing()
-            return
-        }
-        schedule = table
-        let indexPath = IndexPath(row: lastGameIndex.row, section: lastGameIndex.section)
+    func updateUIWithData(_ games: [Game]) {
+        schedule = matchesViewModel.getGames(from: games)
+        let lastGame = matchesViewModel.getLastGame()
+        let lastGameIndex = IndexPath(row: lastGame.row, section: lastGame.section)
         if isAppear {
             if !firstLoad {
                 if lastGameIndex.section != self.indexPath?.section, lastGameIndex.row != self.indexPath?.row {
-                    self.indexPath = indexPath
+                    self.indexPath = lastGameIndex
                     moveToLastPlayed()
                 }
             } else {
                 firstLoad = false
-                self.indexPath = indexPath
+                self.indexPath = lastGameIndex
                 moveToLastPlayed()
             }
         } else {
-            self.indexPath = indexPath
+            self.indexPath = lastGameIndex
         }
     }
 

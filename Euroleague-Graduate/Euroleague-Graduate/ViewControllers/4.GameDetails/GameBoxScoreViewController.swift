@@ -12,18 +12,18 @@ import EuroLeagueKit
 
 class GameBoxScoreViewController: UIViewController, IndicatorInfoProvider {
 
-    @IBOutlet weak var homeImageView: UIImageView!
-    @IBOutlet weak var awayImageView: UIImageView!
-    @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var separator: UIView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var codeLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionViewHeightConstrain: NSLayoutConstraint!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewHeightConstrain: NSLayoutConstraint!
-    @IBOutlet weak var browserButton: UIButton!
+    @IBOutlet fileprivate weak var homeImageView: UIImageView!
+    @IBOutlet fileprivate weak var awayImageView: UIImageView!
+    @IBOutlet fileprivate weak var resultLabel: UILabel!
+    @IBOutlet fileprivate weak var detailLabel: UILabel!
+    @IBOutlet fileprivate weak var separator: UIView!
+    @IBOutlet fileprivate weak var dateLabel: UILabel!
+    @IBOutlet fileprivate weak var codeLabel: UILabel!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var collectionViewHeightConstrain: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var tableViewHeightConstrain: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var browserButton: UIButton!
 
     fileprivate let boxScoreViewModel = BoxScoreViewModel(season: Constants.season)
 

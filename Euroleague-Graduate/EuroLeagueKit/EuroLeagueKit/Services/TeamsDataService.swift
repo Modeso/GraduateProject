@@ -1,5 +1,5 @@
 //
-//  TurkishAirLinesTeamsDataService.swift
+//  TeamsDataService.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 7/31/17.
@@ -20,7 +20,7 @@ public class TeamsDataService {
     }
 
     ///Will return the teams data from DataBase
-    public func getTeamsTable(completion: @escaping ([Team]?) -> Void) {
+    public func getTeams(completion: @escaping ([Team]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
             if let table = RealmDBManager.sharedInstance.getTeams(ofSeason: self?.currentSeason.getSeasonCode() ?? "") {
                 var arrayTabel: [Team] = []
@@ -38,10 +38,10 @@ public class TeamsDataService {
 fileprivate extension TeamsDataService {
 
     func updateTeams(completion: @escaping ([Team]?) -> Void) {
-        getTeams(completion: completion)
+        getTeamsFromApi(completion: completion)
     }
 
-    func getTeams(completion: @escaping ([Team]?) -> Void) {
+    func getTeamsFromApi(completion: @escaping ([Team]?) -> Void) {
         let parameters = [ "seasoncode": currentSeason.getSeasonCode() ]
         ApiClient.getRequestFrom(url: url,
                                  parameters: parameters,

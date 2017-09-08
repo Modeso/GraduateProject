@@ -12,16 +12,11 @@ import EuroLeagueKit
 
 class PlayersTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var playerImageView: UIImageView!
-
-    @IBOutlet weak var playerNameLabel: UILabel!
-
-    @IBOutlet weak var dorsalLabel: UILabel!
-
-    @IBOutlet weak var countryNameLabel: UILabel!
-
-    @IBOutlet weak var separator: UIView!
-
+    @IBOutlet fileprivate weak var playerImageView: UIImageView!
+    @IBOutlet fileprivate weak var playerNameLabel: UILabel!
+    @IBOutlet fileprivate weak var dorsalLabel: UILabel!
+    @IBOutlet fileprivate weak var countryNameLabel: UILabel!
+    @IBOutlet fileprivate weak var separator: UIView!
     @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
 
     var player: Player? {

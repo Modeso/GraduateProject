@@ -1,5 +1,5 @@
 //
-//  TurkishLeagueTeamDataViewController.swift
+//  TeamDataViewController.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 8/2/17.
@@ -13,14 +13,14 @@ import EuroLeagueKit
 
 class TeamDataViewController: ButtonBarPagerTabStripViewController {
 
+    @IBOutlet fileprivate weak var teamImageView: UIImageView!
+    @IBOutlet fileprivate weak var teamNameLabel: UILabel!
+    @IBOutlet fileprivate weak var tvCodeLabel: UILabel!
+    @IBOutlet fileprivate weak var countryLabel: UILabel!
+
     fileprivate var myViewControllers: [UIViewController] = []
 
     var team: Team?
-
-    @IBOutlet weak var teamImageView: UIImageView!
-    @IBOutlet weak var teamNameLabel: UILabel!
-    @IBOutlet weak var tvCodeLabel: UILabel!
-    @IBOutlet weak var countryLabel: UILabel!
 
     override func viewDidLoad() {
         settings.style.buttonBarItemBackgroundColor = UIColor.getLeagueBarColor()
@@ -66,10 +66,7 @@ fileprivate extension TeamDataViewController {
             return
         }
         let roster = router.createRosterTableController()
-        if let coach = team.rosters.first?.clone() {
-            roster.coach = coach
-        }
-        roster.makeRostersOf(Array(team.rosters))
+        roster.setUpPlayers(Array(team.rosters))
         let statistics = router.createTeamStatistics()
         myViewControllers.append(roster)
         myViewControllers.append(statistics)

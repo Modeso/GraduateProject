@@ -13,13 +13,10 @@ import EuroLeagueKit
 
 class RostersTableViewController: UIViewController, IndicatorInfoProvider {
 
-    var coach = Player()
+    @IBOutlet fileprivate weak var tableView: UITableView!
 
     fileprivate var rosters: [[Player]] = []
-
-    fileprivate let playersViewModel = PlayerViewModel(season: Constants.season)
-
-    @IBOutlet weak var tableView: UITableView!
+    fileprivate let playersViewModel = RostersTableViewModel(season: Constants.season)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,26 +31,8 @@ class RostersTableViewController: UIViewController, IndicatorInfoProvider {
         return "ROSTER"
     }
 
-    func makeRostersOf(_ players: [Player]) {
-        var rostersTable: [String : [Player]] = [:]
-        var newPlayers = players
-        newPlayers.remove(at: 0)
-        var positions: [String] = []
-        for player in newPlayers {
-            if !positions.contains(player.position) {
-                positions.append(player.position)
-                rostersTable[player.position] = []
-            }
-            rostersTable[player.position]?.append(player)
-        }
-        positions.sort()
-        self.rosters.append([coach])
-        for position in positions {
-            let samePositionPlayers = rostersTable[position]?.sorted { $0.dorsal < $1.dorsal }
-            if let sortedPlayers = samePositionPlayers {
-                self.rosters.append(sortedPlayers)
-            }
-        }
+    func setUpPlayers(_ players: [Player]) {
+        rosters = playersViewModel.makeRostersOf(players)
         self.tableView?.reloadData()
     }
 

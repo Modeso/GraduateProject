@@ -21,7 +21,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Turkish Airlines EuroLeague-->
+        <!--Games Pager View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="GamesPart" id="BYZ-38-t0r" customClass="GamesPagerViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                             <constraint firstItem="Dch-82-Z5h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xZ2-nB-3fR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Turkish Airlines EuroLeague" id="x5a-gj-heQ">
+                    <navigationItem key="navigationItem" id="x5a-gj-heQ">
                         <barButtonItem key="leftBarButtonItem" image="MenuButton" id="nRd-v1-FKL">
                             <connections>
                                 <action selector="presentLeftMenuViewController:" destination="BYZ-38-t0r" id="357-qu-pqP"/>
@@ -79,7 +79,7 @@
         <!--Matches Table View Controller-->
         <scene sceneID="3Hb-SA-bJ1">
             <objects>
-                <tableViewController storyboardIdentifier="TurkishLeagueMasterTable" id="Zf3-Mh-Txt" customClass="MatchesTableViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MatchesTableViewController" id="Zf3-Mh-Txt" customClass="MatchesTableViewController" customModule="Euroleague_Graduate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="201" sectionHeaderHeight="28" sectionFooterHeight="28" id="g2l-8e-8vW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +130,7 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Cp-23-fsD">
-                                            <rect key="frame" x="136" y="13" width="103.5" height="104"/>
+                                            <rect key="frame" x="136.5" y="13" width="103.5" height="104"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-Oa-FAv">
                                                     <rect key="frame" x="0.0" y="0.0" width="103.5" height="49"/>
@@ -282,10 +282,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="plU-VA-Vus">
-                                <rect key="frame" x="136" y="5" width="103.5" height="80.5"/>
+                                <rect key="frame" x="141.5" y="5" width="93" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GE5-hl-soW">
-                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="49"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="33"/>
                                         <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="28"/>
                                         <color key="textColor" red="0.30141758918762207" green="0.3014255166053772" blue="0.30142122507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -294,7 +294,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fy1-6Y-7ke">
-                                        <rect key="frame" x="0.0" y="49" width="103.5" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="33" width="93" height="21"/>
                                         <fontDescription key="fontDescription" name="CoText-Light" family="Co Text" pointSize="18"/>
                                         <color key="textColor" red="0.30141758918762207" green="0.3014255166053772" blue="0.30142122507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -327,10 +327,10 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSQ-vn-uUB">
-                                <rect key="frame" x="0.0" y="95.5" width="375" height="25"/>
+                                <rect key="frame" x="0.0" y="69" width="375" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sb9-oL-kMx">
-                                        <rect key="frame" x="329" y="1" width="36" height="24.5"/>
+                                        <rect key="frame" x="331" y="5" width="34" height="16.5"/>
                                         <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                         <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -339,7 +339,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAZ-ID-jMa">
-                                        <rect key="frame" x="10" y="1" width="33.5" height="24.5"/>
+                                        <rect key="frame" x="10" y="5" width="29.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -358,7 +358,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Arj-4E-QwS">
-                                <rect key="frame" x="0.0" y="120.5" width="375" height="546.5"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d8h-h6-Jbu">
                                         <rect key="frame" x="0.0" y="5" width="375" height="120"/>
@@ -374,7 +374,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QuarterCell" id="MmF-Yv-kZk" customClass="BoxScoreQuarterCollectionViewCell" customModule="Euroleague_Graduate" customModuleProvider="target">
-                                                <rect key="frame" x="36.5" y="0.0" width="302" height="114"/>
+                                                <rect key="frame" x="37" y="0.0" width="302" height="114"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="302" height="114"/>
@@ -426,28 +426,28 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Player" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIu-xe-dhF">
-                                                            <rect key="frame" x="13" y="8" width="88" height="30"/>
+                                                            <rect key="frame" x="13" y="8" width="80.5" height="30"/>
                                                             <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                                             <color key="textColor" red="0.3014175892" green="0.3014255166" blue="0.30142122510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZZd-63-pKF">
-                                                            <rect key="frame" x="139" y="11.5" width="97.5" height="23.5"/>
+                                                            <rect key="frame" x="142.5" y="13" width="91" height="21"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="H-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8du-D5-aTo">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="20.5" height="23.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="21"/>
                                                                     <fontDescription key="fontDescription" name="CoText-Bold" family="Co Text" pointSize="18"/>
                                                                     <color key="textColor" red="0.3014175892" green="0.3014255166" blue="0.30142122510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMd-RL-cJp">
-                                                                    <rect key="frame" x="27.5" y="0.0" width="42.5" height="23.5"/>
+                                                                    <rect key="frame" x="27" y="0.0" width="38" height="21"/>
                                                                     <fontDescription key="fontDescription" name="CoText-Bold" family="Co Text" pointSize="18"/>
                                                                     <color key="textColor" red="0.30141758918762207" green="0.3014255166053772" blue="0.30142122507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="A-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Y2-o0-XrN">
-                                                                    <rect key="frame" x="77" y="0.0" width="20.5" height="23.5"/>
+                                                                    <rect key="frame" x="72" y="0.0" width="19" height="21"/>
                                                                     <fontDescription key="fontDescription" name="CoText-Bold" family="Co Text" pointSize="18"/>
                                                                     <color key="textColor" red="0.3014175892" green="0.3014255166" blue="0.30142122510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -455,7 +455,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Away Player" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="igd-ti-aXe">
-                                                            <rect key="frame" x="278" y="8" width="84" height="30"/>
+                                                            <rect key="frame" x="285" y="8" width="77" height="30"/>
                                                             <fontDescription key="fontDescription" name="CoText-Regular" family="Co Text" pointSize="14"/>
                                                             <color key="textColor" red="0.30141758918762207" green="0.3014255166053772" blue="0.30142122507095337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>

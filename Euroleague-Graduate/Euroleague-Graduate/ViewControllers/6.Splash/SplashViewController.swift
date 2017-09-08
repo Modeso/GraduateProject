@@ -13,21 +13,15 @@ import EuroLeagueKit
 
 class SplashViewController: UIViewController {
 
+    @IBOutlet fileprivate weak var playerView: UIView!
+    @IBOutlet fileprivate weak var turkishLeagueView: UIView!
+    @IBOutlet fileprivate weak var euroCupView: UIView!
+    @IBOutlet fileprivate weak var textLabel: UILabel!
+    @IBOutlet fileprivate weak var euroCupWidthConstrain: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var turkishLeagueViewTraillingConstraint: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var euroCupViewTraillingConstraint: NSLayoutConstraint!
+
     fileprivate var player = AVPlayer()
-
-    @IBOutlet weak var playerView: UIView!
-
-    @IBOutlet weak var turkishLeagueView: UIView!
-
-    @IBOutlet weak var euroCupView: UIView!
-
-    @IBOutlet weak var textLabel: UILabel!
-
-    @IBOutlet weak var euroCupWidthConstrain: NSLayoutConstraint!
-
-    @IBOutlet weak var turkishLeagueViewTraillingConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var euroCupViewTraillingConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()

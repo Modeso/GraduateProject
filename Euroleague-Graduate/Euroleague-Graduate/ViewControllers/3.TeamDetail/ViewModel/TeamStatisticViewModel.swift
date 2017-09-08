@@ -1,5 +1,5 @@
 //
-//  TeamStatisticTableRowsModel.swift
+//  TeamStatisticViewModel.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 8/15/17.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-public class TeamStatisticTableRowsModel {
+class TeamStatisticViewModel {
 
-    public let rows: [String] = [
+    let rows: [String] = [
         "Games", "Wins", "Points", "2 Points Field Goal %",
         "3 Points Field Goal %", "Free throws %",
         "Rebounds", "Assists", "Steals", "Turnovers",
         "Blocks", "Fouls"
     ]
 
-    public var results: [String: Float] = [
+    var results: [String: Float] = [
         "Games": 0,
         "Wins": 0,
         "Points": 0,
@@ -34,7 +34,7 @@ public class TeamStatisticTableRowsModel {
 
     fileprivate var currentRound: String = ""
 
-    public func getDataAccordingToMenu(round: String) {
+    func getDataAccordingToMenu(round: String) {
         // Just making fake data
         var max: Float = 0
         switch round {
@@ -51,9 +51,5 @@ public class TeamStatisticTableRowsModel {
             results[result.key] = Float.random(min: 5, max: max)
         }
     }
-
-}
-
-fileprivate extension TeamStatisticTableRowsModel {
 
 }

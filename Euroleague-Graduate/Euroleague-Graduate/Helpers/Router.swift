@@ -1,5 +1,5 @@
 //
-//  TurkishLeagueGamesRouter.swift
+//  Router.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 8/1/17.
@@ -15,7 +15,7 @@ class Router {
     func createLeagueGameTableController () -> MatchesTableViewController {
         let storyboard = UIStoryboard(name: "Game", bundle: nil)
         guard let tableController = storyboard.instantiateViewController(
-            withIdentifier: "TurkishLeagueMasterTable") as? MatchesTableViewController
+            withIdentifier: "MatchesTableViewController") as? MatchesTableViewController
             else { return MatchesTableViewController() }
         return tableController
     }

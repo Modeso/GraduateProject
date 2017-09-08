@@ -1,5 +1,5 @@
 //
-//  TurkishLeagueTableViewCell.swift
+//  GamesTableViewCell.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 7/24/17.
@@ -12,31 +12,17 @@ import EuroLeagueKit
 
 class GamesTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var homeImageView: UIImageView!
-
-    @IBOutlet weak var awayImageView: UIImageView!
-
-    @IBOutlet weak var resultsLabel: UILabel!
-
-    @IBOutlet weak var detailLabel: UILabel!
-
-    @IBOutlet weak var separator: UIView!
-
+    @IBOutlet fileprivate weak var homeImageView: UIImageView!
+    @IBOutlet fileprivate weak var awayImageView: UIImageView!
+    @IBOutlet fileprivate weak var resultsLabel: UILabel!
+    @IBOutlet fileprivate weak var detailLabel: UILabel!
+    @IBOutlet fileprivate weak var separator: UIView!
     @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
 
     var game: Game? {
         didSet {
             updateUI()
         }
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
     }
 
     private func updateUI() {

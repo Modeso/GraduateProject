@@ -1,5 +1,5 @@
 //
-//  PlayerStatus.swift
+//  GamePlayerStats.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 8/18/17.

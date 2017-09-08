@@ -16,11 +16,6 @@ class EuroNavigationController: UINavigationController {
         self.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
 extension EuroNavigationController:  UINavigationControllerDelegate {
@@ -32,7 +27,6 @@ extension EuroNavigationController:  UINavigationControllerDelegate {
         let navImage = Constants.season.getNavImage()
         let navImageView = UIImageView(image: navImage)
         navImageView.contentMode = .scaleAspectFit
-//        navImageView.center = CGPoint(x: navigationBar.center.x, y: navigationBar.center.y - 20)
         viewController.navigationItem.titleView = navImageView
         viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: nil)
         navigationBar.setValue(true, forKey: "hidesShadow")

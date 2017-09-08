@@ -10,28 +10,22 @@ import UIKit
 import EuroLeagueKit
 
 protocol MenuSwapped: class {
-
     func changeMenuSize(withItemsCount items: Int)
-
     func changeMenuSize(toHeight height: CGFloat)
-
     func updateTableData(withRound round: String)
-
 }
 
 class TeamStatisticsMenuTableViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-
-    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet fileprivate weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var menuButton: UIButton!
 
     fileprivate var isChoosing = false
+    fileprivate var menu: [Int: LeagueRound] = [ : ]
 
     weak var delegate: MenuSwapped?
 
     var cellRowHeight: CGFloat = 35.0
-
-    fileprivate var menu: [Int: LeagueRound] = [ : ]
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  GameDetail.swift
+//  GameTeamDetail.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 8/18/17.

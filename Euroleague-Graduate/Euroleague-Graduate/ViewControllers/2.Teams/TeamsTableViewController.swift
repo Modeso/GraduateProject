@@ -1,5 +1,5 @@
 //
-//  TurkishLeagueTeamsTableViewController.swift
+//  TeamsTableViewController.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 8/2/17.
@@ -11,7 +11,7 @@ import EuroLeagueKit
 
 class TeamsTableViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var tableView: UITableView!
 
     fileprivate var teams: [[Team]] = [] {
         didSet {
@@ -19,10 +19,8 @@ class TeamsTableViewController: UIViewController {
         }
     }
 
-    private let teamViewModel = TeamsViewModel(season: Constants.season)
-
+    fileprivate let teamViewModel = TeamsTableViewModel(season: Constants.season)
     fileprivate var selectedTeam: Team?
-
     fileprivate let headerCellColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1)
 
     override func viewDidLoad() {
@@ -35,8 +33,8 @@ class TeamsTableViewController: UIViewController {
         if let image = UIImage(named: "LeagueBackGround") {
             self.view.backgroundColor = UIColor(patternImage: image)
         }
-        teamViewModel.getData(withData: nil) { teamsTable in
-            if let clubs = teamsTable as? [[Team]] {
+        teamViewModel.getData(withData: nil) { teamsList in
+            if let clubs = teamsList as? [[Team]] {
                 if Thread.isMainThread {
                     self.teams = clubs
                 } else {
@@ -48,9 +46,6 @@ class TeamsTableViewController: UIViewController {
         }
     }
 
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowTeam" {
             if let destination = segue.destination as? TeamDataViewController {

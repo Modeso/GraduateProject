@@ -11,19 +11,15 @@ import EuroLeagueKit
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet fileprivate weak var topView: UIView!
+    @IBOutlet fileprivate weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+
     fileprivate let menu: [Int: (text: String, identifier: String)] = [
         0: ("Games", "GamesContentNavigationController"),
         1: ("Teams", "TeamsContentNavigationController")
     ]
-
-    @IBOutlet weak var topView: UIView!
-
-    @IBOutlet weak var tableView: UITableView!
-
-    @IBOutlet weak var collectionView: UICollectionView!
-
     fileprivate var selectedLeagueNumber = 0
-
     fileprivate var selectedRow = 0
 
     override func viewDidLoad() {

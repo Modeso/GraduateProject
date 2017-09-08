@@ -1,5 +1,5 @@
 //
-//  TurkishLeagueGameDetailViewController.swift
+//  GameDetailViewController.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 7/25/17.

@@ -1,5 +1,5 @@
 //
-//  TurkishLeagueTeamsViewModel.swift
+//  TeamsTableViewModel.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 8/2/17.
@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import EuroLeagueKit
 
-class TeamsViewModel: AbstractViewModel {
+class TeamsTableViewModel {
 
     fileprivate let teamDataService: TeamsDataService
 
@@ -18,17 +18,21 @@ class TeamsViewModel: AbstractViewModel {
         teamDataService = TeamsDataService(season: season)
     }
 
+}
+
+extension TeamsTableViewModel: AbstractViewModel {
+
     func getData(withData: [Any]?, completion: @escaping ([Any]?) -> Void) {
         getTeamsData(completion: completion)
     }
 
 }
 
-fileprivate extension TeamsViewModel {
+fileprivate extension TeamsTableViewModel {
 
     func getTeamsData(completion: @escaping ([Any]?) -> Void) {
         DispatchQueue.global().async { [weak self] in
-            self?.teamDataService.getTeamsTable { (clubs) in
+            self?.teamDataService.getTeams { (clubs) in
                 if let clubsData = clubs {
                     let teams = self?.makeTeams(from: clubsData)
                     DispatchQueue.main.async {

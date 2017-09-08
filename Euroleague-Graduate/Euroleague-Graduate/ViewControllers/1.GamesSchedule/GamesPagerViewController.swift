@@ -1,5 +1,5 @@
 //
-//  AbstractViewController.swift
+//  GamesPagerViewController.swift
 //  Euroleague-Graduate
 //
 //  Created by Mohammed Elsammak on 7/7/17.
@@ -12,18 +12,15 @@ import XLPagerTabStrip
 import EuroLeagueKit
 
 protocol PagerUpdateChildData {
-    func updateUIWithData(_ table: [[Game]]?, lastGameIndex: (section: Int, row: Int)?)
+    func updateUIWithData(_ games: [Game])
     func getRound() -> String
 }
 
 class GamesPagerViewController: ButtonBarPagerTabStripViewController {
 
     fileprivate var myViewControllers: [MatchesTableViewController] = []
-
-    fileprivate let gamesViewModel = GamesViewModel(season: Constants.season)
-    fileprivate let roundMatchesViewmodel = RoundsMatchesViewModel(season: Constants.season)
-
-    fileprivate var refreshing = true
+    fileprivate let gamesViewModel = GamesPagerViewModel(season: Constants.season)
+    fileprivate var isRefreshing = true
 
     override func viewDidLoad() {
         settings.style.buttonBarItemBackgroundColor = UIColor.getLeagueBarColor()
@@ -38,18 +35,13 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
 
         super.viewDidLoad()
         gamesViewModel.getData(withData: nil) { [weak self] schedule in
-            guard let schedule = schedule as? [Game], let myViewControllers = self?.myViewControllers else { return }
-            self?.roundMatchesViewmodel.makeRoundsMatches(from: schedule)
+            guard let schedule = schedule as? [Game],
+            let myViewControllers = self?.myViewControllers,
+            schedule.count > 0 else { return }
             for matchesController in myViewControllers {
-                if let games = self?.roundMatchesViewmodel.getGames(of: matchesController.getRound()),
-                    let lastGame = self?.roundMatchesViewmodel.getLastGame(of: matchesController.getRound()) {
-                    if Thread.isMainThread {
-                        matchesController.updateUIWithData(games, lastGameIndex: lastGame)
-                    } else {
-                        DispatchQueue.main.async {
-                            matchesController.updateUIWithData(games, lastGameIndex: lastGame)
-                        }
-                    }
+                if schedule.contains(where: { $0.round == matchesController.getRound() }) {
+                    let games = schedule.filter({ $0.round == matchesController.getRound() })
+                    matchesController.updateUIWithData(games)
                 }
             }
         }
@@ -60,17 +52,9 @@ class GamesPagerViewController: ButtonBarPagerTabStripViewController {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         createControllers()
-        refreshing = false
+        isRefreshing = false
         return myViewControllers
     }
 
@@ -97,26 +81,17 @@ extension GamesPagerViewController: UpdateRoundDataDelegate {
 
     // pull down to refresh..
     func getUpdatedData(ofRound round: String) {
-        refreshing = true
+        isRefreshing = true
         gamesViewModel.updateData(withData: round) { [weak self] schedule in
-            self?.refreshing = false
+            self?.isRefreshing = false
             guard let schedule = schedule as? [Game] else { return }
-            self?.roundMatchesViewmodel.makeRoundsMatches(from: schedule)
             let matchesController = self?.myViewControllers.first(where: { $0.getRound() == round })
-            if let games = self?.roundMatchesViewmodel.getGames(of: round),
-                let lastGame = self?.roundMatchesViewmodel.getLastGame(of: round) {
-                if Thread.isMainThread {
-                    matchesController?.updateUIWithData(games, lastGameIndex: lastGame)
-                } else {
-                    DispatchQueue.main.async {
-                        matchesController?.updateUIWithData(games, lastGameIndex: lastGame)
-                    }
-                }
-            }
+            matchesController?.updateUIWithData(schedule.filter({ $0.round == matchesController?.getRound() }))
         }
     }
 
-    func isRefreshing() -> Bool {
-        return refreshing
+    func isPagerRefreshing() -> Bool {
+        return isRefreshing
     }
+
 }

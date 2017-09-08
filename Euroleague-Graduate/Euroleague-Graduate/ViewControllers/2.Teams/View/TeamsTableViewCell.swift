@@ -1,5 +1,5 @@
 //
-//  TurkishLeagusTeamsTableViewCell.swift
+//  TeamsTableViewCell.swift
 //  Euroleague-Graduate
 //
 //  Created by Modeso on 8/2/17.
@@ -12,16 +12,11 @@ import EuroLeagueKit
 
 class TeamsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var teamImageView: UIImageView!
-
-    @IBOutlet weak var teamNameLabel: UILabel!
-
-    @IBOutlet weak var tvCodeLabel: UILabel!
-
-    @IBOutlet weak var countryNameLabel: UILabel!
-
-    @IBOutlet weak var separator: UIView!
-
+    @IBOutlet fileprivate weak var teamImageView: UIImageView!
+    @IBOutlet fileprivate weak var teamNameLabel: UILabel!
+    @IBOutlet fileprivate weak var tvCodeLabel: UILabel!
+    @IBOutlet fileprivate weak var countryNameLabel: UILabel!
+    @IBOutlet fileprivate weak var separator: UIView!
     @IBOutlet weak var separatorHeightConstraint: NSLayoutConstraint!
 
     var team: Team? {
