@@ -38,7 +38,7 @@ public class Team: Object {
 
 public extension Team {
 
-    public func parseTeamData(_ node: XMLIndexer) {
+    public func parseTeamData(of node: XMLIndexer) {
         do {
             self.code = try node.value(ofAttribute: "code")
             self.tvCode = try node.value(ofAttribute: "tvcode")
@@ -79,7 +79,6 @@ public extension Team {
         newTeam.name = self.name
         newTeam.tvCode = self.tvCode
         newTeam.twitterAccount = self.twitterAccount
-//        newTeam.coach = self.coach?.clone()
         let newRosters = List<Player>()
         for player in self.rosters {
             newRosters.append(player.clone())

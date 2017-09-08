@@ -56,7 +56,7 @@ public extension GameTeamDetail {
         return newTeamGameDetail
     }
 
-    public func parseTeamGameDetail(_ node: XMLIndexer) {
+    public func parseTeamGameDetail(of node: XMLIndexer) {
         do {
             self.code = try node.value(ofAttribute: "code")
             self.partial1 = try node["partials"].value(ofAttribute: "Partial1")
@@ -70,7 +70,7 @@ public extension GameTeamDetail {
             self.extraPeriod5 = try node["partials"].value(ofAttribute: "ExtraPeriod5")
             for elem in node["playerstats"]["stat"].all {
                 let playerStats = GamePlayerStats()
-                playerStats.parseStatusData(elem)
+                playerStats.parseStatusData(of: elem)
                 self.playersStats.append(playerStats)
             }
         } catch {

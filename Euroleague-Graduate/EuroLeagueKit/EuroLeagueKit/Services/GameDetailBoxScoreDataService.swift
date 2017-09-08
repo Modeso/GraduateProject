@@ -65,8 +65,8 @@ fileprivate extension GameDetailBoxScoreDataService {
         let xml = SWXMLHash.parse(xmlData)
         let mlocalTeamDetail = GameTeamDetail()
         let mroadTeamDetail = GameTeamDetail()
-        mlocalTeamDetail.parseTeamGameDetail(xml["game"]["localclub"])
-        mroadTeamDetail.parseTeamGameDetail(xml["game"]["roadclub"])
+        mlocalTeamDetail.parseTeamGameDetail(of: xml["game"]["localclub"])
+        mroadTeamDetail.parseTeamGameDetail(of: xml["game"]["roadclub"])
         if mlocalTeamDetail.code != "" {
             mlocalTeamDetail.seasonCode = currentSeason.getSeasonCode()
             localTeamDetail = mlocalTeamDetail

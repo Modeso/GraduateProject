@@ -108,7 +108,7 @@ fileprivate extension GamesDataService {
         let xml = SWXMLHash.parse(xmlData)
         for elem in xml["schedule"]["item"].all {
             let game = Game()
-            game.parseGameData(elem)
+            game.parseGameData(of: elem)
             game.seasonCode = currentSeason.getSeasonCode()
             RealmDBManager.sharedInstance.addGameDataToRealm(game: game)
             games[game.gameNumber] = game.clone()

@@ -46,7 +46,7 @@ public extension Player {
         return newPlayer
     }
 
-    public func parsePlayerData(_ node: XMLIndexer) {
+    public func parsePlayerData(of node: XMLIndexer) {
         do {
             self.name = try node["name"].value()
             self.position = try node["position"].value()

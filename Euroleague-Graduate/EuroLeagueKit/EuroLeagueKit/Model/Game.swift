@@ -49,7 +49,7 @@ public class Game: Object {
 
 public extension Game {
 
-    public func parseGameData(_ node: XMLIndexer) {
+    public func parseGameData(of node: XMLIndexer) {
         do {
             self.round = try node["round"].value()
             let mdate: String = try node["date"].value()

@@ -32,4 +32,5 @@ extension EuroNavigationController:  UINavigationControllerDelegate {
         navigationBar.setValue(true, forKey: "hidesShadow")
         viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
+
 }

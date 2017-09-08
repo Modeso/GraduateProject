@@ -112,6 +112,16 @@ extension TeamStatisticsMenuTableViewController: UITableViewDataSource {
 
 }
 
+extension TeamStatisticsMenuTableViewController {
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        isChoosing = false
+        menuButton.alpha = 1.0
+        delegate?.changeMenuSize(withItemsCount: 1)
+    }
+
+}
+
 fileprivate extension TeamStatisticsMenuTableViewController {
 
     func updateTheMenuOrder(toStartWith index: Int) {
@@ -140,4 +150,5 @@ fileprivate extension TeamStatisticsMenuTableViewController {
         menu[first] = menu[second]
         menu[second] = temp
     }
+
 }

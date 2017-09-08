@@ -113,11 +113,10 @@ public class RealmDBManager {
     public func getTeams(ofSeason season: String) -> Results<Team>? {
         do {
             let realm = try Realm(configuration: realmConfiguration)
-
             let predicate = NSPredicate(format: "seasonCode = %@", season)
             let sortProperties = [SortDescriptor(keyPath: "name", ascending: true)]
-            let table = realm.objects(Team.self).filter(predicate).sorted(by: sortProperties)
-            return table
+            let results = realm.objects(Team.self).filter(predicate).sorted(by: sortProperties)
+            return results
         } catch {
             return nil
         }

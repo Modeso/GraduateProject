@@ -65,4 +65,5 @@ fileprivate extension TeamsTableViewModel {
         }
         return teams
     }
+
 }

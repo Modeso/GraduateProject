@@ -56,7 +56,7 @@ fileprivate extension PlayersDataService {
         let xml = SWXMLHash.parse(xmlData)
         let player = Player()
         for elem in xml["player"].all {
-            player.parsePlayerData(elem)
+            player.parsePlayerData(of: elem)
         }
         if player.name != "" {
             player.code = code

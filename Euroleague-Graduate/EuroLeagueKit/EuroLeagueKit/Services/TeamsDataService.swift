@@ -69,7 +69,7 @@ fileprivate extension TeamsDataService {
         for elem in xml["clubs"]["club"].all {
             let team = Team()
             team.seasonCode = currentSeason.getSeasonCode()
-            team.parseTeamData(elem)
+            team.parseTeamData(of: elem)
             RealmDBManager.sharedInstance.addTeamDataToRealm(team)
         }
     }

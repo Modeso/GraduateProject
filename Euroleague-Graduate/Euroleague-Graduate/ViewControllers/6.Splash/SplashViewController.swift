@@ -80,8 +80,8 @@ class SplashViewController: UIViewController {
                 break
             }
         }
-
     }
+
 }
 
 fileprivate extension SplashViewController {

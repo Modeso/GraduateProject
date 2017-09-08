@@ -214,4 +214,5 @@ extension GameBoxScoreViewController: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
+
 }

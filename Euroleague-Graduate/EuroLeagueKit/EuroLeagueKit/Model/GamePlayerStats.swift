@@ -11,6 +11,7 @@ import RealmSwift
 import SWXMLHash
 
 public class GamePlayerStats: Object {
+
     //V5
     public dynamic var playerName: String = ""
     public dynamic var playerCode: String = ""
@@ -19,9 +20,11 @@ public class GamePlayerStats: Object {
     public dynamic var steals: Int = 0
     public dynamic var assistances: Int = 0
     public dynamic var blockFavour: Int = 0
+
 }
 
 public extension GamePlayerStats {
+
     public func clone() -> GamePlayerStats {
         let newPlayerGameStatus = GamePlayerStats()
         newPlayerGameStatus.playerName = self.playerName
@@ -33,33 +36,30 @@ public extension GamePlayerStats {
         newPlayerGameStatus.blockFavour = self.blockFavour
         return newPlayerGameStatus
     }
-    public func parseStatusData(_ node: XMLIndexer) {
+
+    //parsing data and due to some problems while dealing with the api every part will be tried to be done
+    public func parseStatusData(of node: XMLIndexer) {
         do {
             self.playerCode = try node["PlayerCode"].value()
             self.playerName = try node["PlayerName"].value()
             self.score = try node["Score"].value()
         } catch {
-//            print("error in score \(error) of player \(playerName) \(playerCode)")
         }
         do {
             self.totalRebounds = try node["TotalRebounds"].value()
         } catch {
-//            print("error in rebounds \(error) of player \(playerName) \(playerCode)")
         }
         do {
             self.assistances = try node["Assistances"].value()
         } catch {
-//            print("error in assists \(error) of player \(playerName) \(playerCode)")
         }
         do {
             self.steals = try node["Steals"].value()
         } catch {
-//            print("error in steals \(error) of player \(playerName) \(playerCode)")
         }
         do {
             self.blockFavour = try node["BlocksFavour"].value()
         } catch {
-//            print("error in blocks \(error) of player \(playerName) \(playerCode)")
         }
     }
 }

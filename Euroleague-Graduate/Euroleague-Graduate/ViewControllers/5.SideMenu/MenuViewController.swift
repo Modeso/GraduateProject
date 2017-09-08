@@ -53,7 +53,6 @@ extension MenuViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: size.width / 4, bottom: 0, right: size.width / 4)
         collectionView.reloadData()
-
     }
 
 }
@@ -103,6 +102,7 @@ extension MenuViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
+
 }
 
 extension MenuViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -178,4 +178,5 @@ extension MenuViewController: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
+
 }
